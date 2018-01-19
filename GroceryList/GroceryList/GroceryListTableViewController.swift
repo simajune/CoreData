@@ -7,19 +7,33 @@
 //
 
 import UIKit
+import CoreData
 
 class GroceryListTableViewController: UITableViewController {
 
-    var groceries: [String] = []
+    var groceries: [NSManagedObject] = []
+    var managedObjectContext: NSManagedObjectContext?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        managedObjectContext = appDelegate.persistentContainer.viewContext
+        
+        loadData()
+    }
+    
+    func loadData() {
+        let request: NSFetchRequest<NSManagedObject> = NSFetchRequest(entityName: "Grocery")
+        
+        do {
+            let result = try managedObjectContext?.fetch(request)
+            groceries = result!
+            tableView.reloadData()
+        }
+        catch {
+            fatalError("Error in retrieving Grocery item")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,8 +49,21 @@ class GroceryListTableViewController: UITableViewController {
         
         let addAction = UIAlertAction(title: "ADD", style: .default) { [weak self](action: UIAlertAction) in
             let textField = alertController.textFields?.first
-            self?.groceries.append(textField!.text!)
-            self?.tableView.reloadData()
+            //self?.groceries.append(textField!.text!)
+            
+            let entity = NSEntityDescription.entity(forEntityName: "Grocery", in: (self?.managedObjectContext)!)
+            
+            let grocery = NSManagedObject(entity: entity!, insertInto: self?.managedObjectContext)
+            grocery.setValue(textField?.text, forKey: "item")
+            
+            do {
+                try self?.managedObjectContext?.save()
+            }
+            catch {
+                    fatalError("Error in storing data")
+            }
+            
+            self?.loadData()
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
@@ -61,7 +88,8 @@ class GroceryListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "groceryCell", for: indexPath)
 
-        cell.textLabel?.text = self.groceries[indexPath.row]
+        let grocery = self.groceries[indexPath.row]
+        cell.textLabel?.text = grocery.value(forKey: "item") as? String
 
         return cell
     }

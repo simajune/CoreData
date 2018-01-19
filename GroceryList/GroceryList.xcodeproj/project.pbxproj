@@ -56,15 +56,23 @@
 		23260E2820110055008DE186 /* GroceryList */ = {
 			isa = PBXGroup;
 			children = (
-				23260E3E2011019C008DE186 /* GroceryListTableViewController.swift */,
+				23284CE72011B653005C125B /* model */,
 				23260E2920110055008DE186 /* AppDelegate.swift */,
 				23260E2D20110055008DE186 /* Main.storyboard */,
 				23260E3320110055008DE186 /* Assets.xcassets */,
 				23260E3520110055008DE186 /* LaunchScreen.storyboard */,
 				23260E3820110055008DE186 /* Info.plist */,
 				23260E3020110055008DE186 /* GroceryList.xcdatamodeld */,
+				23260E3E2011019C008DE186 /* GroceryListTableViewController.swift */,
 			);
 			path = GroceryList;
+			sourceTree = "<group>";
+		};
+		23284CE72011B653005C125B /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
