@@ -126,12 +126,8 @@
 			children = (
 				232B2ECC201704F0001F260E /* Constant.swift */,
 				232B2EA120162AE6001F260E /* AppDelegate.swift */,
-				232B2ED3201716A3001F260E /* SplashViewController.swift */,
-				232B2ED1201705D1001F260E /* MainViewController.swift */,
-				232B2EDC2017249A001F260E /* CellA.swift */,
-				232B2EE020172567001F260E /* ItemCellA.swift */,
-				232B2EDE201724A6001F260E /* CellB.swift */,
-				232B2EE220172573001F260E /* ItemCellB.swift */,
+				232B2EE4201731FA001F260E /* ViewController */,
+				232B2EE520173210001F260E /* View */,
 				232B2EA520162AE7001F260E /* Main.storyboard */,
 				232B2EAB20162AE7001F260E /* Assets.xcassets */,
 				232B2EAD20162AE7001F260E /* LaunchScreen.storyboard */,
@@ -159,6 +155,26 @@
 				232B2EC42016C6E0001F260E /* Info.plist */,
 			);
 			path = WeatherTejayExtension;
+			sourceTree = "<group>";
+		};
+		232B2EE4201731FA001F260E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				232B2ED3201716A3001F260E /* SplashViewController.swift */,
+				232B2ED1201705D1001F260E /* MainViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		232B2EE520173210001F260E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				232B2EDC2017249A001F260E /* CellA.swift */,
+				232B2EE020172567001F260E /* ItemCellA.swift */,
+				232B2EDE201724A6001F260E /* CellB.swift */,
+				232B2EE220172573001F260E /* ItemCellB.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D6804B3D1863690EC57B0421 /* Pods */ = {
@@ -300,10 +316,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WeatherTejay/Pods-WeatherTejay-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -541,7 +561,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3UGB7ZX43H;
 				INFOPLIST_FILE = WeatherTejay/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.devtejay.WeatherTejay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -557,7 +579,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3UGB7ZX43H;
 				INFOPLIST_FILE = WeatherTejay/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.devtejay.WeatherTejay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
