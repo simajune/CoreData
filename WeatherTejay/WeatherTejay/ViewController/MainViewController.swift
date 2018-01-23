@@ -1,16 +1,46 @@
 
 import UIKit
+import CoreLocation
 import Alamofire
 import SwiftyJSON
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, CLLocationManagerDelegate {
 
+    let locationManager = CLLocationManager()
+    
+    @IBOutlet weak var locationLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+    
+    //MARK: - Location Manager Delegate
+    //didUpdateLocations
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations[locations.count - 1]
+        if location.horizontalAccuracy > 0 {
+            locationManager.stopUpdatingLocation()
+            print("long = \(location.coordinate.longitude), lat = \(location.coordinate.latitude)")
+            
+            let longitude = String(location.coordinate.longitude)
+            let latitude = String(location.coordinate.latitude)
+            
+            let param: [String: String] = ["lat": latitude, "long": longitude, "appid": weatherAPIKey]
+        }
+            
         
     }
-
+    
+    //didFailWithError
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+        locationLabel.text = "Location Unavailable"
+    }
 
 }
 
