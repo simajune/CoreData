@@ -1,0 +1,6 @@
+framework module Pods_WeatherTejayExtension {
+  umbrella header "Pods-WeatherTejayExtension-umbrella.h"
+
+  export *
+  module * { export * }
+}

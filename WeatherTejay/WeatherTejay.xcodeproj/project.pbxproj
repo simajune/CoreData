@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B1EF8AECB42A48BEF9605C1 /* Pods_WeatherTejay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E2C8DB6F0E9ED82034FD45 /* Pods_WeatherTejay.framework */; };
 		232B2EA220162AE6001F260E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2EA120162AE6001F260E /* AppDelegate.swift */; };
-		232B2EA420162AE7001F260E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2EA320162AE7001F260E /* ViewController.swift */; };
 		232B2EA720162AE7001F260E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232B2EA520162AE7001F260E /* Main.storyboard */; };
 		232B2EAA20162AE7001F260E /* WeatherTejay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 232B2EA820162AE7001F260E /* WeatherTejay.xcdatamodeld */; };
 		232B2EAC20162AE7001F260E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 232B2EAB20162AE7001F260E /* Assets.xcassets */; };
@@ -17,6 +17,15 @@
 		232B2EC02016C6E0001F260E /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2EBF2016C6E0001F260E /* TodayViewController.swift */; };
 		232B2EC32016C6E0001F260E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232B2EC12016C6E0001F260E /* MainInterface.storyboard */; };
 		232B2EC72016C6E0001F260E /* WeatherTejayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 232B2EBA2016C6E0001F260E /* WeatherTejayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		232B2ECD201704F0001F260E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2ECC201704F0001F260E /* Constant.swift */; };
+		232B2ED0201705AC001F260E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2ECC201704F0001F260E /* Constant.swift */; };
+		232B2ED2201705D1001F260E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2ED1201705D1001F260E /* MainViewController.swift */; };
+		232B2ED4201716A3001F260E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2ED3201716A3001F260E /* SplashViewController.swift */; };
+		232B2EDD2017249A001F260E /* CellA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2EDC2017249A001F260E /* CellA.swift */; };
+		232B2EDF201724A6001F260E /* CellB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2EDE201724A6001F260E /* CellB.swift */; };
+		232B2EE120172567001F260E /* ItemCellA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2EE020172567001F260E /* ItemCellA.swift */; };
+		232B2EE320172573001F260E /* ItemCellB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2EE220172573001F260E /* ItemCellB.swift */; };
+		2FEDE924A5908054BBF37CC8 /* Pods_WeatherTejayExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7008E835FDCA4661BADE185 /* Pods_WeatherTejayExtension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,9 +53,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		075A1D7F6E037A5702431BAD /* Pods-WeatherTejayExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTejayExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTejayExtension/Pods-WeatherTejayExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		232B2E9E20162AE6001F260E /* WeatherTejay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherTejay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		232B2EA120162AE6001F260E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		232B2EA320162AE7001F260E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		232B2EA620162AE7001F260E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		232B2EA920162AE7001F260E /* WeatherTejay.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherTejay.xcdatamodel; sourceTree = "<group>"; };
 		232B2EAB20162AE7001F260E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,6 +66,18 @@
 		232B2EBF2016C6E0001F260E /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		232B2EC22016C6E0001F260E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		232B2EC42016C6E0001F260E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		232B2ECC201704F0001F260E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		232B2ED1201705D1001F260E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		232B2ED3201716A3001F260E /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		232B2EDC2017249A001F260E /* CellA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellA.swift; sourceTree = "<group>"; };
+		232B2EDE201724A6001F260E /* CellB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellB.swift; sourceTree = "<group>"; };
+		232B2EE020172567001F260E /* ItemCellA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellA.swift; sourceTree = "<group>"; };
+		232B2EE220172573001F260E /* ItemCellB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellB.swift; sourceTree = "<group>"; };
+		3586AFF9490ABE383441F619 /* Pods-WeatherTejayExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTejayExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTejayExtension/Pods-WeatherTejayExtension.release.xcconfig"; sourceTree = "<group>"; };
+		82E2C8DB6F0E9ED82034FD45 /* Pods_WeatherTejay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherTejay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3AD682F264EECD41BE2E41B /* Pods-WeatherTejay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTejay.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTejay/Pods-WeatherTejay.release.xcconfig"; sourceTree = "<group>"; };
+		D7008E835FDCA4661BADE185 /* Pods_WeatherTejayExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherTejayExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2172F0AC0895C3B5DECBD9A /* Pods-WeatherTejay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTejay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTejay/Pods-WeatherTejay.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B1EF8AECB42A48BEF9605C1 /* Pods_WeatherTejay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +94,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				232B2EBD2016C6E0001F260E /* NotificationCenter.framework in Frameworks */,
+				2FEDE924A5908054BBF37CC8 /* Pods_WeatherTejayExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +108,7 @@
 				232B2EBE2016C6E0001F260E /* WeatherTejayExtension */,
 				232B2EBB2016C6E0001F260E /* Frameworks */,
 				232B2E9F20162AE6001F260E /* Products */,
+				D6804B3D1863690EC57B0421 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,8 +124,14 @@
 		232B2EA020162AE6001F260E /* WeatherTejay */ = {
 			isa = PBXGroup;
 			children = (
+				232B2ECC201704F0001F260E /* Constant.swift */,
 				232B2EA120162AE6001F260E /* AppDelegate.swift */,
-				232B2EA320162AE7001F260E /* ViewController.swift */,
+				232B2ED3201716A3001F260E /* SplashViewController.swift */,
+				232B2ED1201705D1001F260E /* MainViewController.swift */,
+				232B2EDC2017249A001F260E /* CellA.swift */,
+				232B2EE020172567001F260E /* ItemCellA.swift */,
+				232B2EDE201724A6001F260E /* CellB.swift */,
+				232B2EE220172573001F260E /* ItemCellB.swift */,
 				232B2EA520162AE7001F260E /* Main.storyboard */,
 				232B2EAB20162AE7001F260E /* Assets.xcassets */,
 				232B2EAD20162AE7001F260E /* LaunchScreen.storyboard */,
@@ -115,6 +145,8 @@
 			isa = PBXGroup;
 			children = (
 				232B2EBC2016C6E0001F260E /* NotificationCenter.framework */,
+				82E2C8DB6F0E9ED82034FD45 /* Pods_WeatherTejay.framework */,
+				D7008E835FDCA4661BADE185 /* Pods_WeatherTejayExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -129,6 +161,17 @@
 			path = WeatherTejayExtension;
 			sourceTree = "<group>";
 		};
+		D6804B3D1863690EC57B0421 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E2172F0AC0895C3B5DECBD9A /* Pods-WeatherTejay.debug.xcconfig */,
+				D3AD682F264EECD41BE2E41B /* Pods-WeatherTejay.release.xcconfig */,
+				075A1D7F6E037A5702431BAD /* Pods-WeatherTejayExtension.debug.xcconfig */,
+				3586AFF9490ABE383441F619 /* Pods-WeatherTejayExtension.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -136,10 +179,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 232B2EB320162AE7001F260E /* Build configuration list for PBXNativeTarget "WeatherTejay" */;
 			buildPhases = (
+				E9C66DE15E3A2ADCE7404236 /* [CP] Check Pods Manifest.lock */,
 				232B2E9A20162AE6001F260E /* Sources */,
 				232B2E9B20162AE6001F260E /* Frameworks */,
 				232B2E9C20162AE6001F260E /* Resources */,
 				232B2ECB2016C6E0001F260E /* Embed App Extensions */,
+				A4A30457169E996E1C5D4321 /* [CP] Embed Pods Frameworks */,
+				608640254D8616F38502AB35 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -155,9 +201,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 232B2EC82016C6E0001F260E /* Build configuration list for PBXNativeTarget "WeatherTejayExtension" */;
 			buildPhases = (
+				A9C938C8FD844F9385F4469D /* [CP] Check Pods Manifest.lock */,
 				232B2EB62016C6E0001F260E /* Sources */,
 				232B2EB72016C6E0001F260E /* Frameworks */,
 				232B2EB82016C6E0001F260E /* Resources */,
+				C667C1AA7AB36D787574016D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -228,14 +276,107 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		608640254D8616F38502AB35 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeatherTejay/Pods-WeatherTejay-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A4A30457169E996E1C5D4321 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WeatherTejay/Pods-WeatherTejay-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeatherTejay/Pods-WeatherTejay-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9C938C8FD844F9385F4469D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WeatherTejayExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C667C1AA7AB36D787574016D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeatherTejayExtension/Pods-WeatherTejayExtension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E9C66DE15E3A2ADCE7404236 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WeatherTejay-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		232B2E9A20162AE6001F260E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				232B2EAA20162AE7001F260E /* WeatherTejay.xcdatamodeld in Sources */,
-				232B2EA420162AE7001F260E /* ViewController.swift in Sources */,
 				232B2EA220162AE6001F260E /* AppDelegate.swift in Sources */,
+				232B2EE320172573001F260E /* ItemCellB.swift in Sources */,
+				232B2EE120172567001F260E /* ItemCellA.swift in Sources */,
+				232B2ECD201704F0001F260E /* Constant.swift in Sources */,
+				232B2EDD2017249A001F260E /* CellA.swift in Sources */,
+				232B2ED2201705D1001F260E /* MainViewController.swift in Sources */,
+				232B2EDF201724A6001F260E /* CellB.swift in Sources */,
+				232B2ED4201716A3001F260E /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +384,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				232B2ED0201705AC001F260E /* Constant.swift in Sources */,
 				232B2EC02016C6E0001F260E /* TodayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,6 +536,7 @@
 		};
 		232B2EB420162AE7001F260E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2172F0AC0895C3B5DECBD9A /* Pods-WeatherTejay.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -409,6 +552,7 @@
 		};
 		232B2EB520162AE7001F260E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3AD682F264EECD41BE2E41B /* Pods-WeatherTejay.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -424,6 +568,7 @@
 		};
 		232B2EC92016C6E0001F260E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 075A1D7F6E037A5702431BAD /* Pods-WeatherTejayExtension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WeatherTejayExtension/Info.plist;
@@ -438,6 +583,7 @@
 		};
 		232B2ECA2016C6E0001F260E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3586AFF9490ABE383441F619 /* Pods-WeatherTejayExtension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WeatherTejayExtension/Info.plist;
