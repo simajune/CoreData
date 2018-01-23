@@ -1,0 +1,499 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		232B2EA220162AE6001F260E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2EA120162AE6001F260E /* AppDelegate.swift */; };
+		232B2EA420162AE7001F260E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2EA320162AE7001F260E /* ViewController.swift */; };
+		232B2EA720162AE7001F260E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232B2EA520162AE7001F260E /* Main.storyboard */; };
+		232B2EAA20162AE7001F260E /* WeatherTejay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 232B2EA820162AE7001F260E /* WeatherTejay.xcdatamodeld */; };
+		232B2EAC20162AE7001F260E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 232B2EAB20162AE7001F260E /* Assets.xcassets */; };
+		232B2EAF20162AE7001F260E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232B2EAD20162AE7001F260E /* LaunchScreen.storyboard */; };
+		232B2EBD2016C6E0001F260E /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 232B2EBC2016C6E0001F260E /* NotificationCenter.framework */; };
+		232B2EC02016C6E0001F260E /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2EBF2016C6E0001F260E /* TodayViewController.swift */; };
+		232B2EC32016C6E0001F260E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232B2EC12016C6E0001F260E /* MainInterface.storyboard */; };
+		232B2EC72016C6E0001F260E /* WeatherTejayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 232B2EBA2016C6E0001F260E /* WeatherTejayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		232B2EC52016C6E0001F260E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 232B2E9620162AE6001F260E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 232B2EB92016C6E0001F260E;
+			remoteInfo = WeatherTejayExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		232B2ECB2016C6E0001F260E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				232B2EC72016C6E0001F260E /* WeatherTejayExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		232B2E9E20162AE6001F260E /* WeatherTejay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherTejay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		232B2EA120162AE6001F260E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		232B2EA320162AE7001F260E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		232B2EA620162AE7001F260E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		232B2EA920162AE7001F260E /* WeatherTejay.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherTejay.xcdatamodel; sourceTree = "<group>"; };
+		232B2EAB20162AE7001F260E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		232B2EAE20162AE7001F260E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		232B2EB020162AE7001F260E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		232B2EBA2016C6E0001F260E /* WeatherTejayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WeatherTejayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		232B2EBC2016C6E0001F260E /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		232B2EBF2016C6E0001F260E /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		232B2EC22016C6E0001F260E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		232B2EC42016C6E0001F260E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		232B2E9B20162AE6001F260E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		232B2EB72016C6E0001F260E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				232B2EBD2016C6E0001F260E /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		232B2E9520162AE6001F260E = {
+			isa = PBXGroup;
+			children = (
+				232B2EA020162AE6001F260E /* WeatherTejay */,
+				232B2EBE2016C6E0001F260E /* WeatherTejayExtension */,
+				232B2EBB2016C6E0001F260E /* Frameworks */,
+				232B2E9F20162AE6001F260E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		232B2E9F20162AE6001F260E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				232B2E9E20162AE6001F260E /* WeatherTejay.app */,
+				232B2EBA2016C6E0001F260E /* WeatherTejayExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		232B2EA020162AE6001F260E /* WeatherTejay */ = {
+			isa = PBXGroup;
+			children = (
+				232B2EA120162AE6001F260E /* AppDelegate.swift */,
+				232B2EA320162AE7001F260E /* ViewController.swift */,
+				232B2EA520162AE7001F260E /* Main.storyboard */,
+				232B2EAB20162AE7001F260E /* Assets.xcassets */,
+				232B2EAD20162AE7001F260E /* LaunchScreen.storyboard */,
+				232B2EB020162AE7001F260E /* Info.plist */,
+				232B2EA820162AE7001F260E /* WeatherTejay.xcdatamodeld */,
+			);
+			path = WeatherTejay;
+			sourceTree = "<group>";
+		};
+		232B2EBB2016C6E0001F260E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				232B2EBC2016C6E0001F260E /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		232B2EBE2016C6E0001F260E /* WeatherTejayExtension */ = {
+			isa = PBXGroup;
+			children = (
+				232B2EBF2016C6E0001F260E /* TodayViewController.swift */,
+				232B2EC12016C6E0001F260E /* MainInterface.storyboard */,
+				232B2EC42016C6E0001F260E /* Info.plist */,
+			);
+			path = WeatherTejayExtension;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		232B2E9D20162AE6001F260E /* WeatherTejay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 232B2EB320162AE7001F260E /* Build configuration list for PBXNativeTarget "WeatherTejay" */;
+			buildPhases = (
+				232B2E9A20162AE6001F260E /* Sources */,
+				232B2E9B20162AE6001F260E /* Frameworks */,
+				232B2E9C20162AE6001F260E /* Resources */,
+				232B2ECB2016C6E0001F260E /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				232B2EC62016C6E0001F260E /* PBXTargetDependency */,
+			);
+			name = WeatherTejay;
+			productName = WeatherTejay;
+			productReference = 232B2E9E20162AE6001F260E /* WeatherTejay.app */;
+			productType = "com.apple.product-type.application";
+		};
+		232B2EB92016C6E0001F260E /* WeatherTejayExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 232B2EC82016C6E0001F260E /* Build configuration list for PBXNativeTarget "WeatherTejayExtension" */;
+			buildPhases = (
+				232B2EB62016C6E0001F260E /* Sources */,
+				232B2EB72016C6E0001F260E /* Frameworks */,
+				232B2EB82016C6E0001F260E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WeatherTejayExtension;
+			productName = WeatherTejayExtension;
+			productReference = 232B2EBA2016C6E0001F260E /* WeatherTejayExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		232B2E9620162AE6001F260E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = devtejay;
+				TargetAttributes = {
+					232B2E9D20162AE6001F260E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					232B2EB92016C6E0001F260E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 232B2E9920162AE6001F260E /* Build configuration list for PBXProject "WeatherTejay" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 232B2E9520162AE6001F260E;
+			productRefGroup = 232B2E9F20162AE6001F260E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				232B2E9D20162AE6001F260E /* WeatherTejay */,
+				232B2EB92016C6E0001F260E /* WeatherTejayExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		232B2E9C20162AE6001F260E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				232B2EAF20162AE7001F260E /* LaunchScreen.storyboard in Resources */,
+				232B2EAC20162AE7001F260E /* Assets.xcassets in Resources */,
+				232B2EA720162AE7001F260E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		232B2EB82016C6E0001F260E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				232B2EC32016C6E0001F260E /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		232B2E9A20162AE6001F260E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				232B2EAA20162AE7001F260E /* WeatherTejay.xcdatamodeld in Sources */,
+				232B2EA420162AE7001F260E /* ViewController.swift in Sources */,
+				232B2EA220162AE6001F260E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		232B2EB62016C6E0001F260E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				232B2EC02016C6E0001F260E /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		232B2EC62016C6E0001F260E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 232B2EB92016C6E0001F260E /* WeatherTejayExtension */;
+			targetProxy = 232B2EC52016C6E0001F260E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		232B2EA520162AE7001F260E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				232B2EA620162AE7001F260E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		232B2EAD20162AE7001F260E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				232B2EAE20162AE7001F260E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		232B2EC12016C6E0001F260E /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				232B2EC22016C6E0001F260E /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		232B2EB120162AE7001F260E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		232B2EB220162AE7001F260E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		232B2EB420162AE7001F260E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WeatherTejay/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.devtejay.WeatherTejay;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		232B2EB520162AE7001F260E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WeatherTejay/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.devtejay.WeatherTejay;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		232B2EC92016C6E0001F260E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WeatherTejayExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.devtejay.WeatherTejay.WeatherTejayExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		232B2ECA2016C6E0001F260E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WeatherTejayExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.devtejay.WeatherTejay.WeatherTejayExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		232B2E9920162AE6001F260E /* Build configuration list for PBXProject "WeatherTejay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				232B2EB120162AE7001F260E /* Debug */,
+				232B2EB220162AE7001F260E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		232B2EB320162AE7001F260E /* Build configuration list for PBXNativeTarget "WeatherTejay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				232B2EB420162AE7001F260E /* Debug */,
+				232B2EB520162AE7001F260E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		232B2EC82016C6E0001F260E /* Build configuration list for PBXNativeTarget "WeatherTejayExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				232B2EC92016C6E0001F260E /* Debug */,
+				232B2ECA2016C6E0001F260E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		232B2EA820162AE7001F260E /* WeatherTejay.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				232B2EA920162AE7001F260E /* WeatherTejay.xcdatamodel */,
+			);
+			currentVersion = 232B2EA920162AE7001F260E /* WeatherTejay.xcdatamodel */;
+			path = WeatherTejay.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 232B2E9620162AE6001F260E /* Project object */;
+}
