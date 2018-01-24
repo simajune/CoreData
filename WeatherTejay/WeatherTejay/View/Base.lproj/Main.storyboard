@@ -203,7 +203,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="XzH-Fp-Qx1"/>
                     <connections>
+                        <outlet property="dustLabel" destination="o5c-La-ITc" id="6OL-mQ-PZL"/>
                         <outlet property="locationLabel" destination="7lF-Uv-YvY" id="Nne-Jf-Wwe"/>
+                        <outlet property="tempLabel" destination="FzH-ZY-CIr" id="HuV-lR-d22"/>
+                        <outlet property="weatherIcon" destination="Tjd-Fl-ePl" id="iSO-n4-are"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
