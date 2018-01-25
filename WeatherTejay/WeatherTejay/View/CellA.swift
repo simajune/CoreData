@@ -8,8 +8,24 @@
 
 import UIKit
 
-class CellA: UICollectionViewCell {
+class CellA: UICollectionViewCell, MainDelegate {
     
+    //MARK: - Variable
+    var cellCount: Int = 0
+    let mainViewController = MainViewController()
+    @IBOutlet weak var forecastCollectionView: UICollectionView!
+    
+    override func awakeFromNib() {
+        print(cellCount)
+        mainViewController.delegate = self
+    }
+    
+    func updateCell(count: Int) {
+        print("Hi")
+        cellCount = count
+        forecastCollectionView.reloadData()
+    }
+
 }
 
 extension CellA: UICollectionViewDelegateFlowLayout {
@@ -18,13 +34,17 @@ extension CellA: UICollectionViewDelegateFlowLayout {
 
 extension CellA: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return cellCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let itemCellA = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCellA", for: indexPath) as! ItemCellA
         return itemCellA
     }
-    
-    
+}
+
+extension CellA: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.frame.width / 5, height: self.frame.height)
+    }
 }

@@ -4,8 +4,13 @@ import CoreLocation
 import Alamofire
 import SwiftyJSON
 
+protocol MainDelegate {
+    func updateCell(count: Int)
+}
+
 class MainViewController: UIViewController, CLLocationManagerDelegate {
 
+    var delegate: MainDelegate?
     //Variable
     let locationManager = CLLocationManager()
     let weatherDataModel = WeatherDataModel()
@@ -14,10 +19,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var dustLabel: UILabel!
+    @IBOutlet weak var weatherCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
@@ -41,14 +47,17 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     //MARK: - JSON Parsing
     func updateWeatherData(json: JSON) {
-        print(json["list"].count)
         if let tempResult = json["list"][0]["main"]["temp"].double {
             weatherDataModel.temperature = Int(tempResult - 273.15)
             weatherDataModel.city = json["city"]["name"].stringValue
             weatherDataModel.condition = json["list"][0]["weather"][0]["id"].intValue
             weatherDataModel.weatherIconName = weatherDataModel.updateWeatherIcon(condition: weatherDataModel.condition)
-            
+            weatherDataModel.forecastCount = json["list"].count
+            print(weatherDataModel.forecastCount)
+            delegate?.updateCell(count: weatherDataModel.forecastCount)
+            weatherCollectionView.reloadData()
             updateUIWithWeatherDate()
+            
         }else {
             locationLabel.text = "Weather Unavailable"
         }
@@ -99,10 +108,11 @@ extension MainViewController: UICollectionViewDataSource {
         if indexPath.item == 1 {
             let cellB = collectionView.dequeueReusableCell(withReuseIdentifier: "cellB", for: indexPath) as! CellB
             return cellB
+        } else {
+            let cellA = collectionView.dequeueReusableCell(withReuseIdentifier: "cellA", for: indexPath) as! CellA
+            cellA.cellCount = weatherDataModel.forecastCount
+            return cellA
         }
-        let cellA = collectionView.dequeueReusableCell(withReuseIdentifier: "cellA", for: indexPath) as! CellA
-        
-        return cellA
     }
     
     
@@ -113,7 +123,7 @@ extension MainViewController: UICollectionViewDelegate {
         if indexPath.row == 1 {
             return CGSize(width: self.view.frame.width, height: 500)
         }else {
-            return CGSize(width: self.view.frame.width, height: 300)
+            return CGSize(width: self.view.frame.width, height: 100)
         }
     }
     

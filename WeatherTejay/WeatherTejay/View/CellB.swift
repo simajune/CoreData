@@ -9,7 +9,8 @@
 import UIKit
 
 class CellB: UICollectionViewCell {
-    
+    //MARK: - Variable
+    var cellCount: Int = 0
 }
 
 extension CellB: UICollectionViewDelegateFlowLayout {
@@ -18,13 +19,17 @@ extension CellB: UICollectionViewDelegateFlowLayout {
 
 extension CellB: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return cellCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let itemCellB = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCellB", for: indexPath) as! ItemCellB
         return itemCellB
     }
-    
-    
+}
+
+extension CellB: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.frame.width, height: self.frame.height / 6)
+    }
 }
