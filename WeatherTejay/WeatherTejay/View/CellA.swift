@@ -11,11 +11,18 @@ import UIKit
 class CellA: UICollectionViewCell, MainDelegate {
     
     //MARK: - Variable
-    var cellCount: Int = 0
+    var cellCount: Int = 0 {
+        didSet {
+            if oldValue != cellCount {
+                forecastCollectionView.reloadData()
+            }
+        }
+    }
     let mainViewController = MainViewController()
     @IBOutlet weak var forecastCollectionView: UICollectionView!
     
     override func awakeFromNib() {
+        super.awakeFromNib()
         print(cellCount)
         mainViewController.delegate = self
     }

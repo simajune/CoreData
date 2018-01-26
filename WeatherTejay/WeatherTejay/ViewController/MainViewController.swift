@@ -23,11 +23,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+        
     }
     //MARK: - Networking
     func getWeatherData(url: String, parameters: [String: String]) {
@@ -94,12 +96,14 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         print(error)
         locationLabel.text = "Location Unavailable"
     }
+    
+    func updateForecastweather() {
+        
+    }
 
 }
 
 extension MainViewController: UICollectionViewDataSource {
-    
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
     }
@@ -111,6 +115,7 @@ extension MainViewController: UICollectionViewDataSource {
         } else {
             let cellA = collectionView.dequeueReusableCell(withReuseIdentifier: "cellA", for: indexPath) as! CellA
             cellA.cellCount = weatherDataModel.forecastCount
+            print("cellACount: ", cellA.cellCount)
             return cellA
         }
     }

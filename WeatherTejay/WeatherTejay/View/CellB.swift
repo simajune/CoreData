@@ -11,6 +11,10 @@ import UIKit
 class CellB: UICollectionViewCell {
     //MARK: - Variable
     var cellCount: Int = 0
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
 }
 
 extension CellB: UICollectionViewDelegateFlowLayout {

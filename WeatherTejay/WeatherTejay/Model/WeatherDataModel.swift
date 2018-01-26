@@ -2,6 +2,9 @@
 import Foundation
 
 class WeatherDataModel {
+    
+    static var main = WeatherDataModel()
+    
     var temperature: Int = 0
     var condition: Int = 0
     var forecastCount: Int = 0
