@@ -18,6 +18,7 @@ class CellA: UICollectionViewCell, MainDelegate {
             }
         }
     }
+    let formatter = DateFormatter()
     let mainViewController = MainViewController()
     @IBOutlet weak var forecastCollectionView: UICollectionView!
     
@@ -46,6 +47,12 @@ extension CellA: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let itemCellA = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCellA", for: indexPath) as! ItemCellA
+//        print(WeatherDataModel.main.weatherDate)
+        formatter.dateFormat = "HH시"
+        
+        
+        itemCellA.forecastDate.text = formatter.string(from: WeatherDataModel.main.weatherDate[indexPath.item])
+        
         return itemCellA
     }
 }

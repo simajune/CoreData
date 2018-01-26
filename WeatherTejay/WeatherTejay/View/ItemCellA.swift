@@ -9,5 +9,6 @@
 import UIKit
 
 class ItemCellA: UICollectionViewCell {
+    @IBOutlet weak var forecastDate: UILabel!
     
 }

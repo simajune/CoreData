@@ -14,6 +14,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     //Variable
     let locationManager = CLLocationManager()
     let weatherDataModel = WeatherDataModel()
+    let formatter = DateFormatter()
     
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
@@ -37,7 +38,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             if response.result.isSuccess {
                 print("Success! Got the weather data")
                 let weatherJSON: JSON = JSON(response.result.value!)
-                print(weatherJSON)
+                //print(weatherJSON)
                 self.updateWeatherData(json: weatherJSON)
                 
             }else {
@@ -49,13 +50,21 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     //MARK: - JSON Parsing
     func updateWeatherData(json: JSON) {
+//        print(json)
         if let tempResult = json["list"][0]["main"]["temp"].double {
-            weatherDataModel.temperature = Int(tempResult - 273.15)
-            weatherDataModel.city = json["city"]["name"].stringValue
-            weatherDataModel.condition = json["list"][0]["weather"][0]["id"].intValue
-            weatherDataModel.weatherIconName = weatherDataModel.updateWeatherIcon(condition: weatherDataModel.condition)
-            weatherDataModel.forecastCount = json["list"].count
-            print(weatherDataModel.forecastCount)
+            
+            WeatherDataModel.main.temperature = Int(tempResult - 273.15)
+            WeatherDataModel.main.city = json["city"]["name"].stringValue
+            WeatherDataModel.main.condition = json["list"][0]["weather"][0]["id"].intValue
+            for index in json["list"] {
+                formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                let date = formatter.date(from: index.1["dt_txt"].stringValue)
+                WeatherDataModel.main.weatherDate.append(date!)
+            }
+            WeatherDataModel.main.weatherIconName = weatherDataModel.updateWeatherIcon(condition: weatherDataModel.condition)
+            WeatherDataModel.main.forecastCount = json["list"].count - 1
+            
+//            print(WeatherDataModel.main.forecastCount)
             delegate?.updateCell(count: weatherDataModel.forecastCount)
             weatherCollectionView.reloadData()
             updateUIWithWeatherDate()
@@ -67,9 +76,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     //MARK: - UI Updates
     func updateUIWithWeatherDate() {
-        locationLabel.text = weatherDataModel.city
-        tempLabel.text = String(weatherDataModel.temperature)
-        weatherIcon.image = UIImage(named: weatherDataModel.weatherIconName)
+        locationLabel.text = WeatherDataModel.main.city
+        tempLabel.text = String(WeatherDataModel.main.temperature)
+        weatherIcon.image = UIImage(named: WeatherDataModel.main.weatherIconName)
     }
     
     
@@ -114,7 +123,7 @@ extension MainViewController: UICollectionViewDataSource {
             return cellB
         } else {
             let cellA = collectionView.dequeueReusableCell(withReuseIdentifier: "cellA", for: indexPath) as! CellA
-            cellA.cellCount = weatherDataModel.forecastCount
+            cellA.cellCount = WeatherDataModel.main.forecastCount
             print("cellACount: ", cellA.cellCount)
             return cellA
         }
