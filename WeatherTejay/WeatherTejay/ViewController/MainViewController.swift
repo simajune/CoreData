@@ -15,6 +15,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     let weatherDataModel = WeatherDataModel()
     let formatter = DateFormatter()
+    let kakaoHeaders: HTTPHeaders = [
+        "Authorization": "KakaoAK 709086004e1cdbed5393c28e4571cb95",
+        ]
     
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
@@ -33,6 +36,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     //MARK: - Networking
+    //날씨 API JSON 가져오기
     func getWeatherData(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
             if response.result.isSuccess {
@@ -45,6 +49,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 print("Error \(response.result.error!)")
                 self.locationLabel.text = "Connection Issues"
             }
+        }
+    }
+    
+    //미세먼지 API JSON 가져오가
+    func getDustData(url: String, parameters: [String: String]) {
+        Alamofire.request(url, method: .get, parameters: parameters, headers: kakaoHeaders).responseJSON { response in
+            print(JSON(response.result.value))
         }
     }
     
@@ -96,6 +107,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             let latitude = String(location.coordinate.latitude)
             
             let param: [String: String] = ["lat": latitude, "lon": longitude, "appid": weatherAPIKey]
+            let kakaoparam: [String:String] = ["x": "160710.37729270622", "y": "-4388.879299157299", "input_coord": "WTM", "output_coord": "WGS84"]
+            getDustData(url: kakaoURL, parameters: kakaoparam)
             getWeatherData(url: weatherURL, parameters: param)
         }
     }
