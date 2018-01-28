@@ -66,16 +66,14 @@
                                             <constraint firstAttribute="width" secondItem="Tjd-Fl-ePl" secondAttribute="height" multiplier="1:1" id="k7X-Vy-sIJ"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="날씨 온도" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzH-ZY-CIr">
-                                        <rect key="frame" x="155" y="148" width="64" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨 온도" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzH-ZY-CIr">
+                                        <rect key="frame" x="155" y="139.5" width="64" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="미세먼지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5c-La-ITc">
-                                        <rect key="frame" x="158" y="171" width="59" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="미세먼지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5c-La-ITc">
+                                        <rect key="frame" x="158" y="169.5" width="59" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -86,8 +84,12 @@
                                     <constraint firstItem="7lF-Uv-YvY" firstAttribute="centerX" secondItem="wi5-VX-UeC" secondAttribute="centerX" id="4H6-Kx-FkN"/>
                                     <constraint firstItem="Tjd-Fl-ePl" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="0.9" id="Cd4-PP-1r4"/>
                                     <constraint firstItem="Tjd-Fl-ePl" firstAttribute="height" secondItem="wi5-VX-UeC" secondAttribute="height" multiplier="0.5" id="QnF-QB-rJB"/>
+                                    <constraint firstItem="o5c-La-ITc" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="1.8" id="X1a-xu-Mei"/>
+                                    <constraint firstItem="FzH-ZY-CIr" firstAttribute="centerX" secondItem="wi5-VX-UeC" secondAttribute="centerX" id="XrT-5I-Td6"/>
+                                    <constraint firstItem="o5c-La-ITc" firstAttribute="centerX" secondItem="wi5-VX-UeC" secondAttribute="centerX" id="c9i-6l-KEv"/>
                                     <constraint firstItem="7lF-Uv-YvY" firstAttribute="top" secondItem="wi5-VX-UeC" secondAttribute="top" constant="5" id="oYE-gu-nDX"/>
                                     <constraint firstItem="Tjd-Fl-ePl" firstAttribute="centerX" secondItem="wi5-VX-UeC" secondAttribute="centerX" id="qP7-rm-N8v"/>
+                                    <constraint firstItem="FzH-ZY-CIr" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="1.5" id="rnA-e4-A5T"/>
                                     <constraint firstItem="7lF-Uv-YvY" firstAttribute="width" secondItem="wi5-VX-UeC" secondAttribute="width" id="v3w-Fm-f18"/>
                                 </constraints>
                             </view>
@@ -259,6 +261,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="645.60000000000002" y="133.5832083958021"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="mXD-Ii-wOd">
+            <objects>
+                <viewController id="M58-Lg-1EI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WOd-vJ-FUo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="hMk-W0-HsA"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zDG-dr-ep4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1401" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zz4-La-rdb">
