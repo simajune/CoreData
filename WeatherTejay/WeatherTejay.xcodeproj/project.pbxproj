@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1B1EF8AECB42A48BEF9605C1 /* Pods_WeatherTejay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E2C8DB6F0E9ED82034FD45 /* Pods_WeatherTejay.framework */; };
-		231E46EA201EC0DF00C5850F /* addresses.json in Resources */ = {isa = PBXBuildFile; fileRef = 231E46E9201EC0DE00C5850F /* addresses.json */; };
-		231E46EB201EC0DF00C5850F /* addresses.json in Resources */ = {isa = PBXBuildFile; fileRef = 231E46E9201EC0DE00C5850F /* addresses.json */; };
+		231E46EA201EC0DF00C5850F /* Addresses.json in Resources */ = {isa = PBXBuildFile; fileRef = 231E46E9201EC0DE00C5850F /* Addresses.json */; };
+		231E46EB201EC0DF00C5850F /* Addresses.json in Resources */ = {isa = PBXBuildFile; fileRef = 231E46E9201EC0DE00C5850F /* Addresses.json */; };
 		231E46ED201EC11100C5850F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231E46EC201EC11100C5850F /* SearchViewController.swift */; };
 		231E46EF201EDD0100C5850F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E46F3201EDD0100C5850F /* Alamofire.framework */; };
 		231E46F0201EDD0100C5850F /* Pods_WeatherTejayExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E46F4201EDD0100C5850F /* Pods_WeatherTejayExtension.framework */; };
@@ -18,6 +18,8 @@
 		231E46F8201EE2B100C5850F /* Pods_WeatherTejay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E46FB201EE2B100C5850F /* Pods_WeatherTejay.framework */; };
 		231E46F9201EE2B100C5850F /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E46FC201EE2B100C5850F /* SwiftyJSON.framework */; };
 		231E46FE201EE64300C5850F /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231E46FD201EE64300C5850F /* AddressCell.swift */; };
+		231E4700201F64E600C5850F /* Addresses1.json in Resources */ = {isa = PBXBuildFile; fileRef = 231E46FF201F64E500C5850F /* Addresses1.json */; };
+		231E4702201F8A7600C5850F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231E4701201F8A7600C5850F /* Extension.swift */; };
 		231F90F3201867D400C0DA34 /* WeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F90F2201867D400C0DA34 /* WeatherDataModel.swift */; };
 		232B2EA220162AE6001F260E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2EA120162AE6001F260E /* AppDelegate.swift */; };
 		232B2EA720162AE7001F260E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232B2EA520162AE7001F260E /* Main.storyboard */; };
@@ -66,7 +68,7 @@
 
 /* Begin PBXFileReference section */
 		075A1D7F6E037A5702431BAD /* Pods-WeatherTejayExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTejayExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTejayExtension/Pods-WeatherTejayExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		231E46E9201EC0DE00C5850F /* addresses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = addresses.json; sourceTree = "<group>"; };
+		231E46E9201EC0DE00C5850F /* Addresses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Addresses.json; sourceTree = "<group>"; };
 		231E46EC201EC11100C5850F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		231E46F3201EDD0100C5850F /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		231E46F4201EDD0100C5850F /* Pods_WeatherTejayExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_WeatherTejayExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,8 @@
 		231E46FB201EE2B100C5850F /* Pods_WeatherTejay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_WeatherTejay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		231E46FC201EE2B100C5850F /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		231E46FD201EE64300C5850F /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
+		231E46FF201F64E500C5850F /* Addresses1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Addresses1.json; sourceTree = "<group>"; };
+		231E4701201F8A7600C5850F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		231F90F2201867D400C0DA34 /* WeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataModel.swift; sourceTree = "<group>"; };
 		232B2E9E20162AE6001F260E /* WeatherTejay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherTejay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		232B2EA120162AE6001F260E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -164,13 +168,15 @@
 			children = (
 				232B2ECC201704F0001F260E /* Constant.swift */,
 				232B2EA120162AE6001F260E /* AppDelegate.swift */,
+				231E4701201F8A7600C5850F /* Extension.swift */,
 				231F90F4201867D600C0DA34 /* Model */,
 				232B2EE4201731FA001F260E /* ViewController */,
 				232B2EE520173210001F260E /* View */,
 				232B2EAB20162AE7001F260E /* Assets.xcassets */,
 				232B2EAD20162AE7001F260E /* LaunchScreen.storyboard */,
 				232B2EB020162AE7001F260E /* Info.plist */,
-				231E46E9201EC0DE00C5850F /* addresses.json */,
+				231E46E9201EC0DE00C5850F /* Addresses.json */,
+				231E46FF201F64E500C5850F /* Addresses1.json */,
 				232B2EA820162AE7001F260E /* WeatherTejay.xcdatamodeld */,
 			);
 			path = WeatherTejay;
@@ -325,7 +331,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				231E46EA201EC0DF00C5850F /* addresses.json in Resources */,
+				231E4700201F64E600C5850F /* Addresses1.json in Resources */,
+				231E46EA201EC0DF00C5850F /* Addresses.json in Resources */,
 				232B2EAF20162AE7001F260E /* LaunchScreen.storyboard in Resources */,
 				232B2EAC20162AE7001F260E /* Assets.xcassets in Resources */,
 				232B2EA720162AE7001F260E /* Main.storyboard in Resources */,
@@ -336,7 +343,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				231E46EB201EC0DF00C5850F /* addresses.json in Resources */,
+				231E46EB201EC0DF00C5850F /* Addresses.json in Resources */,
 				232B2EC32016C6E0001F260E /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,6 +453,7 @@
 				232B2ECD201704F0001F260E /* Constant.swift in Sources */,
 				232B2EDD2017249A001F260E /* CellA.swift in Sources */,
 				232B2ED2201705D1001F260E /* MainViewController.swift in Sources */,
+				231E4702201F8A7600C5850F /* Extension.swift in Sources */,
 				232B2EDF201724A6001F260E /* CellB.swift in Sources */,
 				231E46FE201EE64300C5850F /* AddressCell.swift in Sources */,
 				232B2ED4201716A3001F260E /* SplashViewController.swift in Sources */,

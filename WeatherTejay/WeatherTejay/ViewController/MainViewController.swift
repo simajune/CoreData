@@ -56,6 +56,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     func getDustData(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters, headers: kakaoHeaders).responseJSON { response in
             print(JSON(response.result.value))
+            print(response.request)
         }
     }
     

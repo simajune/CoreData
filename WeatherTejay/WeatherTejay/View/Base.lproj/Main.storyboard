@@ -36,7 +36,7 @@
                                         <rect key="frame" x="329" y="35.5" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
-                                            <segue destination="M58-Lg-1EI" kind="show" id="Nwj-3e-0fm"/>
+                                            <segue destination="M58-Lg-1EI" kind="presentation" modalTransitionStyle="crossDissolve" id="Nwj-3e-0fm"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEE-CV-sFZ">
@@ -331,7 +331,10 @@
                                             <constraint firstAttribute="width" secondItem="bcW-1X-Iik" secondAttribute="height" multiplier="1:1" id="Gi3-1G-uJF"/>
                                             <constraint firstAttribute="height" constant="30" id="RGf-IP-9Dd"/>
                                         </constraints>
-                                        <state key="normal" image="Menu"/>
+                                        <state key="normal" image="exit"/>
+                                        <connections>
+                                            <action selector="dismissBtnAction:" destination="M58-Lg-1EI" eventType="touchUpInside" id="Svj-ak-5lF"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -340,9 +343,9 @@
                                     <constraint firstItem="bcW-1X-Iik" firstAttribute="centerY" secondItem="53Z-Ih-adW" secondAttribute="centerY" multiplier="1.5" id="y4B-We-vpp"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuP-Pc-XGf">
-                                <rect key="frame" x="166" y="40" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주소 검색" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuP-Pc-XGf">
+                                <rect key="frame" x="150.5" y="39" width="75" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -362,6 +365,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hMk-W0-HsA"/>
                     </view>
+                    <connections>
+                        <outlet property="addressTablewView" destination="Za4-og-nda" id="L08-yw-S0M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zDG-dr-ep4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -390,5 +396,6 @@
         <image name="CloudyBG" width="375" height="667"/>
         <image name="Menu" width="40" height="40"/>
         <image name="Moon" width="97" height="104"/>
+        <image name="exit" width="24" height="24"/>
     </resources>
 </document>
