@@ -19,6 +19,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         "Authorization": "KakaoAK 709086004e1cdbed5393c28e4571cb95",
         ]
     
+    @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var tempLabel: UILabel!
@@ -32,9 +33,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        
+        menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         
     }
+    
+    //MARK: - Btn Add Ta
+    
     //MARK: - Networking
     //날씨 API JSON 가져오기
     func getWeatherData(url: String, parameters: [String: String]) {
