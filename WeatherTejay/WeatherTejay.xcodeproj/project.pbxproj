@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		1B1EF8AECB42A48BEF9605C1 /* Pods_WeatherTejay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E2C8DB6F0E9ED82034FD45 /* Pods_WeatherTejay.framework */; };
+		231E46EA201EC0DF00C5850F /* addresses.json in Resources */ = {isa = PBXBuildFile; fileRef = 231E46E9201EC0DE00C5850F /* addresses.json */; };
+		231E46EB201EC0DF00C5850F /* addresses.json in Resources */ = {isa = PBXBuildFile; fileRef = 231E46E9201EC0DE00C5850F /* addresses.json */; };
+		231E46ED201EC11100C5850F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231E46EC201EC11100C5850F /* SearchViewController.swift */; };
+		231E46EF201EDD0100C5850F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E46F3201EDD0100C5850F /* Alamofire.framework */; };
+		231E46F0201EDD0100C5850F /* Pods_WeatherTejayExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E46F4201EDD0100C5850F /* Pods_WeatherTejayExtension.framework */; };
+		231E46F2201EDD0100C5850F /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E46F6201EDD0100C5850F /* SwiftyJSON.framework */; };
+		231E46F7201EE2B100C5850F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E46FA201EE2B100C5850F /* Alamofire.framework */; };
+		231E46F8201EE2B100C5850F /* Pods_WeatherTejay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E46FB201EE2B100C5850F /* Pods_WeatherTejay.framework */; };
+		231E46F9201EE2B100C5850F /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E46FC201EE2B100C5850F /* SwiftyJSON.framework */; };
+		231E46FE201EE64300C5850F /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231E46FD201EE64300C5850F /* AddressCell.swift */; };
 		231F90F3201867D400C0DA34 /* WeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F90F2201867D400C0DA34 /* WeatherDataModel.swift */; };
 		232B2EA220162AE6001F260E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2EA120162AE6001F260E /* AppDelegate.swift */; };
 		232B2EA720162AE7001F260E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232B2EA520162AE7001F260E /* Main.storyboard */; };
@@ -27,6 +37,7 @@
 		232B2EE120172567001F260E /* ItemCellA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2EE020172567001F260E /* ItemCellA.swift */; };
 		232B2EE320172573001F260E /* ItemCellB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2EE220172573001F260E /* ItemCellB.swift */; };
 		2FEDE924A5908054BBF37CC8 /* Pods_WeatherTejayExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7008E835FDCA4661BADE185 /* Pods_WeatherTejayExtension.framework */; };
+		D8BBADCD318B1019B0DEC8A3 /* Pods_WeatherTejayExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E46F4201EDD0100C5850F /* Pods_WeatherTejayExtension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +66,16 @@
 
 /* Begin PBXFileReference section */
 		075A1D7F6E037A5702431BAD /* Pods-WeatherTejayExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTejayExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTejayExtension/Pods-WeatherTejayExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		231E46E9201EC0DE00C5850F /* addresses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = addresses.json; sourceTree = "<group>"; };
+		231E46EC201EC11100C5850F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		231E46F3201EDD0100C5850F /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		231E46F4201EDD0100C5850F /* Pods_WeatherTejayExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_WeatherTejayExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		231E46F5201EDD0100C5850F /* SVProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		231E46F6201EDD0100C5850F /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		231E46FA201EE2B100C5850F /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		231E46FB201EE2B100C5850F /* Pods_WeatherTejay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_WeatherTejay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		231E46FC201EE2B100C5850F /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		231E46FD201EE64300C5850F /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
 		231F90F2201867D400C0DA34 /* WeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataModel.swift; sourceTree = "<group>"; };
 		232B2E9E20162AE6001F260E /* WeatherTejay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherTejay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		232B2EA120162AE6001F260E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +108,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				231E46EF201EDD0100C5850F /* Alamofire.framework in Frameworks */,
+				231E46F0201EDD0100C5850F /* Pods_WeatherTejayExtension.framework in Frameworks */,
+				231E46F2201EDD0100C5850F /* SwiftyJSON.framework in Frameworks */,
 				1B1EF8AECB42A48BEF9605C1 /* Pods_WeatherTejay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,8 +119,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				231E46F7201EE2B100C5850F /* Alamofire.framework in Frameworks */,
+				231E46F8201EE2B100C5850F /* Pods_WeatherTejay.framework in Frameworks */,
+				231E46F9201EE2B100C5850F /* SwiftyJSON.framework in Frameworks */,
 				232B2EBD2016C6E0001F260E /* NotificationCenter.framework in Frameworks */,
 				2FEDE924A5908054BBF37CC8 /* Pods_WeatherTejayExtension.framework in Frameworks */,
+				D8BBADCD318B1019B0DEC8A3 /* Pods_WeatherTejayExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +170,7 @@
 				232B2EAB20162AE7001F260E /* Assets.xcassets */,
 				232B2EAD20162AE7001F260E /* LaunchScreen.storyboard */,
 				232B2EB020162AE7001F260E /* Info.plist */,
+				231E46E9201EC0DE00C5850F /* addresses.json */,
 				232B2EA820162AE7001F260E /* WeatherTejay.xcdatamodeld */,
 			);
 			path = WeatherTejay;
@@ -150,6 +179,13 @@
 		232B2EBB2016C6E0001F260E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				231E46FA201EE2B100C5850F /* Alamofire.framework */,
+				231E46FB201EE2B100C5850F /* Pods_WeatherTejay.framework */,
+				231E46FC201EE2B100C5850F /* SwiftyJSON.framework */,
+				231E46F3201EDD0100C5850F /* Alamofire.framework */,
+				231E46F4201EDD0100C5850F /* Pods_WeatherTejayExtension.framework */,
+				231E46F5201EDD0100C5850F /* SVProgressHUD.framework */,
+				231E46F6201EDD0100C5850F /* SwiftyJSON.framework */,
 				232B2EBC2016C6E0001F260E /* NotificationCenter.framework */,
 				82E2C8DB6F0E9ED82034FD45 /* Pods_WeatherTejay.framework */,
 				D7008E835FDCA4661BADE185 /* Pods_WeatherTejayExtension.framework */,
@@ -172,6 +208,7 @@
 			children = (
 				232B2ED3201716A3001F260E /* SplashViewController.swift */,
 				232B2ED1201705D1001F260E /* MainViewController.swift */,
+				231E46EC201EC11100C5850F /* SearchViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -183,6 +220,7 @@
 				232B2EE020172567001F260E /* ItemCellA.swift */,
 				232B2EDE201724A6001F260E /* CellB.swift */,
 				232B2EE220172573001F260E /* ItemCellB.swift */,
+				231E46FD201EE64300C5850F /* AddressCell.swift */,
 				232B2EA520162AE7001F260E /* Main.storyboard */,
 			);
 			path = View;
@@ -287,6 +325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				231E46EA201EC0DF00C5850F /* addresses.json in Resources */,
 				232B2EAF20162AE7001F260E /* LaunchScreen.storyboard in Resources */,
 				232B2EAC20162AE7001F260E /* Assets.xcassets in Resources */,
 				232B2EA720162AE7001F260E /* Main.storyboard in Resources */,
@@ -297,6 +336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				231E46EB201EC0DF00C5850F /* addresses.json in Resources */,
 				232B2EC32016C6E0001F260E /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,13 +367,11 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WeatherTejay/Pods-WeatherTejay-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,6 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				232B2EAA20162AE7001F260E /* WeatherTejay.xcdatamodeld in Sources */,
+				231E46ED201EC11100C5850F /* SearchViewController.swift in Sources */,
 				232B2EA220162AE6001F260E /* AppDelegate.swift in Sources */,
 				232B2EE320172573001F260E /* ItemCellB.swift in Sources */,
 				232B2EE120172567001F260E /* ItemCellA.swift in Sources */,
@@ -408,6 +447,7 @@
 				232B2EDD2017249A001F260E /* CellA.swift in Sources */,
 				232B2ED2201705D1001F260E /* MainViewController.swift in Sources */,
 				232B2EDF201724A6001F260E /* CellB.swift in Sources */,
+				231E46FE201EE64300C5850F /* AddressCell.swift in Sources */,
 				232B2ED4201716A3001F260E /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
