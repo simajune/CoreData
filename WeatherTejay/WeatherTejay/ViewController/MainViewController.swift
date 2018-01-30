@@ -15,9 +15,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     let weatherDataModel = WeatherDataModel()
     let formatter = DateFormatter()
-    let kakaoHeaders: HTTPHeaders = [
-        "Authorization": "KakaoAK 709086004e1cdbed5393c28e4571cb95",
-        ]
+    
     
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var locationLabel: UILabel!
@@ -113,7 +111,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             
             let param: [String: String] = ["lat": latitude, "lon": longitude, "appid": weatherAPIKey]
             let kakaoparam: [String:String] = ["x": "160710.37729270622", "y": "-4388.879299157299", "input_coord": "WTM", "output_coord": "WGS84"]
-            getDustData(url: kakaoURL, parameters: kakaoparam)
+            getDustData(url: kakaoCoordinateURL, parameters: kakaoparam)
             getWeatherData(url: weatherURL, parameters: param)
         }
     }

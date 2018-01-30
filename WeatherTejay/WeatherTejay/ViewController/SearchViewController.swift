@@ -5,9 +5,6 @@ import Alamofire
 
 class SearchViewController: UIViewController, UISearchBarDelegate {
 
-    var sidoNameArray: [String] = []
-    var sggNameArray: [String] = []
-    var umdNameArray: [String] = []
     var totalAddresses: [String] = []
     var currentAddresses: [String] = []
     var previousAddresses: [String] = []
@@ -38,18 +35,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                 print(self.totalAddresses.count)
                 //self.currentAddresses = self.totalAddresses
             }
-/////////////////////////////////////////////////////
-            if let path = Bundle.main.path(forResource: "Addresses1", ofType: "json"), let contents = try? String(contentsOfFile: path), let data = contents.data(using: .utf8) {
-                if let addressJSON: JSON = try? JSON(data: data) {
-                    for addressName in addressJSON["addresses"] {
-                        self.sidoNameArray.append(String(describing: addressName.1["sidoName"]))
-                        self.sggNameArray.append(String(describing: addressName.1["sggName"]))
-                        self.umdNameArray.append(String(describing: addressName.1["umdName"]))
-                    }
-                    self.addressTablewView.reloadData()
-                }
-            }
-            
         }
     }
     
@@ -63,7 +48,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     }
     
     //MARK: - SearchBarDelegate
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard !searchText.isEmpty else {
             currentAddresses = totalAddresses
@@ -75,24 +59,72 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         addressTablewView.reloadData()
     }
     
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        
-    }
-    
-    //MARK: - 근처 측정소 TM좌표 가져오기
-    func setTMCoordinateData(url: String, parameters: [String: String]) {
-        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
-            print(response.request)
-            print(JSON(response.result.value))
+    //MARK: - NETWORK
+    //행정구역의 경도 위도 가져오기
+    func getCoordinateData(url: String, parameters: [String: String]) {
+        Alamofire.request(url, method: .get, parameters: parameters, headers: kakaoHeaders).responseJSON { [weak self] response in
+            guard let `self` = self else { return }
             if response.result.isSuccess {
-                print(parameters["umdName"])
-                print(response.result.value)
+                let data: JSON = JSON(response.result.value!)
+                let locationX = data["documents"][0]["x"].stringValue
+                let locationY = data["documents"][0]["y"].stringValue
+                let params: [String: String] = ["x": locationX, "y": locationY, "input_coord": "WGS84", "output_coord": "TM"]
+                self.changeCoordinate(url: kakaoCoordinateURL, parameters: params)
             }else {
-                print(response.result.error)
-                print(parameters["umdName"])
+                print("Error \(response.result.error!)")
             }
         }
     }
+    
+    //경도 위도를 tmX, tmY좌표로 변환하기
+    func changeCoordinate(url: String, parameters: [String: String]) {
+        Alamofire.request(url, method: .get, parameters: parameters, headers: kakaoHeaders).responseJSON { [weak self] response in
+            guard let `self` = self else { return }
+            if response.result.isSuccess {
+                let data: JSON = JSON(response.result.value!)
+                print(data)
+                let locationTMx = data["documents"][0]["x"].stringValue
+                let locationTMy = data["documents"][0]["y"].stringValue
+                let params: [String: String] = ["tmX": locationTMx, "tmY": locationTMy, "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "_returnType": "json"]
+                self.getMeasuringStation(url: dustMeasuringStationURL, parameters: params)
+            }else {
+                print("Error \(response.result.error!)")
+            }
+        }
+    }
+    
+    //tmX, tmY로 측정소 이름 가져오기
+    func getMeasuringStation(url: String, parameters: [String: String]) {
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
+            print(response.request)
+            if response.result.isSuccess {
+                print("chlchlahd", response.result.value!)
+            }else {
+                print("Error \(response.result.error!)")
+            }
+        }
+    }
+    
+//    func getDustData(url: String, parameters: [String: String]) {
+//        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
+//            print(response.request)
+//
+//            print(parameters["stationName"])
+//            if response.result.isSuccess{
+//                print("true")
+//            }
+//        }
+//        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
+//            print(response.request)
+//            print(JSON(response.result.value))
+//            print(response.result.error)
+//            if response.result.isSuccess {
+//                print(parameters["umdName"])
+//                print(response.result.value)
+//            }else {
+//            }
+//        }
+//    }
     
     @IBAction func dismissBtnAction(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -112,24 +144,14 @@ extension SearchViewController: UITableViewDataSource {
         cell.textLabel?.text = currentAddresses[indexPath.row]
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        return addressSearchbar
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return UITableViewAutomaticDimension
-//    }
 }
 
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let umdName = umdNameArray[indexPath.row]
-        print(umdName)
-        
-        let parameters: [String: String] = ["umdName": umdName, "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey]
-        print(parameters)
-        setTMCoordinateData(url: getTMdustURL, parameters: parameters)
+        //셀을 눌렀을 때의 값을 이용하여 주소값 가져오기
+        let name = currentAddresses[indexPath.row]
+        let parameters: [String: String] = ["query": name]
+        getCoordinateData(url: kakaoSearchAddressURL, parameters: parameters)
     }
 }
 
