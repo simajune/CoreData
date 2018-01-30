@@ -8,6 +8,28 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     var totalAddresses: [String] = []
     var currentAddresses: [String] = []
     var previousAddresses: [String] = []
+    var dataTime: String = ""
+    var mangName: String = ""
+    var so2Value: String = ""
+    var coValue: String = ""
+    var o3Value: String = ""
+    var no2Value: String = ""
+    var pm10Value: String = ""
+    var pm10Value24: String = ""
+    var pm25Value: String = ""
+    var pm25Value24: String = ""
+    var khaiValue: String = ""
+    var khaiGrade: String = ""
+    var so2Grade: String = ""
+    var coGrade: String = ""
+    var o3Grade: String = ""
+    var no2Grade: String = ""
+    var pm10Grade: String = ""
+    var pm25Grade: String = ""
+    var pm10Grade1h: String = ""
+    var pm25Grade1h: String = ""
+
+    
     
     @IBOutlet weak var addressTablewView: UITableView!
     @IBOutlet weak var addressSearchbar: UISearchBar!
@@ -82,7 +104,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
             guard let `self` = self else { return }
             if response.result.isSuccess {
                 let data: JSON = JSON(response.result.value!)
-                print(data)
                 let locationTMx = data["documents"][0]["x"].stringValue
                 let locationTMy = data["documents"][0]["y"].stringValue
                 let params: [String: String] = ["tmX": locationTMx, "tmY": locationTMy, "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "_returnType": "json"]
@@ -95,36 +116,29 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     
     //tmX, tmY로 측정소 이름 가져오기
     func getMeasuringStation(url: String, parameters: [String: String]) {
-        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
-            print(response.request)
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
+            guard let `self` = self else { return }
             if response.result.isSuccess {
-                print("chlchlahd", response.result.value!)
+                let data = JSON(response.result.value!)
+                let stationName = data["list"][0]["stationName"].stringValue
+                let params: [String: String] = ["stationName": stationName, "dataTerm": "month", "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "ver": "1.3", "_returnType": "json"]
+                self.getDustData(url: dustDataURL, parameters: params)
+                print(stationName)
             }else {
                 print("Error \(response.result.error!)")
             }
         }
     }
     
-//    func getDustData(url: String, parameters: [String: String]) {
-//        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
-//            print(response.request)
-//
-//            print(parameters["stationName"])
-//            if response.result.isSuccess{
-//                print("true")
-//            }
-//        }
-//        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
-//            print(response.request)
-//            print(JSON(response.result.value))
-//            print(response.result.error)
-//            if response.result.isSuccess {
-//                print(parameters["umdName"])
-//                print(response.result.value)
-//            }else {
-//            }
-//        }
-//    }
+    func getDustData(url: String, parameters: [String: String]) {
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
+            if response.result.isSuccess {
+                let data = JSON(response.result.value!)
+                print(data)
+            }else {
+            }
+        }
+    }
     
     @IBAction func dismissBtnAction(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
