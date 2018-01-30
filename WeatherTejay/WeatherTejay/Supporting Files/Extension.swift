@@ -1,18 +1,31 @@
-//
-//  Extension.swift
-//  WeatherTejay
-//
-//  Created by SIMA on 2018. 1. 30..
-//  Copyright © 2018년 devtejay. All rights reserved.
-//
 
-import Foundation
+import UIKit
 
-extension String {
-    
-    func utf8EncodedString()-> String {
-        let messageData = self.data(using: .nonLossyASCII)
-        let text = String(data: messageData!, encoding: .utf8)
-        return text!
+//extension UISearchBar {
+//    func changeSearchBarColor(color: UIColor) {
+//        UIGraphicsBeginImageContext(self.frame.size)
+//        color.setFill()
+//        UIBezierPath(rect: self.frame).fill()
+//        let bgImage = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIGraphicsEndImageContext()
+//        
+//        self.setSearchFieldBackgroundImage(bgImage, for: .normal)
+//    }
+//}
+
+// as UISearchBar extension
+extension UISearchBar {
+    func changeSearchBarColor(color : UIColor) {
+        for subView in self.subviews {
+            for subSubView in subView.subviews {
+                
+                if let _ = subSubView as? UITextInputTraits {
+                    let textField = subSubView as! UITextField
+                    textField.backgroundColor = color
+                    break
+                }
+                
+            }
+        }
     }
 }
