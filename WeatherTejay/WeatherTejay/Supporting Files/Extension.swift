@@ -1,6 +1,16 @@
 
 import UIKit
 
+extension DateFormatter {
+    func date(fromSwapiString dateString: String) -> Date? {
+        // SWAPI dates look like: "2014-12-10T16:44:31.486000Z"
+        self.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        self.timeZone = TimeZone(abbreviation: "UTC")
+        self.locale = Locale(identifier: "ko_KR")
+        return self.date(from: dateString)
+    }
+}
+
 //extension UISearchBar {
 //    func changeSearchBarColor(color: UIColor) {
 //        UIGraphicsBeginImageContext(self.frame.size)

@@ -32,7 +32,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        locationLabel.text = WeatherDataModel.main.address
+        let params: [String: String] = ["lat": WeatherDataModel.main.weatherLocationY, "lon": WeatherDataModel.main.weatherLocationX, "appid": weatherAPIKey]
+        getWeatherData(url: weatherURL, parameters: params)
     }
     
     //MARK: - Btn Add Ta
@@ -44,7 +50,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             if response.result.isSuccess {
                 print("Success! Got the weather data")
                 let weatherJSON: JSON = JSON(response.result.value!)
-                //print(weatherJSON)
                 self.updateWeatherData(json: weatherJSON)
                 
             }else {
@@ -57,32 +62,26 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     //미세먼지 API JSON 가져오가
     func getDustData(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters, headers: kakaoHeaders).responseJSON { response in
-            print(JSON(response.result.value))
-            print(response.request)
+            
         }
     }
     
     //MARK: - JSON Parsing
     func updateWeatherData(json: JSON) {
-//        print(json)
         if let tempResult = json["list"][0]["main"]["temp"].double {
-            
             WeatherDataModel.main.temperature = Int(tempResult - 273.15)
-            WeatherDataModel.main.city = json["city"]["name"].stringValue
             WeatherDataModel.main.condition = json["list"][0]["weather"][0]["id"].intValue
-            for index in json["list"] {
-                formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                let date = formatter.date(from: index.1["dt_txt"].stringValue)
-                WeatherDataModel.main.weatherDate.append(date!)
-            }
             WeatherDataModel.main.weatherIconName = weatherDataModel.updateWeatherIcon(condition: weatherDataModel.condition)
+            for index in json["list"] {
+                guard let weatherData = WeatherModel(json: index) else { return }
+                WeatherDataModel.main.weatherData.append(weatherData)
+            }
             WeatherDataModel.main.forecastCount = json["list"].count - 1
             
 //            print(WeatherDataModel.main.forecastCount)
             delegate?.updateCell(count: weatherDataModel.forecastCount)
             weatherCollectionView.reloadData()
             updateUIWithWeatherDate()
-            
         }else {
             locationLabel.text = "Weather Unavailable"
         }
@@ -90,9 +89,20 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     //MARK: - UI Updates
     func updateUIWithWeatherDate() {
-        locationLabel.text = WeatherDataModel.main.city
+        //locationLabel.text = WeatherDataModel.main.city
         tempLabel.text = String(WeatherDataModel.main.temperature)
         weatherIcon.image = UIImage(named: WeatherDataModel.main.weatherIconName)
+    }
+    
+    func getLocationData(url: String, parameters: [String: String]) {
+        Alamofire.request(url, method: .get, parameters: parameters, headers: kakaoHeaders).responseJSON { response in
+            if response.result.isSuccess {
+                let data: JSON = JSON(response.result.value!)
+                self.locationLabel.text = data["documents"][0]["region_2depth_name"].stringValue + " " + data["documents"][0]["region_3depth_name"].stringValue
+            }else {
+                print("error")
+            }
+        }
     }
     
     
@@ -110,9 +120,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             let latitude = String(location.coordinate.latitude)
             
             let param: [String: String] = ["lat": latitude, "lon": longitude, "appid": weatherAPIKey]
-            let kakaoparam: [String:String] = ["x": "160710.37729270622", "y": "-4388.879299157299", "input_coord": "WTM", "output_coord": "WGS84"]
-            getDustData(url: kakaoCoordinateURL, parameters: kakaoparam)
+            let locationParams: [String: String] = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "CONGNAMUL"]
+//            let kakaoparam: [String:String] = ["x": "160710.37729270622", "y": "-4388.879299157299", "input_coord": "WTM", "output_coord": "WGS84"]
+//            getDustData(url: kakaoCoordinateURL, parameters: kakaoparam)
             getWeatherData(url: weatherURL, parameters: param)
+            getLocationData(url: kakaoGetAddressURL, parameters: locationParams)
+            
         }
     }
     
@@ -125,6 +138,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     func updateForecastweather() {
         
     }
+
 
 }
 

@@ -8,26 +8,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     var totalAddresses: [String] = []
     var currentAddresses: [String] = []
     var previousAddresses: [String] = []
-    var dataTime: String = ""
-    var mangName: String = ""
-    var so2Value: String = ""
-    var coValue: String = ""
-    var o3Value: String = ""
-    var no2Value: String = ""
-    var pm10Value: String = ""
-    var pm10Value24: String = ""
-    var pm25Value: String = ""
-    var pm25Value24: String = ""
-    var khaiValue: String = ""
-    var khaiGrade: String = ""
-    var so2Grade: String = ""
-    var coGrade: String = ""
-    var o3Grade: String = ""
-    var no2Grade: String = ""
-    var pm10Grade: String = ""
-    var pm25Grade: String = ""
-    var pm10Grade1h: String = ""
-    var pm25Grade1h: String = ""
+    var address: String = ""
 
     
     
@@ -40,6 +21,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupSerachBar()
         DispatchQueue.global().async { [weak self] in
             guard let `self` = self else { return }
             
@@ -49,8 +31,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                 if let addressesJSON: JSON = try? JSON(data: data) {
                     //print("addressesJSON", addressesJSON)
                     for address in addressesJSON["addresses"] {
-                        self.totalAddresses.append(String(describing: address.1))
-                        self.currentAddresses.append(String(describing: address.1))
+                        self.totalAddresses.append(address.1.stringValue)
+                        self.currentAddresses.append(address.1.stringValue)
                     }
                     //print(self.totalAddresses)
                 }
@@ -88,9 +70,11 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
             guard let `self` = self else { return }
             if response.result.isSuccess {
                 let data: JSON = JSON(response.result.value!)
-                let locationX = data["documents"][0]["x"].stringValue
-                let locationY = data["documents"][0]["y"].stringValue
-                let params: [String: String] = ["x": locationX, "y": locationY, "input_coord": "WGS84", "output_coord": "TM"]
+                print("xy",data)
+                WeatherDataModel.main.address = data["documents"][0]["address"]["region_2depth_name"].stringValue + " " +  data["documents"][0]["address"]["region_3depth_h_name"].stringValue
+                WeatherDataModel.main.weatherLocationX = data["documents"][0]["x"].stringValue
+                WeatherDataModel.main.weatherLocationY = data["documents"][0]["y"].stringValue
+                let params: [String: String] = ["x": WeatherDataModel.main.weatherLocationX, "y": WeatherDataModel.main.weatherLocationY, "input_coord": "WGS84", "output_coord": "TM"]
                 self.changeCoordinate(url: kakaoCoordinateURL, parameters: params)
             }else {
                 print("Error \(response.result.error!)")
@@ -118,13 +102,16 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     func getMeasuringStation(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
             guard let `self` = self else { return }
+            print(response.request)
             if response.result.isSuccess {
                 let data = JSON(response.result.value!)
+                print(data)
                 let stationName = data["list"][0]["stationName"].stringValue
                 let params: [String: String] = ["stationName": stationName, "dataTerm": "month", "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "ver": "1.3", "_returnType": "json"]
                 self.getDustData(url: dustDataURL, parameters: params)
                 print(stationName)
             }else {
+                print(response.result.description)
                 print("Error \(response.result.error!)")
             }
         }
@@ -136,7 +123,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                 let data = JSON(response.result.value!)
                 print(data)
             }else {
+                print("Error \(response.result.error!)")
             }
+            self.dismiss(animated: true, completion: nil)
         }
     }
     

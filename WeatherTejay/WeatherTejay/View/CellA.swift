@@ -51,8 +51,9 @@ extension CellA: UICollectionViewDataSource {
         formatter.dateFormat = "HH시"
         
         
-        itemCellA.forecastDate.text = formatter.string(from: WeatherDataModel.main.weatherDate[indexPath.item])
-        
+        itemCellA.forecastDate.text = formatter.string(from: WeatherDataModel.main.weatherData[indexPath.row].date!)
+        itemCellA.forecastImgView.image = UIImage(named: WeatherDataModel.main.updateWeatherIcon(condition: WeatherDataModel.main.weatherData[indexPath.row].condition!))
+        itemCellA.forecastTempLabel.text = "\(WeatherDataModel.main.weatherData[indexPath.row].temp!)"
         return itemCellA
     }
 }

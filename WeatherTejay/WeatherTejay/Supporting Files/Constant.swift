@@ -17,7 +17,9 @@ let yesterdayWeatherURL = "http://api.openweathermap.org/data/2.5/history"
 let yesterdayWeatherFullURL = "http://api.openweathermap.org/data/2.5/history?q=Seoul&APPID=89e4a79cf2b99a9f6ac5d5654d83a51b"
 
 //AirKorea 미세먼지 REST API
-let dustAPIKey = "XAWRkvW8j4qL4z5I7ZPkoWGlaXKMiHpNU97qNjk+l+sfoNK72CEkLzuRO7WgnIOdFQYDivbQW9+H/fzXJKyNJA=="
+let dustAPIKey = "euqSW5cVBaDnDWe3igb9/5IVzX7o6eZ+A+PAxQL2tMbeJQ9eTjvtSz2hhXSd3rHvr0UawJy5xQeTumALlgnL5Q=="
+//originalAPIKey = "XAWRkvW8j4qL4z5I7ZPkoWGlaXKMiHpNU97qNjk+l+sfoNK72CEkLzuRO7WgnIOdFQYDivbQW9+H/fzXJKyNJA=="
+//anotherAPIKey = "euqSW5cVBaDnDWe3igb9/5IVzX7o6eZ+A+PAxQL2tMbeJQ9eTjvtSz2hhXSd3rHvr0UawJy5xQeTumALlgnL5Q=="
 //근처 측정소 위치
 //파라미터  tmX, tmY, pageNo=1, numOfRows=10, _returnType=json, ServiceKey=XAWRkvW8j4qL4z5I7ZPkoWGlaXKMiHpNU97qNjk%2Bl%2BsfoNK72CEkLzuRO7WgnIOdFQYDivbQW9%2BH%2FfzXJKyNJA%3D%3D
 let dustMeasuringStationURL = "http://openapi.airkorea.or.kr/openapi/services/rest/MsrstnInfoInqireSvc/getNearbyMsrstnList"
@@ -34,6 +36,10 @@ let kakaoCoordinateURL = "https://dapi.kakao.com/v2/local/geo/transcoord.json"
 
 //주소 검색을 통해 좌표 값 가져오기
 let kakaoSearchAddressURL = "https://dapi.kakao.com/v2/local/search/address.json"
+
+//좌표를 통해 행정구역 가져오기
+//파라미터 z, y, input_coord=WTM     output_coord=WGS84
+let kakaoGetAddressURL = "https://dapi.kakao.com/v2/local/geo/coord2regioncode.json"
 
 
 

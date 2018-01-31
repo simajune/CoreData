@@ -156,7 +156,7 @@
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Moon" translatesAutoresizingMaskIntoConstraints="NO" id="lkG-Xv-Gto">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Moon" translatesAutoresizingMaskIntoConstraints="NO" id="lkG-Xv-Gto">
                                                                         <rect key="frame" x="28" y="22.5" width="30" height="30"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="30" id="B3u-hL-BsP"/>
@@ -190,6 +190,9 @@
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="forecastDate" destination="YhE-JB-5qk" id="xmi-Yy-83d"/>
+                                                                <outlet property="forecastDustLabel" destination="ZYN-Ac-FBv" id="pK2-6J-b31"/>
+                                                                <outlet property="forecastImgView" destination="lkG-Xv-Gto" id="lTb-Bp-8Wk"/>
+                                                                <outlet property="forecastTempLabel" destination="gi8-pF-5aE" id="Nhf-vH-IbQ"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
