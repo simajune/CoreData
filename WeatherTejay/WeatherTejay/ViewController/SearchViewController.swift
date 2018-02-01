@@ -32,10 +32,12 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                         self.totalAddresses.append(address.1.stringValue)
                         self.currentAddresses.append(address.1.stringValue)
                     }
-                    //print(self.totalAddresses)
                 }
-                print(self.totalAddresses.count)
-                //self.currentAddresses = self.totalAddresses
+                self.currentAddresses = self.totalAddresses
+                DispatchQueue.main.async {
+                    self.addressTablewView.reloadData()
+                }
+                
             }
         }
     }
@@ -68,7 +70,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
             guard let `self` = self else { return }
             if response.result.isSuccess {
                 let data: JSON = JSON(response.result.value!)
-                print("xy",data)
                 WeatherDataModel.main.address = data["documents"][0]["address"]["region_2depth_name"].stringValue + " " +  data["documents"][0]["address"]["region_3depth_h_name"].stringValue
                 WeatherDataModel.main.weatherLocationX = data["documents"][0]["x"].stringValue
                 WeatherDataModel.main.weatherLocationY = data["documents"][0]["y"].stringValue
@@ -100,16 +101,12 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     func getMeasuringStation(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
             guard let `self` = self else { return }
-            print(response.request)
             if response.result.isSuccess {
                 let data = JSON(response.result.value!)
-                print(data)
                 let stationName = data["list"][0]["stationName"].stringValue
-                let params: [String: String] = ["stationName": stationName, "dataTerm": "month", "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "ver": "1.3", "_returnType": "json"]
+                let params: [String: String] = ["stationName": stationName, "dataTerm": "MONTH", "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "ver": "1.3", "_returnType": "json"]
                 self.getDustData(url: dustDataURL, parameters: params)
-                print(stationName)
             }else {
-                print(response.result.description)
                 print("Error \(response.result.error!)")
             }
         }
@@ -117,15 +114,12 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     
     func getDustData(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
-            print(response.response?.statusCode)
-            print(response.response?.description)
             if response.result.isSuccess {
                 let datas = JSON(response.result.value!)
-                
                 for data in datas["list"] {
-                    print("먼지 데이터",data)
+                    guard let dustData = DustModel(json: data) else { return }
+                    WeatherDataModel.main.dustData.append(dustData)
                 }
-                
             }else {
                 print("Error \(response.result.error!)")
             }
