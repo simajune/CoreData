@@ -1,10 +1,3 @@
-//
-//  AddressCell.swift
-//  WeatherTejay
-//
-//  Created by SIMA on 2018. 1. 29..
-//  Copyright © 2018년 devtejay. All rights reserved.
-//
 
 import UIKit
 

@@ -9,8 +9,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     var currentAddresses: [String] = []
     var previousAddresses: [String] = []
     var address: String = ""
-
-    
     
     @IBOutlet weak var addressTablewView: UITableView!
     @IBOutlet weak var addressSearchbar: UISearchBar!
@@ -119,9 +117,15 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     
     func getDustData(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
+            print(response.response?.statusCode)
+            print(response.response?.description)
             if response.result.isSuccess {
-                let data = JSON(response.result.value!)
-                print(data)
+                let datas = JSON(response.result.value!)
+                
+                for data in datas["list"] {
+                    print("먼지 데이터",data)
+                }
+                
             }else {
                 print("Error \(response.result.error!)")
             }

@@ -18,7 +18,6 @@
 		231E46F8201EE2B100C5850F /* Pods_WeatherTejay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E46FB201EE2B100C5850F /* Pods_WeatherTejay.framework */; };
 		231E46F9201EE2B100C5850F /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E46FC201EE2B100C5850F /* SwiftyJSON.framework */; };
 		231E46FE201EE64300C5850F /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231E46FD201EE64300C5850F /* AddressCell.swift */; };
-		231E4700201F64E600C5850F /* Addresses1.json in Resources */ = {isa = PBXBuildFile; fileRef = 231E46FF201F64E500C5850F /* Addresses1.json */; };
 		231E4702201F8A7600C5850F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231E4701201F8A7600C5850F /* Extension.swift */; };
 		231E4704201F9AB700C5850F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231E4701201F8A7600C5850F /* Extension.swift */; };
 		231E4708201F9AE300C5850F /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231E4706201F9AE300C5850F /* SWRevealViewController.m */; };
@@ -82,7 +81,6 @@
 		231E46FB201EE2B100C5850F /* Pods_WeatherTejay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_WeatherTejay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		231E46FC201EE2B100C5850F /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		231E46FD201EE64300C5850F /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
-		231E46FF201F64E500C5850F /* Addresses1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Addresses1.json; sourceTree = "<group>"; };
 		231E4701201F8A7600C5850F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		231E4705201F9AE200C5850F /* WeatherTejay-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WeatherTejay-Bridging-Header.h"; sourceTree = "<group>"; };
 		231E4706201F9AE300C5850F /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -190,15 +188,14 @@
 			isa = PBXGroup;
 			children = (
 				231E4703201F9AA400C5850F /* Supporting Files */,
-				232B2EA120162AE6001F260E /* AppDelegate.swift */,
 				231F90F4201867D600C0DA34 /* Model */,
 				232B2EE4201731FA001F260E /* ViewController */,
 				232B2EE520173210001F260E /* View */,
+				232B2EA120162AE6001F260E /* AppDelegate.swift */,
 				232B2EAB20162AE7001F260E /* Assets.xcassets */,
 				232B2EAD20162AE7001F260E /* LaunchScreen.storyboard */,
 				232B2EB020162AE7001F260E /* Info.plist */,
 				231E46E9201EC0DE00C5850F /* Addresses.json */,
-				231E46FF201F64E500C5850F /* Addresses1.json */,
 				232B2EA820162AE7001F260E /* WeatherTejay.xcdatamodeld */,
 			);
 			path = WeatherTejay;
@@ -354,7 +351,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				231E4700201F64E600C5850F /* Addresses1.json in Resources */,
 				231E46EA201EC0DF00C5850F /* Addresses.json in Resources */,
 				232B2EAF20162AE7001F260E /* LaunchScreen.storyboard in Resources */,
 				232B2EAC20162AE7001F260E /* Assets.xcassets in Resources */,
