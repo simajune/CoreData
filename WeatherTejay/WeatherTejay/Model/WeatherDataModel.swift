@@ -9,7 +9,12 @@ class WeatherDataModel {
     var address: String = ""
     var temperature: Int = 0
     var condition: Int = 0
-    var forecastCount: Int = 0
+    var forecastCount: Int = 0 {
+        didSet{
+            preforecastCount = oldValue
+        }
+    }
+    var preforecastCount: Int = 0
     var city: String = ""
     var weatherIconName: String = ""
     var weatherDate: [Date] = []
@@ -43,6 +48,7 @@ class WeatherDataModel {
 //    var pm25Grade: String = ""
 //    var pm10Grade1h: String = ""
 //    var pm25Grade1h: String = ""
+    
     
     func updateWeatherIcon(condition: Int) -> String {
         switch (condition) {

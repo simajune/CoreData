@@ -1,6 +1,7 @@
 
 import UIKit
 
-class ItemCellB: UICollectionViewCell {
+class ItemCellB: UITableViewCell {
+    @IBOutlet weak var label: UILabel!
     
 }

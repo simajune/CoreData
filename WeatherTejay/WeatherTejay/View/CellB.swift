@@ -6,27 +6,30 @@ class CellB: UICollectionViewCell {
     var cellCount: Int = 0
     override func awakeFromNib() {
         super.awakeFromNib()
+        print("awake")
     }
     
 }
 
-extension CellB: UICollectionViewDelegateFlowLayout {
-    
-}
-
-extension CellB: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cellCount
+extension CellB: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("count")
+        return 100
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let itemCellB = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCellB", for: indexPath) as! ItemCellB
-        return itemCellB
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCellB", for: indexPath) as! ItemCellB
+        cell.label.text = "asd"
+        return cell
     }
 }
 
-extension CellB: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.frame.width, height: self.frame.height / 6)
+extension CellB: UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "안녕하세요"
     }
 }
+

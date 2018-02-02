@@ -13,7 +13,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     var delegate: MainDelegate?
     //Variable
     let locationManager = CLLocationManager()
-    let weatherDataModel = WeatherDataModel()
+    //let weatherDataModel = WeatherDataModel()
     let formatter = DateFormatter()
     
     
@@ -38,9 +38,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         locationLabel.text = WeatherDataModel.main.address
-        let params: [String: String] = ["lat": WeatherDataModel.main.weatherLocationY, "lon": WeatherDataModel.main.weatherLocationX, "appid": weatherAPIKey]
-        getWeatherData(url: weatherURL, parameters: params)
+        if WeatherDataModel.main.weatherLocationX != "" && WeatherDataModel.main.weatherLocationX != "" {
+            let params: [String: String] = ["lat": WeatherDataModel.main.weatherLocationY, "lon": WeatherDataModel.main.weatherLocationX, "appid": weatherAPIKey]
+            getWeatherData(url: weatherURL, parameters: params)
+        }
     }
     
     //MARK: - Btn Add Ta
@@ -48,6 +51,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     //MARK: - Networking
     //날씨 API JSON 가져오기
     func getWeatherData(url: String, parameters: [String: String]) {
+        WeatherDataModel.main.weatherData.removeAll()
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
             if response.result.isSuccess {
                 print("Success! Got the weather data")
@@ -73,21 +77,25 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         if let tempResult = json["list"][0]["main"]["temp"].double {
             WeatherDataModel.main.temperature = Int(tempResult - 273.15)
             WeatherDataModel.main.condition = json["list"][0]["weather"][0]["id"].intValue
-            WeatherDataModel.main.weatherIconName = weatherDataModel.updateWeatherIcon(condition: weatherDataModel.condition)
+            WeatherDataModel.main.weatherIconName = WeatherDataModel.main.updateWeatherIcon(condition: WeatherDataModel.main.condition)
             for index in json["list"] {
                 guard let weatherData = WeatherModel(json: index) else { return }
                 WeatherDataModel.main.weatherData.append(weatherData)
             }
+            print(WeatherDataModel.main.weatherData)
             WeatherDataModel.main.forecastCount = json["list"].count - 1
             
 //            print(WeatherDataModel.main.forecastCount)
-            delegate?.updateCell(count: weatherDataModel.forecastCount)
+            delegate?.updateCell(count: WeatherDataModel.main.forecastCount)
+            
+            
             weatherCollectionView.reloadData()
             updateUIWithWeatherDate()
         }else {
             locationLabel.text = "Weather Unavailable"
         }
     }
+    
     
     //MARK: - UI Updates
     func updateUIWithWeatherDate() {
@@ -156,23 +164,23 @@ extension MainViewController: UICollectionViewDataSource {
         } else {
             let cellA = collectionView.dequeueReusableCell(withReuseIdentifier: "cellA", for: indexPath) as! CellA
             cellA.cellCount = WeatherDataModel.main.forecastCount
+            if WeatherDataModel.main.forecastCount == WeatherDataModel.main.preforecastCount {
+                cellA.forecastCollectionView.reloadData()
+            }
             print("cellACount: ", cellA.cellCount)
             return cellA
         }
     }
-    
-    
 }
 
 extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row == 1 {
-            return CGSize(width: self.view.frame.width, height: 500)
+            return CGSize(width: self.view.frame.width, height: (self.weatherCollectionView.frame.maxY - weatherCollectionView.frame.minY - 100 - 2))
         }else {
             return CGSize(width: self.view.frame.width, height: 100)
         }
     }
-    
 }
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {

@@ -41,6 +41,8 @@
 		232B2EE320172573001F260E /* ItemCellB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2EE220172573001F260E /* ItemCellB.swift */; };
 		232CE94E2022274E00B5E0B1 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CE94D2022274E00B5E0B1 /* WeatherModel.swift */; };
 		232CE9502022275900B5E0B1 /* DustModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CE94F2022275900B5E0B1 /* DustModel.swift */; };
+		232CE9522024669200B5E0B1 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CE9512024669200B5E0B1 /* MenuViewController.swift */; };
+		232CE954202473A300B5E0B1 /* yanoljaTFBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 232CE953202473A200B5E0B1 /* yanoljaTFBold.otf */; };
 		2FEDE924A5908054BBF37CC8 /* Pods_WeatherTejayExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7008E835FDCA4661BADE185 /* Pods_WeatherTejayExtension.framework */; };
 		D8BBADCD318B1019B0DEC8A3 /* Pods_WeatherTejayExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E46F4201EDD0100C5850F /* Pods_WeatherTejayExtension.framework */; };
 /* End PBXBuildFile section */
@@ -107,6 +109,8 @@
 		232B2EE220172573001F260E /* ItemCellB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellB.swift; sourceTree = "<group>"; };
 		232CE94D2022274E00B5E0B1 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		232CE94F2022275900B5E0B1 /* DustModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DustModel.swift; sourceTree = "<group>"; };
+		232CE9512024669200B5E0B1 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		232CE953202473A200B5E0B1 /* yanoljaTFBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = yanoljaTFBold.otf; sourceTree = "<group>"; };
 		3586AFF9490ABE383441F619 /* Pods-WeatherTejayExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTejayExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTejayExtension/Pods-WeatherTejayExtension.release.xcconfig"; sourceTree = "<group>"; };
 		82E2C8DB6F0E9ED82034FD45 /* Pods_WeatherTejay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherTejay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3AD682F264EECD41BE2E41B /* Pods-WeatherTejay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTejay.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTejay/Pods-WeatherTejay.release.xcconfig"; sourceTree = "<group>"; };
@@ -197,6 +201,7 @@
 				232B2EB020162AE7001F260E /* Info.plist */,
 				231E46E9201EC0DE00C5850F /* Addresses.json */,
 				232B2EA820162AE7001F260E /* WeatherTejay.xcdatamodeld */,
+				232CE953202473A200B5E0B1 /* yanoljaTFBold.otf */,
 			);
 			path = WeatherTejay;
 			sourceTree = "<group>";
@@ -232,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				232B2ED3201716A3001F260E /* SplashViewController.swift */,
+				232CE9512024669200B5E0B1 /* MenuViewController.swift */,
 				232B2ED1201705D1001F260E /* MainViewController.swift */,
 				231E46EC201EC11100C5850F /* SearchViewController.swift */,
 			);
@@ -354,6 +360,7 @@
 				231E46EA201EC0DF00C5850F /* Addresses.json in Resources */,
 				232B2EAF20162AE7001F260E /* LaunchScreen.storyboard in Resources */,
 				232B2EAC20162AE7001F260E /* Assets.xcassets in Resources */,
+				232CE954202473A300B5E0B1 /* yanoljaTFBold.otf in Resources */,
 				232B2EA720162AE7001F260E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,6 +481,7 @@
 				231E4708201F9AE300C5850F /* SWRevealViewController.m in Sources */,
 				232B2EDD2017249A001F260E /* CellA.swift in Sources */,
 				232B2ED2201705D1001F260E /* MainViewController.swift in Sources */,
+				232CE9522024669200B5E0B1 /* MenuViewController.swift in Sources */,
 				232CE9502022275900B5E0B1 /* DustModel.swift in Sources */,
 				231E4702201F8A7600C5850F /* Extension.swift in Sources */,
 				232B2EDF201724A6001F260E /* CellB.swift in Sources */,

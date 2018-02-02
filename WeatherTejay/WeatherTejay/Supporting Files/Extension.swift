@@ -11,6 +11,7 @@ extension DateFormatter {
     }
 }
 
+
 // as UISearchBar extension
 extension UISearchBar {
     func changeSearchBarColor(color : UIColor) {

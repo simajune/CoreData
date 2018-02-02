@@ -15,10 +15,16 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSerachBar()
+        
+        //노티센터를 통해 키보드가 올라오고 내려갈 경우 실행할 함수 설정
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(_:)), name: .UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        WeatherDataModel.main.weatherLocationX = ""
+        WeatherDataModel.main.weatherLocationY = ""
         setupSerachBar()
         DispatchQueue.global().async { [weak self] in
             guard let `self` = self else { return }
@@ -40,6 +46,18 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                 
             }
         }
+    }
+    
+    //MARK: - 키보드가 올라올 경우 키보드의 높이 만큼 스크롤 뷰의 크기를 줄여줌
+    @objc func keyboardDidShow(_ noti: Notification) {
+        guard let info = noti.userInfo else { return }
+        guard let keyboardFrame = info[UIKeyboardFrameEndUserInfoKey] as? CGRect else { return }
+        addressTablewView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardFrame.height, right: 0)
+    }
+    
+    //MARK: - 키보드가 내려갈 경우 원래의 크기대로 돌림
+    @objc func keyboardWillHide(_ noti: Notification) {
+        addressTablewView.contentInset = UIEdgeInsets.zero
     }
     
     private func setupSerachBar() {
@@ -113,6 +131,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     }
     
     func getDustData(url: String, parameters: [String: String]) {
+        WeatherDataModel.main.dustData.removeAll()
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
             if response.result.isSuccess {
                 let datas = JSON(response.result.value!)
