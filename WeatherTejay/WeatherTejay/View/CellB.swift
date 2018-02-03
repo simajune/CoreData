@@ -7,6 +7,7 @@ class CellB: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         print("awake")
+        
     }
     
 }
@@ -14,12 +15,12 @@ class CellB: UICollectionViewCell {
 extension CellB: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("count")
-        return 100
+        return WeatherDataModel.main.dustData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCellB", for: indexPath) as! ItemCellB
-        cell.label.text = "asd"
+        cell.label.text = WeatherDataModel.main.dustData[indexPath.row].pm10Value
         return cell
     }
 }
