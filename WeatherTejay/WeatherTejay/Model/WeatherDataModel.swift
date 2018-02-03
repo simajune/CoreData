@@ -24,7 +24,8 @@ class WeatherDataModel {
     
     //미세먼지 데이터
     var dustData: [DustModel] = []
-    
+    var dustContent: [String] = ["pm10Value", "pm25Value", "so2Value", "coValue", "o3Value", "no2Value"]
+    var dustName: [String] = ["미세먼지", "초미세먼지", "아황산가스", "일산화탄소", "오존", "이산화질소"]
     
 //    없어도 되는데 없애진 말고 일단 두고 보자
 //    var address: String = ""

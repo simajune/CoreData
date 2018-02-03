@@ -41,7 +41,7 @@ extension CellA: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let itemCellA = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCellA", for: indexPath) as! ItemCellA
 //        print(WeatherDataModel.main.weatherDate)
-        formatter.dateFormat = "d일 a h시"
+        formatter.dateFormat = "d일 h시"
         
         
         itemCellA.forecastDate.text = formatter.string(from: WeatherDataModel.main.weatherData[indexPath.row].date!)

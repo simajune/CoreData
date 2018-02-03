@@ -9,7 +9,8 @@ protocol MainDelegate {
 }
 
 class MainViewController: UIViewController, CLLocationManagerDelegate {
-
+    
+    
     var delegate: MainDelegate?
     //Variable
     let locationManager = CLLocationManager()
@@ -26,7 +27,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
