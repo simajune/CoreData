@@ -132,9 +132,12 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     
     func getDustData(url: String, parameters: [String: String]) {
         WeatherDataModel.main.dustData.removeAll()
+        WeatherDataModel.main.currentDustData.removeAll()
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
             if response.result.isSuccess {
                 let datas = JSON(response.result.value!)
+                WeatherDataModel.main.currentDustData = datas["list"][0].dictionaryObject!
+                WeatherDataModel.main.currentDustDataCount = WeatherDataModel.main.currentDustData.count
                 for data in datas["list"] {
                     guard let dustData = DustModel(json: data) else { return }
                     WeatherDataModel.main.dustData.append(dustData)

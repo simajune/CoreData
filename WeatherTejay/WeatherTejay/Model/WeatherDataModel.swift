@@ -24,6 +24,13 @@ class WeatherDataModel {
     
     //미세먼지 데이터
     var dustData: [DustModel] = []
+    var currentDustData: [String: Any] = [:]
+    var currentDustDataCount: Int = 0 {
+        didSet {
+            oldCurrentDustDataCount = oldValue
+        }
+    }
+    var oldCurrentDustDataCount: Int = 0
     var dustContent: [String] = ["pm10Value", "pm25Value", "so2Value", "coValue", "o3Value", "no2Value"]
     var dustName: [String] = ["미세먼지", "초미세먼지", "아황산가스", "일산화탄소", "오존", "이산화질소"]
     

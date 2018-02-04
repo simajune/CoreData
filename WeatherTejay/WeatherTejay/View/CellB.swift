@@ -4,6 +4,7 @@ import UIKit
 class CellB: UICollectionViewCell {
     //MARK: - Variable
     var cellCount: Int = 0
+    @IBOutlet weak var dustTableView: UITableView!
     override func awakeFromNib() {
         super.awakeFromNib()
         print("awake")
@@ -21,6 +22,12 @@ extension CellB: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCellB", for: indexPath) as! ItemCellB
         cell.label.text = WeatherDataModel.main.dustName[indexPath.row]
+        cell.dustValueLabel.text = WeatherDataModel.main.currentDustData[WeatherDataModel.main.dustContent[indexPath.row]] as? String
+        if indexPath.row == 0 || indexPath.row == 1 {
+            cell.unitLabel.text = "㎍/㎥"
+        }else {
+            cell.unitLabel.text = "ppm"
+        }
         return cell
     }
 }

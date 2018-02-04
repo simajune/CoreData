@@ -161,6 +161,9 @@ extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.item == 1 {
             let cellB = collectionView.dequeueReusableCell(withReuseIdentifier: "cellB", for: indexPath) as! CellB
+            if WeatherDataModel.main.currentDustDataCount != WeatherDataModel.main.oldCurrentDustDataCount {
+                cellB.dustTableView.reloadData()
+            }
             return cellB
         } else {
             let cellA = collectionView.dequeueReusableCell(withReuseIdentifier: "cellA", for: indexPath) as! CellA
