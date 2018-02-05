@@ -43,7 +43,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         locationLabel.text = WeatherDataModel.main.address
         if WeatherDataModel.main.weatherLocationX != "" && WeatherDataModel.main.weatherLocationX != "" {
             let params: [String: String] = ["lat": WeatherDataModel.main.weatherLocationY, "lon": WeatherDataModel.main.weatherLocationX, "appid": weatherAPIKey]
+            let tmParams: [String: String] = ["y": WeatherDataModel.main.weatherLocationY, "x": WeatherDataModel.main.weatherLocationX, "input_coord": "WGS84", "output_coord": "TM"]
             getWeatherData(url: weatherURL, parameters: params)
+            getTMData(url: kakaoCoordinateURL, parameters: tmParams)
         }
     }
     
@@ -67,11 +69,61 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     //미세먼지 API JSON 가져오가
-    func getDustData(url: String, parameters: [String: String]) {
+    func getTMData(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters, headers: kakaoHeaders).responseJSON { response in
-            
+            if response.result.isSuccess {
+                let data: JSON = JSON(response.result.value!)
+                let locationTMx = data["documents"][0]["x"].stringValue
+                let locationTMy = data["documents"][0]["y"].stringValue
+                let params: [String: String] = ["tmX": locationTMx, "tmY": locationTMy, "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "_returnType": "json"]
+                self.getMeasuringStation(url: dustMeasuringStationURL, parameters: params)
+            }else {
+                print("Error \(response.result.error!)")
+            }
         }
     }
+    
+    //tmX, tmY로 측정소 이름 가져오기
+    func getMeasuringStation(url: String, parameters: [String: String]) {
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
+            guard let `self` = self else { return }
+            if response.result.isSuccess {
+                let data = JSON(response.result.value!)
+                let stationName = data["list"][0]["stationName"].stringValue
+                let params: [String: String] = ["stationName": stationName, "dataTerm": "MONTH", "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "ver": "1.3", "_returnType": "json"]
+                self.getDustData(url: dustDataURL, parameters: params)
+            }else {
+                print("Error \(response.result.error!)")
+            }
+        }
+    }
+    
+    //미세먼지 데이터 가져오기
+    func getDustData(url: String, parameters: [String: String]) {
+        WeatherDataModel.main.dustData.removeAll()
+        WeatherDataModel.main.currentDustData.removeAll()
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
+            if response.result.isSuccess {
+                let datas = JSON(response.result.value!)
+                for title in WeatherDataModel.main.dustContent {
+                    WeatherDataModel.main.currentDustData.append(datas["list"][0][title].stringValue)
+                }
+                for title in WeatherDataModel.main.dustGrade {
+                    WeatherDataModel.main.currentDustGrade.append(datas["list"][0][title].stringValue)
+                }
+                WeatherDataModel.main.currentDustDataCount = WeatherDataModel.main.currentDustData.count
+                self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.currentDustGrade[0])
+                for data in datas["list"] {
+                    guard let dustData = DustModel(json: data) else { return }
+                    WeatherDataModel.main.dustData.append(dustData)
+                }
+            }else {
+                print("Error \(response.result.error!)")
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     
     //MARK: - JSON Parsing
     func updateWeatherData(json: JSON) {
@@ -132,8 +184,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             
             let param: [String: String] = ["lat": latitude, "lon": longitude, "appid": weatherAPIKey]
             let locationParams: [String: String] = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "CONGNAMUL"]
-//            let kakaoparam: [String:String] = ["x": "160710.37729270622", "y": "-4388.879299157299", "input_coord": "WTM", "output_coord": "WGS84"]
-//            getDustData(url: kakaoCoordinateURL, parameters: kakaoparam)
+            let tmParams: [String: String] = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "TM"]
+            getTMData(url: kakaoCoordinateURL, parameters: tmParams)
             getWeatherData(url: weatherURL, parameters: param)
             getLocationData(url: kakaoGetAddressURL, parameters: locationParams)
             
@@ -161,7 +213,8 @@ extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.item == 1 {
             let cellB = collectionView.dequeueReusableCell(withReuseIdentifier: "cellB", for: indexPath) as! CellB
-            if WeatherDataModel.main.currentDustDataCount != WeatherDataModel.main.oldCurrentDustDataCount {
+            cellB.cellCount = WeatherDataModel.main.currentDustDataCount
+            if WeatherDataModel.main.currentDustDataCount == WeatherDataModel.main.oldCurrentDustDataCount {
                 cellB.dustTableView.reloadData()
             }
             return cellB

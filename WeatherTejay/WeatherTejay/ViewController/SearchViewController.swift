@@ -130,13 +130,19 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
+    //미세먼지 데이터 가져오기
     func getDustData(url: String, parameters: [String: String]) {
         WeatherDataModel.main.dustData.removeAll()
         WeatherDataModel.main.currentDustData.removeAll()
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
             if response.result.isSuccess {
                 let datas = JSON(response.result.value!)
-                WeatherDataModel.main.currentDustData = datas["list"][0].dictionaryObject!
+                for title in WeatherDataModel.main.dustContent {
+                    WeatherDataModel.main.currentDustData.append(datas["list"][0][title].stringValue)
+                }
+                for title in WeatherDataModel.main.dustGrade {
+                    WeatherDataModel.main.currentDustGrade.append(datas["list"][0][title].stringValue)
+                }
                 WeatherDataModel.main.currentDustDataCount = WeatherDataModel.main.currentDustData.count
                 for data in datas["list"] {
                     guard let dustData = DustModel(json: data) else { return }

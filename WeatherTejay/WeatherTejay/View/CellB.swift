@@ -3,7 +3,13 @@ import UIKit
 
 class CellB: UICollectionViewCell {
     //MARK: - Variable
-    var cellCount: Int = 0
+    var cellCount: Int = 0 {
+        didSet {
+            if oldValue != cellCount {
+                dustTableView.reloadData()
+            }
+        }
+    }
     @IBOutlet weak var dustTableView: UITableView!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -15,14 +21,15 @@ class CellB: UICollectionViewCell {
 
 extension CellB: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("count")
-        return WeatherDataModel.main.dustContent.count
+        return WeatherDataModel.main.currentDustData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCellB", for: indexPath) as! ItemCellB
         cell.label.text = WeatherDataModel.main.dustName[indexPath.row]
-        cell.dustValueLabel.text = WeatherDataModel.main.currentDustData[WeatherDataModel.main.dustContent[indexPath.row]] as? String
+        cell.dustValueLabel.text = WeatherDataModel.main.currentDustData[indexPath.row]
+        cell.gradeLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.currentDustGrade[indexPath.row])
+        
         if indexPath.row == 0 || indexPath.row == 1 {
             cell.unitLabel.text = "㎍/㎥"
         }else {
