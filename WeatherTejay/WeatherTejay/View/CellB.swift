@@ -13,29 +13,37 @@ class CellB: UICollectionViewCell {
     @IBOutlet weak var dustTableView: UITableView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("awake")
-        
+//        dustTableView.headerView(forSection: 0)?.backgroundColor = .white
     }
     
 }
 
 extension CellB: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return WeatherDataModel.main.currentDustData.count
+        if section == 1 {
+            return WeatherDataModel.main.currentDustData.count
+        }
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCellB", for: indexPath) as! ItemCellB
-        cell.label.text = WeatherDataModel.main.dustName[indexPath.row]
-        cell.dustValueLabel.text = WeatherDataModel.main.currentDustData[indexPath.row]
-        cell.gradeLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.currentDustGrade[indexPath.row])
-        
-        if indexPath.row == 0 || indexPath.row == 1 {
-            cell.unitLabel.text = "㎍/㎥"
+        if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCellB", for: indexPath) as! ItemCellB
+            cell.label.text = WeatherDataModel.main.dustName[indexPath.row]
+            cell.dustValueLabel.text = WeatherDataModel.main.currentDustData[indexPath.row]
+            cell.gradeLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.currentDustGrade[indexPath.row])
+            
+            if indexPath.row == 0 || indexPath.row == 1 {
+                cell.unitLabel.text = "㎍/㎥"
+            }else {
+                cell.unitLabel.text = "ppm"
+            }
+            return cell
         }else {
-            cell.unitLabel.text = "ppm"
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCellB", for: indexPath) as! ItemCellB
+            return cell
         }
-        return cell
+        
     }
 }
 
@@ -44,7 +52,14 @@ extension CellB: UITableViewDelegate {
         return 2
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "안녕하세요"
+        if section == 1 {
+            return "미세먼지 세부정보"
+        }
+        return "오늘의 미세먼지 정보"
     }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
 }
 

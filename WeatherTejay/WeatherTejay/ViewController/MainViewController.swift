@@ -135,7 +135,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 guard let weatherData = WeatherModel(json: index) else { return }
                 WeatherDataModel.main.weatherData.append(weatherData)
             }
-            print(WeatherDataModel.main.weatherData)
+            //print(WeatherDataModel.main.weatherData)
             WeatherDataModel.main.forecastCount = json["list"].count - 1
             
 //            print(WeatherDataModel.main.forecastCount)
@@ -161,6 +161,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         Alamofire.request(url, method: .get, parameters: parameters, headers: kakaoHeaders).responseJSON { response in
             if response.result.isSuccess {
                 let data: JSON = JSON(response.result.value!)
+                print(response.request)
+                print(data)
                 self.locationLabel.text = data["documents"][0]["region_2depth_name"].stringValue + " " + data["documents"][0]["region_3depth_name"].stringValue
             }else {
                 print("error")
@@ -181,6 +183,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             
             let longitude = String(location.coordinate.longitude)
             let latitude = String(location.coordinate.latitude)
+            print("long", longitude)
+            print("lat", latitude)
             
             let param: [String: String] = ["lat": latitude, "lon": longitude, "appid": weatherAPIKey]
             let locationParams: [String: String] = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "CONGNAMUL"]
