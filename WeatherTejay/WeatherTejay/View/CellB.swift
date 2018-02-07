@@ -21,7 +21,7 @@ class CellB: UICollectionViewCell {
 extension CellB: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1 {
-            return WeatherDataModel.main.currentDustData.count
+            return cellCount
         }
         return 2
     }
@@ -29,6 +29,7 @@ extension CellB: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCellB", for: indexPath) as! ItemCellB
+            print(WeatherDataModel.main.currentDustData)
             cell.label.text = WeatherDataModel.main.dustName[indexPath.row]
             cell.dustValueLabel.text = WeatherDataModel.main.currentDustData[indexPath.row]
             cell.gradeLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.currentDustGrade[indexPath.row])

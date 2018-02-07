@@ -76,6 +76,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 let locationTMx = data["documents"][0]["x"].stringValue
                 let locationTMy = data["documents"][0]["y"].stringValue
                 let params: [String: String] = ["tmX": locationTMx, "tmY": locationTMy, "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "_returnType": "json"]
+                print(params)
                 self.getMeasuringStation(url: dustMeasuringStationURL, parameters: params)
             }else {
                 print("Error \(response.result.error!)")
@@ -89,6 +90,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             guard let `self` = self else { return }
             if response.result.isSuccess {
                 let data = JSON(response.result.value!)
+                print("measutingStation", data)
                 let stationName = data["list"][0]["stationName"].stringValue
                 let params: [String: String] = ["stationName": stationName, "dataTerm": "MONTH", "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "ver": "1.3", "_returnType": "json"]
                 self.getDustData(url: dustDataURL, parameters: params)
@@ -111,7 +113,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 for title in WeatherDataModel.main.dustGrade {
                     WeatherDataModel.main.currentDustGrade.append(datas["list"][0][title].stringValue)
                 }
+
                 WeatherDataModel.main.currentDustDataCount = WeatherDataModel.main.currentDustData.count
+                self.weatherCollectionView.reloadData()
                 self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.currentDustGrade[0])
                 for data in datas["list"] {
                     guard let dustData = DustModel(json: data) else { return }
@@ -120,7 +124,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             }else {
                 print("Error \(response.result.error!)")
             }
-            self.dismiss(animated: true, completion: nil)
+            //self.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -135,7 +139,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 guard let weatherData = WeatherModel(json: index) else { return }
                 WeatherDataModel.main.weatherData.append(weatherData)
             }
-            //print(WeatherDataModel.main.weatherData)
             WeatherDataModel.main.forecastCount = json["list"].count - 1
             
 //            print(WeatherDataModel.main.forecastCount)
@@ -161,8 +164,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         Alamofire.request(url, method: .get, parameters: parameters, headers: kakaoHeaders).responseJSON { response in
             if response.result.isSuccess {
                 let data: JSON = JSON(response.result.value!)
-                print(response.request)
-                print(data)
                 self.locationLabel.text = data["documents"][0]["region_2depth_name"].stringValue + " " + data["documents"][0]["region_3depth_name"].stringValue
             }else {
                 print("error")
@@ -188,11 +189,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             
             let param: [String: String] = ["lat": latitude, "lon": longitude, "appid": weatherAPIKey]
             let locationParams: [String: String] = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "CONGNAMUL"]
-            let tmParams: [String: String] = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "TM"]
-            getTMData(url: kakaoCoordinateURL, parameters: tmParams)
-            getWeatherData(url: weatherURL, parameters: param)
-            getLocationData(url: kakaoGetAddressURL, parameters: locationParams)
+            let tmParams: [String: String] = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "WTM"]
             
+            getLocationData(url: kakaoGetAddressURL, parameters: locationParams)
+            getWeatherData(url: weatherURL, parameters: param)
+            getTMData(url: kakaoCoordinateURL, parameters: tmParams)
         }
     }
     
@@ -218,9 +219,11 @@ extension MainViewController: UICollectionViewDataSource {
         if indexPath.item == 1 {
             let cellB = collectionView.dequeueReusableCell(withReuseIdentifier: "cellB", for: indexPath) as! CellB
             cellB.cellCount = WeatherDataModel.main.currentDustDataCount
+            print(WeatherDataModel.main.currentDustDataCount)
             if WeatherDataModel.main.currentDustDataCount == WeatherDataModel.main.oldCurrentDustDataCount {
-                cellB.dustTableView.reloadData()
+                
             }
+            print("cellBCount: ", cellB.cellCount)
             return cellB
         } else {
             let cellA = collectionView.dequeueReusableCell(withReuseIdentifier: "cellA", for: indexPath) as! CellA
@@ -228,6 +231,7 @@ extension MainViewController: UICollectionViewDataSource {
             if WeatherDataModel.main.forecastCount == WeatherDataModel.main.preforecastCount {
                 cellA.forecastCollectionView.reloadData()
             }
+            cellA.forecastCollectionView.reloadData()
             print("cellACount: ", cellA.cellCount)
             return cellA
         }
