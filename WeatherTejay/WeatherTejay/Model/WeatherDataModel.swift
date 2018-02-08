@@ -8,6 +8,8 @@ class WeatherDataModel {
     //날씨 데이터
     var address: String = ""
     var temperature: Int = 0
+    var maxTemperature: Int = 0
+    var minTemperature: Int = 0
     var condition: Int = 0
     var forecastCount: Int = 0 {
         didSet{

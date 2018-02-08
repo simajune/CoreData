@@ -22,6 +22,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var maxTempLabel: UILabel!
+    @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var dustLabel: UILabel!
     @IBOutlet weak var weatherCollectionView: UICollectionView!
     
@@ -60,7 +62,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 print("Success! Got the weather data")
                 let weatherJSON: JSON = JSON(response.result.value!)
                 self.updateWeatherData(json: weatherJSON)
-                
             }else {
                 print("Error \(response.result.error!)")
                 self.locationLabel.text = "Connection Issues"
@@ -132,6 +133,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     func updateWeatherData(json: JSON) {
         if let tempResult = json["list"][0]["main"]["temp"].double {
             WeatherDataModel.main.temperature = Int(tempResult - 273.15)
+            WeatherDataModel.main.maxTemperature = Int(json["list"][0]["main"]["temp_max"].doubleValue - 273.15)
+            WeatherDataModel.main.minTemperature = Int(json["list"][0]["main"]["temp_min"].doubleValue - 273.15)
             WeatherDataModel.main.condition = json["list"][0]["weather"][0]["id"].intValue
             WeatherDataModel.main.weatherIconName = WeatherDataModel.main.updateWeatherIcon(condition: WeatherDataModel.main.condition)
             for index in json["list"] {
@@ -155,6 +158,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     func updateUIWithWeatherDate() {
         //locationLabel.text = WeatherDataModel.main.city
         tempLabel.text = String(WeatherDataModel.main.temperature)
+        maxTempLabel.text = String(WeatherDataModel.main.maxTemperature)
+        minTempLabel.text = String(WeatherDataModel.main.minTemperature)
         weatherIcon.image = UIImage(named: WeatherDataModel.main.weatherIconName)
     }
     

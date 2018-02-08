@@ -164,9 +164,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EjD-HX-JmJ">
-                                        <rect key="frame" x="22" y="137" width="50" height="17"/>
+                                        <rect key="frame" x="22.5" y="137" width="50" height="17"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최저" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afZ-lV-EJU">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최고" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afZ-lV-EJU">
                                                 <rect key="frame" x="0.0" y="0.0" width="21.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -433,7 +433,9 @@
                     <connections>
                         <outlet property="dustLabel" destination="o5c-La-ITc" id="6OL-mQ-PZL"/>
                         <outlet property="locationLabel" destination="7lF-Uv-YvY" id="Nne-Jf-Wwe"/>
+                        <outlet property="maxTempLabel" destination="afZ-lV-EJU" id="XGf-v9-Nmz"/>
                         <outlet property="menuBtn" destination="PEE-CV-sFZ" id="JoF-bE-8i5"/>
+                        <outlet property="minTempLabel" destination="h0q-rm-jdU" id="9SH-Mv-x0A"/>
                         <outlet property="tempLabel" destination="FzH-ZY-CIr" id="HuV-lR-d22"/>
                         <outlet property="weatherCollectionView" destination="rdD-1P-zAP" id="wOA-Gj-cok"/>
                         <outlet property="weatherIcon" destination="Tjd-Fl-ePl" id="iSO-n4-are"/>
