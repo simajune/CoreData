@@ -91,7 +91,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                 WeatherDataModel.main.address = data["documents"][0]["address"]["region_2depth_name"].stringValue + " " +  data["documents"][0]["address"]["region_3depth_h_name"].stringValue
                 WeatherDataModel.main.weatherLocationX = data["documents"][0]["x"].stringValue
                 WeatherDataModel.main.weatherLocationY = data["documents"][0]["y"].stringValue
-                let params: [String: String] = ["x": WeatherDataModel.main.weatherLocationX, "y": WeatherDataModel.main.weatherLocationY, "input_coord": "WGS84", "output_coord": "TM"]
+                let params: [String: String] = ["x": WeatherDataModel.main.weatherLocationX, "y": WeatherDataModel.main.weatherLocationY, "input_coord": "WGS84", "output_coord": "WTM"]
                 self.changeCoordinate(url: kakaoCoordinateURL, parameters: params)
             }else {
                 print("Error \(response.result.error!)")
@@ -136,6 +136,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         WeatherDataModel.main.currentDustData.removeAll()
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
             if response.result.isSuccess {
+                print(response.request)
                 let datas = JSON(response.result.value!)
                 for title in WeatherDataModel.main.dustContent {
                     WeatherDataModel.main.currentDustData.append(datas["list"][0][title].stringValue)
@@ -143,6 +144,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                 for title in WeatherDataModel.main.dustGrade {
                     WeatherDataModel.main.currentDustGrade.append(datas["list"][0][title].stringValue)
                 }
+                print(WeatherDataModel.main.currentDustData.count)
                 WeatherDataModel.main.currentDustDataCount = WeatherDataModel.main.currentDustData.count
                 for data in datas["list"] {
                     guard let dustData = DustModel(json: data) else { return }

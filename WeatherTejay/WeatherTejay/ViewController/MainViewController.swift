@@ -76,7 +76,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 let locationTMx = data["documents"][0]["x"].stringValue
                 let locationTMy = data["documents"][0]["y"].stringValue
                 let params: [String: String] = ["tmX": locationTMx, "tmY": locationTMy, "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "_returnType": "json"]
-                print(params)
                 self.getMeasuringStation(url: dustMeasuringStationURL, parameters: params)
             }else {
                 print("Error \(response.result.error!)")
@@ -104,6 +103,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     func getDustData(url: String, parameters: [String: String]) {
         WeatherDataModel.main.dustData.removeAll()
         WeatherDataModel.main.currentDustData.removeAll()
+        
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
             if response.result.isSuccess {
                 let datas = JSON(response.result.value!)
@@ -113,14 +113,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 for title in WeatherDataModel.main.dustGrade {
                     WeatherDataModel.main.currentDustGrade.append(datas["list"][0][title].stringValue)
                 }
-
                 WeatherDataModel.main.currentDustDataCount = WeatherDataModel.main.currentDustData.count
-                self.weatherCollectionView.reloadData()
                 self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.currentDustGrade[0])
                 for data in datas["list"] {
                     guard let dustData = DustModel(json: data) else { return }
                     WeatherDataModel.main.dustData.append(dustData)
                 }
+                self.weatherCollectionView.reloadData()
             }else {
                 print("Error \(response.result.error!)")
             }
@@ -141,7 +140,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             }
             WeatherDataModel.main.forecastCount = json["list"].count - 1
             
-//            print(WeatherDataModel.main.forecastCount)
             delegate?.updateCell(count: WeatherDataModel.main.forecastCount)
             
             
@@ -188,7 +186,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             print("lat", latitude)
             
             let param: [String: String] = ["lat": latitude, "lon": longitude, "appid": weatherAPIKey]
-            let locationParams: [String: String] = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "CONGNAMUL"]
+            let locationParams: [String: String] = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "WCONGNAMUL"]
             let tmParams: [String: String] = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "WTM"]
             
             getLocationData(url: kakaoGetAddressURL, parameters: locationParams)
@@ -221,7 +219,7 @@ extension MainViewController: UICollectionViewDataSource {
             cellB.cellCount = WeatherDataModel.main.currentDustDataCount
             print(WeatherDataModel.main.currentDustDataCount)
             if WeatherDataModel.main.currentDustDataCount == WeatherDataModel.main.oldCurrentDustDataCount {
-                
+                cellB.dustTableView.reloadData()
             }
             print("cellBCount: ", cellB.cellCount)
             return cellB
@@ -231,7 +229,6 @@ extension MainViewController: UICollectionViewDataSource {
             if WeatherDataModel.main.forecastCount == WeatherDataModel.main.preforecastCount {
                 cellA.forecastCollectionView.reloadData()
             }
-            cellA.forecastCollectionView.reloadData()
             print("cellACount: ", cellA.cellCount)
             return cellA
         }
