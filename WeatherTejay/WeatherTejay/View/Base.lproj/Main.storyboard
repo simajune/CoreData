@@ -90,9 +90,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CloudyBG" translatesAutoresizingMaskIntoConstraints="NO" id="WC4-9f-VEw">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SunnyBG" translatesAutoresizingMaskIntoConstraints="NO" id="WC4-9f-VEw">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dfd-c6-0XM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.82745098039999998" green="0.3294117647" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DY0-Ue-Cfm" userLabel="Navi Bar">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="66.5"/>
                                 <subviews>
@@ -166,7 +170,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EjD-HX-JmJ">
                                         <rect key="frame" x="22.5" y="137" width="50" height="17"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최고" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afZ-lV-EJU">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최저" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afZ-lV-EJU">
                                                 <rect key="frame" x="0.0" y="0.0" width="21.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -178,7 +182,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최저" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0q-rm-jdU">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최고" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0q-rm-jdU">
                                                 <rect key="frame" x="28.5" y="0.0" width="21.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -324,7 +328,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EWl-er-EHR">
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EWl-er-EHR">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                                                     <color key="backgroundColor" white="0.66666666669999997" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <prototypes>
@@ -332,7 +336,7 @@
                                                             <rect key="frame" x="0.0" y="28" width="375" height="73"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qu7-Xa-aRO" id="GOl-Oo-3Zk">
-                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="72.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUd-C5-poS">
@@ -418,14 +422,18 @@
                             <constraint firstItem="WC4-9f-VEw" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="9ik-eW-DEG"/>
                             <constraint firstItem="rdD-1P-zAP" firstAttribute="top" secondItem="wi5-VX-UeC" secondAttribute="bottom" id="CSr-Dh-ADP"/>
                             <constraint firstItem="wi5-VX-UeC" firstAttribute="top" secondItem="DY0-Ue-Cfm" secondAttribute="bottom" id="Ech-ut-CRm"/>
+                            <constraint firstItem="dfd-c6-0XM" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="I4m-ea-Tzw"/>
                             <constraint firstItem="rdD-1P-zAP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Kma-3f-plL"/>
                             <constraint firstItem="DY0-Ue-Cfm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Nix-GD-pIG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rdD-1P-zAP" secondAttribute="bottom" id="SDD-Ca-iMY"/>
                             <constraint firstItem="DY0-Ue-Cfm" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Tmq-Jz-3hU"/>
+                            <constraint firstItem="dfd-c6-0XM" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="WnO-I8-YQv"/>
                             <constraint firstItem="DY0-Ue-Cfm" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.1" id="b16-5G-EUu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rdD-1P-zAP" secondAttribute="trailing" id="dLh-0m-SI9"/>
                             <constraint firstItem="wi5-VX-UeC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mKw-8K-ibz"/>
                             <constraint firstItem="WC4-9f-VEw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="uiZ-Y4-fIC"/>
+                            <constraint firstItem="dfd-c6-0XM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="w1h-KJ-Sa3"/>
+                            <constraint firstItem="dfd-c6-0XM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="yYh-0b-mIZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -433,9 +441,9 @@
                     <connections>
                         <outlet property="dustLabel" destination="o5c-La-ITc" id="6OL-mQ-PZL"/>
                         <outlet property="locationLabel" destination="7lF-Uv-YvY" id="Nne-Jf-Wwe"/>
-                        <outlet property="maxTempLabel" destination="afZ-lV-EJU" id="XGf-v9-Nmz"/>
+                        <outlet property="maxTempLabel" destination="h0q-rm-jdU" id="eXi-7f-R5y"/>
                         <outlet property="menuBtn" destination="PEE-CV-sFZ" id="JoF-bE-8i5"/>
-                        <outlet property="minTempLabel" destination="h0q-rm-jdU" id="9SH-Mv-x0A"/>
+                        <outlet property="minTempLabel" destination="afZ-lV-EJU" id="qGh-Jo-dSm"/>
                         <outlet property="tempLabel" destination="FzH-ZY-CIr" id="HuV-lR-d22"/>
                         <outlet property="weatherCollectionView" destination="rdD-1P-zAP" id="wOA-Gj-cok"/>
                         <outlet property="weatherIcon" destination="Tjd-Fl-ePl" id="iSO-n4-are"/>
@@ -576,10 +584,10 @@
     </scenes>
     <resources>
         <image name="Cloudy" width="118" height="87"/>
-        <image name="CloudyBG" width="375" height="667"/>
         <image name="Exit" width="24" height="24"/>
         <image name="Location" width="550" height="550"/>
         <image name="Menu" width="40" height="40"/>
         <image name="Moon" width="97" height="104"/>
+        <image name="SunnyBG" width="375" height="667"/>
     </resources>
 </document>

@@ -68,7 +68,7 @@ class WeatherDataModel {
             return "좋음"
         case "2":
             return "보통"
-        case "2":
+        case "3":
             return "나쁨"
         default:
             return "매우나쁨"

@@ -9,7 +9,7 @@ import Alamofire
 //Constant
 //openWeather REST API
 //파라미터  lon=   lat=    appid=
-let currentWEatherURL = "http://api.openweathermap.org/data/2.5/weather"
+let currentWeatherURL = "http://api.openweathermap.org/data/2.5/weather"
 
 let weatherURL = "http://api.openweathermap.org/data/2.5/forecast"
 let weatherAPIKey = "89e4a79cf2b99a9f6ac5d5654d83a51b"
