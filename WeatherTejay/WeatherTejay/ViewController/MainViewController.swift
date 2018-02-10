@@ -59,7 +59,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         case "Sun" :
             return "일요일"
         default:
-            return ""
+            return str + "요일"
         }
     }
     
@@ -107,6 +107,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             if response.result.isSuccess {
                 print("Success! Got the weather data")
                 let weatherJSON: JSON = JSON(response.result.value!)
+                print(weatherJSON)
                 self.updateforecastWeatherData(json: weatherJSON)
             }else {
                 print("Error \(response.result.error!)")
