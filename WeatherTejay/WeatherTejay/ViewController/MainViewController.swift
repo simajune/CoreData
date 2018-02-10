@@ -18,8 +18,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     let formatter = DateFormatter()
     
     
+    @IBOutlet weak var backGroundImgView: UIImageView!
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
@@ -39,8 +42,35 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
     }
     
+    func changeKRDay(str: String) -> String {
+        switch str {
+        case "Mon":
+            return "월요일"
+        case "Tue" :
+            return "화요일"
+        case "Wed" :
+            return "수요일"
+        case "Thu" :
+            return "목요일"
+        case "Fri" :
+            return "금요일"
+        case "Sat" :
+            return "토요일"
+        case "Sun" :
+            return "일요일"
+        default:
+            return ""
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        formatter.dateFormat = "MM월 dd일"
+        let currentDate = formatter.string(from: Date())
+        dateLabel.text = currentDate
+        formatter.dateFormat = "E"
+        let currentDay = formatter.string(from: Date())
+        dayLabel.text = changeKRDay(str: currentDay)
         
         locationLabel.text = WeatherDataModel.main.address
         if WeatherDataModel.main.weatherLocationX != "" && WeatherDataModel.main.weatherLocationX != "" {
@@ -189,6 +219,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         maxTempLabel.text = String(WeatherDataModel.main.maxTemperature) + "˚"
         minTempLabel.text = String(WeatherDataModel.main.minTemperature) + "˚"
         weatherIcon.image = UIImage(named: WeatherDataModel.main.weatherIconName)
+        let backGroundName = WeatherDataModel.main.weatherIconName + "BG"
+        backGroundImgView.image = UIImage(named: backGroundName)
     }
     
     func getLocationData(url: String, parameters: [String: String]) {

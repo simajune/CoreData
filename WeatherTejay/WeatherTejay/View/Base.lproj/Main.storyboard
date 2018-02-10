@@ -439,6 +439,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="XzH-Fp-Qx1"/>
                     <connections>
+                        <outlet property="backGroundImgView" destination="WC4-9f-VEw" id="VEJ-jw-GKc"/>
+                        <outlet property="dateLabel" destination="uHo-Ri-cDm" id="fgr-gb-hXB"/>
+                        <outlet property="dayLabel" destination="dJl-6d-4WQ" id="8Ww-6H-csP"/>
                         <outlet property="dustLabel" destination="o5c-La-ITc" id="6OL-mQ-PZL"/>
                         <outlet property="locationLabel" destination="7lF-Uv-YvY" id="Nne-Jf-Wwe"/>
                         <outlet property="maxTempLabel" destination="h0q-rm-jdU" id="eXi-7f-R5y"/>

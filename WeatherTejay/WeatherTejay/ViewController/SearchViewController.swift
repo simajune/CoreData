@@ -118,6 +118,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     //tmX, tmY로 측정소 이름 가져오기
     func getMeasuringStation(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
+            print(response.request)
             guard let `self` = self else { return }
             if response.result.isSuccess {
                 let data = JSON(response.result.value!)
