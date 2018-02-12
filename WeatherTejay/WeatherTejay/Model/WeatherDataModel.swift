@@ -82,19 +82,19 @@ class WeatherDataModel {
         case 300..<500 :
             return "Drizzle"
         case 500..<600 :
-            return "Rainy"
+            return "Rain"
         case 600..<700 :
-            return "Snowing"
+            return "Snow"
         case 700..<800 :
-            return "Windy"
+            return "Mist"
         case 800 :
-            return "Sunny"
+            return "Clear"
         case 801..<900 :
-            return "Cloudy"
+            return "Cloud"
         case 900...903, 905...1000  :
-            return "Windy"
+            return "Wind"
         case 904 :
-            return "Sunny"
+            return "Clear"
         default:
             return "dunno"
         }
