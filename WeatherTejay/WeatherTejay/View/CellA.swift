@@ -1,5 +1,6 @@
 
 import UIKit
+import SnapKit
 
 class CellA: UICollectionViewCell, MainDelegate {
     
@@ -11,6 +12,13 @@ class CellA: UICollectionViewCell, MainDelegate {
             }
         }
     }
+    
+    var seperatorView: UIView = {
+        var seperatorView = UIView()
+        seperatorView.backgroundColor = .black
+        return seperatorView
+    }()
+    
     let formatter = DateFormatter()
     let mainViewController = MainViewController()
     @IBOutlet weak var forecastCollectionView: UICollectionView!
@@ -18,6 +26,11 @@ class CellA: UICollectionViewCell, MainDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         mainViewController.delegate = self
+        setupUI()
+    }
+    
+    func setupUI() {
+
     }
     
     func updateCell(count: Int) {

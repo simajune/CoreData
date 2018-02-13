@@ -50,9 +50,18 @@ extension CellB: UITableViewDataSource {
 }
 
 extension CellB: UITableViewDelegate {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerTitle = view as? UITableViewHeaderFooterView {
+            headerTitle.textLabel?.font = UIFont(name: "Yanolja Yache OTF", size: 17)
+            headerTitle.contentView.backgroundColor = UIColor(red: 250.0/255/0, green: 239.0/255.0, blue: 75.0/255.0, alpha: 1.0)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 1 {
             return "미세먼지 세부정보"
@@ -60,7 +69,7 @@ extension CellB: UITableViewDelegate {
         return "오늘의 미세먼지 정보"
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 40
     }
     
 }

@@ -44,6 +44,7 @@
 		232CE9522024669200B5E0B1 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CE9512024669200B5E0B1 /* MenuViewController.swift */; };
 		232CE954202473A300B5E0B1 /* yanoljaTFBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 232CE953202473A200B5E0B1 /* yanoljaTFBold.otf */; };
 		2FEDE924A5908054BBF37CC8 /* Pods_WeatherTejayExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7008E835FDCA4661BADE185 /* Pods_WeatherTejayExtension.framework */; };
+		ADBA7DA18B4F24D4F90439F1 /* Pods_WeatherTejay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E46FB201EE2B100C5850F /* Pods_WeatherTejay.framework */; };
 		D8BBADCD318B1019B0DEC8A3 /* Pods_WeatherTejayExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E46F4201EDD0100C5850F /* Pods_WeatherTejayExtension.framework */; };
 /* End PBXBuildFile section */
 
@@ -127,6 +128,7 @@
 				231E46F0201EDD0100C5850F /* Pods_WeatherTejayExtension.framework in Frameworks */,
 				231E46F2201EDD0100C5850F /* SwiftyJSON.framework in Frameworks */,
 				1B1EF8AECB42A48BEF9605C1 /* Pods_WeatherTejay.framework in Frameworks */,
+				ADBA7DA18B4F24D4F90439F1 /* Pods_WeatherTejay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,11 +402,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WeatherTejay/Pods-WeatherTejay-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

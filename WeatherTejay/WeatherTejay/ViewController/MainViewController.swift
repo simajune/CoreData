@@ -42,6 +42,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
     }
     
+//    func setupUI() {
+//        weatherIcon.layer.cornerRadius = 25// self.weatherIcon.frame.width / 2
+//        weatherIcon.clipsToBounds = true
+//        weatherIcon.backgroundColor = UIColor.lightGray
+//    }
+    
     func changeKRDay(str: String) -> String {
         switch str {
         case "Mon":
@@ -220,8 +226,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         maxTempLabel.text = String(WeatherDataModel.main.maxTemperature) + "˚"
         minTempLabel.text = String(WeatherDataModel.main.minTemperature) + "˚"
         weatherIcon.image = UIImage(named: WeatherDataModel.main.weatherIconName)
-        let backGroundName = WeatherDataModel.main.weatherIconName + "BG"
-        backGroundImgView.image = UIImage(named: backGroundName)
+//        let backGroundName = WeatherDataModel.main.weatherIconName + "BG"
+//        backGroundImgView.image = UIImage(named: backGroundName)
     }
     
     func getLocationData(url: String, parameters: [String: String]) {

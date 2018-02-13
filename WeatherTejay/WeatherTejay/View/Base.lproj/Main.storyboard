@@ -13,7 +13,6 @@
     </dependencies>
     <customFonts key="customFonts">
         <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue</string>
             <string>HelveticaNeue-Bold</string>
         </array>
         <array key="yanoljaTFBold.otf">
@@ -90,13 +89,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SunnyBG" translatesAutoresizingMaskIntoConstraints="NO" id="WC4-9f-VEw">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dfd-c6-0XM">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.82745098039999998" green="0.3294117647" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DY0-Ue-Cfm" userLabel="Navi Bar">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="66.5"/>
                                 <subviews>
@@ -134,10 +126,10 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지역" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lF-Uv-YvY">
                                         <rect key="frame" x="-1" y="5" width="375.5" height="30"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="30"/>
-                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cloudy" translatesAutoresizingMaskIntoConstraints="NO" id="Tjd-Fl-ePl">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clear" translatesAutoresizingMaskIntoConstraints="NO" id="Tjd-Fl-ePl">
                                         <rect key="frame" x="137.5" y="40" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Tjd-Fl-ePl" secondAttribute="height" multiplier="1:1" id="k7X-Vy-sIJ"/>
@@ -149,7 +141,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cloudy" translatesAutoresizingMaskIntoConstraints="NO" id="qlj-3u-8nu">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cloud" translatesAutoresizingMaskIntoConstraints="NO" id="qlj-3u-8nu">
                                         <rect key="frame" x="250" y="39.5" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="qlj-3u-8nu" secondAttribute="height" multiplier="1:1" id="BFe-Pl-o3J"/>
@@ -233,7 +225,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rdD-1P-zAP">
                                 <rect key="frame" x="0.0" y="267" width="375" height="400"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="V4o-Rq-FOl">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="2" id="V4o-Rq-FOl">
                                     <size key="itemSize" width="375" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -248,7 +240,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="j8J-ak-Mnd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="7KA-IX-frD">
                                                         <size key="itemSize" width="86" height="79"/>
@@ -258,19 +250,19 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="itemCellA" id="Szg-Nh-7gn" customClass="ItemCellA" customModule="WeatherTejay" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="10" width="86" height="80"/>
+                                                            <rect key="frame" x="0.0" y="9.5" width="86" height="80"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="86" height="80"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31일 12시" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhE-JB-5qk">
-                                                                        <rect key="frame" x="13.5" y="10" width="59.5" height="16.5"/>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                                        <rect key="frame" x="23.5" y="10" width="39.5" height="14.5"/>
+                                                                        <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="14"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Moon" translatesAutoresizingMaskIntoConstraints="NO" id="lkG-Xv-Gto">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clear" translatesAutoresizingMaskIntoConstraints="NO" id="lkG-Xv-Gto">
                                                                         <rect key="frame" x="28" y="24.5" width="30" height="30"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="30" id="B3u-hL-BsP"/>
@@ -278,8 +270,8 @@
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gi8-pF-5aE">
-                                                                        <rect key="frame" x="32.5" y="53.5" width="21.5" height="16.5"/>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                                        <rect key="frame" x="33.5" y="55.5" width="19.5" height="14.5"/>
+                                                                        <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="14"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -312,7 +304,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="j8J-ak-Mnd" firstAttribute="leading" secondItem="PMV-Tx-IYl" secondAttribute="leading" id="1e8-7y-MBz"/>
-                                            <constraint firstAttribute="bottom" secondItem="j8J-ak-Mnd" secondAttribute="bottom" id="PgR-uS-kZH"/>
+                                            <constraint firstAttribute="bottom" secondItem="j8J-ak-Mnd" secondAttribute="bottom" constant="1" id="PgR-uS-kZH"/>
                                             <constraint firstItem="j8J-ak-Mnd" firstAttribute="top" secondItem="PMV-Tx-IYl" secondAttribute="top" id="c8r-Hy-Lcl"/>
                                             <constraint firstAttribute="trailing" secondItem="j8J-ak-Mnd" secondAttribute="trailing" id="zd2-TY-H6j"/>
                                         </constraints>
@@ -322,7 +314,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="cellB" id="kOX-Dj-E9R" userLabel="Cell B" customClass="CellB" customModule="WeatherTejay" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="102" width="375" height="400"/>
+                                        <rect key="frame" x="0.0" y="100" width="375" height="400"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
@@ -340,31 +332,31 @@
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUd-C5-poS">
-                                                                        <rect key="frame" x="18.5" y="26.5" width="42" height="20.5"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <rect key="frame" x="18.5" y="28.5" width="36" height="17"/>
+                                                                        <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Lyy-dT-9lP">
-                                                                        <rect key="frame" x="226.5" y="26" width="72" height="20.5"/>
+                                                                        <rect key="frame" x="232" y="28" width="61" height="17"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mH-gM-j2g">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="34.5" height="20.5"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="29" height="17"/>
+                                                                                <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ppm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIc-b3-J1d">
-                                                                                <rect key="frame" x="37.5" y="0.0" width="34.5" height="20.5"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <rect key="frame" x="32" y="0.0" width="29" height="17"/>
+                                                                                <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
                                                                     </stackView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매우나쁨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Wb-b2-6Op">
-                                                                        <rect key="frame" x="306.5" y="25.5" width="59" height="20.5"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <rect key="frame" x="322" y="27.5" width="43.5" height="17"/>
+                                                                        <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -413,33 +405,25 @@
                                 </connections>
                             </collectionView>
                         </subviews>
+                        <color key="backgroundColor" red="0.7803921568627451" green="0.91764705882352937" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="WC4-9f-VEw" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="22O-tk-Ic0"/>
-                            <constraint firstItem="WC4-9f-VEw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2TM-jI-CKA"/>
                             <constraint firstItem="DY0-Ue-Cfm" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.1" id="63z-IB-rlP"/>
                             <constraint firstItem="rdD-1P-zAP" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="6S2-Qy-Kws"/>
                             <constraint firstItem="wi5-VX-UeC" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8ul-ac-0aM"/>
-                            <constraint firstItem="WC4-9f-VEw" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="9ik-eW-DEG"/>
                             <constraint firstItem="rdD-1P-zAP" firstAttribute="top" secondItem="wi5-VX-UeC" secondAttribute="bottom" id="CSr-Dh-ADP"/>
                             <constraint firstItem="wi5-VX-UeC" firstAttribute="top" secondItem="DY0-Ue-Cfm" secondAttribute="bottom" id="Ech-ut-CRm"/>
-                            <constraint firstItem="dfd-c6-0XM" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="I4m-ea-Tzw"/>
                             <constraint firstItem="rdD-1P-zAP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Kma-3f-plL"/>
                             <constraint firstItem="DY0-Ue-Cfm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Nix-GD-pIG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rdD-1P-zAP" secondAttribute="bottom" id="SDD-Ca-iMY"/>
                             <constraint firstItem="DY0-Ue-Cfm" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Tmq-Jz-3hU"/>
-                            <constraint firstItem="dfd-c6-0XM" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="WnO-I8-YQv"/>
                             <constraint firstItem="DY0-Ue-Cfm" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.1" id="b16-5G-EUu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rdD-1P-zAP" secondAttribute="trailing" id="dLh-0m-SI9"/>
                             <constraint firstItem="wi5-VX-UeC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mKw-8K-ibz"/>
-                            <constraint firstItem="WC4-9f-VEw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="uiZ-Y4-fIC"/>
-                            <constraint firstItem="dfd-c6-0XM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="w1h-KJ-Sa3"/>
-                            <constraint firstItem="dfd-c6-0XM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="yYh-0b-mIZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="XzH-Fp-Qx1"/>
                     <connections>
-                        <outlet property="backGroundImgView" destination="WC4-9f-VEw" id="VEJ-jw-GKc"/>
                         <outlet property="dateLabel" destination="uHo-Ri-cDm" id="fgr-gb-hXB"/>
                         <outlet property="dayLabel" destination="dJl-6d-4WQ" id="8Ww-6H-csP"/>
                         <outlet property="dustLabel" destination="o5c-La-ITc" id="6OL-mQ-PZL"/>
@@ -586,11 +570,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Cloudy" width="118" height="87"/>
+        <image name="Clear" width="200" height="200"/>
+        <image name="Cloud" width="200" height="200"/>
         <image name="Exit" width="24" height="24"/>
         <image name="Location" width="550" height="550"/>
         <image name="Menu" width="40" height="40"/>
-        <image name="Moon" width="97" height="104"/>
-        <image name="SunnyBG" width="375" height="667"/>
     </resources>
 </document>
