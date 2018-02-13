@@ -58,7 +58,7 @@ extension CellB: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerTitle = view as? UITableViewHeaderFooterView {
             headerTitle.textLabel?.font = UIFont(name: "Yanolja Yache OTF", size: 17)
-            headerTitle.contentView.backgroundColor = UIColor(red: 250.0/255/0, green: 239.0/255.0, blue: 75.0/255.0, alpha: 1.0)
+            headerTitle.contentView.backgroundColor = UIColor(red: 199.0/255.0, green: 234.0/255.0, blue: 70.0/255.0, alpha: 1.0)
         }
     }
     

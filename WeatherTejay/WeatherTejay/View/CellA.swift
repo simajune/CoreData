@@ -26,11 +26,6 @@ class CellA: UICollectionViewCell, MainDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         mainViewController.delegate = self
-        setupUI()
-    }
-    
-    func setupUI() {
-
     }
     
     func updateCell(count: Int) {

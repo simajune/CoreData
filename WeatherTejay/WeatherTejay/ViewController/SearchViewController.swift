@@ -64,7 +64,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         addressSearchbar.delegate = self
         addressSearchbar.placeholder = "주소를 검색해주세요."
         //addressSearchbar.changeSearchBarColor(color: .black)
-        addressSearchbar.barTintColor = .white
+        addressSearchbar.barTintColor = UIColor(red: 199.0/255.0, green: 234.0/255.0, blue: 70.0/255.0, alpha: 1.0)
         navigationItem.titleView = addressSearchbar
 
     }

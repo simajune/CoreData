@@ -100,4 +100,27 @@ class WeatherDataModel {
         }
     }
     
+    func changeKRWeatherCondition(condition: String) -> String {
+        switch condition {
+        case "Thunder":
+            return "천둥과 번개"
+        case "Drizzle":
+            return "이슬비"
+        case "Rain":
+            return "비"
+        case "Snow":
+            return "눈"
+        case "Mist":
+            return "안개"
+        case "Clear":
+            return "맑음"
+        case "Cloud":
+            return "흐림"
+        case "Wind":
+            return "강한 바람"
+        default:
+            return "알수 없음"
+        }
+    }
+    
 }

@@ -42,12 +42,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
     }
     
-//    func setupUI() {
-//        weatherIcon.layer.cornerRadius = 25// self.weatherIcon.frame.width / 2
-//        weatherIcon.clipsToBounds = true
-//        weatherIcon.backgroundColor = UIColor.lightGray
-//    }
-    
     func changeKRDay(str: String) -> String {
         switch str {
         case "Mon":
@@ -67,6 +61,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         default:
             return str + "요일"
         }
+    }
+    
+    @IBAction func refreshAction(_ sender: UIButton) {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -113,7 +114,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             if response.result.isSuccess {
                 print("Success! Got the weather data")
                 let weatherJSON: JSON = JSON(response.result.value!)
-                print(weatherJSON)
                 self.updateforecastWeatherData(json: weatherJSON)
             }else {
                 print("Error \(response.result.error!)")
@@ -167,7 +167,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 for title in WeatherDataModel.main.dustGrade {
                     WeatherDataModel.main.currentDustGrade.append(datas["list"][0][title].stringValue)
                 }
-                print(WeatherDataModel.main.currentDustGrade)
+//                print(WeatherDataModel.main.currentDustGrade)
                 WeatherDataModel.main.currentDustDataCount = WeatherDataModel.main.currentDustData.count
                 self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.currentDustGrade[0])
                 for data in datas["list"] {
@@ -225,9 +225,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         tempLabel.text = String(WeatherDataModel.main.temperature) + "˚"
         maxTempLabel.text = String(WeatherDataModel.main.maxTemperature) + "˚"
         minTempLabel.text = String(WeatherDataModel.main.minTemperature) + "˚"
-        weatherIcon.image = UIImage(named: WeatherDataModel.main.weatherIconName)
-//        let backGroundName = WeatherDataModel.main.weatherIconName + "BG"
-//        backGroundImgView.image = UIImage(named: backGroundName)
+        var weatherIconName = WeatherDataModel.main.weatherIconName
+        formatter.dateFormat = "a"
+        let meridian = formatter.string(from: Date())
+        if meridian == "PM" {
+            weatherIconName = "Night" + weatherIconName
+        }
+        weatherIcon.image = UIImage(named: weatherIconName)
     }
     
     func getLocationData(url: String, parameters: [String: String]) {
@@ -249,13 +253,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         if location.horizontalAccuracy > 0 {
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
-            
-            print("long = \(location.coordinate.longitude), lat = \(location.coordinate.latitude)")
-            
+            //print("long = \(location.coordinate.longitude), lat = \(location.coordinate.latitude)")
             let longitude = String(location.coordinate.longitude)
             let latitude = String(location.coordinate.latitude)
-            print("long", longitude)
-            print("lat", latitude)
+//            print("long", longitude)
+//            print("lat", latitude)
             
             let param: [String: String] = ["lat": latitude, "lon": longitude, "appid": weatherAPIKey]
             let locationParams: [String: String] = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "WCONGNAMUL"]
@@ -290,11 +292,11 @@ extension MainViewController: UICollectionViewDataSource {
         if indexPath.item == 1 {
             let cellB = collectionView.dequeueReusableCell(withReuseIdentifier: "cellB", for: indexPath) as! CellB
             cellB.cellCount = WeatherDataModel.main.currentDustDataCount
-            print(WeatherDataModel.main.currentDustDataCount)
+//            print(WeatherDataModel.main.currentDustDataCount)
             if WeatherDataModel.main.currentDustDataCount == WeatherDataModel.main.oldCurrentDustDataCount {
                 cellB.dustTableView.reloadData()
             }
-            print("cellBCount: ", cellB.cellCount)
+//            print("cellBCount: ", cellB.cellCount)
             return cellB
         } else {
             let cellA = collectionView.dequeueReusableCell(withReuseIdentifier: "cellA", for: indexPath) as! CellA
@@ -302,7 +304,7 @@ extension MainViewController: UICollectionViewDataSource {
             if WeatherDataModel.main.forecastCount == WeatherDataModel.main.preforecastCount {
                 cellA.forecastCollectionView.reloadData()
             }
-            print("cellACount: ", cellA.cellCount)
+//            print("cellACount: ", cellA.cellCount)
             return cellA
         }
     }

@@ -130,7 +130,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clear" translatesAutoresizingMaskIntoConstraints="NO" id="Tjd-Fl-ePl">
-                                        <rect key="frame" x="137.5" y="40" width="100" height="100"/>
+                                        <rect key="frame" x="250" y="40" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Tjd-Fl-ePl" secondAttribute="height" multiplier="1:1" id="k7X-Vy-sIJ"/>
                                         </constraints>
@@ -142,7 +142,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cloud" translatesAutoresizingMaskIntoConstraints="NO" id="qlj-3u-8nu">
-                                        <rect key="frame" x="250" y="39.5" width="100" height="100"/>
+                                        <rect key="frame" x="137.5" y="39.5" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="qlj-3u-8nu" secondAttribute="height" multiplier="1:1" id="BFe-Pl-o3J"/>
                                         </constraints>
@@ -183,17 +183,28 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨정보" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYz-JA-oOZ">
-                                        <rect key="frame" x="137" y="148" width="100" height="17"/>
+                                        <rect key="frame" x="249.5" y="148" width="100" height="17"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="미세먼지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5c-La-ITc">
-                                        <rect key="frame" x="279" y="147.5" width="43" height="17"/>
+                                        <rect key="frame" x="166.5" y="147.5" width="43" height="17"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVi-Lg-Ljd">
+                                        <rect key="frame" x="344" y="7.5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="0Ez-bG-41B"/>
+                                            <constraint firstAttribute="width" secondItem="BVi-Lg-Ljd" secondAttribute="height" multiplier="1:1" id="blV-co-Umz"/>
+                                        </constraints>
+                                        <state key="normal" image="Refresh"/>
+                                        <connections>
+                                            <action selector="refreshAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wn5-2I-9tp"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -208,18 +219,20 @@
                                     <constraint firstItem="Tjd-Fl-ePl" firstAttribute="height" secondItem="wi5-VX-UeC" secondAttribute="height" multiplier="0.5" id="QnF-QB-rJB"/>
                                     <constraint firstItem="qlj-3u-8nu" firstAttribute="centerY" secondItem="Tjd-Fl-ePl" secondAttribute="centerY" id="R3B-Jg-jKV"/>
                                     <constraint firstItem="qlj-3u-8nu" firstAttribute="width" secondItem="Tjd-Fl-ePl" secondAttribute="width" id="VkL-bt-HOk"/>
+                                    <constraint firstItem="BVi-Lg-Ljd" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="0.2" id="Vvq-V9-tXm"/>
                                     <constraint firstItem="uHo-Ri-cDm" firstAttribute="centerX" secondItem="wi5-VX-UeC" secondAttribute="centerX" multiplier="0.25" id="W9t-nj-PZR"/>
                                     <constraint firstItem="VYz-JA-oOZ" firstAttribute="width" secondItem="Tjd-Fl-ePl" secondAttribute="width" id="Wxh-Qi-AYA"/>
                                     <constraint firstItem="VYz-JA-oOZ" firstAttribute="top" secondItem="Tjd-Fl-ePl" secondAttribute="bottom" constant="8" id="agy-1H-EG7"/>
                                     <constraint firstItem="dJl-6d-4WQ" firstAttribute="centerX" secondItem="uHo-Ri-cDm" secondAttribute="centerX" id="dkM-3k-mse"/>
                                     <constraint firstItem="7lF-Uv-YvY" firstAttribute="top" secondItem="wi5-VX-UeC" secondAttribute="top" constant="5" id="oYE-gu-nDX"/>
-                                    <constraint firstItem="Tjd-Fl-ePl" firstAttribute="centerX" secondItem="wi5-VX-UeC" secondAttribute="centerX" id="qP7-rm-N8v"/>
+                                    <constraint firstItem="Tjd-Fl-ePl" firstAttribute="centerX" secondItem="wi5-VX-UeC" secondAttribute="centerX" multiplier="1.6" id="qP7-rm-N8v"/>
                                     <constraint firstItem="FzH-ZY-CIr" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="1.15" id="rnA-e4-A5T"/>
                                     <constraint firstItem="7lF-Uv-YvY" firstAttribute="width" secondItem="wi5-VX-UeC" secondAttribute="width" id="v3w-Fm-f18"/>
-                                    <constraint firstItem="qlj-3u-8nu" firstAttribute="centerX" secondItem="wi5-VX-UeC" secondAttribute="centerX" multiplier="1.6" id="vhe-0Q-1U0"/>
+                                    <constraint firstItem="qlj-3u-8nu" firstAttribute="centerX" secondItem="wi5-VX-UeC" secondAttribute="centerX" id="vhe-0Q-1U0"/>
                                     <constraint firstItem="EjD-HX-JmJ" firstAttribute="centerX" secondItem="uHo-Ri-cDm" secondAttribute="centerX" id="vyt-UP-Kn8"/>
                                     <constraint firstItem="EjD-HX-JmJ" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="1.45" id="wr1-o0-GIa"/>
                                     <constraint firstItem="FzH-ZY-CIr" firstAttribute="centerX" secondItem="uHo-Ri-cDm" secondAttribute="centerX" id="xBe-Ci-qcy"/>
+                                    <constraint firstItem="BVi-Lg-Ljd" firstAttribute="centerX" secondItem="wi5-VX-UeC" secondAttribute="centerX" multiplier="1.9" id="ywk-Bp-ZzL"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rdD-1P-zAP">
@@ -470,7 +483,7 @@
                                 <rect key="frame" x="0.0" y="110.5" width="375" height="556.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="wuR-8O-tda" rowHeight="119" style="IBUITableViewCellStyleDefault" id="CLz-YS-zFa">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" textLabel="wuR-8O-tda" rowHeight="119" style="IBUITableViewCellStyleDefault" id="CLz-YS-zFa">
                                         <rect key="frame" x="0.0" y="28" width="375" height="119"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CLz-YS-zFa" id="XtE-ru-Ekf">
@@ -480,12 +493,13 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wuR-8O-tda">
                                                     <rect key="frame" x="15" y="0.0" width="345" height="118.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.78039215689999997" green="0.91764705879999997" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -508,7 +522,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="bcW-1X-Iik" firstAttribute="trailing" secondItem="53Z-Ih-adW" secondAttribute="trailing" constant="-5" id="aRr-JK-eTg"/>
                                     <constraint firstItem="bcW-1X-Iik" firstAttribute="centerY" secondItem="53Z-Ih-adW" secondAttribute="centerY" multiplier="1.5" id="y4B-We-vpp"/>
@@ -575,5 +589,6 @@
         <image name="Exit" width="24" height="24"/>
         <image name="Location" width="550" height="550"/>
         <image name="Menu" width="40" height="40"/>
+        <image name="Refresh" width="512" height="512"/>
     </resources>
 </document>
