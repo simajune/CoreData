@@ -16,7 +16,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     @IBOutlet weak var maxTempLabel: UILabel!
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var dustLabel: UILabel!
-    @IBOutlet weak var refreshBtn: UIButton!
     
     let formatter = DateFormatter()
     let locationManager = CLLocationManager()
@@ -39,6 +38,22 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
         // If there's an update, use NCUpdateResult.NewData
         
         completionHandler(NCUpdateResult.newData)
+    }
+    
+    @IBAction func toRefershApp(_ sender: UITapGestureRecognizer) {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+    
+    @IBAction func toOpenApp(_ sender: UITapGestureRecognizer) {
+        let myAppUrl = URL(string: "TJApp://")!
+        extensionContext?.open(myAppUrl, completionHandler: { (success) in
+            if (!success) {
+                print("///ERROR: failed to open app from Today Extension")
+            }
+        })
     }
     
     //현재 날짜에 대한 데이터를 한글로 바꾸기 위해 메소드 설정
