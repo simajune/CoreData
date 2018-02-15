@@ -59,7 +59,7 @@ extension CellB: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerTitle = view as? UITableViewHeaderFooterView {
             headerTitle.textLabel?.font = UIFont(name: "Yanolja Yache OTF", size: 17)
-            headerTitle.contentView.backgroundColor = UIColor(red: 199.0/255.0, green: 234.0/255.0, blue: 70.0/255.0, alpha: 1.0)
+            headerTitle.contentView.backgroundColor = UIColor(red:0.55, green:0.69, blue:1.00, alpha:1.00)
         }
     }
     //테이블 뷰 섹션의 타이틀 설정

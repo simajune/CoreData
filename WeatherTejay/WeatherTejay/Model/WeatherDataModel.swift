@@ -123,4 +123,17 @@ class WeatherDataModel {
         }
     }
     
+    func changedustIcon(grade: String?)-> String {
+        guard let grade = grade else { return "SoBad"}
+        switch grade {
+        case "1":
+            return "SoGood"
+        case "2":
+            return "Good"
+        case "3":
+            return "Bad"
+        default:
+            return "SoBad"
+        }
+    }
 }

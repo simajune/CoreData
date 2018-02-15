@@ -100,7 +100,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.78039215689999997" green="0.91764705879999997" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="p2l-Iu-jUj" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" multiplier="1.4" id="06a-hh-32X"/>
@@ -147,6 +147,7 @@
                     <connections>
                         <outlet property="dateLabel" destination="ks3-Xr-bmk" id="NGh-6x-6GV"/>
                         <outlet property="dayLabel" destination="gJm-7n-yj2" id="fKF-lX-VPA"/>
+                        <outlet property="dustIcon" destination="WaB-aL-3M2" id="RdA-Io-KiS"/>
                         <outlet property="dustLabel" destination="gyc-l9-EUl" id="OT1-M9-i7O"/>
                         <outlet property="locationLabel" destination="e67-oq-hRk" id="gtp-AD-iGI"/>
                         <outlet property="maxTempLabel" destination="6HW-gQ-hOd" id="Ns3-XV-rlt"/>

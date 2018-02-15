@@ -22,6 +22,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
     @IBOutlet weak var minTempLabel: UILabel!
+    @IBOutlet weak var dustIcon: UIImageView!
     @IBOutlet weak var dustLabel: UILabel!
     @IBOutlet weak var weatherCollectionView: UICollectionView!
     @IBOutlet weak var refreshBtn: UIButton!
@@ -170,13 +171,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 for title in WeatherDataModel.main.dustGrade {
                     WeatherDataModel.main.currentDustGrade.append(datas["list"][0][title].stringValue)
                 }
-//                print(WeatherDataModel.main.currentDustGrade)
                 WeatherDataModel.main.currentDustDataCount = WeatherDataModel.main.currentDustData.count
-                self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.currentDustGrade[0])
                 for data in datas["list"] {
                     guard let dustData = DustModel(json: data) else { return }
                     WeatherDataModel.main.dustData.append(dustData)
                 }
+                self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.dustData[0].khaiGrade)
+                self.dustIcon.image = UIImage(named: WeatherDataModel.main.changedustIcon(grade: WeatherDataModel.main.dustData[0].khaiGrade))
                 self.weatherCollectionView.reloadData()
             }else {
                 print("Error \(response.result.error!)")

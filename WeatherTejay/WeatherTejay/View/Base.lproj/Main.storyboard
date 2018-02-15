@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7dK-FG-3gG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GTo-ut-hIy">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -109,7 +109,7 @@
                                         <state key="normal" image="Menu"/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="PEE-CV-sFZ" firstAttribute="leading" secondItem="DY0-Ue-Cfm" secondAttribute="leading" constant="10" id="Bbs-M4-Jq6"/>
                                     <constraint firstItem="pa3-7j-zXD" firstAttribute="trailing" secondItem="DY0-Ue-Cfm" secondAttribute="trailing" constant="-10" id="VPE-1d-aON"/>
@@ -121,43 +121,43 @@
                                 <rect key="frame" x="0.0" y="66.5" width="375" height="200.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지역" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lF-Uv-YvY">
-                                        <rect key="frame" x="-1" y="5" width="375.5" height="30"/>
+                                        <rect key="frame" x="-1" y="10" width="375.5" height="30"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clear" translatesAutoresizingMaskIntoConstraints="NO" id="Tjd-Fl-ePl">
-                                        <rect key="frame" x="250" y="40" width="100" height="100"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rain" translatesAutoresizingMaskIntoConstraints="NO" id="Tjd-Fl-ePl">
+                                        <rect key="frame" x="260" y="65.5" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Tjd-Fl-ePl" secondAttribute="height" multiplier="1:1" id="k7X-Vy-sIJ"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨 온도" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzH-ZY-CIr">
-                                        <rect key="frame" x="23.5" y="107" width="46.5" height="17"/>
+                                        <rect key="frame" x="23.5" y="127" width="46.5" height="17"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cloud" translatesAutoresizingMaskIntoConstraints="NO" id="qlj-3u-8nu">
-                                        <rect key="frame" x="137.5" y="39.5" width="100" height="100"/>
+                                        <rect key="frame" x="147.5" y="65" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="qlj-3u-8nu" secondAttribute="height" multiplier="1:1" id="BFe-Pl-o3J"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHo-Ri-cDm">
-                                        <rect key="frame" x="35.5" y="46.5" width="22.5" height="17"/>
+                                        <rect key="frame" x="35.5" y="76.5" width="22.5" height="17"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJl-6d-4WQ">
-                                        <rect key="frame" x="36" y="76.5" width="21.5" height="17"/>
+                                        <rect key="frame" x="36" y="102" width="21.5" height="17"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EjD-HX-JmJ">
-                                        <rect key="frame" x="22.5" y="137" width="50" height="17"/>
+                                        <rect key="frame" x="22.5" y="152" width="50" height="17"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최저" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afZ-lV-EJU">
                                                 <rect key="frame" x="0.0" y="0.0" width="21.5" height="17"/>
@@ -180,19 +180,19 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨정보" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYz-JA-oOZ">
-                                        <rect key="frame" x="249.5" y="148" width="100" height="17"/>
+                                        <rect key="frame" x="259.5" y="153.5" width="80" height="17"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="미세먼지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5c-La-ITc">
-                                        <rect key="frame" x="166.5" y="147.5" width="43" height="17"/>
+                                        <rect key="frame" x="166.5" y="153" width="43" height="17"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVi-Lg-Ljd">
-                                        <rect key="frame" x="344" y="7.5" width="25" height="25"/>
+                                        <rect key="frame" x="344" y="12.5" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="0Ez-bG-41B"/>
                                             <constraint firstAttribute="width" secondItem="BVi-Lg-Ljd" secondAttribute="height" multiplier="1:1" id="blV-co-Umz"/>
@@ -206,28 +206,28 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="7lF-Uv-YvY" firstAttribute="centerX" secondItem="wi5-VX-UeC" secondAttribute="centerX" id="4H6-Kx-FkN"/>
-                                    <constraint firstItem="uHo-Ri-cDm" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="0.55" id="5J1-Xe-Vs6"/>
+                                    <constraint firstItem="uHo-Ri-cDm" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="0.85" id="5J1-Xe-Vs6"/>
                                     <constraint firstItem="qlj-3u-8nu" firstAttribute="width" secondItem="qlj-3u-8nu" secondAttribute="height" multiplier="1:1" id="5ZC-0c-0F5"/>
-                                    <constraint firstItem="Tjd-Fl-ePl" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="0.9" id="Cd4-PP-1r4"/>
-                                    <constraint firstItem="dJl-6d-4WQ" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="0.85" id="D0J-wU-pi6"/>
+                                    <constraint firstItem="BVi-Lg-Ljd" firstAttribute="centerY" secondItem="7lF-Uv-YvY" secondAttribute="centerY" id="9q5-yM-aw2"/>
+                                    <constraint firstItem="Tjd-Fl-ePl" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="1.05" id="Cd4-PP-1r4"/>
+                                    <constraint firstItem="dJl-6d-4WQ" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="1.1" id="D0J-wU-pi6"/>
                                     <constraint firstItem="o5c-La-ITc" firstAttribute="centerX" secondItem="qlj-3u-8nu" secondAttribute="centerX" id="EUV-6p-K6V"/>
                                     <constraint firstItem="o5c-La-ITc" firstAttribute="top" secondItem="qlj-3u-8nu" secondAttribute="bottom" constant="8" id="FZT-Oo-Xl4"/>
                                     <constraint firstItem="VYz-JA-oOZ" firstAttribute="centerX" secondItem="Tjd-Fl-ePl" secondAttribute="centerX" id="LE5-1x-WZc"/>
-                                    <constraint firstItem="Tjd-Fl-ePl" firstAttribute="height" secondItem="wi5-VX-UeC" secondAttribute="height" multiplier="0.5" id="QnF-QB-rJB"/>
+                                    <constraint firstItem="Tjd-Fl-ePl" firstAttribute="height" secondItem="wi5-VX-UeC" secondAttribute="height" multiplier="0.4" id="QnF-QB-rJB"/>
                                     <constraint firstItem="qlj-3u-8nu" firstAttribute="centerY" secondItem="Tjd-Fl-ePl" secondAttribute="centerY" id="R3B-Jg-jKV"/>
                                     <constraint firstItem="qlj-3u-8nu" firstAttribute="width" secondItem="Tjd-Fl-ePl" secondAttribute="width" id="VkL-bt-HOk"/>
-                                    <constraint firstItem="BVi-Lg-Ljd" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="0.2" id="Vvq-V9-tXm"/>
                                     <constraint firstItem="uHo-Ri-cDm" firstAttribute="centerX" secondItem="wi5-VX-UeC" secondAttribute="centerX" multiplier="0.25" id="W9t-nj-PZR"/>
                                     <constraint firstItem="VYz-JA-oOZ" firstAttribute="width" secondItem="Tjd-Fl-ePl" secondAttribute="width" id="Wxh-Qi-AYA"/>
                                     <constraint firstItem="VYz-JA-oOZ" firstAttribute="top" secondItem="Tjd-Fl-ePl" secondAttribute="bottom" constant="8" id="agy-1H-EG7"/>
                                     <constraint firstItem="dJl-6d-4WQ" firstAttribute="centerX" secondItem="uHo-Ri-cDm" secondAttribute="centerX" id="dkM-3k-mse"/>
-                                    <constraint firstItem="7lF-Uv-YvY" firstAttribute="top" secondItem="wi5-VX-UeC" secondAttribute="top" constant="5" id="oYE-gu-nDX"/>
+                                    <constraint firstItem="7lF-Uv-YvY" firstAttribute="top" secondItem="wi5-VX-UeC" secondAttribute="top" constant="10" id="oYE-gu-nDX"/>
                                     <constraint firstItem="Tjd-Fl-ePl" firstAttribute="centerX" secondItem="wi5-VX-UeC" secondAttribute="centerX" multiplier="1.6" id="qP7-rm-N8v"/>
-                                    <constraint firstItem="FzH-ZY-CIr" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="1.15" id="rnA-e4-A5T"/>
+                                    <constraint firstItem="FzH-ZY-CIr" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="1.35" id="rnA-e4-A5T"/>
                                     <constraint firstItem="7lF-Uv-YvY" firstAttribute="width" secondItem="wi5-VX-UeC" secondAttribute="width" id="v3w-Fm-f18"/>
                                     <constraint firstItem="qlj-3u-8nu" firstAttribute="centerX" secondItem="wi5-VX-UeC" secondAttribute="centerX" id="vhe-0Q-1U0"/>
                                     <constraint firstItem="EjD-HX-JmJ" firstAttribute="centerX" secondItem="uHo-Ri-cDm" secondAttribute="centerX" id="vyt-UP-Kn8"/>
-                                    <constraint firstItem="EjD-HX-JmJ" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="1.45" id="wr1-o0-GIa"/>
+                                    <constraint firstItem="EjD-HX-JmJ" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="1.6" id="wr1-o0-GIa"/>
                                     <constraint firstItem="FzH-ZY-CIr" firstAttribute="centerX" secondItem="uHo-Ri-cDm" secondAttribute="centerX" id="xBe-Ci-qcy"/>
                                     <constraint firstItem="BVi-Lg-Ljd" firstAttribute="centerX" secondItem="wi5-VX-UeC" secondAttribute="centerX" multiplier="1.9" id="ywk-Bp-ZzL"/>
                                 </constraints>
@@ -415,7 +415,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.7803921568627451" green="0.91764705882352937" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.5490196078431373" green="0.68627450980392157" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="DY0-Ue-Cfm" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.1" id="63z-IB-rlP"/>
                             <constraint firstItem="rdD-1P-zAP" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="6S2-Qy-Kws"/>
@@ -436,6 +436,7 @@
                     <connections>
                         <outlet property="dateLabel" destination="uHo-Ri-cDm" id="fgr-gb-hXB"/>
                         <outlet property="dayLabel" destination="dJl-6d-4WQ" id="8Ww-6H-csP"/>
+                        <outlet property="dustIcon" destination="qlj-3u-8nu" id="FjK-Ru-OQ2"/>
                         <outlet property="dustLabel" destination="o5c-La-ITc" id="6OL-mQ-PZL"/>
                         <outlet property="locationLabel" destination="7lF-Uv-YvY" id="Nne-Jf-Wwe"/>
                         <outlet property="maxTempLabel" destination="h0q-rm-jdU" id="eXi-7f-R5y"/>
@@ -498,7 +499,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.78039215689999997" green="0.91764705879999997" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -521,7 +522,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="bcW-1X-Iik" firstAttribute="trailing" secondItem="53Z-Ih-adW" secondAttribute="trailing" constant="-5" id="aRr-JK-eTg"/>
                                     <constraint firstItem="bcW-1X-Iik" firstAttribute="centerY" secondItem="53Z-Ih-adW" secondAttribute="centerY" multiplier="1.5" id="y4B-We-vpp"/>
@@ -562,6 +563,47 @@
             </objects>
             <point key="canvasLocation" x="1445.5999999999999" y="133.5832083958021"/>
         </scene>
+        <!--Splash View Controller-->
+        <scene sceneID="YVe-Le-XVk">
+            <objects>
+                <viewController id="GTo-ut-hIy" customClass="SplashViewController" customModule="WeatherTejay" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FKt-FL-kfD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bad" translatesAutoresizingMaskIntoConstraints="NO" id="u2E-Tv-MdZ">
+                                <rect key="frame" x="94.5" y="139.5" width="187.5" height="187.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="u2E-Tv-MdZ" secondAttribute="height" multiplier="1:1" id="w8a-NF-V1o"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="타이틀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9G-yM-aPa">
+                                <rect key="frame" x="127.5" y="368" width="121" height="64"/>
+                                <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="64"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="u2E-Tv-MdZ" firstAttribute="width" secondItem="FKt-FL-kfD" secondAttribute="width" multiplier="0.5" id="0f9-Fc-uYv"/>
+                            <constraint firstItem="u2E-Tv-MdZ" firstAttribute="centerX" secondItem="FKt-FL-kfD" secondAttribute="centerX" id="96y-ih-n4T"/>
+                            <constraint firstItem="r9G-yM-aPa" firstAttribute="centerY" secondItem="FKt-FL-kfD" secondAttribute="centerY" multiplier="1.2" id="BfG-6n-gvC"/>
+                            <constraint firstItem="u2E-Tv-MdZ" firstAttribute="centerY" secondItem="FKt-FL-kfD" secondAttribute="centerY" multiplier="0.7" id="HF3-aB-rdy"/>
+                            <constraint firstItem="r9G-yM-aPa" firstAttribute="centerX" secondItem="FKt-FL-kfD" secondAttribute="centerX" id="mhf-il-eS7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VrA-7k-Yyv"/>
+                    </view>
+                    <connections>
+                        <outlet property="logoImg" destination="u2E-Tv-MdZ" id="L6C-yD-xt1"/>
+                        <outlet property="titleLabel" destination="r9G-yM-aPa" id="yaX-8N-zUq"/>
+                        <segue destination="7dK-FG-3gG" kind="presentation" identifier="ToMain" id="hcB-dO-WCH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fgU-iB-tN6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1124" y="-155"/>
+        </scene>
         <!--Reveal View Controller-->
         <scene sceneID="3od-89-8CC">
             <objects>
@@ -583,11 +625,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Bad" width="280" height="280"/>
         <image name="Clear" width="200" height="200"/>
         <image name="Cloud" width="200" height="200"/>
         <image name="Exit" width="24" height="24"/>
         <image name="Location" width="550" height="550"/>
         <image name="Menu" width="40" height="40"/>
+        <image name="Rain" width="230" height="230"/>
         <image name="Refresh" width="50" height="50"/>
     </resources>
 </document>
