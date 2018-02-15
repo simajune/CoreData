@@ -12,9 +12,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue-Bold</string>
-        </array>
         <array key="yanoljaTFBold.otf">
             <string>YanoljaYacheOTFB</string>
         </array>
@@ -104,9 +101,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEE-CV-sFZ">
-                                        <rect key="frame" x="10" y="26.5" width="40" height="40"/>
+                                        <rect key="frame" x="10" y="29" width="35" height="35"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="8EU-zq-1hI"/>
+                                            <constraint firstAttribute="height" constant="35" id="8EU-zq-1hI"/>
                                             <constraint firstAttribute="width" secondItem="PEE-CV-sFZ" secondAttribute="height" multiplier="1:1" id="Ayo-h1-cAe"/>
                                         </constraints>
                                         <state key="normal" image="Menu"/>
@@ -444,9 +441,11 @@
                         <outlet property="maxTempLabel" destination="h0q-rm-jdU" id="eXi-7f-R5y"/>
                         <outlet property="menuBtn" destination="PEE-CV-sFZ" id="JoF-bE-8i5"/>
                         <outlet property="minTempLabel" destination="afZ-lV-EJU" id="qGh-Jo-dSm"/>
+                        <outlet property="refreshBtn" destination="BVi-Lg-Ljd" id="1Ss-tz-Kiw"/>
                         <outlet property="tempLabel" destination="FzH-ZY-CIr" id="HuV-lR-d22"/>
                         <outlet property="weatherCollectionView" destination="rdD-1P-zAP" id="wOA-Gj-cok"/>
                         <outlet property="weatherIcon" destination="Tjd-Fl-ePl" id="iSO-n4-are"/>
+                        <outlet property="weatherInfo" destination="VYz-JA-oOZ" id="4JB-JL-FPI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -529,8 +528,8 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주소 검색" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuP-Pc-XGf">
-                                <rect key="frame" x="150" y="38" width="75" height="24"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <rect key="frame" x="155.5" y="38" width="65.5" height="24"/>
+                                <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -539,7 +538,7 @@
                         <constraints>
                             <constraint firstItem="xLm-5K-a79" firstAttribute="top" secondItem="53Z-Ih-adW" secondAttribute="bottom" id="0gf-P2-p0T"/>
                             <constraint firstItem="53Z-Ih-adW" firstAttribute="width" secondItem="WOd-vJ-FUo" secondAttribute="width" id="2ee-Fw-txp"/>
-                            <constraint firstItem="Za4-og-nda" firstAttribute="bottom" secondItem="hMk-W0-HsA" secondAttribute="bottom" id="7sQ-C6-Z5j"/>
+                            <constraint firstItem="Za4-og-nda" firstAttribute="bottom" secondItem="WOd-vJ-FUo" secondAttribute="bottom" id="7sQ-C6-Z5j"/>
                             <constraint firstItem="xLm-5K-a79" firstAttribute="centerX" secondItem="WOd-vJ-FUo" secondAttribute="centerX" id="A6Q-vL-UOp"/>
                             <constraint firstItem="53Z-Ih-adW" firstAttribute="centerX" secondItem="WOd-vJ-FUo" secondAttribute="centerX" id="EPu-pI-til"/>
                             <constraint firstItem="zuP-Pc-XGf" firstAttribute="centerY" secondItem="bcW-1X-Iik" secondAttribute="centerY" id="Gua-wW-gI2"/>

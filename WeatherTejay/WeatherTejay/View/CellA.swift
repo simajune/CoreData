@@ -2,7 +2,7 @@
 import UIKit
 import SnapKit
 
-class CellA: UICollectionViewCell, MainDelegate {
+class CellA: UICollectionViewCell {
     
     //MARK: - Variable
     var cellCount: Int = 0 {
@@ -25,15 +25,7 @@ class CellA: UICollectionViewCell, MainDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        mainViewController.delegate = self
     }
-    
-    func updateCell(count: Int) {
-        print("Hi")
-        cellCount = count
-        forecastCollectionView.reloadData()
-    }
-
 }
 
 extension CellA: UICollectionViewDelegateFlowLayout {

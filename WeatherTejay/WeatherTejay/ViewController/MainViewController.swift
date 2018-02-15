@@ -4,19 +4,13 @@ import CoreLocation
 import Alamofire
 import SwiftyJSON
 
-protocol MainDelegate {
-    func updateCell(count: Int)
-}
-
 class MainViewController: UIViewController, CLLocationManagerDelegate {
     
-    
-    var delegate: MainDelegate?
     //Variable
     let locationManager = CLLocationManager()
     //let weatherDataModel = WeatherDataModel()
     let formatter = DateFormatter()
-    
+    var sectionIsExpanded = false
     
     @IBOutlet weak var backGroundImgView: UIImageView!
     @IBOutlet weak var menuBtn: UIButton!
@@ -24,15 +18,16 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
+    @IBOutlet weak var weatherInfo: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var dustLabel: UILabel!
     @IBOutlet weak var weatherCollectionView: UICollectionView!
+    @IBOutlet weak var refreshBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
@@ -42,6 +37,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
     }
     
+    //현재 날짜에 대한 데이터를 한글로 바꾸기 위해 메소드 설정
     func changeKRDay(str: String) -> String {
         switch str {
         case "Mon":
@@ -63,13 +59,24 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    //MARK: - Button Action
     @IBAction func refreshAction(_ sender: UIButton) {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        UIView.animate(withDuration: 0.5) {
+            if self.sectionIsExpanded {
+                self.refreshBtn.transform = CGAffineTransform.identity
+                self.sectionIsExpanded = false
+            } else {
+                self.refreshBtn.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+                self.sectionIsExpanded = true
+            }
+        }
     }
     
+    //MARK: - App Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         formatter.dateFormat = "MM월 dd일"
@@ -89,11 +96,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    //MARK: - Btn Add Ta
-    
     //MARK: - Networking
     //날씨 API JSON 가져오기
-    
+    //현재의 날씨 데이터 가져오기
     func getCurrentWeatherData(url: String, parameters: [String: String]) {
         WeatherDataModel.main.weatherData.removeAll()
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
@@ -107,7 +112,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
-    
+    //일기 예보 정보 가져오기
     func getforecastWeatherData(url: String, parameters: [String: String]) {
         WeatherDataModel.main.weatherData.removeAll()
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
@@ -121,8 +126,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
-    
-    //미세먼지 API JSON 가져오가
+    //미세먼지 API JSON 가져오기
     func getTMData(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters, headers: kakaoHeaders).responseJSON { response in
             if response.result.isSuccess {
@@ -136,7 +140,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
-    
     //tmX, tmY로 측정소 이름 가져오기
     func getMeasuringStation(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
@@ -178,12 +181,25 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             }else {
                 print("Error \(response.result.error!)")
             }
-            //self.dismiss(animated: true, completion: nil)
         }
     }
     
-    
     //MARK: - JSON Parsing
+    //현재 날씨 정보 JSON Parsing
+    func updateCurrentWeatherData(json: JSON) {
+        if let tempResult = json["main"]["temp"].double {
+            WeatherDataModel.main.temperature = Int(tempResult - 273.15)
+            WeatherDataModel.main.maxTemperature = Int(json["main"]["temp_max"].doubleValue - 273.15)
+            WeatherDataModel.main.minTemperature = Int(json["main"]["temp_min"].doubleValue - 273.15)
+            WeatherDataModel.main.condition = json["weather"][0]["id"].intValue
+            WeatherDataModel.main.weatherIconName = WeatherDataModel.main.updateWeatherIcon(condition: WeatherDataModel.main.condition)
+            
+            updateUIWithWeatherDate()
+        }else {
+            locationLabel.text = "Weather Unavailable"
+        }
+    }
+    //일기 예보 JSON Parsing
     func updateforecastWeatherData(json: JSON) {
         if let tempResult = json["list"][0]["main"]["temp"].double {
             WeatherDataModel.main.temperature = Int(tempResult - 273.15)
@@ -203,32 +219,19 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             locationLabel.text = "Weather Unavailable"
         }
     }
-    
-    func updateCurrentWeatherData(json: JSON) {
-        if let tempResult = json["main"]["temp"].double {
-            WeatherDataModel.main.temperature = Int(tempResult - 273.15)
-            WeatherDataModel.main.maxTemperature = Int(json["main"]["temp_max"].doubleValue - 273.15)
-            WeatherDataModel.main.minTemperature = Int(json["main"]["temp_min"].doubleValue - 273.15)
-            WeatherDataModel.main.condition = json["weather"][0]["id"].intValue
-            WeatherDataModel.main.weatherIconName = WeatherDataModel.main.updateWeatherIcon(condition: WeatherDataModel.main.condition)
-            
-            updateUIWithWeatherDate()
-        }else {
-            locationLabel.text = "Weather Unavailable"
-        }
-    }
-    
-    
+
     //MARK: - UI Updates
     func updateUIWithWeatherDate() {
         //locationLabel.text = WeatherDataModel.main.city
         tempLabel.text = String(WeatherDataModel.main.temperature) + "˚"
         maxTempLabel.text = String(WeatherDataModel.main.maxTemperature) + "˚"
         minTempLabel.text = String(WeatherDataModel.main.minTemperature) + "˚"
+        weatherInfo.text = WeatherDataModel.main.changeKRWeatherCondition(condition: WeatherDataModel.main.weatherIconName)
         var weatherIconName = WeatherDataModel.main.weatherIconName
-        formatter.dateFormat = "a"
-        let meridian = formatter.string(from: Date())
-        if meridian == "PM" {
+        formatter.dateFormat = "HH"
+        let meridian = Int(formatter.string(from: Date()))
+        
+        if meridian! >= 18 || meridian! <= 3 {
             weatherIconName = "Night" + weatherIconName
         }
         weatherIcon.image = UIImage(named: weatherIconName)
