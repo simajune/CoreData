@@ -22,50 +22,50 @@
             <objects>
                 <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="WeatherTejayExtension" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PSx-fI-pec" userLabel="Current Weather View">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지역" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e67-oq-hRk">
-                                        <rect key="frame" x="-1" y="5" width="320.5" height="30"/>
-                                        <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="30"/>
+                                        <rect key="frame" x="-1" y="5" width="320.5" height="22"/>
+                                        <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clear" translatesAutoresizingMaskIntoConstraints="NO" id="V06-sM-h5d">
-                                        <rect key="frame" x="206" y="40" width="100" height="99.5"/>
+                                        <rect key="frame" x="228.5" y="27.5" width="55" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="V06-sM-h5d" secondAttribute="height" multiplier="1:1" id="dcS-QO-7r5"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨 온도" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2l-Iu-jUj">
-                                        <rect key="frame" x="16.5" y="106.5" width="46.5" height="17"/>
+                                        <rect key="frame" x="16.5" y="68.5" width="46.5" height="17"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cloud" translatesAutoresizingMaskIntoConstraints="NO" id="WaB-aL-3M2">
-                                        <rect key="frame" x="110" y="39.5" width="100" height="99.5"/>
+                                        <rect key="frame" x="132.5" y="27" width="55" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="WaB-aL-3M2" secondAttribute="height" multiplier="1:1" id="ija-Pv-zol"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ks3-Xr-bmk">
-                                        <rect key="frame" x="28.5" y="46.5" width="22.5" height="17"/>
+                                        <rect key="frame" x="28.5" y="33" width="22.5" height="17"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJm-7n-yj2">
-                                        <rect key="frame" x="29" y="76.5" width="21.5" height="17"/>
+                                        <rect key="frame" x="29" y="52" width="21.5" height="17"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jfb-mt-zDs">
-                                        <rect key="frame" x="15" y="136.5" width="50" height="17"/>
+                                        <rect key="frame" x="15" y="85" width="50" height="17"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최저" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VU3-mq-gJP">
                                                 <rect key="frame" x="0.0" y="0.0" width="21.5" height="17"/>
@@ -88,29 +88,21 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨정보" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFp-qS-DRI">
-                                        <rect key="frame" x="205.5" y="147.5" width="100" height="17"/>
+                                        <rect key="frame" x="228" y="90.5" width="55" height="17"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="미세먼지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyc-l9-EUl">
-                                        <rect key="frame" x="139" y="147" width="43" height="17"/>
+                                        <rect key="frame" x="139" y="90" width="43" height="17"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Wc-KT-1Zr">
-                                        <rect key="frame" x="292" y="7.5" width="25" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="25" id="KIO-iV-dN1"/>
-                                            <constraint firstAttribute="width" secondItem="3Wc-KT-1Zr" secondAttribute="height" multiplier="1:1" id="o4A-qr-sLv"/>
-                                        </constraints>
-                                        <state key="normal" image="Refresh"/>
-                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.78039215689999997" green="0.91764705879999997" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="p2l-Iu-jUj" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" multiplier="1.15" id="06a-hh-32X"/>
+                                    <constraint firstItem="p2l-Iu-jUj" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" multiplier="1.4" id="06a-hh-32X"/>
                                     <constraint firstItem="e67-oq-hRk" firstAttribute="centerX" secondItem="PSx-fI-pec" secondAttribute="centerX" id="8EG-ON-C0a"/>
                                     <constraint firstItem="gyc-l9-EUl" firstAttribute="centerX" secondItem="WaB-aL-3M2" secondAttribute="centerX" id="BUq-ES-DFh"/>
                                     <constraint firstItem="WaB-aL-3M2" firstAttribute="centerX" secondItem="PSx-fI-pec" secondAttribute="centerX" id="DaQ-Fi-rKt"/>
@@ -118,23 +110,21 @@
                                     <constraint firstItem="e67-oq-hRk" firstAttribute="width" secondItem="PSx-fI-pec" secondAttribute="width" id="HN0-x0-afZ"/>
                                     <constraint firstItem="gyc-l9-EUl" firstAttribute="top" secondItem="WaB-aL-3M2" secondAttribute="bottom" constant="8" id="Ix4-SA-99p"/>
                                     <constraint firstItem="AFp-qS-DRI" firstAttribute="centerX" secondItem="V06-sM-h5d" secondAttribute="centerX" id="OGl-yb-NeJ"/>
-                                    <constraint firstItem="3Wc-KT-1Zr" firstAttribute="centerX" secondItem="PSx-fI-pec" secondAttribute="centerX" multiplier="1.9" id="ORS-QL-rfW"/>
                                     <constraint firstItem="WaB-aL-3M2" firstAttribute="centerY" secondItem="V06-sM-h5d" secondAttribute="centerY" id="PgE-yU-11m"/>
                                     <constraint firstItem="AFp-qS-DRI" firstAttribute="top" secondItem="V06-sM-h5d" secondAttribute="bottom" constant="8" id="PlX-cd-BG1"/>
                                     <constraint firstItem="e67-oq-hRk" firstAttribute="top" secondItem="PSx-fI-pec" secondAttribute="top" constant="5" id="UII-dt-oWf"/>
                                     <constraint firstItem="V06-sM-h5d" firstAttribute="centerX" secondItem="PSx-fI-pec" secondAttribute="centerX" multiplier="1.6" id="VTq-na-Vel"/>
                                     <constraint firstItem="ks3-Xr-bmk" firstAttribute="centerX" secondItem="PSx-fI-pec" secondAttribute="centerX" multiplier="0.25" id="X1Y-3p-epW"/>
-                                    <constraint firstItem="V06-sM-h5d" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" multiplier="0.9" id="XKd-Zl-UVW"/>
-                                    <constraint firstItem="Jfb-mt-zDs" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" multiplier="1.45" id="amg-Vy-fVr"/>
+                                    <constraint firstItem="V06-sM-h5d" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" id="XKd-Zl-UVW"/>
+                                    <constraint firstItem="Jfb-mt-zDs" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" multiplier="1.7" id="amg-Vy-fVr"/>
                                     <constraint firstItem="WaB-aL-3M2" firstAttribute="width" secondItem="WaB-aL-3M2" secondAttribute="height" multiplier="1:1" id="bIB-Kl-u9F"/>
                                     <constraint firstItem="Jfb-mt-zDs" firstAttribute="centerX" secondItem="ks3-Xr-bmk" secondAttribute="centerX" id="d64-AS-XqN"/>
-                                    <constraint firstItem="gJm-7n-yj2" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" multiplier="0.85" id="dcE-9i-6Rv"/>
+                                    <constraint firstItem="gJm-7n-yj2" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" multiplier="1.1" id="dcE-9i-6Rv"/>
                                     <constraint firstItem="gJm-7n-yj2" firstAttribute="centerX" secondItem="ks3-Xr-bmk" secondAttribute="centerX" id="fhg-MR-GOP"/>
-                                    <constraint firstItem="ks3-Xr-bmk" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" multiplier="0.55" id="g8e-kb-dFg"/>
+                                    <constraint firstItem="ks3-Xr-bmk" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" multiplier="0.75" id="g8e-kb-dFg"/>
                                     <constraint firstItem="V06-sM-h5d" firstAttribute="height" secondItem="PSx-fI-pec" secondAttribute="height" multiplier="0.5" id="rZz-hg-33K"/>
                                     <constraint firstItem="p2l-Iu-jUj" firstAttribute="centerX" secondItem="ks3-Xr-bmk" secondAttribute="centerX" id="roE-Af-dpP"/>
                                     <constraint firstItem="AFp-qS-DRI" firstAttribute="width" secondItem="V06-sM-h5d" secondAttribute="width" id="rxh-yv-gRV"/>
-                                    <constraint firstItem="3Wc-KT-1Zr" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" multiplier="0.2" id="sD6-CD-3Lb"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -148,7 +138,18 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="200"/>
+                    <size key="freeformSize" width="320" height="110"/>
+                    <connections>
+                        <outlet property="dateLabel" destination="ks3-Xr-bmk" id="NGh-6x-6GV"/>
+                        <outlet property="dayLabel" destination="gJm-7n-yj2" id="fKF-lX-VPA"/>
+                        <outlet property="dustLabel" destination="gyc-l9-EUl" id="OT1-M9-i7O"/>
+                        <outlet property="locationLabel" destination="e67-oq-hRk" id="gtp-AD-iGI"/>
+                        <outlet property="maxTempLabel" destination="6HW-gQ-hOd" id="Ns3-XV-rlt"/>
+                        <outlet property="minTempLabel" destination="VU3-mq-gJP" id="88N-ov-S3I"/>
+                        <outlet property="tempLabel" destination="p2l-Iu-jUj" id="6zl-9A-ggx"/>
+                        <outlet property="weatherIcon" destination="V06-sM-h5d" id="4by-L4-NZw"/>
+                        <outlet property="weatherInfo" destination="AFp-qS-DRI" id="jXa-ea-Odj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -157,6 +158,5 @@
     <resources>
         <image name="Clear" width="200" height="200"/>
         <image name="Cloud" width="200" height="200"/>
-        <image name="Refresh" width="512" height="512"/>
     </resources>
 </document>

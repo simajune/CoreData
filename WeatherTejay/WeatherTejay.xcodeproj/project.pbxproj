@@ -43,6 +43,11 @@
 		232CE9502022275900B5E0B1 /* DustModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CE94F2022275900B5E0B1 /* DustModel.swift */; };
 		232CE9522024669200B5E0B1 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CE9512024669200B5E0B1 /* MenuViewController.swift */; };
 		232CE954202473A300B5E0B1 /* yanoljaTFBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 232CE953202473A200B5E0B1 /* yanoljaTFBold.otf */; };
+		23FB189A2035550900C21597 /* WeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F90F2201867D400C0DA34 /* WeatherDataModel.swift */; };
+		23FB189B2035550900C21597 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CE94D2022274E00B5E0B1 /* WeatherModel.swift */; };
+		23FB189C2035550900C21597 /* DustModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CE94F2022275900B5E0B1 /* DustModel.swift */; };
+		23FB189F20355AFF00C21597 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 232B2EAB20162AE7001F260E /* Assets.xcassets */; };
+		23FB18A020355AFF00C21597 /* yanoljaTFBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 232CE953202473A200B5E0B1 /* yanoljaTFBold.otf */; };
 		2FEDE924A5908054BBF37CC8 /* Pods_WeatherTejayExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7008E835FDCA4661BADE185 /* Pods_WeatherTejayExtension.framework */; };
 		ADBA7DA18B4F24D4F90439F1 /* Pods_WeatherTejay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E46FB201EE2B100C5850F /* Pods_WeatherTejay.framework */; };
 		D8BBADCD318B1019B0DEC8A3 /* Pods_WeatherTejayExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E46F4201EDD0100C5850F /* Pods_WeatherTejayExtension.framework */; };
@@ -371,6 +376,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23FB189F20355AFF00C21597 /* Assets.xcassets in Resources */,
+				23FB18A020355AFF00C21597 /* yanoljaTFBold.otf in Resources */,
 				231E46EB201EC0DF00C5850F /* Addresses.json in Resources */,
 				232B2EC32016C6E0001F260E /* MainInterface.storyboard in Resources */,
 			);
@@ -498,6 +505,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23FB189A2035550900C21597 /* WeatherDataModel.swift in Sources */,
+				23FB189B2035550900C21597 /* WeatherModel.swift in Sources */,
+				23FB189C2035550900C21597 /* DustModel.swift in Sources */,
 				231E4704201F9AB700C5850F /* Extension.swift in Sources */,
 				232B2ED0201705AC001F260E /* Constant.swift in Sources */,
 				232B2EC02016C6E0001F260E /* TodayViewController.swift in Sources */,

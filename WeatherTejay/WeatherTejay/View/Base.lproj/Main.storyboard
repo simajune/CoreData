@@ -588,6 +588,6 @@
         <image name="Exit" width="24" height="24"/>
         <image name="Location" width="550" height="550"/>
         <image name="Menu" width="40" height="40"/>
-        <image name="Refresh" width="512" height="512"/>
+        <image name="Refresh" width="50" height="50"/>
     </resources>
 </document>
