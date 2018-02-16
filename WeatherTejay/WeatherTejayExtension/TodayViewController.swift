@@ -280,8 +280,4 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
         locationLabel.text = "Location Unavailable"
     }
     
-    func updateForecastweather() {
-        
-    }
-    
 }

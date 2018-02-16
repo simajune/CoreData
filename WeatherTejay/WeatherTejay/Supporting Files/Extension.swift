@@ -28,3 +28,24 @@ extension UISearchBar {
         }
     }
 }
+
+// MARK: UIAlertCotroller
+extension UIAlertController {
+    
+    // MARK: 알림창
+    static func presentAlertController(target: UIViewController,
+                                       title: String?,
+                                       massage: String?,
+                                       actionStyle: UIAlertActionStyle = UIAlertActionStyle.default,
+                                       cancelBtn: Bool,
+                                       completion: ((UIAlertAction)->Void)?) {
+        let alert = UIAlertController(title: title, message: massage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: actionStyle, handler: completion)
+        alert.addAction(okAction)
+        if cancelBtn {
+            let cancelAction = UIAlertAction(title: "취소", style: .default, handler: nil)
+            alert.addAction(cancelAction)
+        }
+        target.present(alert, animated: true, completion: nil)
+    }
+}

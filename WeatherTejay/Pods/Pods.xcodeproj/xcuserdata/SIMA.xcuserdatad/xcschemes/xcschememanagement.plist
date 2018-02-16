@@ -11,21 +11,21 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>Pods-WeatherTejay.xcscheme</key>
+		<key>PKHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>Pods-WeatherTejayExtension.xcscheme</key>
+		<key>Pods-WeatherTejay.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>SnapKit.xcscheme</key>
+		<key>Pods-WeatherTejayExtension.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

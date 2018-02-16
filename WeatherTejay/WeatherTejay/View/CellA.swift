@@ -1,6 +1,5 @@
 
 import UIKit
-import SnapKit
 
 class CellA: UICollectionViewCell {
     

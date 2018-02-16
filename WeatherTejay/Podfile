@@ -7,8 +7,7 @@ target 'WeatherTejay' do
 
   pod 'SwiftyJSON'
   pod 'Alamofire'
-  pod 'SnapKit'
-
+  pod 'PKHUD'
   # Pods for WeatherTejay
 
 end

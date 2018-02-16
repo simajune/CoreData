@@ -3,6 +3,7 @@ import UIKit
 import CoreLocation
 import Alamofire
 import SwiftyJSON
+import PKHUD
 
 class MainViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -110,6 +111,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             }else {
                 print("Error \(response.result.error!)")
                 self.locationLabel.text = "Connection Issues"
+                
             }
         }
     }

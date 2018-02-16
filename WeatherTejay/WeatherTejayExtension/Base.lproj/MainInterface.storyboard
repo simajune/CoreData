@@ -34,8 +34,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clear" translatesAutoresizingMaskIntoConstraints="NO" id="V06-sM-h5d">
-                                        <rect key="frame" x="228.5" y="27.5" width="55" height="55"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V06-sM-h5d">
+                                        <rect key="frame" x="236.5" y="27.5" width="55" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="V06-sM-h5d" secondAttribute="height" multiplier="1:1" id="dcS-QO-7r5"/>
                                         </constraints>
@@ -46,8 +46,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cloud" translatesAutoresizingMaskIntoConstraints="NO" id="WaB-aL-3M2">
-                                        <rect key="frame" x="132.5" y="27" width="55" height="55"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WaB-aL-3M2">
+                                        <rect key="frame" x="138.5" y="33" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="WaB-aL-3M2" secondAttribute="height" multiplier="1:1" id="ija-Pv-zol"/>
                                         </constraints>
@@ -88,7 +88,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨정보" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFp-qS-DRI">
-                                        <rect key="frame" x="228" y="86.5" width="55" height="14.5"/>
+                                        <rect key="frame" x="236" y="86.5" width="55" height="14.5"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -107,14 +107,13 @@
                                     <constraint firstItem="e67-oq-hRk" firstAttribute="centerX" secondItem="PSx-fI-pec" secondAttribute="centerX" id="8EG-ON-C0a"/>
                                     <constraint firstItem="gyc-l9-EUl" firstAttribute="centerX" secondItem="WaB-aL-3M2" secondAttribute="centerX" id="BUq-ES-DFh"/>
                                     <constraint firstItem="WaB-aL-3M2" firstAttribute="centerX" secondItem="PSx-fI-pec" secondAttribute="centerX" id="DaQ-Fi-rKt"/>
-                                    <constraint firstItem="WaB-aL-3M2" firstAttribute="width" secondItem="V06-sM-h5d" secondAttribute="width" id="G1M-Ne-792"/>
+                                    <constraint firstItem="WaB-aL-3M2" firstAttribute="width" secondItem="V06-sM-h5d" secondAttribute="width" multiplier="0.8" id="G1M-Ne-792"/>
                                     <constraint firstItem="e67-oq-hRk" firstAttribute="width" secondItem="PSx-fI-pec" secondAttribute="width" id="HN0-x0-afZ"/>
-                                    <constraint firstItem="gyc-l9-EUl" firstAttribute="top" secondItem="WaB-aL-3M2" secondAttribute="bottom" constant="4" id="Ix4-SA-99p"/>
                                     <constraint firstItem="AFp-qS-DRI" firstAttribute="centerX" secondItem="V06-sM-h5d" secondAttribute="centerX" id="OGl-yb-NeJ"/>
                                     <constraint firstItem="WaB-aL-3M2" firstAttribute="centerY" secondItem="V06-sM-h5d" secondAttribute="centerY" id="PgE-yU-11m"/>
                                     <constraint firstItem="AFp-qS-DRI" firstAttribute="top" secondItem="V06-sM-h5d" secondAttribute="bottom" constant="4" id="PlX-cd-BG1"/>
                                     <constraint firstItem="e67-oq-hRk" firstAttribute="top" secondItem="PSx-fI-pec" secondAttribute="top" constant="5" id="UII-dt-oWf"/>
-                                    <constraint firstItem="V06-sM-h5d" firstAttribute="centerX" secondItem="PSx-fI-pec" secondAttribute="centerX" multiplier="1.6" id="VTq-na-Vel"/>
+                                    <constraint firstItem="V06-sM-h5d" firstAttribute="centerX" secondItem="PSx-fI-pec" secondAttribute="centerX" multiplier="1.65" id="VTq-na-Vel"/>
                                     <constraint firstItem="ks3-Xr-bmk" firstAttribute="centerX" secondItem="PSx-fI-pec" secondAttribute="centerX" multiplier="0.25" id="X1Y-3p-epW"/>
                                     <constraint firstItem="V06-sM-h5d" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" id="XKd-Zl-UVW"/>
                                     <constraint firstItem="Jfb-mt-zDs" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" multiplier="1.7" id="amg-Vy-fVr"/>
@@ -123,6 +122,7 @@
                                     <constraint firstItem="gJm-7n-yj2" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" multiplier="1.1" id="dcE-9i-6Rv"/>
                                     <constraint firstItem="gJm-7n-yj2" firstAttribute="centerX" secondItem="ks3-Xr-bmk" secondAttribute="centerX" id="fhg-MR-GOP"/>
                                     <constraint firstItem="ks3-Xr-bmk" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" multiplier="0.75" id="g8e-kb-dFg"/>
+                                    <constraint firstItem="gyc-l9-EUl" firstAttribute="centerY" secondItem="AFp-qS-DRI" secondAttribute="centerY" id="pEM-5R-d8D"/>
                                     <constraint firstItem="V06-sM-h5d" firstAttribute="height" secondItem="PSx-fI-pec" secondAttribute="height" multiplier="0.5" id="rZz-hg-33K"/>
                                     <constraint firstItem="p2l-Iu-jUj" firstAttribute="centerX" secondItem="ks3-Xr-bmk" secondAttribute="centerX" id="roE-Af-dpP"/>
                                     <constraint firstItem="AFp-qS-DRI" firstAttribute="width" secondItem="V06-sM-h5d" secondAttribute="width" id="rxh-yv-gRV"/>
@@ -171,8 +171,4 @@
             </objects>
         </scene>
     </scenes>
-    <resources>
-        <image name="Clear" width="200" height="200"/>
-        <image name="Cloud" width="200" height="200"/>
-    </resources>
 </document>
