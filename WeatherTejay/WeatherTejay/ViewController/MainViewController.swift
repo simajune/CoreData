@@ -103,7 +103,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     //현재의 날씨 데이터 가져오기
     func getCurrentWeatherData(url: String, parameters: [String: String]) {
         WeatherDataModel.main.weatherData.removeAll()
-        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
+            guard let `self` = self else { return }
             if response.result.isSuccess {
                 print("Success! Got the weather data")
                 let currentWeatherJSON: JSON = JSON(response.result.value!)
@@ -111,14 +112,15 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             }else {
                 print("Error \(response.result.error!)")
                 self.locationLabel.text = "Connection Issues"
-                
+                HUD.flash(HUDContentType.label("잠시후\n다시 시도해주세요"), delay: 1.0)
             }
         }
     }
     //일기 예보 정보 가져오기
     func getforecastWeatherData(url: String, parameters: [String: String]) {
         WeatherDataModel.main.weatherData.removeAll()
-        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
+            guard let `self` = self else { return }
             if response.result.isSuccess {
                 print("Success! Got the weather data")
                 let weatherJSON: JSON = JSON(response.result.value!)
@@ -126,12 +128,14 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             }else {
                 print("Error \(response.result.error!)")
                 self.locationLabel.text = "Connection Issues"
+                HUD.flash(HUDContentType.label("잠시후\n다시 시도해주세요"), delay: 1.0)
             }
         }
     }
     //미세먼지 API JSON 가져오기
     func getTMData(url: String, parameters: [String: String]) {
-        Alamofire.request(url, method: .get, parameters: parameters, headers: kakaoHeaders).responseJSON { response in
+        Alamofire.request(url, method: .get, parameters: parameters, headers: kakaoHeaders).responseJSON { [weak self] response in
+            guard let `self` = self else { return }
             if response.result.isSuccess {
                 let data: JSON = JSON(response.result.value!)
                 let locationTMx = data["documents"][0]["x"].stringValue
@@ -140,6 +144,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 self.getMeasuringStation(url: dustMeasuringStationURL, parameters: params)
             }else {
                 print("Error \(response.result.error!)")
+                HUD.flash(HUDContentType.label("잠시후\n다시 시도해주세요"), delay: 1.0)
             }
         }
     }
@@ -155,6 +160,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 self.getDustData(url: dustDataURL, parameters: params)
             }else {
                 print("Error \(response.result.error!)")
+                HUD.flash(HUDContentType.label("잠시후\n다시 시도해주세요"), delay: 1.0)
             }
         }
     }
@@ -164,7 +170,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         WeatherDataModel.main.dustData.removeAll()
         WeatherDataModel.main.currentDustData.removeAll()
         WeatherDataModel.main.currentDustGrade.removeAll()
-        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
+            guard let `self` = self else { return }
             if response.result.isSuccess {
                 let datas = JSON(response.result.value!)
                 for title in WeatherDataModel.main.dustContent {
@@ -183,6 +190,29 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 self.weatherCollectionView.reloadData()
             }else {
                 print("Error \(response.result.error!)")
+                HUD.flash(HUDContentType.label("잠시후\n다시 시도해주세요"), delay: 1.0)
+            }
+        }
+    }
+    
+    func getforecastDustData(url: String, parameters: [String: String]) {
+        WeatherDataModel.main.forecastDustDate.removeAll()
+        WeatherDataModel.main.forecastDustInformCause.removeAll()
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
+            print(response.request)
+            if response.result.isSuccess {
+                let datas = JSON(response.result.value!)
+                for data in 0...1 {
+                    print(datas)
+                    WeatherDataModel.main.forecastDustDate.append(datas["list"][data]["informData"].stringValue)
+                    WeatherDataModel.main.forecastDustInformCause.append(datas["list"][data]["informCause"].stringValue)
+                    WeatherDataModel.main.forecastDustInformOverall.append(datas["list"][data]["informOverall"].stringValue)
+                }
+                print(WeatherDataModel.main.forecastDustInformOverall)
+                self.weatherCollectionView.reloadData()
+            }else {
+                print(response.result.error!)
+                HUD.flash(HUDContentType.label("잠시후\n다시 시도해주세요"), delay: 1.0)
             }
         }
     }
@@ -220,6 +250,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             //updateUIWithWeatherDate()
         }else {
             locationLabel.text = "Weather Unavailable"
+            HUD.flash(HUDContentType.label("잠시후\n다시 시도해주세요"), delay: 1.0)
         }
     }
 
@@ -247,6 +278,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 self.locationLabel.text = data["documents"][0]["region_2depth_name"].stringValue + " " + data["documents"][0]["region_3depth_name"].stringValue
             }else {
                 print("error")
+                HUD.flash(HUDContentType.label("잠시후\n다시 시도해주세요"), delay: 1.0)
             }
         }
     }
@@ -259,16 +291,27 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         if location.horizontalAccuracy > 0 {
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
-            //print("long = \(location.coordinate.longitude), lat = \(location.coordinate.latitude)")
             let longitude = String(location.coordinate.longitude)
             let latitude = String(location.coordinate.latitude)
-//            print("long", longitude)
-//            print("lat", latitude)
             
             let param: [String: String] = ["lat": latitude, "lon": longitude, "appid": weatherAPIKey]
             let locationParams: [String: String] = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "WCONGNAMUL"]
             let tmParams: [String: String] = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "WTM"]
             
+            formatter.dateFormat = "HH"
+            let hour: Int = Int(formatter.string(from: Date()))!
+            var currentdate: String = ""
+            if hour >= 5 {
+                formatter.dateFormat = "yyyy-MM-dd"
+                currentdate = formatter.string(from: Date())
+            }else {
+                formatter.dateFormat = "yyyy-MM-dd"
+                currentdate = formatter.string(from: Date(timeIntervalSinceNow: -86400))
+            }
+            
+            let forecastDust: [String: String] = ["searchDate": currentdate, "ServiceKey": dustAPIKey, "_returnType": "json"]
+            
+            getforecastDustData(url: forecastDustURL, parameters: forecastDust)
             getLocationData(url: kakaoGetAddressURL, parameters: locationParams)
             getCurrentWeatherData(url: currentWeatherURL, parameters: param)
             getforecastWeatherData(url: weatherURL, parameters: param)
@@ -281,12 +324,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         print(error)
         locationLabel.text = "Location Unavailable"
     }
-    
-    func updateForecastweather() {
-        
-    }
-
-
 }
 
 extension MainViewController: UICollectionViewDataSource {
@@ -298,11 +335,9 @@ extension MainViewController: UICollectionViewDataSource {
         if indexPath.item == 1 {
             let cellB = collectionView.dequeueReusableCell(withReuseIdentifier: "cellB", for: indexPath) as! CellB
             cellB.cellCount = WeatherDataModel.main.currentDustDataCount
-//            print(WeatherDataModel.main.currentDustDataCount)
             if WeatherDataModel.main.currentDustDataCount == WeatherDataModel.main.oldCurrentDustDataCount {
                 cellB.dustTableView.reloadData()
             }
-//            print("cellBCount: ", cellB.cellCount)
             return cellB
         } else {
             let cellA = collectionView.dequeueReusableCell(withReuseIdentifier: "cellA", for: indexPath) as! CellA
@@ -310,7 +345,6 @@ extension MainViewController: UICollectionViewDataSource {
             if WeatherDataModel.main.forecastCount == WeatherDataModel.main.preforecastCount {
                 cellA.forecastCollectionView.reloadData()
             }
-//            print("cellACount: ", cellA.cellCount)
             return cellA
         }
     }

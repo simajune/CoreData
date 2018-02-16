@@ -28,7 +28,9 @@ let dustMeasuringStationURL = "http://openapi.airkorea.or.kr/openapi/services/re
 //측정소에 따른 데이터 값
 //파라미터 stationName, dataTerm, pageNo=1 ,numOfRows=10, ServiceKey, ver=1.3, _returnType=json
 let dustDataURL = "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty"
-
+//해당 날짜에 정보와 예측 정보
+//파라미터 ["searchDate": currentdate, "ServiceKey": dustAPIKey, "_returnType": "json"]
+let forecastDustURL = "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getMinuDustFrcstDspth"
 //카카오 REST API사용
 let kakaoHeaders: HTTPHeaders = ["Authorization": "KakaoAK 709086004e1cdbed5393c28e4571cb95"]
 let kakaoAPIKey = "709086004e1cdbed5393c28e4571cb95"

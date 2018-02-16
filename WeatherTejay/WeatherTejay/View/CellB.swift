@@ -14,6 +14,7 @@ class CellB: UICollectionViewCell {
     @IBOutlet weak var dustTableView: UITableView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        dustTableView.rowHeight = UITableViewAutomaticDimension
     }
     
 }
@@ -26,12 +27,16 @@ extension CellB: UITableViewDataSource {
             //print(WeatherDataModel.main.currentDustDataCount)
             return WeatherDataModel.main.currentDustData.count
         }
-        return 2
+        return WeatherDataModel.main.forecastDustDate.count
     }
     //테이블 뷰 셀 설정
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCellB", for: indexPath) as! ItemCellB
+            cell.unitLabel.isHidden = false
+            cell.gradeLabel.isHidden = false
+            cell.dustValueLabel.isHidden = false
+            cell.forecastDustTxtView.isHidden = true
             cell.label.text = WeatherDataModel.main.dustName[indexPath.row]
             //print(WeatherDataModel.main.currentDustData)
             cell.dustValueLabel.text = WeatherDataModel.main.currentDustData[indexPath.row]
@@ -45,6 +50,12 @@ extension CellB: UITableViewDataSource {
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCellB", for: indexPath) as! ItemCellB
+            cell.unitLabel.isHidden = true
+            cell.gradeLabel.isHidden = true
+            cell.dustValueLabel.isHidden = true
+            cell.forecastDustTxtView.isHidden = false
+            cell.label.text = WeatherDataModel.main.forecastDustDate[indexPath.row]
+            cell.forecastDustTxtView.text = WeatherDataModel.main.forecastDustInformOverall[indexPath.row]
             return cell
         }
     }
@@ -62,6 +73,15 @@ extension CellB: UITableViewDelegate {
             headerTitle.contentView.backgroundColor = UIColor(red:0.55, green:0.69, blue:1.00, alpha:1.00)
         }
     }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
     //테이블 뷰 섹션의 타이틀 설정
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 1 {

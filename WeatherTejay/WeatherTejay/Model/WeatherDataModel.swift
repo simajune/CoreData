@@ -37,6 +37,9 @@ class WeatherDataModel {
     var dustContent: [String] = ["pm10Value", "pm25Value", "so2Value", "coValue", "o3Value", "no2Value"]
     var dustGrade: [String] = ["pm10Grade", "pm25Grade", "so2Grade", "coGrade", "o3Grade", "no2Grade"]
     var dustName: [String] = ["미세먼지", "초미세먼지", "아황산가스", "일산화탄소", "오존", "이산화질소"]
+    var forecastDustDate: [String] = []
+    var forecastDustInformCause: [String] = []
+    var forecastDustInformOverall: [String] = []
     
 //    없어도 되는데 없애진 말고 일단 두고 보자
 //    var address: String = ""

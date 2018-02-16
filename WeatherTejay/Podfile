@@ -18,7 +18,6 @@ target 'WeatherTejayExtension' do
   
   pod 'SwiftyJSON'
   pod 'Alamofire'
-
   # Pods for WeatherTejayExtension
 
 end
