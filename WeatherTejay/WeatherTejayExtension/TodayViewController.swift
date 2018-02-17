@@ -40,7 +40,13 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
-        
+        WeatherDataModel.main.dustData.removeAll()
+        WeatherDataModel.main.currentDustData.removeAll()
+        WeatherDataModel.main.currentDustGrade.removeAll()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         // If an error is encountered, use NCUpdateResult.Failed
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
