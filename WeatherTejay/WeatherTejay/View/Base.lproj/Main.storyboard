@@ -26,19 +26,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hk2-RI-j9d">
-                                <rect key="frame" x="0.0" y="100" width="375" height="333.5"/>
+                                <rect key="frame" x="0.0" y="100" width="300" height="333.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" id="jbZ-5b-HKX">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="jbZ-5b-HKX" customClass="MenuCell" customModule="WeatherTejay" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jbZ-5b-HKX" id="yCV-Tw-CSh">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="267" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메뉴" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IiM-wx-but">
+                                                    <rect key="frame" x="13.5" y="12.5" width="25.5" height="20"/>
+                                                    <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="IiM-wx-but" firstAttribute="centerY" secondItem="yCV-Tw-CSh" secondAttribute="centerY" id="BdL-Jb-3xu"/>
+                                                <constraint firstItem="IiM-wx-but" firstAttribute="leading" secondItem="yCV-Tw-CSh" secondAttribute="centerX" multiplier="0.1" id="SWX-cM-pH9"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="IiM-wx-but" id="S0A-N3-RvN"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -65,21 +80,76 @@
                         </subviews>
                         <color key="backgroundColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="hk2-RI-j9d" firstAttribute="width" secondItem="vLb-zE-VuW" secondAttribute="width" id="NgB-Vg-O1M"/>
+                            <constraint firstItem="hk2-RI-j9d" firstAttribute="width" secondItem="vLb-zE-VuW" secondAttribute="width" multiplier="0.8" id="NgB-Vg-O1M"/>
                             <constraint firstItem="M16-qa-WFp" firstAttribute="height" secondItem="vLb-zE-VuW" secondAttribute="height" multiplier="0.1" id="UOq-BT-Mdd"/>
                             <constraint firstItem="M16-qa-WFp" firstAttribute="centerY" secondItem="vLb-zE-VuW" secondAttribute="centerY" multiplier="0.1" id="Vwd-OD-HHC"/>
                             <constraint firstItem="hk2-RI-j9d" firstAttribute="height" secondItem="vLb-zE-VuW" secondAttribute="height" multiplier="0.5" id="YuJ-mp-rO8"/>
-                            <constraint firstItem="hk2-RI-j9d" firstAttribute="centerX" secondItem="vLb-zE-VuW" secondAttribute="centerX" id="k66-3j-vG0"/>
+                            <constraint firstItem="hk2-RI-j9d" firstAttribute="leading" secondItem="vLb-zE-VuW" secondAttribute="leading" id="k66-3j-vG0"/>
                             <constraint firstItem="M16-qa-WFp" firstAttribute="centerX" secondItem="vLb-zE-VuW" secondAttribute="centerX" id="vPp-52-U7B"/>
                             <constraint firstItem="hk2-RI-j9d" firstAttribute="centerY" secondItem="vLb-zE-VuW" secondAttribute="centerY" multiplier="0.8" id="zdK-LT-KHa"/>
                             <constraint firstItem="M16-qa-WFp" firstAttribute="width" secondItem="vLb-zE-VuW" secondAttribute="width" id="zgE-ih-8wv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ned-NL-lrf"/>
                     </view>
+                    <connections>
+                        <segue destination="EqQ-nq-Fw7" kind="show" identifier="ToAbout" id="v6s-42-LTC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkz-NU-Rfu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="645.60000000000002" y="-586.05697151424295"/>
+            <point key="canvasLocation" x="984.79999999999995" y="-586.05697151424295"/>
+        </scene>
+        <!--About View Controller-->
+        <scene sceneID="ZaH-BE-Mzh">
+            <objects>
+                <viewController id="EqQ-nq-Fw7" customClass="AboutViewController" customModule="WeatherTejay" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RjQ-xv-Z3f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NcR-Ln-7GB" userLabel="Navi Bar">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="먼지날씨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89o-6Y-pC9">
+                                        <rect key="frame" x="150.5" y="32.5" width="75.5" height="30"/>
+                                        <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COj-2V-auf">
+                                        <rect key="frame" x="4" y="32.5" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="COj-2V-auf" secondAttribute="height" multiplier="1:1" id="Vfp-Gx-WUX"/>
+                                            <constraint firstAttribute="width" constant="30" id="ztN-yu-o2l"/>
+                                        </constraints>
+                                        <state key="normal" image="Back"/>
+                                        <connections>
+                                            <action selector="backBtnAction:" destination="EqQ-nq-Fw7" eventType="touchUpInside" id="XGF-EI-GFL"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="COj-2V-auf" firstAttribute="centerY" secondItem="89o-6Y-pC9" secondAttribute="centerY" id="8Mg-sE-vCJ"/>
+                                    <constraint firstItem="89o-6Y-pC9" firstAttribute="centerY" secondItem="NcR-Ln-7GB" secondAttribute="centerY" multiplier="1.4" id="YsN-mf-IKq"/>
+                                    <constraint firstItem="89o-6Y-pC9" firstAttribute="centerX" secondItem="NcR-Ln-7GB" secondAttribute="centerX" id="hTW-cH-bDj"/>
+                                    <constraint firstItem="COj-2V-auf" firstAttribute="centerX" secondItem="NcR-Ln-7GB" secondAttribute="centerX" multiplier="0.1" id="lE9-f0-atQ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="NcR-Ln-7GB" firstAttribute="width" secondItem="RjQ-xv-Z3f" secondAttribute="width" id="B3W-z3-19g"/>
+                            <constraint firstItem="NcR-Ln-7GB" firstAttribute="height" secondItem="RjQ-xv-Z3f" secondAttribute="height" multiplier="0.1" id="LyH-4q-uwU"/>
+                            <constraint firstItem="NcR-Ln-7GB" firstAttribute="top" secondItem="RjQ-xv-Z3f" secondAttribute="top" id="OeS-cQ-8jR"/>
+                            <constraint firstItem="NcR-Ln-7GB" firstAttribute="centerX" secondItem="RjQ-xv-Z3f" secondAttribute="centerX" id="Zaf-fL-A1h"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cs1-Jh-Cvr"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="48C-Zz-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1834" y="-586"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -136,7 +206,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨 온도" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzH-ZY-CIr">
-                                        <rect key="frame" x="23.5" y="127" width="46.5" height="17"/>
+                                        <rect key="frame" x="24" y="127" width="46.5" height="17"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -445,7 +515,7 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="먼지날씨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBd-2S-bvY">
-                                <rect key="frame" x="150.5" y="31.5" width="75.5" height="30"/>
+                                <rect key="frame" x="150" y="31.5" width="75.5" height="30"/>
                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -489,7 +559,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="645.60000000000002" y="132.68365817091455"/>
+            <point key="canvasLocation" x="984.79999999999995" y="132.68365817091455"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="mXD-Ii-wOd">
@@ -567,7 +637,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주소 검색" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuP-Pc-XGf">
-                                <rect key="frame" x="155.5" y="38" width="65.5" height="24"/>
+                                <rect key="frame" x="155" y="38" width="65.5" height="24"/>
                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -599,7 +669,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zDG-dr-ep4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1445.5999999999999" y="133.5832083958021"/>
+            <point key="canvasLocation" x="1784.8" y="133.5832083958021"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="YVe-Le-XVk">
@@ -616,7 +686,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="먼지날씨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9G-yM-aPa">
-                                <rect key="frame" x="106.5" y="368" width="161" height="64"/>
+                                <rect key="frame" x="107" y="368" width="161" height="64"/>
                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="64"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -635,12 +705,12 @@
                     <connections>
                         <outlet property="logoImg" destination="u2E-Tv-MdZ" id="L6C-yD-xt1"/>
                         <outlet property="titleLabel" destination="r9G-yM-aPa" id="yaX-8N-zUq"/>
-                        <segue destination="7dK-FG-3gG" kind="presentation" identifier="ToMain" id="hcB-dO-WCH"/>
+                        <segue destination="4RA-8Y-ZPd" kind="presentation" identifier="ToMain" id="hcB-dO-WCH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fgU-iB-tN6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1124" y="-155"/>
+            <point key="canvasLocation" x="-1394" y="-155"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="3od-89-8CC">
@@ -652,6 +722,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="dlp-og-1ue"/>
                     </view>
+                    <navigationItem key="navigationItem" id="mhP-Op-QdO"/>
                     <connections>
                         <segue destination="i6q-TK-ii3" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="sPn-fd-tlS"/>
                         <segue destination="BYZ-38-t0r" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="kd7-yR-0VS"/>
@@ -659,10 +730,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QYV-Zs-GHH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-270" y="-155"/>
+            <point key="canvasLocation" x="68" y="-155.17241379310346"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rUp-wV-Eo6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="4RA-8Y-ZPd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UrA-s8-PBf">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7dK-FG-3gG" kind="relationship" relationship="rootViewController" id="tNa-Fq-oU2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="583-bO-Iby" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-665" y="-155"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Back" width="100" height="100"/>
         <image name="Bad" width="154" height="154"/>
         <image name="Clear" width="200" height="200"/>
         <image name="Exit" width="24" height="24"/>

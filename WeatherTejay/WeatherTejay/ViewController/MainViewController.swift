@@ -106,7 +106,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
             guard let `self` = self else { return }
             if response.result.isSuccess {
-                print("Success! Got the weather data")
                 let currentWeatherJSON: JSON = JSON(response.result.value!)
                 self.updateCurrentWeatherData(json: currentWeatherJSON)
             }else {
@@ -122,7 +121,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
             guard let `self` = self else { return }
             if response.result.isSuccess {
-                print("Success! Got the weather data")
                 let weatherJSON: JSON = JSON(response.result.value!)
                 self.updateforecastWeatherData(json: weatherJSON)
             }else {
@@ -154,7 +152,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             guard let `self` = self else { return }
             if response.result.isSuccess {
                 let data = JSON(response.result.value!)
-                //print("measutingStation", data)
                 let stationName = data["list"][0]["stationName"].stringValue
                 let params: [String: String] = ["stationName": stationName, "dataTerm": "MONTH", "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "ver": "1.3", "_returnType": "json"]
                 self.getDustData(url: dustDataURL, parameters: params)
@@ -199,16 +196,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         WeatherDataModel.main.forecastDustDate.removeAll()
         WeatherDataModel.main.forecastDustInformCause.removeAll()
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
-            print(response.request)
             if response.result.isSuccess {
                 let datas = JSON(response.result.value!)
                 for data in 0...1 {
-                    print(datas)
                     WeatherDataModel.main.forecastDustDate.append(datas["list"][data]["informData"].stringValue)
                     WeatherDataModel.main.forecastDustInformCause.append(datas["list"][data]["informCause"].stringValue)
                     WeatherDataModel.main.forecastDustInformOverall.append(datas["list"][data]["informOverall"].stringValue)
                 }
-                print(WeatherDataModel.main.forecastDustInformOverall)
                 self.weatherCollectionView.reloadData()
             }else {
                 print(response.result.error!)
