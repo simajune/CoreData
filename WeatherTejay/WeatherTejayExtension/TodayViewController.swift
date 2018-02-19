@@ -224,11 +224,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
             let param: [String: String] = ["lat": latitude, "lon": longitude, "appid": weatherAPIKey]
             let locationParams: [String: String] = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "WCONGNAMUL"]
             let tmParams: [String: String] = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "WTM"]
-            DispatchQueue.main.async {
-                self.getLocationData(url: kakaoGetAddressURL, parameters: locationParams)
-                self.getCurrentWeatherData(url: currentWeatherURL, parameters: param)
-                self.getTMData(url: kakaoCoordinateURL, parameters: tmParams)
-            }
+            self.getLocationData(url: kakaoGetAddressURL, parameters: locationParams)
+            self.getCurrentWeatherData(url: currentWeatherURL, parameters: param)
+            self.getTMData(url: kakaoCoordinateURL, parameters: tmParams)
         }
     }
     
