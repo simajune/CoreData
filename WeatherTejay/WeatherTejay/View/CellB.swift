@@ -55,7 +55,9 @@ extension CellB: UITableViewDataSource {
             cell.dustValueLabel.isHidden = true
             cell.forecastDustTxtView.isHidden = false
             cell.label.text = WeatherDataModel.main.forecastDustDate[indexPath.row]
+            cell.forecastDustTxtView.font = UIFont(name: "Yanolja Yache OTF", size: 12)
             cell.forecastDustTxtView.text = WeatherDataModel.main.forecastDustInformOverall[indexPath.row]
+            cell.forecastDustTxtView.text = cell.forecastDustTxtView.text.replace(target: "○ [미세먼지]", withString: "")
             return cell
         }
     }
@@ -79,7 +81,7 @@ extension CellB: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 40
     }
     
     //테이블 뷰 섹션의 타이틀 설정

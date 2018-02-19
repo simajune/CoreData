@@ -4,7 +4,7 @@ import MessageUI
 
 class MenuViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
-    var menuTitle: [String] = ["먼지날씨에 대해", "오픈소스 정보", "개발자에게 한마디"]
+    var menuTitle: [String] = ["먼지날씨에 대해", "오픈소스 라이센스", "개발자에게 한마디"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,7 @@ extension MenuViewController: UITableViewDelegate {
         if indexPath.row == 0 {
             performSegue(withIdentifier: "ToAbout", sender: nil)
         }else if indexPath.row == 1 {
-            
+            performSegue(withIdentifier: "ToLicense", sender: nil)
         }else {
             sendEmail()
         }

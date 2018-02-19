@@ -38,7 +38,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메뉴" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IiM-wx-but">
-                                                    <rect key="frame" x="13.5" y="12.5" width="25.5" height="20"/>
+                                                    <rect key="frame" x="13.5" y="12" width="25.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -65,7 +65,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M16-qa-WFp" userLabel="Navi Bar">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="66.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="먼지날씨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHH-3n-WsT">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨먼지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHH-3n-WsT">
                                         <rect key="frame" x="19" y="38.5" width="60.5" height="24"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="24"/>
                                         <nil key="textColor"/>
@@ -95,17 +95,17 @@
                     </view>
                     <connections>
                         <segue destination="EqQ-nq-Fw7" kind="show" identifier="ToAbout" id="v6s-42-LTC"/>
-                        <segue destination="nvB-L8-5bk" kind="show" id="dxb-jC-VYt"/>
+                        <segue destination="nvB-L8-5bk" kind="show" identifier="ToLicense" id="dxb-jC-VYt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkz-NU-Rfu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="984.79999999999995" y="-586.05697151424295"/>
         </scene>
-        <!--View Controller-->
+        <!--License View Controller-->
         <scene sceneID="6Kb-Ng-5JW">
             <objects>
-                <viewController id="nvB-L8-5bk" sceneMemberID="viewController">
+                <viewController id="nvB-L8-5bk" customClass="LicenseViewController" customModule="WeatherTejay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mqn-dl-hLG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -113,8 +113,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ME-6Y-f33" userLabel="Navi Bar">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="먼지날씨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAH-79-DzS">
-                                        <rect key="frame" x="150" y="32" width="75.5" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨먼지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAH-79-DzS">
+                                        <rect key="frame" x="150.5" y="32" width="75.5" height="30"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -127,6 +127,7 @@
                                         </constraints>
                                         <state key="normal" image="Back"/>
                                         <connections>
+                                            <action selector="backBtnAction:" destination="nvB-L8-5bk" eventType="touchUpInside" id="353-AO-cu8"/>
                                             <action selector="backBtnAction:" destination="EqQ-nq-Fw7" eventType="touchUpInside" id="P8w-YT-9Yl"/>
                                         </connections>
                                     </button>
@@ -139,20 +140,78 @@
                                     <constraint firstItem="8ZJ-O6-TS7" firstAttribute="centerX" secondItem="2ME-6Y-f33" secondAttribute="centerX" multiplier="0.1" id="sz5-Ca-04I"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨먼지는 아래의 오픈소스를 사용합니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8X-Vd-Slm">
+                                <rect key="frame" x="55.5" y="122.5" width="263.5" height="22"/>
+                                <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="e5Z-cm-kOH">
+                                <rect key="frame" x="0.0" y="174.5" width="375" height="492.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <mutableString key="text">Alamofire
+https://github.com/Alamofire/Alamofire
+Copyright (c) 2014-2017 Alamofire Software Foundation (http://alamofire.org/)
+MIT License
+
+SwiftyJSON
+https://github.com/SwiftyJSON/SwiftyJSON
+Copyright (c) 2017 Ruoyu Fu
+MIT License
+
+PKHUD
+https://github.com/pkluz/PKHUD
+Copyright (c) 2014 Philip Kluz (Philip.Kluz@gmail.com)
+MIT License
+
+
+The MIT License (MIT)
+
+Copyright (c) &lt;year&gt; &lt;copyright holder&gt;
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</mutableString>
+                                <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="K8X-Vd-Slm" firstAttribute="centerY" secondItem="mqn-dl-hLG" secondAttribute="centerY" multiplier="0.4" id="5bh-UT-QMp"/>
                             <constraint firstItem="2ME-6Y-f33" firstAttribute="width" secondItem="mqn-dl-hLG" secondAttribute="width" id="FFC-4v-kSM"/>
                             <constraint firstItem="2ME-6Y-f33" firstAttribute="centerX" secondItem="mqn-dl-hLG" secondAttribute="centerX" id="FsS-Ct-1ov"/>
                             <constraint firstItem="2ME-6Y-f33" firstAttribute="centerY" secondItem="mqn-dl-hLG" secondAttribute="centerY" multiplier="0.1" id="WG6-zs-PXh"/>
+                            <constraint firstItem="K8X-Vd-Slm" firstAttribute="centerX" secondItem="mqn-dl-hLG" secondAttribute="centerX" id="Wuj-xh-Ruo"/>
+                            <constraint firstItem="e5Z-cm-kOH" firstAttribute="trailing" secondItem="Ph5-v3-avl" secondAttribute="trailing" id="azC-VM-0LH"/>
                             <constraint firstItem="2ME-6Y-f33" firstAttribute="height" secondItem="mqn-dl-hLG" secondAttribute="height" multiplier="0.1" id="cMD-UT-wMQ"/>
+                            <constraint firstItem="e5Z-cm-kOH" firstAttribute="top" secondItem="K8X-Vd-Slm" secondAttribute="bottom" constant="30" id="iX3-Ak-35O"/>
+                            <constraint firstItem="e5Z-cm-kOH" firstAttribute="leading" secondItem="Ph5-v3-avl" secondAttribute="leading" id="rgg-pk-uzx"/>
+                            <constraint firstAttribute="bottom" secondItem="e5Z-cm-kOH" secondAttribute="bottom" id="zx9-2z-9a4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ph5-v3-avl"/>
                     </view>
+                    <connections>
+                        <outlet property="licenseTxtView" destination="e5Z-cm-kOH" id="OxD-S5-38f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ryJ-yi-HhD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1860" y="-586"/>
+            <point key="canvasLocation" x="1860" y="-586.05697151424295"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="ZaH-BE-Mzh">
@@ -166,7 +225,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="먼지날씨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89o-6Y-pC9">
-                                        <rect key="frame" x="150" y="32" width="75.5" height="30"/>
+                                        <rect key="frame" x="150.5" y="32" width="75.5" height="30"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -191,8 +250,8 @@
                                     <constraint firstItem="COj-2V-auf" firstAttribute="centerX" secondItem="NcR-Ln-7GB" secondAttribute="centerX" multiplier="0.1" id="lE9-f0-atQ"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ejv-EI-ndM">
-                                <rect key="frame" x="0.0" y="117" width="375" height="101"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejv-EI-ndM">
+                                <rect key="frame" x="0.0" y="149.5" width="375" height="101"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">먼지날씨는 실시간 날씨와 날씨예보 그리고 미세먼지정보를 제공합니다.
 날씨정보는 openweathermap에서 제공하는 정보를 가져오고 
@@ -201,8 +260,8 @@
                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dRI-Rb-mMh">
-                                <rect key="frame" x="0.0" y="250" width="375" height="101"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRI-Rb-mMh">
+                                <rect key="frame" x="0.0" y="316.5" width="375" height="101"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">통합대기지수의 등급은 총 4단계인  
 좋음, 보통, 나쁨, 매우나쁨으로 구성되어 있습니다.</string>
@@ -210,19 +269,19 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="먼지날씨란" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDw-ed-ovI">
-                                <rect key="frame" x="152.5" y="89" width="70" height="22"/>
+                                <rect key="frame" x="153" y="122.5" width="70" height="22"/>
                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="통합대기지수 등급표" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1m-Mi-hY0">
-                                <rect key="frame" x="123.5" y="223" width="128.5" height="22"/>
+                                <rect key="frame" x="123.5" y="289" width="128.5" height="22"/>
                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wSB-5C-pGF">
-                                <rect key="frame" x="19" y="317" width="337.5" height="101.5"/>
+                                <rect key="frame" x="19" y="383" width="337.5" height="101.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="e6C-fS-Lue">
                                         <rect key="frame" x="0.0" y="0.0" width="80.5" height="101.5"/>
@@ -352,10 +411,10 @@
                             <constraint firstItem="wSB-5C-pGF" firstAttribute="centerX" secondItem="RjQ-xv-Z3f" secondAttribute="centerX" id="Auz-1d-Mlq"/>
                             <constraint firstItem="NcR-Ln-7GB" firstAttribute="width" secondItem="RjQ-xv-Z3f" secondAttribute="width" id="B3W-z3-19g"/>
                             <constraint firstItem="FDw-ed-ovI" firstAttribute="centerX" secondItem="RjQ-xv-Z3f" secondAttribute="centerX" id="CEj-II-DBV"/>
-                            <constraint firstItem="ejv-EI-ndM" firstAttribute="centerY" secondItem="RjQ-xv-Z3f" secondAttribute="centerY" multiplier="0.5" id="I7b-jo-Eyv"/>
+                            <constraint firstItem="ejv-EI-ndM" firstAttribute="centerY" secondItem="RjQ-xv-Z3f" secondAttribute="centerY" multiplier="0.6" id="I7b-jo-Eyv"/>
                             <constraint firstItem="NcR-Ln-7GB" firstAttribute="height" secondItem="RjQ-xv-Z3f" secondAttribute="height" multiplier="0.1" id="LyH-4q-uwU"/>
-                            <constraint firstItem="FDw-ed-ovI" firstAttribute="centerY" secondItem="RjQ-xv-Z3f" secondAttribute="centerY" multiplier="0.3" id="NCM-3d-KC0"/>
-                            <constraint firstItem="dRI-Rb-mMh" firstAttribute="centerY" secondItem="RjQ-xv-Z3f" secondAttribute="centerY" multiplier="0.9" id="OMa-HS-ZnP"/>
+                            <constraint firstItem="FDw-ed-ovI" firstAttribute="centerY" secondItem="RjQ-xv-Z3f" secondAttribute="centerY" multiplier="0.4" id="NCM-3d-KC0"/>
+                            <constraint firstItem="dRI-Rb-mMh" firstAttribute="centerY" secondItem="RjQ-xv-Z3f" secondAttribute="centerY" multiplier="1.1" id="OMa-HS-ZnP"/>
                             <constraint firstItem="NcR-Ln-7GB" firstAttribute="top" secondItem="RjQ-xv-Z3f" secondAttribute="top" id="OeS-cQ-8jR"/>
                             <constraint firstItem="cs1-Jh-Cvr" firstAttribute="trailing" secondItem="ejv-EI-ndM" secondAttribute="trailing" id="OkY-2l-XYe"/>
                             <constraint firstItem="ejv-EI-ndM" firstAttribute="leading" secondItem="cs1-Jh-Cvr" secondAttribute="leading" id="TR4-bj-VbV"/>
@@ -364,13 +423,17 @@
                             <constraint firstItem="dRI-Rb-mMh" firstAttribute="height" secondItem="RjQ-xv-Z3f" secondAttribute="height" multiplier="0.15" id="dfb-Wf-IDf"/>
                             <constraint firstItem="dRI-Rb-mMh" firstAttribute="centerX" secondItem="RjQ-xv-Z3f" secondAttribute="centerX" id="eM5-5E-G5o"/>
                             <constraint firstItem="dRI-Rb-mMh" firstAttribute="width" secondItem="RjQ-xv-Z3f" secondAttribute="width" id="gZc-PW-vc1"/>
-                            <constraint firstItem="wSB-5C-pGF" firstAttribute="centerY" secondItem="RjQ-xv-Z3f" secondAttribute="centerY" multiplier="1.1" id="ge9-hQ-mIQ"/>
-                            <constraint firstItem="N1m-Mi-hY0" firstAttribute="centerY" secondItem="RjQ-xv-Z3f" secondAttribute="centerY" multiplier="0.7" id="jse-pQ-ZLd"/>
+                            <constraint firstItem="wSB-5C-pGF" firstAttribute="centerY" secondItem="RjQ-xv-Z3f" secondAttribute="centerY" multiplier="1.3" id="ge9-hQ-mIQ"/>
+                            <constraint firstItem="N1m-Mi-hY0" firstAttribute="centerY" secondItem="RjQ-xv-Z3f" secondAttribute="centerY" multiplier="0.9" id="jse-pQ-ZLd"/>
                             <constraint firstItem="ejv-EI-ndM" firstAttribute="height" secondItem="RjQ-xv-Z3f" secondAttribute="height" multiplier="0.15" id="uRh-6u-Q3P"/>
                             <constraint firstItem="N1m-Mi-hY0" firstAttribute="centerX" secondItem="RjQ-xv-Z3f" secondAttribute="centerX" id="yfT-0H-Mkf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cs1-Jh-Cvr"/>
                     </view>
+                    <connections>
+                        <outlet property="aboutTxtView" destination="ejv-EI-ndM" id="oit-tZ-WTd"/>
+                        <outlet property="gradeTxtView" destination="dRI-Rb-mMh" id="9tq-5Q-ZQb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48C-Zz-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -431,7 +494,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨 온도" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzH-ZY-CIr">
-                                        <rect key="frame" x="24" y="127" width="46.5" height="17"/>
+                                        <rect key="frame" x="23.5" y="127" width="46.5" height="17"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -565,7 +628,7 @@
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="j8J-ak-Mnd">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="7KA-IX-frD">
                                                         <size key="itemSize" width="86" height="79"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -601,7 +664,7 @@
                                                                     </label>
                                                                 </subviews>
                                                             </view>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="backgroundColor" white="0.66666666669999997" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="lkG-Xv-Gto" firstAttribute="centerX" secondItem="Szg-Nh-7gn" secondAttribute="centerX" id="1mD-MN-b5C"/>
                                                                 <constraint firstItem="gi8-pF-5aE" firstAttribute="bottom" secondItem="Szg-Nh-7gn" secondAttribute="centerY" multiplier="2" constant="-10" id="L4d-pp-gt3"/>
@@ -662,7 +725,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="○ 대기확산이 원활하여 대부분 ‘보통’ 수준을 나타내겠으나, 국외 미세먼지 유입의 영향으로 중서부지역은 밤에 농도가 높을 것으로 예상됨." textAlignment="center" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXH-r4-ru9">
-                                                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="73"/>
+                                                                        <rect key="frame" x="150" y="0.0" width="225" height="73"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -694,7 +757,7 @@
                                                                 <constraints>
                                                                     <constraint firstItem="8Wb-b2-6Op" firstAttribute="trailing" secondItem="GOl-Oo-3Zk" secondAttribute="centerX" multiplier="1.95" id="6Jf-Wg-hfN"/>
                                                                     <constraint firstItem="Lyy-dT-9lP" firstAttribute="centerX" secondItem="GOl-Oo-3Zk" secondAttribute="centerX" multiplier="1.4" id="6cv-JH-Zae"/>
-                                                                    <constraint firstItem="jXH-r4-ru9" firstAttribute="width" secondItem="GOl-Oo-3Zk" secondAttribute="width" multiplier="0.5" id="Dgg-6S-WyN"/>
+                                                                    <constraint firstItem="jXH-r4-ru9" firstAttribute="width" secondItem="GOl-Oo-3Zk" secondAttribute="width" multiplier="0.6" id="Dgg-6S-WyN"/>
                                                                     <constraint firstItem="RUd-C5-poS" firstAttribute="centerY" secondItem="GOl-Oo-3Zk" secondAttribute="centerY" id="HSG-ni-4pc"/>
                                                                     <constraint firstItem="Lyy-dT-9lP" firstAttribute="centerY" secondItem="GOl-Oo-3Zk" secondAttribute="centerY" id="ZQH-gM-Pfd"/>
                                                                     <constraint firstItem="RUd-C5-poS" firstAttribute="leading" secondItem="GOl-Oo-3Zk" secondAttribute="centerX" multiplier="0.1" id="f5Q-eF-Z2c"/>
@@ -739,8 +802,8 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="3oU-KU-V6c"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="먼지날씨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBd-2S-bvY">
-                                <rect key="frame" x="150" y="31.5" width="75.5" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨먼지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBd-2S-bvY">
+                                <rect key="frame" x="150.5" y="31.5" width="75.5" height="30"/>
                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -814,7 +877,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Za4-og-nda">
                                 <rect key="frame" x="0.0" y="110.5" width="375" height="556.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" textLabel="wuR-8O-tda" rowHeight="119" style="IBUITableViewCellStyleDefault" id="CLz-YS-zFa">
                                         <rect key="frame" x="0.0" y="28" width="375" height="119"/>
@@ -862,7 +925,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주소 검색" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuP-Pc-XGf">
-                                <rect key="frame" x="155" y="38" width="65.5" height="24"/>
+                                <rect key="frame" x="155.5" y="38" width="65.5" height="24"/>
                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -910,8 +973,8 @@
                                     <constraint firstAttribute="width" secondItem="u2E-Tv-MdZ" secondAttribute="height" multiplier="1:1" id="w8a-NF-V1o"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="먼지날씨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9G-yM-aPa">
-                                <rect key="frame" x="107" y="368" width="161" height="64"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨먼지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9G-yM-aPa">
+                                <rect key="frame" x="107.5" y="368" width="161" height="64"/>
                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="64"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

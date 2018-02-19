@@ -22,6 +22,7 @@
 		231E4704201F9AB700C5850F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231E4701201F8A7600C5850F /* Extension.swift */; };
 		231E4708201F9AE300C5850F /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 231E4706201F9AE300C5850F /* SWRevealViewController.m */; };
 		231F90F3201867D400C0DA34 /* WeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F90F2201867D400C0DA34 /* WeatherDataModel.swift */; };
+		23263DC6203B031700142A2E /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23263DC5203B031700142A2E /* LicenseViewController.swift */; };
 		232B2EA220162AE6001F260E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2EA120162AE6001F260E /* AppDelegate.swift */; };
 		232B2EA720162AE7001F260E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 232B2EA520162AE7001F260E /* Main.storyboard */; };
 		232B2EAA20162AE7001F260E /* WeatherTejay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 232B2EA820162AE7001F260E /* WeatherTejay.xcdatamodeld */; };
@@ -96,6 +97,7 @@
 		231E4706201F9AE300C5850F /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		231E4707201F9AE300C5850F /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		231F90F2201867D400C0DA34 /* WeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataModel.swift; sourceTree = "<group>"; };
+		23263DC5203B031700142A2E /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		232808F22037282D00EBE3E0 /* PKHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PKHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		232B2E9E20162AE6001F260E /* WeatherTejay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherTejay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		232B2EA120162AE6001F260E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				232B2ED3201716A3001F260E /* SplashViewController.swift */,
 				232CE9512024669200B5E0B1 /* MenuViewController.swift */,
 				23EBDF692038073A00D99519 /* AboutViewController.swift */,
+				23263DC5203B031700142A2E /* LicenseViewController.swift */,
 				232B2ED1201705D1001F260E /* MainViewController.swift */,
 				231E46EC201EC11100C5850F /* SearchViewController.swift */,
 			);
@@ -505,6 +508,7 @@
 				232CE9522024669200B5E0B1 /* MenuViewController.swift in Sources */,
 				232CE9502022275900B5E0B1 /* DustModel.swift in Sources */,
 				231E4702201F8A7600C5850F /* Extension.swift in Sources */,
+				23263DC6203B031700142A2E /* LicenseViewController.swift in Sources */,
 				232B2EDF201724A6001F260E /* CellB.swift in Sources */,
 				231E46FE201EE64300C5850F /* AddressCell.swift in Sources */,
 				232B2ED4201716A3001F260E /* SplashViewController.swift in Sources */,
