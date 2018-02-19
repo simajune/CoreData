@@ -154,6 +154,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
                 for data in datas["list"] {
                     guard let dustData = DustModel(json: data) else { return }
                     WeatherDataModel.main.dustData.append(dustData)
+                    self.updateUIWithDustData()
                 }
             }else {
                 print("Error \(response.result.error!)")
@@ -182,8 +183,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
         tempLabel.text = String(WeatherDataModel.main.temperature) + "˚"
         maxTempLabel.text = String(WeatherDataModel.main.maxTemperature) + "˚"
         minTempLabel.text = String(WeatherDataModel.main.minTemperature) + "˚"
-        dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.dustData[0].khaiGrade)
-        dustIcon.image = UIImage(named: WeatherDataModel.main.changedustIcon(grade: WeatherDataModel.main.dustData[0].khaiGrade))
         weatherInfo.text = WeatherDataModel.main.changeKRWeatherCondition(condition: WeatherDataModel.main.weatherIconName)
         var weatherIconName = WeatherDataModel.main.weatherIconName
         formatter.dateFormat = "HH"
@@ -193,6 +192,11 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
             weatherIconName = "Night" + weatherIconName
         }
         weatherIcon.image = UIImage(named: weatherIconName)
+    }
+    
+    func updateUIWithDustData() {
+        dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.dustData[0].khaiGrade)
+        dustIcon.image = UIImage(named: WeatherDataModel.main.changedustIcon(grade: WeatherDataModel.main.dustData[0].khaiGrade))
     }
     
     func getLocationData(url: String, parameters: [String: String]) {
