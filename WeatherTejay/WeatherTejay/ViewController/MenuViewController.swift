@@ -4,7 +4,7 @@ import MessageUI
 
 class MenuViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
-    var menuTitle: [String] = ["먼지날씨에 대해", "오픈소스 라이센스", "개발자에게 한마디"]
+    var menuTitle: [String] = ["날씨먼지에 대해", "오픈소스 라이센스", "개발자에게 한마디"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ extension MenuViewController: UITableViewDelegate {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients(["tejayjung@gmail.com"])
-            mail.setSubject("먼지날씨 문의")
+            mail.setSubject("날씨먼지 문의")
             mail.setMessageBody("<p>개발자에게 불편사항이나 문의사항을 적어주세요</p>", isHTML: true)
             
             present(mail, animated: true)
