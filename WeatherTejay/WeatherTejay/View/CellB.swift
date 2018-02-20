@@ -87,9 +87,9 @@ extension CellB: UITableViewDelegate {
     //테이블 뷰 섹션의 타이틀 설정
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 1 {
-            return "미세먼지 세부정보"
+            return "미세먼지 정보"
         }
-        return "오늘의 미세먼지 정보"
+        return "미세먼지 예보"
     }
     //테이블뷰 섹션의 높이 설정
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
