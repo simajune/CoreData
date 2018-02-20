@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>XPC!</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -43,9 +43,9 @@
 		<string>com.apple.widget-extension</string>
 	</dict>
 	<key>NSLocationUsageDescription</key>
-	<string></string>
+	<string>현재 위치에 대한 날씨와 미세먼지 정보를 받기 위해 서비스 접근이 필요합니다.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>현재 위치에 대한 날씨와 미세먼지 정보를 받기 위해 서비스 접근이 필요합니다.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>yanoljaTFBold.otf</string>
