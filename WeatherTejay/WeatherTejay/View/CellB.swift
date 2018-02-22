@@ -24,7 +24,6 @@ extension CellB: UITableViewDataSource {
     //테이블 뷰 섹션의 셀 갯수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1 {
-            //print(WeatherDataModel.main.currentDustDataCount)
             return WeatherDataModel.main.currentDustData.count
         }
         return WeatherDataModel.main.forecastDustDate.count
@@ -38,7 +37,6 @@ extension CellB: UITableViewDataSource {
             cell.dustValueLabel.isHidden = false
             cell.forecastDustTxtView.isHidden = true
             cell.label.text = WeatherDataModel.main.dustName[indexPath.row]
-            //print(WeatherDataModel.main.currentDustData)
             cell.dustValueLabel.text = WeatherDataModel.main.currentDustData[indexPath.row]
             cell.gradeLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.currentDustGrade[indexPath.row])
             
@@ -91,6 +89,7 @@ extension CellB: UITableViewDelegate {
         }
         return "미세먼지 예보"
     }
+    
     //테이블뷰 섹션의 높이 설정
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40

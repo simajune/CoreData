@@ -5,7 +5,8 @@ import SwiftyJSON
 import Alamofire
 
 class SearchViewController: UIViewController, UISearchBarDelegate {
-
+    
+    //MARK: - Variable
     var totalAddresses: [String] = []
     var currentAddresses: [String] = []
     var previousAddresses: [NSManagedObject] = []
@@ -13,8 +14,11 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     var managedObjectContext: NSManagedObjectContext?
     var address: String = ""
     
+    //MARK: - IBOutlet
     @IBOutlet weak var addressTablewView: UITableView!
     @IBOutlet weak var addressSearchbar: UISearchBar!
+    
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSerachBar()
@@ -58,6 +62,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
+    //CoreData에 저장된 데이터 Fetch
     func loadData() {
         let request: NSFetchRequest<NSManagedObject> = NSFetchRequest(entityName: "Towns")
         
@@ -89,6 +94,11 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         addressTablewView.contentInset = UIEdgeInsets.zero
     }
     
+    @IBAction func dismissBtnAction(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    //SearchBar의 기본 설정
     private func setupSerachBar() {
         addressSearchbar.delegate = self
         addressSearchbar.placeholder = "주소를 검색해주세요."
@@ -193,10 +203,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
             self.dismiss(animated: true, completion: nil)
         }
     }
-    
-    @IBAction func dismissBtnAction(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-    }
+
     
     func saveTown(name: String) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -227,6 +234,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     }
 }
 
+//MARK: - Extension
+//UITableViewDataSource
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if previousAddresses.count == 0 {
@@ -242,6 +251,7 @@ extension SearchViewController: UITableViewDataSource {
     }
 }
 
+//UITableViewDelegate
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //셀을 눌렀을 때의 값을 이용하여 주소값 가져오기
@@ -252,4 +262,3 @@ extension SearchViewController: UITableViewDelegate {
         getCoordinateData(url: kakaoSearchAddressURL, parameters: parameters)
     }
 }
-

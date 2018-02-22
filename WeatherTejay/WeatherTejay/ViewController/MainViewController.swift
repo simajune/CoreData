@@ -9,10 +9,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     //Variable
     let locationManager = CLLocationManager()
-    //let weatherDataModel = WeatherDataModel()
     let formatter = DateFormatter()
     var sectionIsExpanded = false
     
+    //IBOutlet
     @IBOutlet weak var backGroundImgView: UIImageView!
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var locationLabel: UILabel!
@@ -28,15 +28,40 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var weatherCollectionView: UICollectionView!
     @IBOutlet weak var refreshBtn: UIButton!
     
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        //위치 정보를 받기 위함 설정들
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        //메뉴 버튼에 대한 메소드 설정
         menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
+        //매뉴를 보기 위한 조건들 추가 - 오른쪽으로 슬라이드
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //현재의 날을 받아와서 뷰의 나타내기
+        formatter.dateFormat = "MM월 dd일"
+        let currentDate = formatter.string(from: Date())
+        dateLabel.text = currentDate
+        //현재 요일을 받아오기
+        formatter.dateFormat = "E"
+        let currentDay = formatter.string(from: Date())
+        dayLabel.text = changeKRDay(str: currentDay)
+        //이건 주소 검색에서 주소를 클릭했을 때 불려지게 하기 위함. 왜냐하면 검색한 주소에 대한 정보를 보내기 위해선 'viewWillAppear' 메소드에 설정함
+        locationLabel.text = WeatherDataModel.main.address
+        if WeatherDataModel.main.weatherLocationX != "" && WeatherDataModel.main.weatherLocationX != "" {
+            let params: [String: String] = ["lat": WeatherDataModel.main.weatherLocationY, "lon": WeatherDataModel.main.weatherLocationX, "appid": weatherAPIKey]
+            let tmParams: [String: String] = ["y": WeatherDataModel.main.weatherLocationY, "x": WeatherDataModel.main.weatherLocationX, "input_coord": "WGS84", "output_coord": "WTM"]
+            getforecastWeatherData(url: weatherURL, parameters: params)
+            getCurrentWeatherData(url: currentWeatherURL, parameters: params)
+            getTMData(url: kakaoCoordinateURL, parameters: tmParams)
+        }
     }
     
     //현재 날짜에 대한 데이터를 한글로 바꾸기 위해 메소드 설정
@@ -78,26 +103,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    //MARK: - App Life Cycle
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        formatter.dateFormat = "MM월 dd일"
-        let currentDate = formatter.string(from: Date())
-        dateLabel.text = currentDate
-        formatter.dateFormat = "E"
-        let currentDay = formatter.string(from: Date())
-        dayLabel.text = changeKRDay(str: currentDay)
-        
-        locationLabel.text = WeatherDataModel.main.address
-        if WeatherDataModel.main.weatherLocationX != "" && WeatherDataModel.main.weatherLocationX != "" {
-            let params: [String: String] = ["lat": WeatherDataModel.main.weatherLocationY, "lon": WeatherDataModel.main.weatherLocationX, "appid": weatherAPIKey]
-            let tmParams: [String: String] = ["y": WeatherDataModel.main.weatherLocationY, "x": WeatherDataModel.main.weatherLocationX, "input_coord": "WGS84", "output_coord": "WTM"]
-            getforecastWeatherData(url: weatherURL, parameters: params)
-            getCurrentWeatherData(url: currentWeatherURL, parameters: params)
-            getTMData(url: kakaoCoordinateURL, parameters: tmParams)
-        }
-    }
-    
     //MARK: - Networking
     //날씨 API JSON 가져오기
     //현재의 날씨 데이터 가져오기
@@ -115,6 +120,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
+    
     //일기 예보 정보 가져오기
     func getforecastWeatherData(url: String, parameters: [String: String]) {
         WeatherDataModel.main.weatherData.removeAll()
@@ -130,6 +136,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
+    
     //미세먼지 API JSON 가져오기
     func getTMData(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters, headers: kakaoHeaders).responseJSON { [weak self] response in
@@ -146,6 +153,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
+    
     //tmX, tmY로 측정소 이름 가져오기
     func getMeasuringStation(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
@@ -191,7 +199,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
-    
+    //미세먼지 예보 정보를 받음. 세부 정보는 아니고 대한민국의 전국적인 예보를 받아옴
     func getforecastDustData(url: String, parameters: [String: String]) {
         WeatherDataModel.main.forecastDustDate.removeAll()
         WeatherDataModel.main.forecastDustInformCause.removeAll()
@@ -226,6 +234,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             locationLabel.text = "Weather Unavailable"
         }
     }
+    
     //일기 예보 JSON Parsing
     func updateforecastWeatherData(json: JSON) {
         if let tempResult = json["list"][0]["main"]["temp"].double {
@@ -265,6 +274,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         weatherIcon.image = UIImage(named: weatherIconName)
     }
     
+    //한국 주소를 받는 메소드 (..구 ..동)
     func getLocationData(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters, headers: kakaoHeaders).responseJSON { response in
             if response.result.isSuccess {
@@ -276,7 +286,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
-    
     
     //MARK: - Location Manager Delegate
     //didUpdateLocations
@@ -320,6 +329,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
 }
 
+//MARK: - extension
+//UICollectionViewDataSource
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
@@ -344,6 +355,7 @@ extension MainViewController: UICollectionViewDataSource {
     }
 }
 
+//MARK: - UICollectionViewDelegate
 extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row == 1 {
@@ -352,8 +364,4 @@ extension MainViewController: UICollectionViewDelegate {
             return CGSize(width: self.view.frame.width, height: 100)
         }
     }
-}
-
-extension MainViewController: UICollectionViewDelegateFlowLayout {
-    
 }

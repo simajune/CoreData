@@ -5,6 +5,7 @@ class SplashViewController: UIViewController {
 
     @IBOutlet weak var logoImg: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.alpha = 0
@@ -14,7 +15,4 @@ class SplashViewController: UIViewController {
             self.performSegue(withIdentifier: "ToMain", sender: nil)
         }
     }
-        
-        
-    
 }
