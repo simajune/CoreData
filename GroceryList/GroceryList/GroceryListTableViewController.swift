@@ -50,10 +50,10 @@ class GroceryListTableViewController: UITableViewController {
         let addAction = UIAlertAction(title: "ADD", style: .default) { [weak self](action: UIAlertAction) in
             let textField = alertController.textFields?.first
             //self?.groceries.append(textField!.text!)
-            
             let entity = NSEntityDescription.entity(forEntityName: "Grocery", in: (self?.managedObjectContext)!)
             
             let grocery = NSManagedObject(entity: entity!, insertInto: self?.managedObjectContext)
+            
             grocery.setValue(textField?.text, forKey: "item")
             
             do {

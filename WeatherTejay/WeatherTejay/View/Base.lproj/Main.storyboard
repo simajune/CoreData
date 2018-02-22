@@ -30,7 +30,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="jbZ-5b-HKX" customClass="MenuCell" customModule="WeatherTejay" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="jbZ-5b-HKX" customClass="MenuCell" customModule="WeatherTejay" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jbZ-5b-HKX" id="yCV-Tw-CSh">
@@ -38,7 +38,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메뉴" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IiM-wx-but">
-                                                    <rect key="frame" x="13.5" y="12" width="25.5" height="20"/>
+                                                    <rect key="frame" x="14" y="12" width="25.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -66,7 +66,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="66.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨먼지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHH-3n-WsT">
-                                        <rect key="frame" x="19" y="38.5" width="60.5" height="24"/>
+                                        <rect key="frame" x="19.5" y="38.5" width="60.5" height="24"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -111,7 +111,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ME-6Y-f33" userLabel="Navi Bar">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="66.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨먼지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAH-79-DzS">
                                         <rect key="frame" x="150.5" y="32" width="75.5" height="30"/>
@@ -120,7 +120,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ZJ-O6-TS7">
-                                        <rect key="frame" x="4" y="32" width="30" height="30"/>
+                                        <rect key="frame" x="4.5" y="32" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="8ZJ-O6-TS7" secondAttribute="height" multiplier="1:1" id="5As-eR-09v"/>
                                             <constraint firstAttribute="width" constant="30" id="bfo-h0-od2"/>
@@ -141,7 +141,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨먼지는 아래의 오픈소스를 사용합니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8X-Vd-Slm">
-                                <rect key="frame" x="55.5" y="122.5" width="263.5" height="22"/>
+                                <rect key="frame" x="56" y="122.5" width="263.5" height="22"/>
                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -222,7 +222,7 @@ SOFTWARE.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NcR-Ln-7GB" userLabel="Navi Bar">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="66.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨먼지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89o-6Y-pC9">
                                         <rect key="frame" x="150.5" y="32" width="75.5" height="30"/>
@@ -231,7 +231,7 @@ SOFTWARE.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COj-2V-auf">
-                                        <rect key="frame" x="4" y="32" width="30" height="30"/>
+                                        <rect key="frame" x="4.5" y="32" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="COj-2V-auf" secondAttribute="height" multiplier="1:1" id="Vfp-Gx-WUX"/>
                                             <constraint firstAttribute="width" constant="30" id="ztN-yu-o2l"/>
@@ -251,17 +251,20 @@ SOFTWARE.</string>
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejv-EI-ndM">
-                                <rect key="frame" x="0.0" y="149.5" width="375" height="101"/>
+                                <rect key="frame" x="0.0" y="167" width="375" height="200"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">날씨먼지는 실시간 날씨와 날씨예보 그리고 미세먼지정보를 제공합니다.
-날씨정보는 openweathermap에서 제공하는 정보를 가져오고 
-있으며 미세먼지에  대한 정보는 Airkorea에사 제공하는 정보를 
+                                <string key="text">날씨먼지는 실시간 날씨와 날씨예보 
+그리고 미세먼지정보를 제공합니다.
+날씨정보는 openweathermap에서 
+제공하는 정보를 가져오고 
+있으며 미세먼지에  대한 정보는 
+Airkorea에사 제공하는 정보를 
 가져오고 있습니다.</string>
                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRI-Rb-mMh">
-                                <rect key="frame" x="0.0" y="316.5" width="375" height="101"/>
+                                <rect key="frame" x="0.0" y="383.5" width="375" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">통합대기지수의 등급은 총 4단계인  
 좋음, 보통, 나쁨, 매우나쁨으로 구성되어 있습니다.</string>
@@ -269,31 +272,31 @@ SOFTWARE.</string>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨먼지란" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDw-ed-ovI">
-                                <rect key="frame" x="153" y="122.5" width="70" height="22"/>
+                                <rect key="frame" x="152.5" y="122.5" width="70" height="22"/>
                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="통합대기지수 등급표" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1m-Mi-hY0">
-                                <rect key="frame" x="123.5" y="289" width="128.5" height="22"/>
+                                <rect key="frame" x="123.5" y="356" width="128.5" height="22"/>
                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wSB-5C-pGF">
-                                <rect key="frame" x="19" y="383" width="337.5" height="101.5"/>
+                                <rect key="frame" x="19" y="449.5" width="337.5" height="101.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="e6C-fS-Lue">
-                                        <rect key="frame" x="0.0" y="0.0" width="80.5" height="101.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="101.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SoGood" translatesAutoresizingMaskIntoConstraints="NO" id="A7I-qn-t1a">
-                                                <rect key="frame" x="0.0" y="0.0" width="80.5" height="80.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="80.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="A7I-qn-t1a" secondAttribute="height" multiplier="1:1" id="A1Q-gu-zgf"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="좋음" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qw9-6N-bFn">
-                                                <rect key="frame" x="0.0" y="80.5" width="80.5" height="21"/>
+                                                <rect key="frame" x="0.0" y="80.5" width="80" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20.5" id="7gx-dJ-7cX"/>
                                                 </constraints>
@@ -314,16 +317,16 @@ SOFTWARE.</string>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="DfW-35-0U8">
-                                        <rect key="frame" x="85.5" y="0.0" width="80" height="101.5"/>
+                                        <rect key="frame" x="85" y="0.0" width="80.5" height="101.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Good" translatesAutoresizingMaskIntoConstraints="NO" id="NHy-Fo-Ll7">
-                                                <rect key="frame" x="0.0" y="0.0" width="80" height="80.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="80.5" height="80.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="NHy-Fo-Ll7" secondAttribute="height" multiplier="1:1" id="n2o-cf-Idc"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="보통" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPC-uA-EOK">
-                                                <rect key="frame" x="0.0" y="80.5" width="80" height="21"/>
+                                                <rect key="frame" x="0.0" y="80.5" width="80.5" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20.5" id="yrg-21-5uO"/>
                                                 </constraints>
@@ -411,10 +414,10 @@ SOFTWARE.</string>
                             <constraint firstItem="wSB-5C-pGF" firstAttribute="centerX" secondItem="RjQ-xv-Z3f" secondAttribute="centerX" id="Auz-1d-Mlq"/>
                             <constraint firstItem="NcR-Ln-7GB" firstAttribute="width" secondItem="RjQ-xv-Z3f" secondAttribute="width" id="B3W-z3-19g"/>
                             <constraint firstItem="FDw-ed-ovI" firstAttribute="centerX" secondItem="RjQ-xv-Z3f" secondAttribute="centerX" id="CEj-II-DBV"/>
-                            <constraint firstItem="ejv-EI-ndM" firstAttribute="centerY" secondItem="RjQ-xv-Z3f" secondAttribute="centerY" multiplier="0.6" id="I7b-jo-Eyv"/>
+                            <constraint firstItem="ejv-EI-ndM" firstAttribute="centerY" secondItem="RjQ-xv-Z3f" secondAttribute="centerY" multiplier="0.8" id="I7b-jo-Eyv"/>
                             <constraint firstItem="NcR-Ln-7GB" firstAttribute="height" secondItem="RjQ-xv-Z3f" secondAttribute="height" multiplier="0.1" id="LyH-4q-uwU"/>
                             <constraint firstItem="FDw-ed-ovI" firstAttribute="centerY" secondItem="RjQ-xv-Z3f" secondAttribute="centerY" multiplier="0.4" id="NCM-3d-KC0"/>
-                            <constraint firstItem="dRI-Rb-mMh" firstAttribute="centerY" secondItem="RjQ-xv-Z3f" secondAttribute="centerY" multiplier="1.1" id="OMa-HS-ZnP"/>
+                            <constraint firstItem="dRI-Rb-mMh" firstAttribute="centerY" secondItem="RjQ-xv-Z3f" secondAttribute="centerY" multiplier="1.3" id="OMa-HS-ZnP"/>
                             <constraint firstItem="NcR-Ln-7GB" firstAttribute="top" secondItem="RjQ-xv-Z3f" secondAttribute="top" id="OeS-cQ-8jR"/>
                             <constraint firstItem="cs1-Jh-Cvr" firstAttribute="trailing" secondItem="ejv-EI-ndM" secondAttribute="trailing" id="OkY-2l-XYe"/>
                             <constraint firstItem="ejv-EI-ndM" firstAttribute="leading" secondItem="cs1-Jh-Cvr" secondAttribute="leading" id="TR4-bj-VbV"/>
@@ -423,9 +426,9 @@ SOFTWARE.</string>
                             <constraint firstItem="dRI-Rb-mMh" firstAttribute="height" secondItem="RjQ-xv-Z3f" secondAttribute="height" multiplier="0.15" id="dfb-Wf-IDf"/>
                             <constraint firstItem="dRI-Rb-mMh" firstAttribute="centerX" secondItem="RjQ-xv-Z3f" secondAttribute="centerX" id="eM5-5E-G5o"/>
                             <constraint firstItem="dRI-Rb-mMh" firstAttribute="width" secondItem="RjQ-xv-Z3f" secondAttribute="width" id="gZc-PW-vc1"/>
-                            <constraint firstItem="wSB-5C-pGF" firstAttribute="centerY" secondItem="RjQ-xv-Z3f" secondAttribute="centerY" multiplier="1.3" id="ge9-hQ-mIQ"/>
-                            <constraint firstItem="N1m-Mi-hY0" firstAttribute="centerY" secondItem="RjQ-xv-Z3f" secondAttribute="centerY" multiplier="0.9" id="jse-pQ-ZLd"/>
-                            <constraint firstItem="ejv-EI-ndM" firstAttribute="height" secondItem="RjQ-xv-Z3f" secondAttribute="height" multiplier="0.15" id="uRh-6u-Q3P"/>
+                            <constraint firstItem="wSB-5C-pGF" firstAttribute="centerY" secondItem="RjQ-xv-Z3f" secondAttribute="centerY" multiplier="1.5" id="ge9-hQ-mIQ"/>
+                            <constraint firstItem="N1m-Mi-hY0" firstAttribute="centerY" secondItem="RjQ-xv-Z3f" secondAttribute="centerY" multiplier="1.1" id="jse-pQ-ZLd"/>
+                            <constraint firstItem="ejv-EI-ndM" firstAttribute="height" secondItem="RjQ-xv-Z3f" secondAttribute="height" multiplier="0.3" id="uRh-6u-Q3P"/>
                             <constraint firstItem="N1m-Mi-hY0" firstAttribute="centerX" secondItem="RjQ-xv-Z3f" secondAttribute="centerX" id="yfT-0H-Mkf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cs1-Jh-Cvr"/>
@@ -553,9 +556,8 @@ SOFTWARE.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVi-Lg-Ljd">
-                                        <rect key="frame" x="344" y="17.5" width="25" height="25"/>
+                                        <rect key="frame" x="345" y="18" width="23.5" height="24"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="25" id="0Ez-bG-41B"/>
                                             <constraint firstAttribute="width" secondItem="BVi-Lg-Ljd" secondAttribute="height" multiplier="1:1" id="blV-co-Umz"/>
                                         </constraints>
                                         <state key="normal" image="Refresh"/>
@@ -588,6 +590,7 @@ SOFTWARE.</string>
                                     <constraint firstItem="dJl-6d-4WQ" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="1.1" id="D0J-wU-pi6"/>
                                     <constraint firstItem="o5c-La-ITc" firstAttribute="centerX" secondItem="qlj-3u-8nu" secondAttribute="centerX" id="EUV-6p-K6V"/>
                                     <constraint firstItem="VYz-JA-oOZ" firstAttribute="centerX" secondItem="Tjd-Fl-ePl" secondAttribute="centerX" id="LE5-1x-WZc"/>
+                                    <constraint firstItem="BVi-Lg-Ljd" firstAttribute="height" secondItem="wi5-VX-UeC" secondAttribute="height" multiplier="0.12" id="Lkg-CB-GkN"/>
                                     <constraint firstItem="o5c-La-ITc" firstAttribute="centerY" secondItem="VYz-JA-oOZ" secondAttribute="centerY" id="OWq-3u-Rwe"/>
                                     <constraint firstItem="Tjd-Fl-ePl" firstAttribute="height" secondItem="wi5-VX-UeC" secondAttribute="height" multiplier="0.4" id="QnF-QB-rJB"/>
                                     <constraint firstItem="qlj-3u-8nu" firstAttribute="centerY" secondItem="Tjd-Fl-ePl" secondAttribute="centerY" id="R3B-Jg-jKV"/>
@@ -803,7 +806,7 @@ SOFTWARE.</string>
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨먼지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBd-2S-bvY">
-                                <rect key="frame" x="150.5" y="31.5" width="75.5" height="30"/>
+                                <rect key="frame" x="150" y="31.5" width="75.5" height="30"/>
                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -925,13 +928,13 @@ SOFTWARE.</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주소 검색" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuP-Pc-XGf">
-                                <rect key="frame" x="155.5" y="38" width="65.5" height="24"/>
+                                <rect key="frame" x="155" y="38" width="65.5" height="24"/>
                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="xLm-5K-a79" firstAttribute="top" secondItem="53Z-Ih-adW" secondAttribute="bottom" id="0gf-P2-p0T"/>
                             <constraint firstItem="53Z-Ih-adW" firstAttribute="width" secondItem="WOd-vJ-FUo" secondAttribute="width" id="2ee-Fw-txp"/>
@@ -968,13 +971,13 @@ SOFTWARE.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bad" translatesAutoresizingMaskIntoConstraints="NO" id="u2E-Tv-MdZ">
-                                <rect key="frame" x="94.5" y="139.5" width="187.5" height="187.5"/>
+                                <rect key="frame" x="94" y="139.5" width="187.5" height="187.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="u2E-Tv-MdZ" secondAttribute="height" multiplier="1:1" id="w8a-NF-V1o"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨먼지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9G-yM-aPa">
-                                <rect key="frame" x="107.5" y="368" width="161" height="64"/>
+                                <rect key="frame" x="107" y="368" width="161" height="64"/>
                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="64"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
