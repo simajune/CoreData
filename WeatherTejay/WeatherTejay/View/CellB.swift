@@ -14,7 +14,6 @@ class CellB: UICollectionViewCell {
     @IBOutlet weak var dustTableView: UITableView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        dustTableView.rowHeight = UITableViewAutomaticDimension
     }
     
 }
@@ -74,11 +73,10 @@ extension CellB: UITableViewDelegate {
         }
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 55
+        }
         return 40
     }
     

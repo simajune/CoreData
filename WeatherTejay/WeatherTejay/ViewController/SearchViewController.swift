@@ -133,10 +133,11 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     //행정구역의 경도 위도 가져오기
     func getCoordinateData(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters, headers: kakaoHeaders).responseJSON { [weak self] response in
+            print(response.request)
             guard let `self` = self else { return }
             if response.result.isSuccess {
                 let data: JSON = JSON(response.result.value!)
-                WeatherDataModel.main.address = data["documents"][0]["address"]["region_2depth_name"].stringValue + " " +  data["documents"][0]["address"]["region_3depth_h_name"].stringValue
+                WeatherDataModel.main.address = data["documents"][0]["address"]["region_2depth_name"].stringValue + " " +  data["documents"][0]["address"]["region_3depth_name"].stringValue
                 WeatherDataModel.main.weatherLocationX = data["documents"][0]["x"].stringValue
                 WeatherDataModel.main.weatherLocationY = data["documents"][0]["y"].stringValue
                 let params: [String: String] = ["x": WeatherDataModel.main.weatherLocationX, "y": WeatherDataModel.main.weatherLocationY, "input_coord": "WGS84", "output_coord": "WTM"]

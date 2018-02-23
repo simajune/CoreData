@@ -55,3 +55,8 @@ extension CellA: UICollectionViewDelegate {
         return CGSize(width: self.frame.width / 5, height: self.frame.height)
     }
 }
+
+//UICollectionViewDelegateFlowLayout
+extension CellA: UICollectionViewDelegateFlowLayout {
+    
+}
