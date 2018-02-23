@@ -2,6 +2,10 @@
 import Foundation
 import Alamofire
 
+//세팅화면에 접근하기 위한 URL
+let url:URL = URL(string: "prefs:root=")!
+
+
 //전체적으론 API는 두개를 쓸 예정
 //1. 날씨에 관한 API (openweather)
 //2. 미세먼지 관한 API (airkorea)
