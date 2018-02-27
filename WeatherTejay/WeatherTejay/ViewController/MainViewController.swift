@@ -182,6 +182,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 for title in WeatherDataModel.main.dustContent {
                     WeatherDataModel.main.currentDustData.append(datas["list"][0][title].stringValue)
                 }
+                WeatherDataModel.main.currentDustGrade.append(WeatherDataModel.main.changeWHOPM10Grade(value: datas["list"][0]["pm10Value"].stringValue))
+                WeatherDataModel.main.currentDustGrade.append(WeatherDataModel.main.changeWHOPM25Grade(value: datas["list"][0]["pm25Value"].stringValue))
                 for title in WeatherDataModel.main.dustGrade {
                     WeatherDataModel.main.currentDustGrade.append(datas["list"][0][title].stringValue)
                 }
@@ -324,7 +326,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     //didFailWithError
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
         locationLabel.text = "Location Unavailable"
         //위치 접근 허용이 안되어 있는 경우 알럿으로 이동할 수 있게 함
         UIAlertController.presentAlertController(target: self, title: "위치 접근 허용", massage: "위치 접근 허용이 되어 있지 않습니다. 위치 접근 허용하려면 세팅에서 앱에 들어가 접근을 하용해야 합니다. 이동하시겠습니까? ", cancelBtn: true) { (action) in

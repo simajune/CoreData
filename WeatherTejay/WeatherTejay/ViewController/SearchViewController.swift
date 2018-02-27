@@ -133,7 +133,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     //행정구역의 경도 위도 가져오기
     func getCoordinateData(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters, headers: kakaoHeaders).responseJSON { [weak self] response in
-            print(response.request)
             guard let `self` = self else { return }
             if response.result.isSuccess {
                 let data: JSON = JSON(response.result.value!)
@@ -192,7 +191,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                 for title in WeatherDataModel.main.dustGrade {
                     WeatherDataModel.main.currentDustGrade.append(datas["list"][0][title].stringValue)
                 }
-                print(WeatherDataModel.main.currentDustData.count)
                 WeatherDataModel.main.currentDustDataCount = WeatherDataModel.main.currentDustData.count
                 for data in datas["list"] {
                     guard let dustData = DustModel(json: data) else { return }

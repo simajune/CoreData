@@ -35,37 +35,14 @@ class WeatherDataModel {
     }
     var oldCurrentDustDataCount: Int = 0
     var dustContent: [String] = ["pm10Value", "pm25Value", "so2Value", "coValue", "o3Value", "no2Value"]
-    var dustGrade: [String] = ["pm10Grade", "pm25Grade", "so2Grade", "coGrade", "o3Grade", "no2Grade"]
+    var dustGrade: [String] = ["so2Grade", "coGrade", "o3Grade", "no2Grade"]
     var dustName: [String] = ["미세먼지", "초미세먼지", "아황산가스", "일산화탄소", "오존", "이산화질소"]
     var forecastDustDate: [String] = []
     var forecastDustInformCause: [String] = []
     var forecastDustInformOverall: [String] = []
     
-//    없어도 되는데 없애진 말고 일단 두고 보자
-//    var address: String = ""
-//    var dataTime: String = ""
-//    var mangName: String = ""
-//    var so2Value: String = ""
-//    var coValue: String = ""
-//    var o3Value: String = ""
-//    var no2Value: String = ""
-//    var pm10Value: String = ""
-//    var pm10Value24: String = ""
-//    var pm25Value: String = ""
-//    var pm25Value24: String = ""
-//    var khaiValue: String = ""
-//    var khaiGrade: String = ""
-//    var so2Grade: String = ""
-//    var coGrade: String = ""
-//    var o3Grade: String = ""
-//    var no2Grade: String = ""
-//    var pm10Grade: String = ""
-//    var pm25Grade: String = ""
-//    var pm10Grade1h: String = ""
-//    var pm25Grade1h: String = ""
-    
     func changeDustGrade(grade: String?) -> String {
-        guard let grade = grade else { return ""}
+        guard let grade = grade else { return "" }
         switch grade {
         case "1":
             return "좋음"
@@ -73,8 +50,46 @@ class WeatherDataModel {
             return "보통"
         case "3":
             return "나쁨"
-        default:
+        case "4":
             return "매우나쁨"
+        default:
+            return "축정불가"
+        }
+    }
+    
+    func changeWHOPM10Grade(value: String) -> String {
+        print("10value", value)
+        if value == "-" {
+            return "5"
+        }
+        let intValue = Int(value)!
+        switch intValue {
+        case 0...30:
+            return "1"
+        case 31...50:
+            return "2"
+        case 51...100:
+            return "3"
+        default:
+            return "4"
+        }
+    }
+    
+    func changeWHOPM25Grade(value: String) -> String {
+        print("25value", value)
+        if value == "-" {
+            return "5"
+        }
+        let intValue = Int(value)!
+        switch intValue {
+        case 0...15:
+            return "1"
+        case 16...25:
+            return "2"
+        case 26...50:
+            return "3"
+        default:
+            return "4"
         }
     }
     
