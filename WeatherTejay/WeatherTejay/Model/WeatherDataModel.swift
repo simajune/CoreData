@@ -53,7 +53,7 @@ class WeatherDataModel {
         case "4":
             return "매우나쁨"
         default:
-            return "축정불가"
+            return "측정불가"
         }
     }
     
