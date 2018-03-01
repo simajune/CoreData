@@ -136,7 +136,12 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
             guard let `self` = self else { return }
             if response.result.isSuccess {
                 let data: JSON = JSON(response.result.value!)
-                WeatherDataModel.main.address = data["documents"][0]["address"]["region_2depth_name"].stringValue + " " +  data["documents"][0]["address"]["region_3depth_name"].stringValue
+                //주소 값 중에 안 맞는 부분이 있어서 조건문으로 저장
+                if data["documents"][0]["address"]["region_3depth_h_name"].stringValue == "" {
+                    WeatherDataModel.main.address = data["documents"][0]["address"]["region_2depth_name"].stringValue + " " +  data["documents"][0]["address"]["region_3depth_name"].stringValue
+                }else {
+                    WeatherDataModel.main.address = data["documents"][0]["address"]["region_2depth_name"].stringValue + " " +  data["documents"][0]["address"]["region_3depth_h_name"].stringValue
+                }
                 WeatherDataModel.main.weatherLocationX = data["documents"][0]["x"].stringValue
                 WeatherDataModel.main.weatherLocationY = data["documents"][0]["y"].stringValue
                 let params: [String: String] = ["x": WeatherDataModel.main.weatherLocationX, "y": WeatherDataModel.main.weatherLocationY, "input_coord": "WGS84", "output_coord": "WTM"]
@@ -167,6 +172,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     func getMeasuringStation(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
             guard let `self` = self else { return }
+            print(response.request)
             if response.result.isSuccess {
                 let data = JSON(response.result.value!)
                 let stationName = data["list"][0]["stationName"].stringValue
@@ -183,6 +189,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         WeatherDataModel.main.dustData.removeAll()
         WeatherDataModel.main.currentDustData.removeAll()
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
+            print(response.request)
             if response.result.isSuccess {
                 let datas = JSON(response.result.value!)
                 for title in WeatherDataModel.main.dustContent {
