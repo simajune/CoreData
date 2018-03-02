@@ -172,7 +172,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     func getMeasuringStation(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
             guard let `self` = self else { return }
-            print(response.request)
             if response.result.isSuccess {
                 let data = JSON(response.result.value!)
                 let stationName = data["list"][0]["stationName"].stringValue

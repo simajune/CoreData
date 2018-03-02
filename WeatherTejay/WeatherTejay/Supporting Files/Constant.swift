@@ -38,6 +38,8 @@ let forecastDustURL = "http://openapi.airkorea.or.kr/openapi/services/rest/Arplt
 let kakaoHeaders: HTTPHeaders = ["Authorization": "KakaoAK 709086004e1cdbed5393c28e4571cb95"]
 let kakaoAPIKey = "709086004e1cdbed5393c28e4571cb95"
 
+
+
 //파라미터  x=160710.37729270622    y=-4388.879299157299    input_coord=WTM     output_coord=WGS84
 let kakaoCoordinateURL = "https://dapi.kakao.com/v2/local/geo/transcoord.json"
 
@@ -47,6 +49,9 @@ let kakaoSearchAddressURL = "https://dapi.kakao.com/v2/local/search/address.json
 //좌표를 통해 행정구역 가져오기
 //파라미터 z, y, input_coord=WTM     output_coord=WGS84
 let kakaoGetAddressURL = "https://dapi.kakao.com/v2/local/geo/coord2regioncode.json"
+
+/////////SK 날씨/////////////
+let weatherHeader: HTTPHeaders = ["Accept": "application/json", "Content-Type": "application/json; charset=UTF-8", "appKey": "bb7d0c16-812c-4aba-b86e-9f0583eff4cc"]
 
 
 
