@@ -167,12 +167,12 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     //현재 날씨 정보 JSON Parsing
     func updateCurrentWeatherData(json: JSON) {
         if let tempResult = json["weather"]["minutely"][0]["temperature"]["tc"].string {
-//            WeatherDataModel.main.temperature = Int(round(Double(tempResult)!))
-//            WeatherDataModel.main.maxTemperature = Int(json["main"]["temp_max"].doubleValue - 273.15)
-//            WeatherDataModel.main.minTemperature = Int(json["main"]["temp_min"].doubleValue - 273.15)
-//            WeatherDataModel.main.condition = json["weather"][0]["id"].intValue
-//            WeatherDataModel.main.weatherIconName = WeatherDataModel.main.updateWeatherIcon(condition: WeatherDataModel.main.condition)
-//            updateUIWithWeatherDate()
+            WeatherDataModel.main.temperature = Int(round(Double(tempResult)!))
+            WeatherDataModel.main.maxTemperature = Int(round(Double(json["weather"]["minutely"][0]["temperature"]["tmax"].stringValue)!))
+            WeatherDataModel.main.minTemperature = Int(round(Double(json["weather"]["minutely"][0]["temperature"]["tmin"].stringValue)!))
+            WeatherDataModel.main.SKcondition = json["weather"]["minutely"][0]["sky"]["code"].stringValue
+            WeatherDataModel.main.weatherIconName = WeatherDataModel.main.changeWeatherCondition(condition: WeatherDataModel.main.SKcondition)
+            updateUIWithWeatherDate()
         }else {
             locationLabel.text = "Weather Unavailable"
         }
@@ -180,19 +180,18 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     
     //MARK: - UI Updates
     func updateUIWithWeatherDate() {
-        //locationLabel.text = WeatherDataModel.main.city
-//        tempLabel.text = String(WeatherDataModel.main.temperature) + "˚"
-//        maxTempLabel.text = String(WeatherDataModel.main.maxTemperature) + "˚"
-//        minTempLabel.text = String(WeatherDataModel.main.minTemperature) + "˚"
-//        weatherInfo.text = WeatherDataModel.main.changeKRWeatherCondition(condition: WeatherDataModel.main.weatherIconName)
-//        var weatherIconName = WeatherDataModel.main.weatherIconName
-//        formatter.dateFormat = "HH"
-//        let meridian = Int(formatter.string(from: Date()))
-//
-//        if meridian! >= 18 || meridian! <= 3 {
-//            weatherIconName = "Night" + weatherIconName
-//        }
-//        weatherIcon.image = UIImage(named: weatherIconName)
+        tempLabel.text = String(WeatherDataModel.main.temperature) + "˚"
+        maxTempLabel.text = String(WeatherDataModel.main.maxTemperature) + "˚"
+        minTempLabel.text = String(WeatherDataModel.main.minTemperature) + "˚"
+        weatherInfo.text = WeatherDataModel.main.changeKRWeatherCondition(condition: WeatherDataModel.main.weatherIconName)
+        var weatherIconName = WeatherDataModel.main.weatherIconName
+        formatter.dateFormat = "HH"
+        let meridian = Int(formatter.string(from: Date()))
+
+        if meridian! >= 18 || meridian! <= 3 {
+            weatherIconName = "Night" + weatherIconName
+        }
+        weatherIcon.image = UIImage(named: weatherIconName)
     }
     
     func updateUIWithDustData() {
@@ -226,8 +225,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
             let locationParams: [String: String] = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "WCONGNAMUL"]
             let tmParams: [String: String] = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "WTM"]
             self.getLocationData(url: kakaoGetAddressURL, parameters: locationParams)
-            //self.getCurrentWeatherData(url: currentWeatherURL, parameters: param)
-//            self.getCurrentWeatherData(url: currentSKWeatherURL, parameters: param)
+            self.getCurrentWeatherData(url: currentSKWeatherURL, parameters: param)
             self.getTMData(url: kakaoCoordinateURL, parameters: tmParams)
         }
     }

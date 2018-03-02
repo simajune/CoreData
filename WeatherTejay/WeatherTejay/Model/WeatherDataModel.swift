@@ -11,6 +11,7 @@ class WeatherDataModel {
     var maxTemperature: Int = 0
     var minTemperature: Int = 0
     var condition: Int = 0
+    var SKcondition: String = ""
     var forecastCount: Int = 0 {
         didSet{
             preforecastCount = oldValue
