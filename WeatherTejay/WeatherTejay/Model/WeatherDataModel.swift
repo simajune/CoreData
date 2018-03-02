@@ -84,6 +84,38 @@ class WeatherDataModel {
         }
     }
     
+    func changeWeatherCondition(condition: String) -> String {
+        var condition = condition.replace(target: "SKY_A", withString: "")
+        condition = condition.replace(target: "SKY_S", withString: "")
+        condition = condition.replace(target: "SKY_O", withString: "")
+        condition = condition.replace(target: "SKY_Y", withString: "")
+        switch condition {
+        case "01":
+            return "Clear"
+        case "02":
+            return "PartlyCloud"
+        case "03", "07":
+            return "Cloud"
+        case "04", "08":
+            return "Rain"
+        case "05", "09":
+            return "Snow"
+        case "06", "10":
+            return "RainSnow"
+        case "11":
+            return "Thunder"
+        case "12":
+            return "RainThunder"
+        case "13":
+            return "SnowThunder"
+        case "14":
+            return "RainSnowThunder"
+        default:
+            return "dunno"
+        }
+        
+    }
+    
     func changeKRWeatherCondition(condition: String) -> String {
         switch condition {
         case "Thunder":

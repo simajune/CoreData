@@ -51,8 +51,11 @@ let kakaoSearchAddressURL = "https://dapi.kakao.com/v2/local/search/address.json
 let kakaoGetAddressURL = "https://dapi.kakao.com/v2/local/geo/coord2regioncode.json"
 
 /////////SK 날씨/////////////
-let weatherHeader: HTTPHeaders = ["Accept": "application/json", "Content-Type": "application/json; charset=UTF-8", "appKey": "bb7d0c16-812c-4aba-b86e-9f0583eff4cc"]
+let SKWeatherHeader: HTTPHeaders = ["Accept": "application/json", "Content-Type": "application/json; charset=UTF-8", "appKey": "bb7d0c16-812c-4aba-b86e-9f0583eff4cc"]
 
+let currentSKWeatherURL = "https://api2.sktelecom.com/weather/current/minutely"
+let forecastSKWeatherURL = "https://api2.sktelecom.com/weather/forecast/3days"
+let historySKWeatherURL = "https://api2.sktelecom.com/weather/yesterday"
 
-
+let SKAppKey = "bb7d0c16-812c-4aba-b86e-9f0583eff4cc"
 

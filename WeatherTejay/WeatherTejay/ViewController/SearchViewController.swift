@@ -188,7 +188,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         WeatherDataModel.main.dustData.removeAll()
         WeatherDataModel.main.currentDustData.removeAll()
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
-            print(response.request)
             if response.result.isSuccess {
                 let datas = JSON(response.result.value!)
                 for title in WeatherDataModel.main.dustContent {
