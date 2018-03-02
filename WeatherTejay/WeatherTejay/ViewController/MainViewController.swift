@@ -65,7 +65,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     //현재 날짜에 대한 데이터를 한글로 바꾸기 위해 메소드 설정
-    func changeKRDay(str: String) -> String {
+    private func changeKRDay(str: String) -> String {
         switch str {
         case "Mon":
             return "월요일"
@@ -83,6 +83,44 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             return "일요일"
         default:
             return str + "요일"
+        }
+    }
+    
+    //PM10데이터 값에 따른 등급을 WHO기준으로 변환
+    private func changeWHOPM10Grade(value: String) -> String {
+        print("10value", value)
+        if value == "-" {
+            return "5"
+        }
+        let intValue = Int(value)!
+        switch intValue {
+        case 0...30:
+            return "1"
+        case 31...50:
+            return "2"
+        case 51...100:
+            return "3"
+        default:
+            return "4"
+        }
+    }
+    
+    //PM2.5데이터 값에 따른 등급을 WHO기준으로 변환
+    private func changeWHOPM25Grade(value: String) -> String {
+        print("25value", value)
+        if value == "-" {
+            return "5"
+        }
+        let intValue = Int(value)!
+        switch intValue {
+        case 0...15:
+            return "1"
+        case 16...25:
+            return "2"
+        case 26...50:
+            return "3"
+        default:
+            return "4"
         }
     }
     
@@ -182,8 +220,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 for title in WeatherDataModel.main.dustContent {
                     WeatherDataModel.main.currentDustData.append(datas["list"][0][title].stringValue)
                 }
-                WeatherDataModel.main.currentDustGrade.append(WeatherDataModel.main.changeWHOPM10Grade(value: datas["list"][0]["pm10Value"].stringValue))
-                WeatherDataModel.main.currentDustGrade.append(WeatherDataModel.main.changeWHOPM25Grade(value: datas["list"][0]["pm25Value"].stringValue))
+                WeatherDataModel.main.currentDustGrade.append(self.changeWHOPM10Grade(value: datas["list"][0]["pm10Value"].stringValue))
+                WeatherDataModel.main.currentDustGrade.append(self.changeWHOPM25Grade(value: datas["list"][0]["pm25Value"].stringValue))
                 for title in WeatherDataModel.main.dustGrade {
                     WeatherDataModel.main.currentDustGrade.append(datas["list"][0][title].stringValue)
                 }

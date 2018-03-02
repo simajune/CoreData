@@ -106,7 +106,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     //현재의 날씨 데이터 가져오기
     func getCurrentWeatherData(url: String, parameters: [String: String]) {
         WeatherDataModel.main.weatherData.removeAll()
-        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
+            guard let `self` = self else { return }
             if response.result.isSuccess {
                 let currentWeatherJSON: JSON = JSON(response.result.value!)
                 self.updateCurrentWeatherData(json: currentWeatherJSON)

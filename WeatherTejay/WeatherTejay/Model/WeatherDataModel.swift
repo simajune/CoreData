@@ -57,41 +57,7 @@ class WeatherDataModel {
         }
     }
     
-    func changeWHOPM10Grade(value: String) -> String {
-        print("10value", value)
-        if value == "-" {
-            return "5"
-        }
-        let intValue = Int(value)!
-        switch intValue {
-        case 0...30:
-            return "1"
-        case 31...50:
-            return "2"
-        case 51...100:
-            return "3"
-        default:
-            return "4"
-        }
-    }
     
-    func changeWHOPM25Grade(value: String) -> String {
-        print("25value", value)
-        if value == "-" {
-            return "5"
-        }
-        let intValue = Int(value)!
-        switch intValue {
-        case 0...15:
-            return "1"
-        case 16...25:
-            return "2"
-        case 26...50:
-            return "3"
-        default:
-            return "4"
-        }
-    }
     
     func updateWeatherIcon(condition: Int) -> String {
         switch (condition) {
