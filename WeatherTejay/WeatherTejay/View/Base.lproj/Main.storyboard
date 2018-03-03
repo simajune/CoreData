@@ -284,7 +284,7 @@ SOFTWARE.</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">날씨먼지는 실시간 날씨와 날씨예보 
 그리고 미세먼지정보를 제공합니다.
-날씨정보는 openweathermap에서 
+날씨정보는 Weather Planet API에서 
 제공하는 정보를 가져오고 
 있으며 미세먼지에  대한 정보는 
 Airkorea에사 제공하는 정보를 
