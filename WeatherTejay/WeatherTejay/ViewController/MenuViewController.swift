@@ -5,11 +5,20 @@ import MessageUI
 class MenuViewController: UIViewController, MFMailComposeViewControllerDelegate {
     //테이블 뷰이기 때문에 메뉴를 구성할 항목들을 배열로 저장. 만약 메뉴 추가할 것이 생기면 배열에 추가하면 됨
     var menuTitle: [String] = ["날씨먼지에 대해", "오픈소스 라이센스", "개발자에게 한마디"]
+    private let appVersion = "CFBundleShortVersionString"
     
+    @IBOutlet weak var versionLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        showAppVersion()
         //메뉴가 가리는 정도를 나타냄. 현재는 우측 60만큼 남겨둔 상태로 메뉴 뷰가 생김
         self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - 60
+    }
+    
+    // MARK: app version
+    private func showAppVersion() {
+        let versionText = Bundle.main.object(forInfoDictionaryKey: appVersion) as? String
+        versionLabel.text = versionText ?? "정보를 읽어 올 수 없습니다."
     }
 }
 
@@ -40,6 +49,7 @@ extension MenuViewController: UITableViewDelegate {
             // show failure alert
         }
     }
+    
     //메일을 보낸 후 이전 화면으로 돌아가기 위함
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)

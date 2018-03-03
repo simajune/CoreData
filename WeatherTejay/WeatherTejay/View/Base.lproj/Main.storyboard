@@ -79,6 +79,31 @@
                                     <constraint firstItem="dHH-3n-WsT" firstAttribute="centerY" secondItem="M16-qa-WFp" secondAttribute="centerY" multiplier="1.5" id="XCT-ah-N1Q"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pru-L4-RiI">
+                                <rect key="frame" x="0.0" y="433.5" width="300" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="버전" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7F-oQ-VJV">
+                                        <rect key="frame" x="15" y="14.5" width="25" height="20"/>
+                                        <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXC-NR-vCr">
+                                        <rect key="frame" x="253" y="14.5" width="32" height="20"/>
+                                        <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="XXC-NR-vCr" firstAttribute="trailing" secondItem="Pru-L4-RiI" secondAttribute="centerX" multiplier="1.9" id="HEK-iM-PfZ"/>
+                                    <constraint firstAttribute="height" constant="50" id="hiC-yO-EkA"/>
+                                    <constraint firstItem="XXC-NR-vCr" firstAttribute="centerY" secondItem="c7F-oQ-VJV" secondAttribute="centerY" id="qqY-bB-BGz"/>
+                                    <constraint firstItem="c7F-oQ-VJV" firstAttribute="leading" secondItem="Pru-L4-RiI" secondAttribute="centerX" multiplier="0.1" id="rYe-MW-IJK"/>
+                                    <constraint firstItem="c7F-oQ-VJV" firstAttribute="centerY" secondItem="Pru-L4-RiI" secondAttribute="centerY" id="xos-Wn-zu2"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -86,14 +111,18 @@
                             <constraint firstItem="M16-qa-WFp" firstAttribute="height" secondItem="vLb-zE-VuW" secondAttribute="height" multiplier="0.1" id="UOq-BT-Mdd"/>
                             <constraint firstItem="M16-qa-WFp" firstAttribute="centerY" secondItem="vLb-zE-VuW" secondAttribute="centerY" multiplier="0.1" id="Vwd-OD-HHC"/>
                             <constraint firstItem="hk2-RI-j9d" firstAttribute="height" secondItem="vLb-zE-VuW" secondAttribute="height" multiplier="0.5" id="YuJ-mp-rO8"/>
+                            <constraint firstItem="Pru-L4-RiI" firstAttribute="width" secondItem="hk2-RI-j9d" secondAttribute="width" id="Zp7-hj-fKu"/>
+                            <constraint firstItem="Pru-L4-RiI" firstAttribute="top" secondItem="hk2-RI-j9d" secondAttribute="bottom" id="k1c-Vx-jAI"/>
                             <constraint firstItem="hk2-RI-j9d" firstAttribute="leading" secondItem="vLb-zE-VuW" secondAttribute="leading" id="k66-3j-vG0"/>
                             <constraint firstItem="M16-qa-WFp" firstAttribute="centerX" secondItem="vLb-zE-VuW" secondAttribute="centerX" id="vPp-52-U7B"/>
+                            <constraint firstItem="Pru-L4-RiI" firstAttribute="centerX" secondItem="hk2-RI-j9d" secondAttribute="centerX" id="yUl-EE-Rz0"/>
                             <constraint firstItem="hk2-RI-j9d" firstAttribute="centerY" secondItem="vLb-zE-VuW" secondAttribute="centerY" multiplier="0.8" id="zdK-LT-KHa"/>
                             <constraint firstItem="M16-qa-WFp" firstAttribute="width" secondItem="vLb-zE-VuW" secondAttribute="width" id="zgE-ih-8wv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ned-NL-lrf"/>
                     </view>
                     <connections>
+                        <outlet property="versionLabel" destination="XXC-NR-vCr" id="LIH-wI-xuN"/>
                         <segue destination="EqQ-nq-Fw7" kind="show" identifier="ToAbout" id="v6s-42-LTC"/>
                         <segue destination="nvB-L8-5bk" kind="show" identifier="ToLicense" id="dxb-jC-VYt"/>
                     </connections>

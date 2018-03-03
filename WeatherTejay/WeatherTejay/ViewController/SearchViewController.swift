@@ -180,6 +180,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                 self.getDustData(url: dustDataURL, parameters: params)
             }else {
                 print("Error \(response.result.error!)")
+                dustAPIKey = originalAPIKey
                 HUD.flash(HUDContentType.label("측정소 정보를 받아올 수 없습니다.\n잠시후 다시 시도해주세요"), delay: 1.0)
             }
         }
@@ -202,10 +203,11 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                 for data in datas["list"] {
                     guard let dustData = DustModel(json: data) else { return }
                     WeatherDataModel.main.dustData.append(dustData)
-                    HUD.flash(HUDContentType.label("미세먼지 정보를 받아올 수 없습니다\n잠시후 다시 시도해주세요"), delay: 1.0)
                 }
             }else {
                 print("Error \(response.result.error!)")
+                dustAPIKey = originalAPIKey
+                HUD.flash(HUDContentType.label("미세먼지 정보를 받아올 수 없습니다\n잠시후 다시 시도해주세요"), delay: 1.0)
             }
             self.dismiss(animated: true, completion: nil)
         }

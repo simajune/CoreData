@@ -22,8 +22,8 @@ let yesterdayWeatherURL = "http://api.openweathermap.org/data/2.5/history"
 let yesterdayWeatherFullURL = "http://api.openweathermap.org/data/2.5/history?q=Seoul&APPID=89e4a79cf2b99a9f6ac5d5654d83a51b"
 
 //AirKorea 미세먼지 REST API
-let dustAPIKey = "euqSW5cVBaDnDWe3igb9/5IVzX7o6eZ+A+PAxQL2tMbeJQ9eTjvtSz2hhXSd3rHvr0UawJy5xQeTumALlgnL5Q=="
-//originalAPIKey = "XAWRkvW8j4qL4z5I7ZPkoWGlaXKMiHpNU97qNjk+l+sfoNK72CEkLzuRO7WgnIOdFQYDivbQW9+H/fzXJKyNJA=="
+var dustAPIKey = "euqSW5cVBaDnDWe3igb9/5IVzX7o6eZ+A+PAxQL2tMbeJQ9eTjvtSz2hhXSd3rHvr0UawJy5xQeTumALlgnL5Q=="
+var originalAPIKey = "XAWRkvW8j4qL4z5I7ZPkoWGlaXKMiHpNU97qNjk+l+sfoNK72CEkLzuRO7WgnIOdFQYDivbQW9+H/fzXJKyNJA=="
 //anotherAPIKey = "euqSW5cVBaDnDWe3igb9/5IVzX7o6eZ+A+PAxQL2tMbeJQ9eTjvtSz2hhXSd3rHvr0UawJy5xQeTumALlgnL5Q=="
 //근처 측정소 위치
 //파라미터  tmX, tmY, pageNo=1, numOfRows=10, _returnType=json, ServiceKey=XAWRkvW8j4qL4z5I7ZPkoWGlaXKMiHpNU97qNjk%2Bl%2BsfoNK72CEkLzuRO7WgnIOdFQYDivbQW9%2BH%2FfzXJKyNJA%3D%3D

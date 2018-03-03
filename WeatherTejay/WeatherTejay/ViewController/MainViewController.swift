@@ -82,10 +82,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         //이건 주소 검색에서 주소를 클릭했을 때 불려지게 하기 위함. 왜냐하면 검색한 주소에 대한 정보를 보내기 위해선 'viewWillAppear' 메소드에 설정함
         locationLabel.text = WeatherDataModel.main.address
         if WeatherDataModel.main.weatherLocationX != "" && WeatherDataModel.main.weatherLocationX != "" {
-            let params: [String: String] = ["lat": WeatherDataModel.main.weatherLocationY, "lon": WeatherDataModel.main.weatherLocationX, "appid": weatherAPIKey]
+            let params: [String: String] = ["lat": WeatherDataModel.main.weatherLocationY, "lon": WeatherDataModel.main.weatherLocationX, "version": "2"]
             let tmParams: [String: String] = ["y": WeatherDataModel.main.weatherLocationY, "x": WeatherDataModel.main.weatherLocationX, "input_coord": "WGS84", "output_coord": "WTM"]
-            getforecastWeatherData(url: weatherURL, parameters: params)
-            getCurrentWeatherData(url: currentWeatherURL, parameters: params)
+//            getforecastWeatherData(url: weatherURL, parameters: params)
+//            getCurrentWeatherData(url: currentWeatherURL, parameters: params)
+            getPrevWeatherData(url: historySKWeatherURL, parameters: params)
+            getforecastWeatherData(url: forecastSKWeatherURL, parameters: params)
             getTMData(url: kakaoCoordinateURL, parameters: tmParams)
         }
     }
@@ -171,6 +173,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     func getPrevWeatherData(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters, headers: SKWeatherHeader).responseJSON { [weak self] response in
             guard let `self` = self else { return }
+            print(response.request)
             if response.result.isSuccess {
                 if JSON(response.result.value!)["weather"]["yesterday"] == [] {
                     HUD.flash(HUDContentType.label("잠시후\n다시 시도해주세요"), delay: 1.0)
@@ -267,6 +270,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 self.getDustData(url: dustDataURL, parameters: params)
             }else {
                 print("Error \(response.result.error!)")
+                dustAPIKey = originalAPIKey
                 HUD.flash(HUDContentType.label("측정소 정보를 받아올 수 없습니다.\n잠시후 다시 시도해주세요"), delay: 1.0)
             }
         }
@@ -299,6 +303,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 self.weatherCollectionView.reloadData()
             }else {
                 print("Error \(response.result.error!)")
+                dustAPIKey = originalAPIKey
                 HUD.flash(HUDContentType.label("미세먼지 정보를 받아올 수 없습니다\n잠시후 다시 시도해주세요"), delay: 1.0)
             }
         }
