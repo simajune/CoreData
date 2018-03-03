@@ -496,8 +496,8 @@ Airkorea에사 제공하는 정보를
                                             <constraint firstAttribute="width" secondItem="Tjd-Fl-ePl" secondAttribute="height" multiplier="1:1" id="k7X-Vy-sIJ"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨 온도" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzH-ZY-CIr">
-                                        <rect key="frame" x="23.5" y="127" width="46.5" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨온도" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzH-ZY-CIr">
+                                        <rect key="frame" x="35" y="117" width="43" height="17"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -509,19 +509,19 @@ Airkorea에사 제공하는 정보를
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHo-Ri-cDm">
-                                        <rect key="frame" x="35.5" y="76.5" width="22.5" height="17"/>
+                                        <rect key="frame" x="45" y="76.5" width="22.5" height="17"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJl-6d-4WQ">
-                                        <rect key="frame" x="36" y="102" width="21.5" height="17"/>
+                                        <rect key="frame" x="45.5" y="97" width="21.5" height="17"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EjD-HX-JmJ">
-                                        <rect key="frame" x="22.5" y="152" width="50" height="17"/>
+                                        <rect key="frame" x="32" y="137" width="50" height="17"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최저" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afZ-lV-EJU">
                                                 <rect key="frame" x="0.0" y="0.0" width="21.5" height="17"/>
@@ -577,6 +577,12 @@ Airkorea에사 제공하는 정보를
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비교온도" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0V-d8-Yqc">
+                                        <rect key="frame" x="35" y="157" width="42.5" height="17"/>
+                                        <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -587,7 +593,7 @@ Airkorea에사 제공하는 정보를
                                     <constraint firstItem="DWW-Nz-6lh" firstAttribute="centerX" secondItem="Tjd-Fl-ePl" secondAttribute="centerX" id="Btn-cj-2Kx"/>
                                     <constraint firstItem="Tjd-Fl-ePl" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="1.2" id="Cd4-PP-1r4"/>
                                     <constraint firstItem="Tjd-Fl-ePl" firstAttribute="top" secondItem="DWW-Nz-6lh" secondAttribute="bottom" constant="8" id="Cds-qY-Xpg"/>
-                                    <constraint firstItem="dJl-6d-4WQ" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="1.1" id="D0J-wU-pi6"/>
+                                    <constraint firstItem="dJl-6d-4WQ" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="1.05" id="D0J-wU-pi6"/>
                                     <constraint firstItem="o5c-La-ITc" firstAttribute="centerX" secondItem="qlj-3u-8nu" secondAttribute="centerX" id="EUV-6p-K6V"/>
                                     <constraint firstItem="VYz-JA-oOZ" firstAttribute="centerX" secondItem="Tjd-Fl-ePl" secondAttribute="centerX" id="LE5-1x-WZc"/>
                                     <constraint firstItem="BVi-Lg-Ljd" firstAttribute="height" secondItem="wi5-VX-UeC" secondAttribute="height" multiplier="0.12" id="Lkg-CB-GkN"/>
@@ -595,19 +601,21 @@ Airkorea에사 제공하는 정보를
                                     <constraint firstItem="Tjd-Fl-ePl" firstAttribute="height" secondItem="wi5-VX-UeC" secondAttribute="height" multiplier="0.4" id="QnF-QB-rJB"/>
                                     <constraint firstItem="qlj-3u-8nu" firstAttribute="centerY" secondItem="Tjd-Fl-ePl" secondAttribute="centerY" id="R3B-Jg-jKV"/>
                                     <constraint firstItem="qlj-3u-8nu" firstAttribute="width" secondItem="Tjd-Fl-ePl" secondAttribute="width" multiplier="0.8" id="VkL-bt-HOk"/>
-                                    <constraint firstItem="uHo-Ri-cDm" firstAttribute="centerX" secondItem="wi5-VX-UeC" secondAttribute="centerX" multiplier="0.25" id="W9t-nj-PZR"/>
+                                    <constraint firstItem="uHo-Ri-cDm" firstAttribute="centerX" secondItem="wi5-VX-UeC" secondAttribute="centerX" multiplier="0.3" id="W9t-nj-PZR"/>
                                     <constraint firstItem="VYz-JA-oOZ" firstAttribute="width" secondItem="Tjd-Fl-ePl" secondAttribute="width" id="Wxh-Qi-AYA"/>
                                     <constraint firstItem="VYz-JA-oOZ" firstAttribute="top" secondItem="Tjd-Fl-ePl" secondAttribute="bottom" constant="8" id="agy-1H-EG7"/>
+                                    <constraint firstItem="Z0V-d8-Yqc" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="1.65" id="djW-Kc-TD0"/>
                                     <constraint firstItem="dJl-6d-4WQ" firstAttribute="centerX" secondItem="uHo-Ri-cDm" secondAttribute="centerX" id="dkM-3k-mse"/>
                                     <constraint firstItem="Zua-fH-mlZ" firstAttribute="centerY" secondItem="DWW-Nz-6lh" secondAttribute="centerY" id="kOh-Xc-evi"/>
+                                    <constraint firstItem="Z0V-d8-Yqc" firstAttribute="centerX" secondItem="uHo-Ri-cDm" secondAttribute="centerX" id="koF-wS-aiA"/>
                                     <constraint firstItem="Zua-fH-mlZ" firstAttribute="centerX" secondItem="qlj-3u-8nu" secondAttribute="centerX" id="mv7-31-tvl"/>
                                     <constraint firstItem="7lF-Uv-YvY" firstAttribute="top" secondItem="wi5-VX-UeC" secondAttribute="top" constant="15" id="oYE-gu-nDX"/>
                                     <constraint firstItem="Tjd-Fl-ePl" firstAttribute="centerX" secondItem="wi5-VX-UeC" secondAttribute="centerX" multiplier="1.65" id="qP7-rm-N8v"/>
-                                    <constraint firstItem="FzH-ZY-CIr" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="1.35" id="rnA-e4-A5T"/>
+                                    <constraint firstItem="FzH-ZY-CIr" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="1.25" id="rnA-e4-A5T"/>
                                     <constraint firstItem="7lF-Uv-YvY" firstAttribute="width" secondItem="wi5-VX-UeC" secondAttribute="width" id="v3w-Fm-f18"/>
                                     <constraint firstItem="qlj-3u-8nu" firstAttribute="centerX" secondItem="wi5-VX-UeC" secondAttribute="centerX" id="vhe-0Q-1U0"/>
                                     <constraint firstItem="EjD-HX-JmJ" firstAttribute="centerX" secondItem="uHo-Ri-cDm" secondAttribute="centerX" id="vyt-UP-Kn8"/>
-                                    <constraint firstItem="EjD-HX-JmJ" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="1.6" id="wr1-o0-GIa"/>
+                                    <constraint firstItem="EjD-HX-JmJ" firstAttribute="centerY" secondItem="wi5-VX-UeC" secondAttribute="centerY" multiplier="1.45" id="wr1-o0-GIa"/>
                                     <constraint firstItem="FzH-ZY-CIr" firstAttribute="centerX" secondItem="uHo-Ri-cDm" secondAttribute="centerX" id="xBe-Ci-qcy"/>
                                     <constraint firstItem="BVi-Lg-Ljd" firstAttribute="centerX" secondItem="wi5-VX-UeC" secondAttribute="centerX" multiplier="1.9" id="ywk-Bp-ZzL"/>
                                 </constraints>
@@ -833,6 +841,7 @@ Airkorea에사 제공하는 정보를
                     </view>
                     <navigationItem key="navigationItem" id="XzH-Fp-Qx1"/>
                     <connections>
+                        <outlet property="compareLabel" destination="Z0V-d8-Yqc" id="bda-Q6-Tlx"/>
                         <outlet property="dateLabel" destination="uHo-Ri-cDm" id="fgr-gb-hXB"/>
                         <outlet property="dayLabel" destination="dJl-6d-4WQ" id="8Ww-6H-csP"/>
                         <outlet property="dustIcon" destination="qlj-3u-8nu" id="FjK-Ru-OQ2"/>

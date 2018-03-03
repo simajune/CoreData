@@ -15,6 +15,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
     @IBOutlet weak var minTempLabel: UILabel!
+    @IBOutlet weak var compareLabel: UILabel!
     @IBOutlet weak var dustIcon: UIImageView!
     @IBOutlet weak var dustLabel: UILabel!
     
@@ -83,26 +84,44 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     func changeKRDay(str: String) -> String {
         switch str {
         case "Mon":
-            return "월요일"
+            return "(월)"
         case "Tue" :
-            return "화요일"
+            return "(화)"
         case "Wed" :
-            return "수요일"
+            return "(수)"
         case "Thu" :
-            return "목요일"
+            return "(목)"
         case "Fri" :
-            return "금요일"
+            return "(금)"
         case "Sat" :
-            return "토요일"
+            return "(토)"
         case "Sun" :
-            return "일요일"
+            return "(일)"
         default:
-            return str + "요일"
+            return "(" + str + ")"
         }
     }
     
     //MARK: - Networking
     //날씨 API JSON 가져오기
+    //어제 날씨데이터 가져오기
+    func getPrevWeatherData(url: String, parameters: [String: String]) {
+        Alamofire.request(url, method: .get, parameters: parameters, headers: SKWeatherHeader).responseJSON { [weak self] response in
+            guard let `self` = self else { return }
+            if response.result.isSuccess {
+                if JSON(response.result.value!)["weather"]["yesterday"] == [] {
+                    return
+                }else {
+                    WeatherDataModel.main.prevTemp = Int(round(Double(JSON(response.result.value!)["weather"]["yesterday"][0]["day"]["hourly"][0]["temperature"].stringValue)!))
+                    self.getCurrentWeatherData(url: currentSKWeatherURL, parameters: parameters)
+                }
+            }else {
+                print("Error \(response.result.error!)")
+                self.locationLabel.text = "Connection Issues"
+            }
+        }
+    }
+    
     //현재의 날씨 데이터 가져오기
     func getCurrentWeatherData(url: String, parameters: [String: String]) {
         WeatherDataModel.main.weatherData.removeAll()
@@ -183,12 +202,20 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
         tempLabel.text = String(WeatherDataModel.main.temperature) + "˚"
         maxTempLabel.text = String(WeatherDataModel.main.maxTemperature) + "˚"
         minTempLabel.text = String(WeatherDataModel.main.minTemperature) + "˚"
+        let compareTemp = WeatherDataModel.main.temperature - WeatherDataModel.main.prevTemp
+        if compareTemp == 0 {
+            compareLabel.text = "어제와 동일합니다"
+        }else if compareTemp > 0 {
+            compareLabel.text = "어제보다 " + String(compareTemp) + "˚ " + "높습니다"
+        }else {
+            compareLabel.text = "어제보다 " + String(compareTemp * (-1)) + "˚ " + "낮습니다"
+        }
         weatherInfo.text = WeatherDataModel.main.changeKRWeatherCondition(condition: WeatherDataModel.main.weatherIconName)
         var weatherIconName = WeatherDataModel.main.weatherIconName
         formatter.dateFormat = "HH"
         let meridian = Int(formatter.string(from: Date()))
 
-        if meridian! >= 18 || meridian! <= 3 {
+        if meridian! >= 18 || meridian! <= 6 {
             weatherIconName = "Night" + weatherIconName
         }
         weatherIcon.image = UIImage(named: weatherIconName)
@@ -225,7 +252,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
             let locationParams: [String: String] = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "WCONGNAMUL"]
             let tmParams: [String: String] = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "WTM"]
             self.getLocationData(url: kakaoGetAddressURL, parameters: locationParams)
-            self.getCurrentWeatherData(url: currentSKWeatherURL, parameters: param)
+            self.getPrevWeatherData(url: historySKWeatherURL, parameters: param)
             self.getTMData(url: kakaoCoordinateURL, parameters: tmParams)
         }
     }

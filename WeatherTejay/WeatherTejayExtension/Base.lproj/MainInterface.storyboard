@@ -41,7 +41,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨 온도" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2l-Iu-jUj">
-                                        <rect key="frame" x="21" y="70" width="38.5" height="14.5"/>
+                                        <rect key="frame" x="29.5" y="50.5" width="38.5" height="14.5"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -52,20 +52,31 @@
                                             <constraint firstAttribute="width" secondItem="WaB-aL-3M2" secondAttribute="height" multiplier="1:1" id="ija-Pv-zol"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ks3-Xr-bmk">
-                                        <rect key="frame" x="31" y="34.5" width="18.5" height="14.5"/>
-                                        <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="14"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJm-7n-yj2">
-                                        <rect key="frame" x="31.5" y="53.5" width="17.5" height="14.5"/>
-                                        <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="14"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="II6-X5-JMI">
+                                        <rect key="frame" x="13.5" y="34" width="70" height="14.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날짜" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ks3-Xr-bmk">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="14.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="kRo-Aw-23T"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJm-7n-yj2">
+                                                <rect key="frame" x="50" y="0.0" width="20" height="14.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="P0S-Dr-IUr"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jfb-mt-zDs">
-                                        <rect key="frame" x="20" y="86.5" width="41" height="14.5"/>
+                                        <rect key="frame" x="28" y="67" width="41" height="14.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최저" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VU3-mq-gJP">
                                                 <rect key="frame" x="0.0" y="0.0" width="17.5" height="14.5"/>
@@ -99,11 +110,19 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비교 온도" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AjB-Pn-LDP">
+                                        <rect key="frame" x="30" y="83.5" width="38" height="14.5"/>
+                                        <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="p2l-Iu-jUj" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" multiplier="1.4" id="06a-hh-32X"/>
+                                    <constraint firstItem="p2l-Iu-jUj" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" multiplier="1.05" id="06a-hh-32X"/>
+                                    <constraint firstItem="AjB-Pn-LDP" firstAttribute="centerX" secondItem="II6-X5-JMI" secondAttribute="centerX" id="0fb-Xl-ASM"/>
+                                    <constraint firstItem="AjB-Pn-LDP" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" multiplier="1.65" id="5uD-d0-xzv"/>
                                     <constraint firstItem="e67-oq-hRk" firstAttribute="centerX" secondItem="PSx-fI-pec" secondAttribute="centerX" id="8EG-ON-C0a"/>
                                     <constraint firstItem="gyc-l9-EUl" firstAttribute="centerX" secondItem="WaB-aL-3M2" secondAttribute="centerX" id="BUq-ES-DFh"/>
                                     <constraint firstItem="WaB-aL-3M2" firstAttribute="centerX" secondItem="PSx-fI-pec" secondAttribute="centerX" id="DaQ-Fi-rKt"/>
@@ -114,18 +133,16 @@
                                     <constraint firstItem="AFp-qS-DRI" firstAttribute="top" secondItem="V06-sM-h5d" secondAttribute="bottom" constant="4" id="PlX-cd-BG1"/>
                                     <constraint firstItem="e67-oq-hRk" firstAttribute="top" secondItem="PSx-fI-pec" secondAttribute="top" constant="5" id="UII-dt-oWf"/>
                                     <constraint firstItem="V06-sM-h5d" firstAttribute="centerX" secondItem="PSx-fI-pec" secondAttribute="centerX" multiplier="1.65" id="VTq-na-Vel"/>
-                                    <constraint firstItem="ks3-Xr-bmk" firstAttribute="centerX" secondItem="PSx-fI-pec" secondAttribute="centerX" multiplier="0.25" id="X1Y-3p-epW"/>
                                     <constraint firstItem="V06-sM-h5d" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" id="XKd-Zl-UVW"/>
-                                    <constraint firstItem="Jfb-mt-zDs" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" multiplier="1.7" id="amg-Vy-fVr"/>
+                                    <constraint firstItem="II6-X5-JMI" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" multiplier="0.75" id="YJm-N0-inI"/>
+                                    <constraint firstItem="Jfb-mt-zDs" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" multiplier="1.35" id="amg-Vy-fVr"/>
                                     <constraint firstItem="WaB-aL-3M2" firstAttribute="width" secondItem="WaB-aL-3M2" secondAttribute="height" multiplier="1:1" id="bIB-Kl-u9F"/>
-                                    <constraint firstItem="Jfb-mt-zDs" firstAttribute="centerX" secondItem="ks3-Xr-bmk" secondAttribute="centerX" id="d64-AS-XqN"/>
-                                    <constraint firstItem="gJm-7n-yj2" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" multiplier="1.1" id="dcE-9i-6Rv"/>
-                                    <constraint firstItem="gJm-7n-yj2" firstAttribute="centerX" secondItem="ks3-Xr-bmk" secondAttribute="centerX" id="fhg-MR-GOP"/>
-                                    <constraint firstItem="ks3-Xr-bmk" firstAttribute="centerY" secondItem="PSx-fI-pec" secondAttribute="centerY" multiplier="0.75" id="g8e-kb-dFg"/>
+                                    <constraint firstItem="II6-X5-JMI" firstAttribute="centerX" secondItem="PSx-fI-pec" secondAttribute="centerX" multiplier="0.3" id="hZ2-Gl-jPv"/>
                                     <constraint firstItem="gyc-l9-EUl" firstAttribute="centerY" secondItem="AFp-qS-DRI" secondAttribute="centerY" id="pEM-5R-d8D"/>
                                     <constraint firstItem="V06-sM-h5d" firstAttribute="height" secondItem="PSx-fI-pec" secondAttribute="height" multiplier="0.5" id="rZz-hg-33K"/>
-                                    <constraint firstItem="p2l-Iu-jUj" firstAttribute="centerX" secondItem="ks3-Xr-bmk" secondAttribute="centerX" id="roE-Af-dpP"/>
                                     <constraint firstItem="AFp-qS-DRI" firstAttribute="width" secondItem="V06-sM-h5d" secondAttribute="width" id="rxh-yv-gRV"/>
+                                    <constraint firstItem="Jfb-mt-zDs" firstAttribute="centerX" secondItem="II6-X5-JMI" secondAttribute="centerX" id="yA3-st-xfK"/>
+                                    <constraint firstItem="p2l-Iu-jUj" firstAttribute="centerX" secondItem="II6-X5-JMI" secondAttribute="centerX" id="zms-o0-XbR"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="vsd-Hh-EpO" appends="YES" id="g2v-HJ-gC8"/>
@@ -145,6 +162,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="110"/>
                     <connections>
+                        <outlet property="compareLabel" destination="AjB-Pn-LDP" id="NAb-UC-PmN"/>
                         <outlet property="dateLabel" destination="ks3-Xr-bmk" id="NGh-6x-6GV"/>
                         <outlet property="dayLabel" destination="gJm-7n-yj2" id="fKF-lX-VPA"/>
                         <outlet property="dustIcon" destination="WaB-aL-3M2" id="RdA-Io-KiS"/>

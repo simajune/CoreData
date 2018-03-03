@@ -8,6 +8,7 @@ class WeatherDataModel {
     //날씨 데이터
     var address: String = ""
     var temperature: Int = 0
+    var prevTemp: Int = 0
     var maxTemperature: Int = 0
     var minTemperature: Int = 0
     var condition: Int = 0
@@ -23,7 +24,9 @@ class WeatherDataModel {
     var weatherDate: [Date] = []
     var weatherLocationX: String = ""
     var weatherLocationY: String = ""
-    var weatherData: [WeatherModel] = []
+//    var weatherData: [WeatherModel] = []
+    var weatherData: [[String: String]] = []
+    var weathercontents: [String: String] = [:]
     
     //미세먼지 데이터
     var dustData: [DustModel] = []

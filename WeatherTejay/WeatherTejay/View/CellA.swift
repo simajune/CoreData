@@ -39,11 +39,12 @@ extension CellA: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let itemCellA = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCellA", for: indexPath) as! ItemCellA
-        formatter.dateFormat = "d일 HH시"
+//        formatter.dateFormat = "d일 HH시"
         
-        itemCellA.forecastDate.text = formatter.string(from: WeatherDataModel.main.weatherData[indexPath.row].date!)
-        itemCellA.forecastImgView.image = UIImage(named: WeatherDataModel.main.updateWeatherIcon(condition: WeatherDataModel.main.weatherData[indexPath.row].condition!))
-        itemCellA.forecastTempLabel.text = "\(WeatherDataModel.main.weatherData[indexPath.row].temp!)" + " ˚"
+        itemCellA.forecastDate.text = WeatherDataModel.main.weatherData[indexPath.row]["date"]
+        itemCellA.forecastImgView.image = UIImage(named: WeatherDataModel.main.changeWeatherCondition(condition: WeatherDataModel.main.weatherData[indexPath.row]["condition"]!))
+        let tempString = WeatherDataModel.main.weatherData[indexPath.row]["temperature"]?.replace(target: ".00", withString: "")
+        itemCellA.forecastTempLabel.text = tempString! + " ˚"
         
         return itemCellA
     }
