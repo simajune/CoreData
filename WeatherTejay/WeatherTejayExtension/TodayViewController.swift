@@ -21,6 +21,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     
     let formatter = DateFormatter()
     let locationManager = CLLocationManager()
+    var changeAppKeyNum: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,7 +110,26 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
         Alamofire.request(url, method: .get, parameters: parameters, headers: SKWeatherHeader).responseJSON { [weak self] response in
             guard let `self` = self else { return }
             if response.result.isSuccess {
-                if JSON(response.result.value!)["weather"]["yesterday"] == [] {
+                if (JSON(response.result.value!)["weather"]["yesterday"].null != nil) {
+                    if self.changeAppKeyNum == 0 {
+                        SKWeatherHeader = temp1SKWeatherHeader
+                        self.getPrevWeatherData(url: url, parameters: parameters)
+                    }else if self.changeAppKeyNum == 1 {
+                        SKWeatherHeader = temp2SKWeatherHeader
+                        self.getPrevWeatherData(url: url, parameters: parameters)
+                    }else {
+                        self.locationLabel.text = "트래픽이 초과되어 날씨정보를 받을 수 없습니다."
+                    }
+                    return
+                }
+                else if JSON(response.result.value!)["weather"]["yesterday"] == [] {
+                    if self.changeAppKeyNum == 0 {
+                        SKWeatherHeader = temp1SKWeatherHeader
+                    }else if self.changeAppKeyNum == 1 {
+                        SKWeatherHeader = temp2SKWeatherHeader
+                    }else {
+                        self.locationLabel.text = "트래픽이 초과되어 날씨정보를 받을 수 없습니다."
+                    }
                     return
                 }else {
                     WeatherDataModel.main.prevTemp = Int(round(Double(JSON(response.result.value!)["weather"]["yesterday"][0]["day"]["hourly"][0]["temperature"].stringValue)!))
