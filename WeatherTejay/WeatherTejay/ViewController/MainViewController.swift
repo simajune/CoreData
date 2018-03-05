@@ -182,27 +182,33 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 if (JSON(response.result.value!)["weather"]["yesterday"].null != nil) {
                     if self.changeAppKeyNum == 0 {
                         SKWeatherHeader = temp1SKWeatherHeader
+                        self.changeAppKeyNum += 1
                         self.getPrevWeatherData(url: url, parameters: parameters)
                     }else if self.changeAppKeyNum == 1 {
                         SKWeatherHeader = temp2SKWeatherHeader
+                        self.changeAppKeyNum += 1
                         self.getPrevWeatherData(url: url, parameters: parameters)
                     }else {
                         HUD.flash(HUDContentType.label("트래픽이 초과되어\n날씨정보를 받을 수 없습니다."), delay: 1.0)
+                        self.changeAppKeyNum = 0
                     }
-                    return
                 }
                 else if JSON(response.result.value!)["weather"]["yesterday"] == [] {
                     if self.changeAppKeyNum == 0 {
                         SKWeatherHeader = temp1SKWeatherHeader
+                        self.changeAppKeyNum += 1
                         self.getPrevWeatherData(url: url, parameters: parameters)
                     }else if self.changeAppKeyNum == 1 {
                         SKWeatherHeader = temp2SKWeatherHeader
+                        self.changeAppKeyNum += 1
                         self.getPrevWeatherData(url: url, parameters: parameters)
                     }else {
                         HUD.flash(HUDContentType.label("트래픽이 초과되어\n날씨정보를 받을 수 없습니다."), delay: 1.0)
+                        self.changeAppKeyNum = 0
                     }
                     return
                 }else {
+                    self.changeAppKeyNum = 0
                     WeatherDataModel.main.prevTemp = Int(round(Double(JSON(response.result.value!)["weather"]["yesterday"][0]["day"]["hourly"][0]["temperature"].stringValue)!))
                     self.getCurrentWeatherData(url: currentSKWeatherURL, parameters: parameters)
                 }
@@ -219,8 +225,26 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         Alamofire.request(url, method: .get, parameters: parameters, headers: SKWeatherHeader).responseJSON { [weak self] response in
             guard let `self` = self else { return }
             if response.result.isSuccess {
-                let currentWeatherJSON: JSON = JSON(response.result.value!)
-                self.updateCurrentWeatherData(json: currentWeatherJSON)
+                let data: JSON = JSON(response.result.value!)
+                if data["weather"]["minutely"] == [] || data["weather"]["minutely"].null != nil {
+                    if self.changeAppKeyNum == 0 {
+                        SKWeatherHeader = temp1SKWeatherHeader
+                        self.changeAppKeyNum += 1
+                        self.getCurrentWeatherData(url: url, parameters: parameters)
+                    }else if self.changeAppKeyNum == 1 {
+                        SKWeatherHeader = temp2SKWeatherHeader
+                        self.changeAppKeyNum += 1
+                        self.getCurrentWeatherData(url: url, parameters: parameters)
+                    }else {
+                        self.locationLabel.text = "트래픽이 초과되어 날씨정보를 받을 수 없습니다."
+                        self.changeAppKeyNum = 0
+                    }
+                    return
+                }else {
+                    self.changeAppKeyNum = 0
+                    self.getforecastWeatherData(url: forecastSKWeatherURL, parameters: self.paramSK)
+                    self.updateCurrentWeatherData(json: data)
+                }
             }else {
                 print("Error \(response.result.error!)")
                 self.locationLabel.text = "Connection Issues"
@@ -248,8 +272,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                             self.getforecastWeatherData(url: url, parameters: parameters)
                         }else {
                             HUD.flash(HUDContentType.label("트래픽이 초과되어\n날씨정보를 받을 수 없습니다."), delay: 1.0)
+                            self.changeAppKeyNum = 0
                         }
                 }else {
+                    self.changeAppKeyNum = 0
                     for index in 0...11 {
                         self.formatter.dateFormat = "d일 HH시"
                         WeatherDataModel.main.weathercontents["date"] = self.formatter.string(from: Date(timeIntervalSinceNow: TimeInterval(3600 * ((3 * index) + 4))))
@@ -387,6 +413,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     //MARK: - JSON Parsing
     //현재 날씨 정보 JSON Parsing
     func updateCurrentWeatherData(json: JSON) {
+        changeAppKeyNum = 0
         if let tempResult = json["weather"]["minutely"][0]["temperature"]["tc"].string {
             WeatherDataModel.main.temperature = Int(round(Double(tempResult)!))
             WeatherDataModel.main.maxTemperature = Int(round(Double(json["weather"]["minutely"][0]["temperature"]["tmax"].stringValue)!))
@@ -477,7 +504,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             getforecastDustData(url: forecastDustURL, parameters: forecastDust)
             getLocationData(url: kakaoGetAddressURL, parameters: locationParams)
             getPrevWeatherData(url: historySKWeatherURL, parameters: paramSK)
-            getforecastWeatherData(url: forecastSKWeatherURL, parameters: paramSK)
             getTMData(url: kakaoCoordinateURL, parameters: tmParams)
         }
     }
