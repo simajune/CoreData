@@ -397,9 +397,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         }else {
             if changeAppKeyNum == 0 {
                 SKWeatherHeader = temp1SKWeatherHeader
+                changeAppKeyNum += 1
                 getforecastDustData(url: forecastSKWeatherURL, parameters: paramSK)
             }else if changeAppKeyNum == 1{
                 SKWeatherHeader = temp2SKWeatherHeader
+                changeAppKeyNum += 1
                 getforecastDustData(url: forecastSKWeatherURL, parameters: paramSK)
             }else {
                 HUD.flash(HUDContentType.label("트래픽이 초과되어\n날씨정보를 받을 수 없습니다."), delay: 1.0)

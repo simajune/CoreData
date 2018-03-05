@@ -22,6 +22,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     let formatter = DateFormatter()
     let locationManager = CLLocationManager()
     var changeAppKeyNum: Int = 0
+    var stationList: [String] = []
+    var dustParams: [String: String] = [:]
+    var changeDustNum: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,10 +59,43 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
         completionHandler(NCUpdateResult.newData)
     }
     
+    //PM10데이터 값에 따른 등급을 WHO기준으로 변환
+    private func changeWHOPM10Grade(value: String) -> String {
+        if value == "-" {
+            return "5"
+        }
+        let intValue = Int(value)!
+        switch intValue {
+        case 0...30:
+            return "1"
+        case 31...50:
+            return "2"
+        case 51...100:
+            return "3"
+        default:
+            return "4"
+        }
+    }
+    
+    //PM2.5데이터 값에 따른 등급을 WHO기준으로 변환
+    private func changeWHOPM25Grade(value: String) -> String {
+        if value == "-" {
+            return "5"
+        }
+        let intValue = Int(value)!
+        switch intValue {
+        case 0...15:
+            return "1"
+        case 16...25:
+            return "2"
+        case 26...50:
+            return "3"
+        default:
+            return "4"
+        }
+    }
+    
     @IBAction func toRefershApp(_ sender: UITapGestureRecognizer) {
-        WeatherDataModel.main.dustData.removeAll()
-        WeatherDataModel.main.currentDustData.removeAll()
-        WeatherDataModel.main.currentDustGrade.removeAll()
         formatter.dateFormat = "MM월 dd일"
         let currentDate = formatter.string(from: Date())
         dateLabel.text = currentDate
@@ -124,8 +160,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
                 }
                 else if JSON(response.result.value!)["weather"]["yesterday"] == [] {
                     if self.changeAppKeyNum == 0 {
+                        self.changeAppKeyNum += 1
                         SKWeatherHeader = temp1SKWeatherHeader
                     }else if self.changeAppKeyNum == 1 {
+                        self.changeAppKeyNum += 1
                         SKWeatherHeader = temp2SKWeatherHeader
                     }else {
                         self.locationLabel.text = "트래픽이 초과되어 날씨정보를 받을 수 없습니다."
@@ -173,14 +211,22 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     }
     //tmX, tmY로 측정소 이름 가져오기
     func getMeasuringStation(url: String, parameters: [String: String]) {
-        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
+            guard let `self` = self else { return }
             if response.result.isSuccess {
                 let data = JSON(response.result.value!)
-                let stationName = data["list"][0]["stationName"].stringValue
-                let params: [String: String] = ["stationName": stationName, "dataTerm": "MONTH", "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "ver": "1.3", "_returnType": "json"]
+                //변수값 초기화
+                self.stationList.removeAll()
+                self.changeDustNum = 0
+                //현재 위치에서 거리순으로 가까운 측정소 3곳을 저장
+                for list in data["list"] {
+                    self.stationList.append(list.1["stationName"].stringValue)
+                }
                 
-                self.getDustData(url: dustDataURL, parameters: params)
+                self.dustParams = ["stationName": self.stationList[self.changeDustNum], "dataTerm": "MONTH", "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "ver": "1.3", "_returnType": "json"]
+                self.getDustData(url: dustDataURL, parameters: self.dustParams)
             }else {
+                dustAPIKey = originalAPIKey
                 print("Error \(response.result.error!)")
             }
         }
@@ -188,13 +234,39 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     
     //미세먼지 데이터 가져오기
     func getDustData(url: String, parameters: [String: String]) {
+        WeatherDataModel.main.dustData.removeAll()
+        WeatherDataModel.main.currentDustGrade.removeAll()
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
             if response.result.isSuccess {
                 let datas = JSON(response.result.value!)
-                for data in datas["list"] {
-                    guard let dustData = DustModel(json: data) else { return }
-                    WeatherDataModel.main.dustData.append(dustData)
-                    self.updateUIWithDustData()
+                //만약 측정소의 문제로 인해 미세먼지의 값이 나오지 않을 경우 근처의 다른 측정소의 정보를 가져옴
+                if datas["list"][0]["pm10Value"].stringValue == "-" || datas["list"][0]["pm25Value"].stringValue == "-" || datas["list"][0]["khaiValue"].stringValue == "-" {
+                    if self.changeDustNum < 2 {
+                        self.changeDustNum += 1
+                        self.dustParams = ["stationName": self.stationList[self.changeDustNum], "dataTerm": "MONTH", "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "ver": "1.3", "_returnType": "json"]
+                        self.getDustData(url: dustDataURL, parameters: self.dustParams)
+                    }
+                    else {
+                        //메세지 띄우기
+                    }
+                }else {
+                    for data in datas["list"] {
+                        guard let dustData = DustModel(json: data) else { return }
+                        WeatherDataModel.main.dustData.append(dustData)
+                    }
+                    
+                    WeatherDataModel.main.currentDustGrade.append(self.changeWHOPM10Grade(value: datas["list"][0]["pm10Value"].stringValue))
+                    WeatherDataModel.main.currentDustGrade.append(self.changeWHOPM25Grade(value: datas["list"][0]["pm25Value"].stringValue))
+                    //만약 미세먼지나 초미세먼지의 등급이 하나라도 '나쁨'이나 '매우나쁨'일 경우 등급은 미세먼지, 초미세먼지의 등급으로 표시
+                    for list in WeatherDataModel.main.currentDustGrade {
+                        if list == "3" || list == "4" {
+                            self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: list)
+                            self.dustIcon.image = UIImage(named: WeatherDataModel.main.changedustIcon(grade: list))
+                        }else{
+                            self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.dustData[0].khaiGrade)
+                            self.dustIcon.image = UIImage(named: WeatherDataModel.main.changedustIcon(grade: WeatherDataModel.main.dustData[0].khaiGrade))
+                        }
+                    }
                 }
             }else {
                 print("Error \(response.result.error!)")
