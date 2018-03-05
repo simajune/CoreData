@@ -14,6 +14,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     var previousStringAddress: [String] = []
     var managedObjectContext: NSManagedObjectContext?
     var address: String = ""
+    var stationList: [String] = []
+    var dustParams: [String: String] = [:]
+    var changeDustNum: Int = 0
     
     //MARK: - IBOutlet
     @IBOutlet weak var addressTablewView: UITableView!
@@ -60,6 +63,42 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                 }
                 
             }
+        }
+    }
+    
+    //PM10데이터 값에 따른 등급을 WHO기준으로 변환
+    private func changeWHOPM10Grade(value: String) -> String {
+        if value == "-" {
+            return "5"
+        }
+        let intValue = Int(value)!
+        switch intValue {
+        case 0...30:
+            return "1"
+        case 31...50:
+            return "2"
+        case 51...100:
+            return "3"
+        default:
+            return "4"
+        }
+    }
+    
+    //PM2.5데이터 값에 따른 등급을 WHO기준으로 변환
+    private func changeWHOPM25Grade(value: String) -> String {
+        if value == "-" {
+            return "5"
+        }
+        let intValue = Int(value)!
+        switch intValue {
+        case 0...15:
+            return "1"
+        case 16...25:
+            return "2"
+        case 26...50:
+            return "3"
+        default:
+            return "4"
         }
     }
     
@@ -175,9 +214,16 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
             guard let `self` = self else { return }
             if response.result.isSuccess {
                 let data = JSON(response.result.value!)
-                let stationName = data["list"][0]["stationName"].stringValue
-                let params: [String: String] = ["stationName": stationName, "dataTerm": "MONTH", "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "ver": "1.3", "_returnType": "json"]
-                self.getDustData(url: dustDataURL, parameters: params)
+                //변수값 초기화
+                self.stationList.removeAll()
+                self.changeDustNum = 0
+                //현재 위치에서 거리순으로 가까운 측정소 3곳을 저장
+                for list in data["list"] {
+                    self.stationList.append(list.1["stationName"].stringValue)
+                }
+                
+                self.dustParams = ["stationName": self.stationList[self.changeDustNum], "dataTerm": "MONTH", "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "ver": "1.3", "_returnType": "json"]
+                self.getDustData(url: dustDataURL, parameters: self.dustParams)
             }else {
                 print("Error \(response.result.error!)")
                 dustAPIKey = originalAPIKey
@@ -190,19 +236,34 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     func getDustData(url: String, parameters: [String: String]) {
         WeatherDataModel.main.dustData.removeAll()
         WeatherDataModel.main.currentDustData.removeAll()
-        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
+            guard let `self` = self else { return }
             if response.result.isSuccess {
                 let datas = JSON(response.result.value!)
-                for title in WeatherDataModel.main.dustContent {
-                    WeatherDataModel.main.currentDustData.append(datas["list"][0][title].stringValue)
-                }
-                for title in WeatherDataModel.main.dustGrade {
-                    WeatherDataModel.main.currentDustGrade.append(datas["list"][0][title].stringValue)
-                }
-                WeatherDataModel.main.currentDustDataCount = WeatherDataModel.main.currentDustData.count
-                for data in datas["list"] {
-                    guard let dustData = DustModel(json: data) else { return }
-                    WeatherDataModel.main.dustData.append(dustData)
+                //만약 측정소의 문제로 인해 미세먼지의 값이 나오지 않을 경우 근처의 다른 측정소의 정보를 가져옴
+                if datas["list"][0]["pm10Value"].stringValue == "-" && datas["list"][0]["pm25Value"].stringValue == "-" && datas["list"][0]["khaiValue"].stringValue == "-" {
+                    if self.changeDustNum < 2 {
+                        self.changeDustNum += 1
+                        self.dustParams = ["stationName": self.stationList[self.changeDustNum], "dataTerm": "MONTH", "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "ver": "1.3", "_returnType": "json"]
+                        self.getDustData(url: dustDataURL, parameters: self.dustParams)
+                    }
+                    else {
+                        HUD.flash(HUDContentType.label("미세먼지 정보를 받아올 수 없습니다\n잠시후 다시 시도해주세요"), delay: 1.0)
+                    }
+                }else {
+                    for title in WeatherDataModel.main.dustContent {
+                        WeatherDataModel.main.currentDustData.append(datas["list"][0][title].stringValue)
+                    }
+                    WeatherDataModel.main.currentDustGrade.append(self.changeWHOPM10Grade(value: datas["list"][0]["pm10Value"].stringValue))
+                    WeatherDataModel.main.currentDustGrade.append(self.changeWHOPM25Grade(value: datas["list"][0]["pm25Value"].stringValue))
+                    for title in WeatherDataModel.main.dustGrade {
+                        WeatherDataModel.main.currentDustGrade.append(datas["list"][0][title].stringValue)
+                    }
+                    WeatherDataModel.main.currentDustDataCount = WeatherDataModel.main.currentDustData.count
+                    for data in datas["list"] {
+                        guard let dustData = DustModel(json: data) else { return }
+                        WeatherDataModel.main.dustData.append(dustData)
+                    }
                 }
             }else {
                 print("Error \(response.result.error!)")
