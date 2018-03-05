@@ -235,17 +235,20 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         Alamofire.request(url, method: .get, parameters: parameters, headers: SKWeatherHeader).responseJSON { [weak self] response in
             guard let `self` = self else { return }
             if response.result.isSuccess {
+                print(response.result.value!)
                 if JSON(response.result.value!)["weather"].null != nil {
                         if self.changeAppKeyNum == 0 {
                             SKWeatherHeader = temp1SKWeatherHeader
+                            self.changeAppKeyNum += 1
+                            print(SKWeatherHeader)
                             self.getforecastWeatherData(url: url, parameters: parameters)
                         }else if self.changeAppKeyNum == 1 {
                             SKWeatherHeader = temp2SKWeatherHeader
+                            self.changeAppKeyNum += 1
                             self.getforecastWeatherData(url: url, parameters: parameters)
                         }else {
                             HUD.flash(HUDContentType.label("트래픽이 초과되어\n날씨정보를 받을 수 없습니다."), delay: 1.0)
                         }
-                        return
                 }else {
                     for index in 0...11 {
                         self.formatter.dateFormat = "d일 HH시"

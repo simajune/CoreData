@@ -97,10 +97,10 @@
 		231F90F2201867D400C0DA34 /* WeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataModel.swift; sourceTree = "<group>"; };
 		23263DC5203B031700142A2E /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		232808F22037282D00EBE3E0 /* PKHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PKHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2329EC38204CF88B00444FB2 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
-		2329EC39204CF88C00444FB2 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		2329EC3A204CF88C00444FB2 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		2329EC3B204CFCEB00444FB2 /* WeatherTejayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeatherTejayExtension.entitlements; sourceTree = "<group>"; };
+		2329EC3C204D154700444FB2 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		2329EC3D204D154700444FB2 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		2329EC3E204D154700444FB2 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		232B2E9E20162AE6001F260E /* WeatherTejay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherTejay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		232B2EA120162AE6001F260E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		232B2EA620162AE7001F260E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -549,7 +549,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				232B2EA620162AE7001F260E /* Base */,
-				2329EC38204CF88B00444FB2 /* ko */,
+				2329EC3C204D154700444FB2 /* ko */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -558,7 +558,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				232B2EAE20162AE7001F260E /* Base */,
-				2329EC39204CF88C00444FB2 /* ko */,
+				2329EC3D204D154700444FB2 /* ko */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -567,7 +567,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				232B2EC22016C6E0001F260E /* Base */,
-				2329EC3A204CF88C00444FB2 /* ko */,
+				2329EC3E204D154700444FB2 /* ko */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
