@@ -184,96 +184,13 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                 }
                 WeatherDataModel.main.weatherLocationX = data["documents"][0]["x"].stringValue
                 WeatherDataModel.main.weatherLocationY = data["documents"][0]["y"].stringValue
-                let params: [String: String] = ["x": WeatherDataModel.main.weatherLocationX, "y": WeatherDataModel.main.weatherLocationY, "input_coord": "WGS84", "output_coord": "WTM"]
-                self.changeCoordinate(url: kakaoCoordinateURL, parameters: params)
-            }else {
-                print("Error \(response.result.error!)")
-            }
-        }
-    }
-    
-    //경도 위도를 tmX, tmY좌표로 변환하기
-    func changeCoordinate(url: String, parameters: [String: String]) {
-        Alamofire.request(url, method: .get, parameters: parameters, headers: kakaoHeaders).responseJSON { [weak self] response in
-            guard let `self` = self else { return }
-            if response.result.isSuccess {
-                let data: JSON = JSON(response.result.value!)
-                let locationTMx = data["documents"][0]["x"].stringValue
-                let locationTMy = data["documents"][0]["y"].stringValue
-                let params: [String: String] = ["tmX": locationTMx, "tmY": locationTMy, "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "_returnType": "json"]
-                self.getMeasuringStation(url: dustMeasuringStationURL, parameters: params)
-            }else {
-                print("Error \(response.result.error!)")
-            }
-        }
-    }
-    
-    //tmX, tmY로 측정소 이름 가져오기
-    func getMeasuringStation(url: String, parameters: [String: String]) {
-        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
-            guard let `self` = self else { return }
-            if response.result.isSuccess {
-                let data = JSON(response.result.value!)
-                //변수값 초기화
-                self.stationList.removeAll()
-                self.changeDustNum = 0
-                //현재 위치에서 거리순으로 가까운 측정소 3곳을 저장
-                for list in data["list"] {
-                    self.stationList.append(list.1["stationName"].stringValue)
-                }
                 
-                self.dustParams = ["stationName": self.stationList[self.changeDustNum], "dataTerm": "MONTH", "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "ver": "1.3", "_returnType": "json"]
-                self.getDustData(url: dustDataURL, parameters: self.dustParams)
+                self.dismiss(animated: true, completion: nil)
             }else {
                 print("Error \(response.result.error!)")
-                dustAPIKey = originalAPIKey
-                HUD.flash(HUDContentType.label("측정소 정보를 받아올 수 없습니다.\n잠시후 다시 시도해주세요"), delay: 1.0)
             }
         }
     }
-    
-    //미세먼지 데이터 가져오기
-    func getDustData(url: String, parameters: [String: String]) {
-        WeatherDataModel.main.dustData.removeAll()
-        WeatherDataModel.main.currentDustData.removeAll()
-        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
-            guard let `self` = self else { return }
-            if response.result.isSuccess {
-                let datas = JSON(response.result.value!)
-                //만약 측정소의 문제로 인해 미세먼지의 값이 나오지 않을 경우 근처의 다른 측정소의 정보를 가져옴
-                if datas["list"][0]["pm10Value"].stringValue == "-" && datas["list"][0]["pm25Value"].stringValue == "-" && datas["list"][0]["khaiValue"].stringValue == "-" {
-                    if self.changeDustNum < 2 {
-                        self.changeDustNum += 1
-                        self.dustParams = ["stationName": self.stationList[self.changeDustNum], "dataTerm": "MONTH", "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "ver": "1.3", "_returnType": "json"]
-                        self.getDustData(url: dustDataURL, parameters: self.dustParams)
-                    }
-                    else {
-                        HUD.flash(HUDContentType.label("미세먼지 정보를 받아올 수 없습니다\n잠시후 다시 시도해주세요"), delay: 1.0)
-                    }
-                }else {
-                    for title in WeatherDataModel.main.dustContent {
-                        WeatherDataModel.main.currentDustData.append(datas["list"][0][title].stringValue)
-                    }
-                    WeatherDataModel.main.currentDustGrade.append(self.changeWHOPM10Grade(value: datas["list"][0]["pm10Value"].stringValue))
-                    WeatherDataModel.main.currentDustGrade.append(self.changeWHOPM25Grade(value: datas["list"][0]["pm25Value"].stringValue))
-                    for title in WeatherDataModel.main.dustGrade {
-                        WeatherDataModel.main.currentDustGrade.append(datas["list"][0][title].stringValue)
-                    }
-                    WeatherDataModel.main.currentDustDataCount = WeatherDataModel.main.currentDustData.count
-                    for data in datas["list"] {
-                        guard let dustData = DustModel(json: data) else { return }
-                        WeatherDataModel.main.dustData.append(dustData)
-                    }
-                }
-            }else {
-                print("Error \(response.result.error!)")
-                dustAPIKey = originalAPIKey
-                HUD.flash(HUDContentType.label("미세먼지 정보를 받아올 수 없습니다\n잠시후 다시 시도해주세요"), delay: 1.0)
-            }
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
-
     
     func saveTown(name: String) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

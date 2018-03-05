@@ -264,7 +264,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
             if response.result.isSuccess {
                 let datas = JSON(response.result.value!)
                 //만약 측정소의 문제로 인해 미세먼지의 값이 나오지 않을 경우 근처의 다른 측정소의 정보를 가져옴
-                if datas["list"][0]["pm10Value"].stringValue == "-" || datas["list"][0]["pm25Value"].stringValue == "-" || datas["list"][0]["khaiValue"].stringValue == "-" {
+                if datas["list"][0]["pm10Value"].stringValue == "-" || datas["list"][0]["pm25Value"].stringValue == "-" {
                     if self.changeDustNum < 2 {
                         self.changeDustNum += 1
                         self.dustParams = ["stationName": self.stationList[self.changeDustNum], "dataTerm": "MONTH", "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "ver": "1.3", "_returnType": "json"]
@@ -281,14 +281,19 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
                     
                     WeatherDataModel.main.currentDustGrade.append(self.changeWHOPM10Grade(value: datas["list"][0]["pm10Value"].stringValue))
                     WeatherDataModel.main.currentDustGrade.append(self.changeWHOPM25Grade(value: datas["list"][0]["pm25Value"].stringValue))
-                    //만약 미세먼지나 초미세먼지의 등급이 하나라도 '나쁨'이나 '매우나쁨'일 경우 등급은 미세먼지, 초미세먼지의 등급으로 표시
-                    for list in WeatherDataModel.main.currentDustGrade {
-                        if list == "3" || list == "4" {
-                            self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: list)
-                            self.dustIcon.image = UIImage(named: WeatherDataModel.main.changedustIcon(grade: list))
-                        }else{
-                            self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.dustData[0].khaiGrade)
-                            self.dustIcon.image = UIImage(named: WeatherDataModel.main.changedustIcon(grade: WeatherDataModel.main.dustData[0].khaiGrade))
+                    if datas["list"][0]["khaiValue"].stringValue == "-" {
+                        self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.currentDustGrade[0])
+                        self.dustIcon.image = UIImage(named: WeatherDataModel.main.changedustIcon(grade: WeatherDataModel.main.currentDustGrade[0]))
+                    }else {
+                        //만약 미세먼지나 초미세먼지의 등급이 하나라도 '나쁨'이나 '매우나쁨'일 경우 등급은 미세먼지, 초미세먼지의 등급으로 표시
+                        for list in WeatherDataModel.main.currentDustGrade {
+                            if list == "3" || list == "4" {
+                                self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: list)
+                                self.dustIcon.image = UIImage(named: WeatherDataModel.main.changedustIcon(grade: list))
+                            }else{
+                                self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.dustData[0].khaiGrade)
+                                self.dustIcon.image = UIImage(named: WeatherDataModel.main.changedustIcon(grade: WeatherDataModel.main.dustData[0].khaiGrade))
+                            }
                         }
                     }
                 }

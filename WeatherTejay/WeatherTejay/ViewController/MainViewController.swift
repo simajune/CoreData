@@ -89,10 +89,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         if WeatherDataModel.main.weatherLocationX != "" && WeatherDataModel.main.weatherLocationX != "" {
             let params: [String: String] = ["lat": WeatherDataModel.main.weatherLocationY, "lon": WeatherDataModel.main.weatherLocationX, "version": "2"]
             let tmParams: [String: String] = ["y": WeatherDataModel.main.weatherLocationY, "x": WeatherDataModel.main.weatherLocationX, "input_coord": "WGS84", "output_coord": "WTM"]
-//            getforecastWeatherData(url: weatherURL, parameters: params)
-//            getCurrentWeatherData(url: currentWeatherURL, parameters: params)
             getPrevWeatherData(url: historySKWeatherURL, parameters: params)
-            getforecastWeatherData(url: forecastSKWeatherURL, parameters: params)
             getTMData(url: kakaoCoordinateURL, parameters: tmParams)
         }
     }
@@ -259,12 +256,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         Alamofire.request(url, method: .get, parameters: parameters, headers: SKWeatherHeader).responseJSON { [weak self] response in
             guard let `self` = self else { return }
             if response.result.isSuccess {
-                print(response.result.value!)
                 if JSON(response.result.value!)["weather"].null != nil {
                         if self.changeAppKeyNum == 0 {
                             SKWeatherHeader = temp1SKWeatherHeader
                             self.changeAppKeyNum += 1
-                            print(SKWeatherHeader)
                             self.getforecastWeatherData(url: url, parameters: parameters)
                         }else if self.changeAppKeyNum == 1 {
                             SKWeatherHeader = temp2SKWeatherHeader
@@ -345,9 +340,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
             guard let `self` = self else { return }
             if response.result.isSuccess {
+                print(response.request)
+                
                 let datas = JSON(response.result.value!)
                 //만약 측정소의 문제로 인해 미세먼지의 값이 나오지 않을 경우 근처의 다른 측정소의 정보를 가져옴
-                if datas["list"][0]["pm10Value"].stringValue == "-" || datas["list"][0]["pm25Value"].stringValue == "-" || datas["list"][0]["khaiValue"].stringValue == "-" {
+                if datas["list"][0]["pm10Value"].stringValue == "-" || datas["list"][0]["pm25Value"].stringValue == "-" {
                     if self.changeDustNum < 2 {
                     self.changeDustNum += 1
                     self.dustParams = ["stationName": self.stationList[self.changeDustNum], "dataTerm": "MONTH", "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "ver": "1.3", "_returnType": "json"]
@@ -372,13 +369,18 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                     }
                     
                     //만약 미세먼지나 초미세먼지의 등급이 하나라도 '나쁨'이나 '매우나쁨'일 경우 등급은 미세먼지, 초미세먼지의 등급으로 표시
-                    for index in 0...1 {
-                        if WeatherDataModel.main.currentDustGrade[index] == "3" || WeatherDataModel.main.currentDustGrade[index] == "4" {
-                            self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.currentDustGrade[index])
-                            self.dustIcon.image = UIImage(named: WeatherDataModel.main.changedustIcon(grade: WeatherDataModel.main.currentDustGrade[index]))
-                        }else{
-                            self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.dustData[0].khaiGrade)
-                            self.dustIcon.image = UIImage(named: WeatherDataModel.main.changedustIcon(grade: WeatherDataModel.main.dustData[0].khaiGrade))
+                    if datas["list"][0]["khaiValue"].stringValue == "-" {
+                        self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.currentDustGrade[0])
+                        self.dustIcon.image = UIImage(named: WeatherDataModel.main.changedustIcon(grade: WeatherDataModel.main.currentDustGrade[0]))
+                    }else {
+                        for index in 0...1 {
+                            if WeatherDataModel.main.currentDustGrade[index] == "3" || WeatherDataModel.main.currentDustGrade[index] == "4" {
+                                self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.currentDustGrade[index])
+                                self.dustIcon.image = UIImage(named: WeatherDataModel.main.changedustIcon(grade: WeatherDataModel.main.currentDustGrade[index]))
+                            }else{
+                                self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.dustData[0].khaiGrade)
+                                self.dustIcon.image = UIImage(named: WeatherDataModel.main.changedustIcon(grade: WeatherDataModel.main.dustData[0].khaiGrade))
+                            }
                         }
                     }
                     self.weatherCollectionView.reloadData()
