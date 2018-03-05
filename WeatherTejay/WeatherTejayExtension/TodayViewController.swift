@@ -95,6 +95,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
         }
     }
     
+    //위젯 한번 눌렀을 때 앱으로 들어감
     @IBAction func toRefershApp(_ sender: UITapGestureRecognizer) {
         formatter.dateFormat = "MM월 dd일"
         let currentDate = formatter.string(from: Date())
@@ -108,6 +109,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
         locationManager.startUpdatingLocation()
     }
     
+    //위젯 두번 눌렀을 때 앱으로 들어감
     @IBAction func toOpenApp(_ sender: UITapGestureRecognizer) {
         let myAppUrl = URL(string: "TJApp://")!
         extensionContext?.open(myAppUrl, completionHandler: { (success) in
@@ -159,7 +161,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
                         self.locationLabel.text = "트래픽이 초과되어 날씨정보를 받을 수 없습니다."
                         self.changeAppKeyNum = 0
                     }
-                    return
                 }
                 else if JSON(response.result.value!)["weather"]["yesterday"] == [] {
                     if self.changeAppKeyNum == 0 {
@@ -174,7 +175,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
                         self.locationLabel.text = "트래픽이 초과되어 날씨정보를 받을 수 없습니다."
                         self.changeAppKeyNum = 0
                     }
-                    return
                 }else {
                     self.changeAppKeyNum = 0
                     WeatherDataModel.main.prevTemp = Int(round(Double(JSON(response.result.value!)["weather"]["yesterday"][0]["day"]["hourly"][0]["temperature"].stringValue)!))
@@ -207,7 +207,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
                         self.locationLabel.text = "트래픽이 초과되어 날씨정보를 받을 수 없습니다."
                         self.changeAppKeyNum = 0
                     }
-                    return
                 }else {
                     self.changeAppKeyNum = 0
                     self.updateCurrentWeatherData(json: data)

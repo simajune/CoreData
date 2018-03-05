@@ -58,7 +58,7 @@ var SKAppKey2 = "41fd39e9-7e07-47c8-a7a3-ef717ddc0ae3"
 var SKWeatherHeader: HTTPHeaders = ["Accept": "application/json", "Content-Type": "application/json; charset=UTF-8", "appKey": "bb7d0c16-812c-4aba-b86e-9f0583eff4cc"]
 var temp1SKWeatherHeader: HTTPHeaders = ["Accept": "application/json", "Content-Type": "application/json; charset=UTF-8", "appKey": "ec755550-98f5-458b-860e-723732ad23fa"]
 var temp2SKWeatherHeader: HTTPHeaders = ["Accept": "application/json", "Content-Type": "application/json; charset=UTF-8", "appKey": "41fd39e9-7e07-47c8-a7a3-ef717ddc0ae3"]
-
+var originalSKWeatherHeader: HTTPHeaders = ["Accept": "application/json", "Content-Type": "application/json; charset=UTF-8", "appKey": "bb7d0c16-812c-4aba-b86e-9f0583eff4cc"]
 
 
 let currentSKWeatherURL = "https://api2.sktelecom.com/weather/current/minutely"

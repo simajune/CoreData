@@ -203,7 +203,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                         HUD.flash(HUDContentType.label("트래픽이 초과되어\n날씨정보를 받을 수 없습니다."), delay: 1.0)
                         self.changeAppKeyNum = 0
                     }
-                    return
                 }else {
                     self.changeAppKeyNum = 0
                     WeatherDataModel.main.prevTemp = Int(round(Double(JSON(response.result.value!)["weather"]["yesterday"][0]["day"]["hourly"][0]["temperature"].stringValue)!))
@@ -236,7 +235,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                         self.locationLabel.text = "트래픽이 초과되어 날씨정보를 받을 수 없습니다."
                         self.changeAppKeyNum = 0
                     }
-                    return
                 }else {
                     self.changeAppKeyNum = 0
                     self.getforecastWeatherData(url: forecastSKWeatherURL, parameters: self.paramSK)
@@ -340,8 +338,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
             guard let `self` = self else { return }
             if response.result.isSuccess {
-                print(response.request)
-                
                 let datas = JSON(response.result.value!)
                 //만약 측정소의 문제로 인해 미세먼지의 값이 나오지 않을 경우 근처의 다른 측정소의 정보를 가져옴
                 if datas["list"][0]["pm10Value"].stringValue == "-" || datas["list"][0]["pm25Value"].stringValue == "-" {

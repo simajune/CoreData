@@ -97,7 +97,9 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="c7F-oQ-VJV" secondAttribute="trailing" constant="20" symbolic="YES" id="GUu-nE-mWa"/>
                                     <constraint firstItem="XXC-NR-vCr" firstAttribute="trailing" secondItem="Pru-L4-RiI" secondAttribute="centerX" multiplier="1.9" id="HEK-iM-PfZ"/>
+                                    <constraint firstItem="XXC-NR-vCr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Pru-L4-RiI" secondAttribute="leading" constant="20" symbolic="YES" id="Imf-4g-CLq"/>
                                     <constraint firstAttribute="height" constant="50" id="hiC-yO-EkA"/>
                                     <constraint firstItem="XXC-NR-vCr" firstAttribute="centerY" secondItem="c7F-oQ-VJV" secondAttribute="centerY" id="qqY-bB-BGz"/>
                                     <constraint firstItem="c7F-oQ-VJV" firstAttribute="leading" secondItem="Pru-L4-RiI" secondAttribute="centerX" multiplier="0.1" id="rYe-MW-IJK"/>
@@ -799,7 +801,9 @@ Airkorea에사 제공하는 정보를
                                                                     <constraint firstItem="Lyy-dT-9lP" firstAttribute="centerX" secondItem="GOl-Oo-3Zk" secondAttribute="centerX" multiplier="1.4" id="6cv-JH-Zae"/>
                                                                     <constraint firstItem="jXH-r4-ru9" firstAttribute="width" secondItem="GOl-Oo-3Zk" secondAttribute="width" multiplier="0.6" id="Dgg-6S-WyN"/>
                                                                     <constraint firstItem="RUd-C5-poS" firstAttribute="centerY" secondItem="GOl-Oo-3Zk" secondAttribute="centerY" id="HSG-ni-4pc"/>
+                                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RUd-C5-poS" secondAttribute="trailing" constant="20" symbolic="YES" id="HSR-D8-QfT"/>
                                                                     <constraint firstItem="Lyy-dT-9lP" firstAttribute="centerY" secondItem="GOl-Oo-3Zk" secondAttribute="centerY" id="ZQH-gM-Pfd"/>
+                                                                    <constraint firstItem="8Wb-b2-6Op" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GOl-Oo-3Zk" secondAttribute="leading" constant="20" symbolic="YES" id="crd-pe-Rsv"/>
                                                                     <constraint firstItem="RUd-C5-poS" firstAttribute="leading" secondItem="GOl-Oo-3Zk" secondAttribute="centerX" multiplier="0.1" id="f5Q-eF-Z2c"/>
                                                                     <constraint firstItem="jXH-r4-ru9" firstAttribute="centerY" secondItem="GOl-Oo-3Zk" secondAttribute="centerY" id="gh3-pj-opJ"/>
                                                                     <constraint firstItem="jXH-r4-ru9" firstAttribute="trailing" secondItem="GOl-Oo-3Zk" secondAttribute="trailing" id="jpK-nZ-91S"/>
