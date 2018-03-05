@@ -1,0 +1,30 @@
+
+/* Class = "UILabel"; text = "최고"; ObjectID = "6HW-gQ-hOd"; */
+"6HW-gQ-hOd.text" = "최고";
+
+/* Class = "UILabel"; text = "날씨정보"; ObjectID = "AFp-qS-DRI"; */
+"AFp-qS-DRI.text" = "날씨정보";
+
+/* Class = "UILabel"; text = "비교 온도"; ObjectID = "AjB-Pn-LDP"; */
+"AjB-Pn-LDP.text" = "비교 온도";
+
+/* Class = "UILabel"; text = "최저"; ObjectID = "VU3-mq-gJP"; */
+"VU3-mq-gJP.text" = "최저";
+
+/* Class = "UILabel"; text = "지역"; ObjectID = "e67-oq-hRk"; */
+"e67-oq-hRk.text" = "지역";
+
+/* Class = "UILabel"; text = "요일"; ObjectID = "gJm-7n-yj2"; */
+"gJm-7n-yj2.text" = "요일";
+
+/* Class = "UILabel"; text = "미세먼지"; ObjectID = "gyc-l9-EUl"; */
+"gyc-l9-EUl.text" = "미세먼지";
+
+/* Class = "UILabel"; text = "날짜"; ObjectID = "ks3-Xr-bmk"; */
+"ks3-Xr-bmk.text" = "날짜";
+
+/* Class = "UILabel"; text = "날씨 온도"; ObjectID = "p2l-Iu-jUj"; */
+"p2l-Iu-jUj.text" = "날씨 온도";
+
+/* Class = "UILabel"; text = "/"; ObjectID = "yfV-uQ-0Y8"; */
+"yfV-uQ-0Y8.text" = "/";

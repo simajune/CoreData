@@ -1,0 +1,117 @@
+
+/* Class = "UILabel"; text = "매우나쁨"; ObjectID = "2Vk-rn-ylw"; */
+"2Vk-rn-ylw.text" = "매우나쁨";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "3mH-gM-j2g"; */
+"3mH-gM-j2g.text" = "0";
+
+/* Class = "UILabel"; text = "지역"; ObjectID = "7lF-Uv-YvY"; */
+"7lF-Uv-YvY.text" = "지역";
+
+/* Class = "UILabel"; text = "날씨먼지"; ObjectID = "89o-6Y-pC9"; */
+"89o-6Y-pC9.text" = "날씨먼지";
+
+/* Class = "UILabel"; text = "매우나쁨"; ObjectID = "8Wb-b2-6Op"; */
+"8Wb-b2-6Op.text" = "매우나쁨";
+
+/* Class = "UILabel"; text = "현재 날씨"; ObjectID = "DWW-Nz-6lh"; */
+"DWW-Nz-6lh.text" = "현재 날씨";
+
+/* Class = "UILabel"; text = "날씨먼지란"; ObjectID = "FDw-ed-ovI"; */
+"FDw-ed-ovI.text" = "날씨먼지란";
+
+/* Class = "UILabel"; text = "날씨온도"; ObjectID = "FzH-ZY-CIr"; */
+"FzH-ZY-CIr.text" = "날씨온도";
+
+/* Class = "UILabel"; text = "날씨먼지"; ObjectID = "IAH-79-DzS"; */
+"IAH-79-DzS.text" = "날씨먼지";
+
+/* Class = "UILabel"; text = "메뉴"; ObjectID = "IiM-wx-but"; */
+"IiM-wx-but.text" = "메뉴";
+
+/* Class = "UILabel"; text = "날씨먼지는 아래의 오픈소스를 사용합니다"; ObjectID = "K8X-Vd-Slm"; */
+"K8X-Vd-Slm.text" = "날씨먼지는 아래의 오픈소스를 사용합니다";
+
+/* Class = "UILabel"; text = "통합대기지수 등급표"; ObjectID = "N1m-Mi-hY0"; */
+"N1m-Mi-hY0.text" = "통합대기지수 등급표";
+
+/* Class = "UILabel"; text = "나쁨"; ObjectID = "R8F-Av-bvE"; */
+"R8F-Av-bvE.text" = "나쁨";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "RUd-C5-poS"; */
+"RUd-C5-poS.text" = "Label";
+
+/* Class = "UILabel"; text = "날씨정보"; ObjectID = "VYz-JA-oOZ"; */
+"VYz-JA-oOZ.text" = "날씨정보";
+
+/* Class = "UILabel"; text = "1.0.0"; ObjectID = "XXC-NR-vCr"; */
+"XXC-NR-vCr.text" = "1.0.0";
+
+/* Class = "UILabel"; text = "보통"; ObjectID = "YPC-uA-EOK"; */
+"YPC-uA-EOK.text" = "보통";
+
+/* Class = "UILabel"; text = "31일 12시"; ObjectID = "YhE-JB-5qk"; */
+"YhE-JB-5qk.text" = "31일 12시";
+
+/* Class = "UILabel"; text = "비교온도"; ObjectID = "Z0V-d8-Yqc"; */
+"Z0V-d8-Yqc.text" = "비교온도";
+
+/* Class = "UILabel"; text = "통합대기지수"; ObjectID = "Zua-fH-mlZ"; */
+"Zua-fH-mlZ.text" = "통합대기지수";
+
+/* Class = "UILabel"; text = "최저"; ObjectID = "afZ-lV-EJU"; */
+"afZ-lV-EJU.text" = "최저";
+
+/* Class = "UILabel"; text = "버전"; ObjectID = "c7F-oQ-VJV"; */
+"c7F-oQ-VJV.text" = "버전";
+
+/* Class = "UILabel"; text = "/"; ObjectID = "cfF-HJ-XJ7"; */
+"cfF-HJ-XJ7.text" = "/";
+
+/* Class = "UILabel"; text = "날씨먼지"; ObjectID = "dHH-3n-WsT"; */
+"dHH-3n-WsT.text" = "날씨먼지";
+
+/* Class = "UILabel"; text = "요일"; ObjectID = "dJl-6d-4WQ"; */
+"dJl-6d-4WQ.text" = "요일";
+
+/* Class = "UITextView"; text = "통합대기지수의 등급은 총 4단계인  \n좋음, 보통, 나쁨, 매우나쁨으로 구성되어 있습니다."; ObjectID = "dRI-Rb-mMh"; */
+"dRI-Rb-mMh.text" = "통합대기지수의 등급은 총 4단계인  \n좋음, 보통, 나쁨, 매우나쁨으로 구성되어 있습니다.";
+
+/* Class = "UITextView"; text = "Alamofire\nhttps://github.com/Alamofire/Alamofire\nCopyright (c) 2014-2017 Alamofire Software Foundation (http://alamofire.org/)\nMIT License\n\nSwiftyJSON\nhttps://github.com/SwiftyJSON/SwiftyJSON\nCopyright (c) 2017 Ruoyu Fu\nMIT License\n\nPKHUD\nhttps://github.com/pkluz/PKHUD\nCopyright (c) 2014 Philip Kluz (Philip.Kluz@gmail.com)\nMIT License\n\n\nThe MIT License (MIT)\n\nCopyright (c) <year> <copyright holder>\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE."; ObjectID = "e5Z-cm-kOH"; */
+"e5Z-cm-kOH.text" = "Alamofire\nhttps://github.com/Alamofire/Alamofire\nCopyright (c) 2014-2017 Alamofire Software Foundation (http://alamofire.org/)\nMIT License\n\nSwiftyJSON\nhttps://github.com/SwiftyJSON/SwiftyJSON\nCopyright (c) 2017 Ruoyu Fu\nMIT License\n\nPKHUD\nhttps://github.com/pkluz/PKHUD\nCopyright (c) 2014 Philip Kluz (Philip.Kluz@gmail.com)\nMIT License\n\n\nThe MIT License (MIT)\n\nCopyright (c) <year> <copyright holder>\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.";
+
+/* Class = "UITextView"; text = "날씨먼지는 실시간 날씨와 날씨예보 \n그리고 미세먼지정보를 제공합니다.\n날씨정보는 Weather Planet API에서 \n제공하는 정보를 가져오고 \n있으며 미세먼지에  대한 정보는 \nAirkorea에사 제공하는 정보를 \n가져오고 있습니다."; ObjectID = "ejv-EI-ndM"; */
+"ejv-EI-ndM.text" = "날씨먼지는 실시간 날씨와 날씨예보 \n그리고 미세먼지정보를 제공합니다.\n날씨정보는 Weather Planet API에서 \n제공하는 정보를 가져오고 \n있으며 미세먼지에  대한 정보는 \nAirkorea에사 제공하는 정보를 \n가져오고 있습니다.";
+
+/* Class = "UILabel"; text = "-20"; ObjectID = "gi8-pF-5aE"; */
+"gi8-pF-5aE.text" = "-20";
+
+/* Class = "UILabel"; text = "최고"; ObjectID = "h0q-rm-jdU"; */
+"h0q-rm-jdU.text" = "최고";
+
+/* Class = "UITextView"; text = "○ 대기확산이 원활하여 대부분 ‘보통’ 수준을 나타내겠으나, 국외 미세먼지 유입의 영향으로 중서부지역은 밤에 농도가 높을 것으로 예상됨."; ObjectID = "jXH-r4-ru9"; */
+"jXH-r4-ru9.text" = "○ 대기확산이 원활하여 대부분 ‘보통’ 수준을 나타내겠으나, 국외 미세먼지 유입의 영향으로 중서부지역은 밤에 농도가 높을 것으로 예상됨.";
+
+/* Class = "UILabel"; text = "날씨먼지"; ObjectID = "kBd-2S-bvY"; */
+"kBd-2S-bvY.text" = "날씨먼지";
+
+/* Class = "UILabel"; text = "미세먼지"; ObjectID = "o5c-La-ITc"; */
+"o5c-La-ITc.text" = "미세먼지";
+
+/* Class = "UILabel"; text = "ppm"; ObjectID = "qIc-b3-J1d"; */
+"qIc-b3-J1d.text" = "ppm";
+
+/* Class = "UILabel"; text = "좋음"; ObjectID = "qw9-6N-bFn"; */
+"qw9-6N-bFn.text" = "좋음";
+
+/* Class = "UILabel"; text = "날씨먼지"; ObjectID = "r9G-yM-aPa"; */
+"r9G-yM-aPa.text" = "날씨먼지";
+
+/* Class = "UILabel"; text = "날짜"; ObjectID = "uHo-Ri-cDm"; */
+"uHo-Ri-cDm.text" = "날짜";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "wuR-8O-tda"; */
+"wuR-8O-tda.text" = "Title";
+
+/* Class = "UILabel"; text = "주소 검색"; ObjectID = "zuP-Pc-XGf"; */
+"zuP-Pc-XGf.text" = "주소 검색";

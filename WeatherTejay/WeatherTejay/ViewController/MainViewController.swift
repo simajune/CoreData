@@ -13,6 +13,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     var sectionIsExpanded = false
     var changeAppKeyNum: Int = 0
     var paramSK: [String: String] = [:]
+    var stationList: [String] = []
     let forecastCode: [String] = ["code4hour",
                                   "code7hour",
                                   "code10hour",
