@@ -5,7 +5,6 @@ import MessageUI
 class MenuViewController: UIViewController, MFMailComposeViewControllerDelegate {
     //테이블 뷰이기 때문에 메뉴를 구성할 항목들을 배열로 저장. 만약 메뉴 추가할 것이 생기면 배열에 추가하면 됨
     var menuTitle: [String] = ["날씨먼지에 대해", "오픈소스 라이센스", "개발자에게 한마디"]
-    private let appVersion = "CFBundleShortVersionString"
     
     @IBOutlet weak var versionLabel: UILabel!
     override func viewDidLoad() {
@@ -17,7 +16,7 @@ class MenuViewController: UIViewController, MFMailComposeViewControllerDelegate 
     
     // MARK: app version
     private func showAppVersion() {
-        let versionText = Bundle.main.object(forInfoDictionaryKey: appVersion) as? String
+        let versionText = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
         versionLabel.text = versionText ?? "정보를 읽어 올 수 없습니다."
     }
 }

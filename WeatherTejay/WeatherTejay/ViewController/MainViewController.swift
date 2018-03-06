@@ -119,6 +119,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     //PM10데이터 값에 따른 등급을 WHO기준으로 변환
     private func changeWHOPM10Grade(value: String) -> String {
+        //데이터의 값이 -로 데이터 값을 가져오지 못할 때 값을 5(측정 불가)로 반환
         if value == "-" {
             return "5"
         }
@@ -137,6 +138,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     //PM2.5데이터 값에 따른 등급을 WHO기준으로 변환
     private func changeWHOPM25Grade(value: String) -> String {
+        //데이터의 값이 -로 데이터 값을 가져오지 못할 때 값을 5(측정 불가)로 반환
         if value == "-" {
             return "5"
         }
@@ -310,7 +312,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     func getMeasuringStation(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
             guard let `self` = self else { return }
-            print(response.request!)
             if response.result.isSuccess {
                 let data = JSON(response.result.value!)
                 //변수값 초기화
@@ -320,7 +321,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 for list in data["list"] {
                     self.stationList.append(list.1["stationName"].stringValue)
                 }
-                
                 self.dustParams = ["stationName": self.stationList[self.changeDustNum], "dataTerm": "MONTH", "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "ver": "1.3", "_returnType": "json"]
                 self.getDustData(url: dustDataURL, parameters: self.dustParams)
             }else {

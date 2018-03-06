@@ -24,7 +24,6 @@ class WeatherDataModel {
     var weatherDate: [Date] = []
     var weatherLocationX: String = ""
     var weatherLocationY: String = ""
-//    var weatherData: [WeatherModel] = []
     var weatherData: [[String: String]] = []
     var weathercontents: [String: String] = [:]
     
@@ -61,8 +60,7 @@ class WeatherDataModel {
         }
     }
     
-    
-    
+    //날씨의 이이콘에 대한 값을 반환하기 위한 메소드 (Openweathermap)
     func updateWeatherIcon(condition: Int) -> String {
         switch (condition) {
         case 0..<300 :
@@ -88,6 +86,7 @@ class WeatherDataModel {
         }
     }
     
+    ////날씨의 이이콘에 대한 값을 반환하기 위한 메소드 (SKWeather API)
     func changeWeatherCondition(condition: String) -> String {
         var condition = condition.replace(target: "SKY_A", withString: "")
         condition = condition.replace(target: "SKY_S", withString: "")
@@ -117,9 +116,9 @@ class WeatherDataModel {
         default:
             return "dunno"
         }
-        
     }
     
+    //날씨의 상태(한글) 반환하기 위한 메소드
     func changeKRWeatherCondition(condition: String) -> String {
         switch condition {
         case "Thunder":
@@ -143,6 +142,7 @@ class WeatherDataModel {
         }
     }
     
+    //미세먼지 아이콘 값을 반환하기 위한 메소드
     func changedustIcon(grade: String?)-> String {
         guard let grade = grade else { return "SoBad"}
         switch grade {

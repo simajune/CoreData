@@ -50,12 +50,13 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                     //print("addressesJSON", addressesJSON)
                     for address in addressesJSON["addresses"] {
                         self.totalAddresses.append(address.1.stringValue)
-                        //self.currentAddresses.append(address.1.stringValue)
                     }
                 }
+                //최근 겁색이 있다면 최근 검색한 주소를 출력
                 if self.previousStringAddress.count != 0 {
                     self.currentAddresses = self.previousStringAddress
                 }else {
+                    //최근 겁색이 없다면 전체 주소를 보여줌
                     self.currentAddresses = self.totalAddresses
                 }
                 DispatchQueue.main.async {
@@ -142,7 +143,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     private func setupSerachBar() {
         addressSearchbar.delegate = self
         addressSearchbar.placeholder = "주소를 검색해주세요."
-        //addressSearchbar.changeSearchBarColor(color: .black)
         addressSearchbar.barTintColor = UIColor(red:0.55, green:0.69, blue:1.00, alpha:1.00)
         navigationItem.titleView = addressSearchbar
 
@@ -192,6 +192,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
+    //CoreData 사용 (최근 검색어 5개까지 저장 너어갈시 순차적으로 저장)
     func saveTown(name: String) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         //검색의 갯수는 5개로 지정
@@ -225,9 +226,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
 //UITableViewDataSource
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if previousAddresses.count == 0 {
-            return currentAddresses.count
-        }
         return currentAddresses.count
     }
     

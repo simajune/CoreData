@@ -6,25 +6,16 @@ import Alamofire
 let url:URL = URL(string: "App-Prefs:root=")!
 
 //전체적으론 API는 두개를 쓸 예정
-//1. 날씨에 관한 API (openweather)
+//1. 날씨에 관한 API (SK Weather Planet)
 //2. 미세먼지 관한 API (airkorea)
 
 //Constant
-//openWeather REST API
-//파라미터  lon=   lat=    appid=
-let currentWeatherURL = "http://api.openweathermap.org/data/2.5/weather"
-
-let weatherURL = "http://api.openweathermap.org/data/2.5/forecast"
-let weatherAPIKey = "89e4a79cf2b99a9f6ac5d5654d83a51b"
-let weatherFullURL = "http://api.openweathermap.org/data/2.5/forecast?q=Seoul&APPID=89e4a79cf2b99a9f6ac5d5654d83a51b"
-
-let yesterdayWeatherURL = "http://api.openweathermap.org/data/2.5/history"
-let yesterdayWeatherFullURL = "http://api.openweathermap.org/data/2.5/history?q=Seoul&APPID=89e4a79cf2b99a9f6ac5d5654d83a51b"
 
 //AirKorea 미세먼지 REST API
+//만약 키의 트래픽이 다할 경우 다른 키값으로 바꿈
 var dustAPIKey = "euqSW5cVBaDnDWe3igb9/5IVzX7o6eZ+A+PAxQL2tMbeJQ9eTjvtSz2hhXSd3rHvr0UawJy5xQeTumALlgnL5Q=="
 var originalAPIKey = "XAWRkvW8j4qL4z5I7ZPkoWGlaXKMiHpNU97qNjk+l+sfoNK72CEkLzuRO7WgnIOdFQYDivbQW9+H/fzXJKyNJA=="
-//anotherAPIKey = "euqSW5cVBaDnDWe3igb9/5IVzX7o6eZ+A+PAxQL2tMbeJQ9eTjvtSz2hhXSd3rHvr0UawJy5xQeTumALlgnL5Q=="
+
 //근처 측정소 위치
 //파라미터  tmX, tmY, pageNo=1, numOfRows=10, _returnType=json, ServiceKey=XAWRkvW8j4qL4z5I7ZPkoWGlaXKMiHpNU97qNjk%2Bl%2BsfoNK72CEkLzuRO7WgnIOdFQYDivbQW9%2BH%2FfzXJKyNJA%3D%3D
 let dustMeasuringStationURL = "http://openapi.airkorea.or.kr/openapi/services/rest/MsrstnInfoInqireSvc/getNearbyMsrstnList"
@@ -55,16 +46,13 @@ var SKAppKey = "bb7d0c16-812c-4aba-b86e-9f0583eff4cc"
 var SKAppKey1 = "ec755550-98f5-458b-860e-723732ad23fa"
 var SKAppKey2 = "41fd39e9-7e07-47c8-a7a3-ef717ddc0ae3"
 
+//API Header 3개로 늘려 트리픽 초과가 될 경우 Header의 값을 바꿔 많은 트래픽이 가능하도록 설정
 var SKWeatherHeader: HTTPHeaders = ["Accept": "application/json", "Content-Type": "application/json; charset=UTF-8", "appKey": "bb7d0c16-812c-4aba-b86e-9f0583eff4cc"]
 var temp1SKWeatherHeader: HTTPHeaders = ["Accept": "application/json", "Content-Type": "application/json; charset=UTF-8", "appKey": "ec755550-98f5-458b-860e-723732ad23fa"]
 var temp2SKWeatherHeader: HTTPHeaders = ["Accept": "application/json", "Content-Type": "application/json; charset=UTF-8", "appKey": "41fd39e9-7e07-47c8-a7a3-ef717ddc0ae3"]
 var originalSKWeatherHeader: HTTPHeaders = ["Accept": "application/json", "Content-Type": "application/json; charset=UTF-8", "appKey": "bb7d0c16-812c-4aba-b86e-9f0583eff4cc"]
 
-
+//날씨 과거 현재 예보의 URL 설정
 let currentSKWeatherURL = "https://api2.sktelecom.com/weather/current/minutely"
 let forecastSKWeatherURL = "https://api2.sktelecom.com/weather/forecast/3days"
 let historySKWeatherURL = "https://api2.sktelecom.com/weather/yesterday"
-
-
-
-
