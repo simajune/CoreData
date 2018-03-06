@@ -45,7 +45,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     }
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
-        // Perform any setup necessary in order to update the view.
         DataModel.main.dustData.removeAll()
         DataModel.main.currentDustData.removeAll()
         DataModel.main.currentDustGrade.removeAll()
@@ -53,9 +52,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        // If an error is encountered, use NCUpdateResult.Failed
-        // If there's no update required, use NCUpdateResult.NoData
-        // If there's an update, use NCUpdateResult.NewData
         
         completionHandler(NCUpdateResult.newData)
     }
