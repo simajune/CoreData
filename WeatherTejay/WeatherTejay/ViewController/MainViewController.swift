@@ -43,9 +43,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                                   "temp34hour",
                                   "temp37hour"]
 
-    //IBOutlet
-    @IBOutlet weak var backGroundImgView: UIImageView!
+    //MARK: - IBOutlet
+    //Navigation
     @IBOutlet weak var menuBtn: UIButton!
+    //Current Weather, Dust View
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var dayLabel: UILabel!
@@ -57,8 +58,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var compareLabel: UILabel!
     @IBOutlet weak var dustIcon: UIImageView!
     @IBOutlet weak var dustLabel: UILabel!
-    @IBOutlet weak var weatherCollectionView: UICollectionView!
     @IBOutlet weak var refreshBtn: UIButton!
+    //CollectionView
+    @IBOutlet weak var weatherCollectionView: UICollectionView!
     
     //MARK: - Life Cycle
     override func viewDidLoad() {

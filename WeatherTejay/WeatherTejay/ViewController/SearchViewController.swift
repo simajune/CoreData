@@ -12,8 +12,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     var currentAddresses: [String] = []
     var previousAddresses: [NSManagedObject] = []
     var previousStringAddress: [String] = []
+    
     var managedObjectContext: NSManagedObjectContext?
-    var address: String = ""
     var stationList: [String] = []
     var dustParams: [String: String] = [:]
     var changeDustNum: Int = 0

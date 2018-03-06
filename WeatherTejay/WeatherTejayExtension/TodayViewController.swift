@@ -7,6 +7,7 @@ import NotificationCenter
 
 class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManagerDelegate {
     
+    //MARK: - IBOutlet
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var dayLabel: UILabel!
@@ -21,6 +22,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     
     let formatter = DateFormatter()
     let locationManager = CLLocationManager()
+    let dataModel = DataModel()
     var changeAppKeyNum: Int = 0
     var stationList: [String] = []
     var dustParams: [String: String] = [:]
