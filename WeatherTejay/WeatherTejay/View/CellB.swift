@@ -2,6 +2,7 @@
 import UIKit
 
 class CellB: UICollectionViewCell {
+
     //MARK: - Variable
     var cellCount: Int = 0 {
         didSet {
@@ -11,11 +12,13 @@ class CellB: UICollectionViewCell {
         }
     }
     
+    var dataModel: DataModel!
+    
     @IBOutlet weak var dustTableView: UITableView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        dataModel = DataModel()
     }
-    
 }
 
 //MARK: - UITableViewDataSource
@@ -23,9 +26,10 @@ extension CellB: UITableViewDataSource {
     //테이블 뷰 섹션의 셀 갯수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1 {
-            return DataModel.main.currentDustData.count
+            return dataModel.currentDustData.count
+        }else {
+            return dataModel.forecastDustDate.count
         }
-        return DataModel.main.forecastDustDate.count
     }
     //테이블 뷰 셀 설정
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -35,9 +39,9 @@ extension CellB: UITableViewDataSource {
             cell.gradeLabel.isHidden = false
             cell.dustValueLabel.isHidden = false
             cell.forecastDustTxtView.isHidden = true
-            cell.label.text = DataModel.main.dustName[indexPath.row]
-            cell.dustValueLabel.text = DataModel.main.currentDustData[indexPath.row]
-            cell.gradeLabel.text = DataModel.main.changeDustGrade(grade: DataModel.main.currentDustGrade[indexPath.row])
+            cell.label.text = dataModel.dustName[indexPath.row]
+            cell.dustValueLabel.text = dataModel.currentDustData[indexPath.row]
+            cell.gradeLabel.text = dataModel.changeDustGrade(grade: dataModel.currentDustGrade[indexPath.row])
             
             if indexPath.row == 0 || indexPath.row == 1 {
                 cell.unitLabel.text = "㎍/㎥"
@@ -51,9 +55,9 @@ extension CellB: UITableViewDataSource {
             cell.gradeLabel.isHidden = true
             cell.dustValueLabel.isHidden = true
             cell.forecastDustTxtView.isHidden = false
-            cell.label.text = DataModel.main.forecastDustDate[indexPath.row]
+            cell.label.text = dataModel.forecastDustDate[indexPath.row]
             cell.forecastDustTxtView.font = UIFont(name: "Yanolja Yache OTF", size: 12)
-            cell.forecastDustTxtView.text = DataModel.main.forecastDustInformOverall[indexPath.row]
+            cell.forecastDustTxtView.text = dataModel.forecastDustInformOverall[indexPath.row]
             cell.forecastDustTxtView.text = cell.forecastDustTxtView.text.replace(target: "○ [미세먼지]", withString: "")
             return cell
         }

@@ -2,7 +2,7 @@
 import UIKit
 
 class CellA: UICollectionViewCell {
-    
+
     //MARK: - Variable
     var cellCount: Int = 0 {
         didSet {
@@ -19,7 +19,7 @@ class CellA: UICollectionViewCell {
     }()
     
     let formatter = DateFormatter()
-    let mainViewController = MainViewController()
+    var dataModel: DataModel!
     
     //MARK: - IBOutlet
     @IBOutlet weak var forecastCollectionView: UICollectionView!
@@ -27,6 +27,7 @@ class CellA: UICollectionViewCell {
     //MARK: - Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        dataModel = DataModel()
     }
 }
 
@@ -34,16 +35,16 @@ class CellA: UICollectionViewCell {
 //UICollectionViewDataSource\
 extension CellA: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return DataModel.main.weatherData.count
+        return dataModel.weatherData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let itemCellA = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCellA", for: indexPath) as! ItemCellA
 //        formatter.dateFormat = "d일 HH시"
         
-        itemCellA.forecastDate.text = DataModel.main.weatherData[indexPath.row]["date"]
-        itemCellA.forecastImgView.image = UIImage(named: DataModel.main.changeWeatherCondition(condition: DataModel.main.weatherData[indexPath.row]["condition"]!))
-        let tempString = DataModel.main.weatherData[indexPath.row]["temperature"]?.replace(target: ".00", withString: "")
+        itemCellA.forecastDate.text = dataModel.weatherData[indexPath.row]["date"]
+        itemCellA.forecastImgView.image = UIImage(named: dataModel.changeWeatherCondition(condition: dataModel.weatherData[indexPath.row]["condition"]!))
+        let tempString = dataModel.weatherData[indexPath.row]["temperature"]?.replace(target: ".00", withString: "")
         itemCellA.forecastTempLabel.text = tempString! + " ˚"
         
         return itemCellA

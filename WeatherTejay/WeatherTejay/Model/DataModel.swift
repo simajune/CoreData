@@ -3,8 +3,6 @@ import Foundation
 
 class DataModel {
     
-    static var main = DataModel()
-    
     //날씨 데이터
     var address: String = ""
     var temperature: Int = 0

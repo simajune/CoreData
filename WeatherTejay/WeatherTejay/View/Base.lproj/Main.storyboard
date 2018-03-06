@@ -492,7 +492,7 @@ Airkorea에사 제공하는 정보를
                                         </constraints>
                                         <state key="normal" image="Location"/>
                                         <connections>
-                                            <segue destination="M58-Lg-1EI" kind="presentation" modalTransitionStyle="crossDissolve" id="Nwj-3e-0fm"/>
+                                            <segue destination="M58-Lg-1EI" kind="presentation" identifier="ToSearch" modalTransitionStyle="crossDissolve" id="Nwj-3e-0fm"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEE-CV-sFZ">

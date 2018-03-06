@@ -5,9 +5,19 @@ import SwiftyJSON
 import Alamofire
 import PKHUD
 
+//MARL: - Protocol
+//델리게이트 패턴을 쓰기 위해 프로토콜 설정
+protocol SearchViewDelegate {
+    //위치 정보를 건내줌
+    func sendLocation(locationX: String, locationY: String, address: String)
+}
+
 class SearchViewController: UIViewController, UISearchBarDelegate {
     
     //MARK: - Variable
+    var delegate: SearchViewDelegate?
+    var dataModel: DataModel!
+    
     var totalAddresses: [String] = []
     var currentAddresses: [String] = []
     var previousAddresses: [NSManagedObject] = []
@@ -25,6 +35,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        dataModel = DataModel()
         setupSerachBar()
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -37,12 +48,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        DataModel.main.weatherLocationX = ""
-        DataModel.main.weatherLocationY = ""
         setupSerachBar()
         DispatchQueue.global().async { [weak self] in
             guard let `self` = self else { return }
-            
             if let path = Bundle.main.path(forResource: "Addresses", ofType: "json"),
                 let contents = try? String(contentsOfFile: path),
                 let data = contents.data(using: .utf8) {
@@ -62,7 +70,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                 DispatchQueue.main.async {
                     self.addressTablewView.reloadData()
                 }
-                
             }
         }
     }
@@ -178,13 +185,13 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                 let data: JSON = JSON(response.result.value!)
                 //주소 값 중에 안 맞는 부분이 있어서 조건문으로 저장
                 if data["documents"][0]["address"]["region_3depth_h_name"].stringValue == "" {
-                    DataModel.main.address = data["documents"][0]["address"]["region_2depth_name"].stringValue + " " +  data["documents"][0]["address"]["region_3depth_name"].stringValue
+                    self.dataModel.address = data["documents"][0]["address"]["region_2depth_name"].stringValue + " " +  data["documents"][0]["address"]["region_3depth_name"].stringValue
                 }else {
-                    DataModel.main.address = data["documents"][0]["address"]["region_2depth_name"].stringValue + " " +  data["documents"][0]["address"]["region_3depth_h_name"].stringValue
+                    self.dataModel.address = data["documents"][0]["address"]["region_2depth_name"].stringValue + " " +  data["documents"][0]["address"]["region_3depth_h_name"].stringValue
                 }
-                DataModel.main.weatherLocationX = data["documents"][0]["x"].stringValue
-                DataModel.main.weatherLocationY = data["documents"][0]["y"].stringValue
-                
+                self.dataModel.weatherLocationX = data["documents"][0]["x"].stringValue
+                self.dataModel.weatherLocationY = data["documents"][0]["y"].stringValue
+                self.delegate?.sendLocation(locationX: data["documents"][0]["x"].stringValue, locationY: data["documents"][0]["y"].stringValue, address: data["documents"][0]["address"]["region_2depth_name"].stringValue + " " +  data["documents"][0]["address"]["region_3depth_h_name"].stringValue)
                 self.dismiss(animated: true, completion: nil)
             }else {
                 print("Error \(response.result.error!)")
