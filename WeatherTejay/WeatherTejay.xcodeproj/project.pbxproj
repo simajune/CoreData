@@ -44,6 +44,8 @@
 		232CE9502022275900B5E0B1 /* DustModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CE94F2022275900B5E0B1 /* DustModel.swift */; };
 		232CE9522024669200B5E0B1 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CE9512024669200B5E0B1 /* MenuViewController.swift */; };
 		232CE954202473A300B5E0B1 /* yanoljaTFBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 232CE953202473A200B5E0B1 /* yanoljaTFBold.otf */; };
+		23B49793204F074100E43AAC /* DataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B49792204F074000E43AAC /* DataCenter.swift */; };
+		23B49794204F074100E43AAC /* DataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B49792204F074000E43AAC /* DataCenter.swift */; };
 		23EBDF68203802C400D99519 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EBDF67203802C400D99519 /* MenuCell.swift */; };
 		23EBDF6A2038073A00D99519 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EBDF692038073A00D99519 /* AboutViewController.swift */; };
 		23FB189A2035550900C21597 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F90F2201867D400C0DA34 /* DataModel.swift */; };
@@ -124,6 +126,7 @@
 		232CE94F2022275900B5E0B1 /* DustModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DustModel.swift; sourceTree = "<group>"; };
 		232CE9512024669200B5E0B1 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		232CE953202473A200B5E0B1 /* yanoljaTFBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = yanoljaTFBold.otf; sourceTree = "<group>"; };
+		23B49792204F074000E43AAC /* DataCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataCenter.swift; sourceTree = "<group>"; };
 		23EBDF67203802C400D99519 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		23EBDF692038073A00D99519 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		3586AFF9490ABE383441F619 /* Pods-WeatherTejayExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTejayExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTejayExtension/Pods-WeatherTejayExtension.release.xcconfig"; sourceTree = "<group>"; };
@@ -176,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				231F90F2201867D400C0DA34 /* DataModel.swift */,
+				23B49792204F074000E43AAC /* DataCenter.swift */,
 				232CE94D2022274E00B5E0B1 /* WeatherModel.swift */,
 				232CE94F2022275900B5E0B1 /* DustModel.swift */,
 			);
@@ -501,6 +505,7 @@
 				232B2EAA20162AE7001F260E /* WeatherTejay.xcdatamodeld in Sources */,
 				231E46ED201EC11100C5850F /* SearchViewController.swift in Sources */,
 				23EBDF68203802C400D99519 /* MenuCell.swift in Sources */,
+				23B49793204F074100E43AAC /* DataCenter.swift in Sources */,
 				232B2EA220162AE6001F260E /* AppDelegate.swift in Sources */,
 				232B2EE320172573001F260E /* ItemCellB.swift in Sources */,
 				232CE94E2022274E00B5E0B1 /* WeatherModel.swift in Sources */,
@@ -528,6 +533,7 @@
 				23FB189A2035550900C21597 /* DataModel.swift in Sources */,
 				23FB189B2035550900C21597 /* WeatherModel.swift in Sources */,
 				23FB189C2035550900C21597 /* DustModel.swift in Sources */,
+				23B49794204F074100E43AAC /* DataCenter.swift in Sources */,
 				231E4704201F9AB700C5850F /* Extension.swift in Sources */,
 				232B2ED0201705AC001F260E /* Constant.swift in Sources */,
 				232B2EC02016C6E0001F260E /* TodayViewController.swift in Sources */,

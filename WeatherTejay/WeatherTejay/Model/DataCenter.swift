@@ -1,9 +1,7 @@
 
 import Foundation
 
-class DataModel {
-    
-    static var main = DataModel()
+class DataCenter {
     
     //날씨 데이터
     var address: String = ""

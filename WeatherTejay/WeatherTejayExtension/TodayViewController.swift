@@ -22,7 +22,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     
     let formatter = DateFormatter()
     let locationManager = CLLocationManager()
-    let dataModel = DataModel()
     var changeAppKeyNum: Int = 0
     var stationList: [String] = []
     var dustParams: [String: String] = [:]
