@@ -37,8 +37,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        WeatherDataModel.main.weatherLocationX = ""
-        WeatherDataModel.main.weatherLocationY = ""
+        DataModel.main.weatherLocationX = ""
+        DataModel.main.weatherLocationY = ""
         setupSerachBar()
         DispatchQueue.global().async { [weak self] in
             guard let `self` = self else { return }
@@ -178,12 +178,12 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                 let data: JSON = JSON(response.result.value!)
                 //주소 값 중에 안 맞는 부분이 있어서 조건문으로 저장
                 if data["documents"][0]["address"]["region_3depth_h_name"].stringValue == "" {
-                    WeatherDataModel.main.address = data["documents"][0]["address"]["region_2depth_name"].stringValue + " " +  data["documents"][0]["address"]["region_3depth_name"].stringValue
+                    DataModel.main.address = data["documents"][0]["address"]["region_2depth_name"].stringValue + " " +  data["documents"][0]["address"]["region_3depth_name"].stringValue
                 }else {
-                    WeatherDataModel.main.address = data["documents"][0]["address"]["region_2depth_name"].stringValue + " " +  data["documents"][0]["address"]["region_3depth_h_name"].stringValue
+                    DataModel.main.address = data["documents"][0]["address"]["region_2depth_name"].stringValue + " " +  data["documents"][0]["address"]["region_3depth_h_name"].stringValue
                 }
-                WeatherDataModel.main.weatherLocationX = data["documents"][0]["x"].stringValue
-                WeatherDataModel.main.weatherLocationY = data["documents"][0]["y"].stringValue
+                DataModel.main.weatherLocationX = data["documents"][0]["x"].stringValue
+                DataModel.main.weatherLocationY = data["documents"][0]["y"].stringValue
                 
                 self.dismiss(animated: true, completion: nil)
             }else {

@@ -1,9 +1,9 @@
 
 import Foundation
 
-class WeatherDataModel {
+class DataModel {
     
-    static var main = WeatherDataModel()
+    static var main = DataModel()
     
     //날씨 데이터
     var address: String = ""
@@ -44,6 +44,7 @@ class WeatherDataModel {
     var forecastDustInformCause: [String] = []
     var forecastDustInformOverall: [String] = []
     
+    //미세먼지 상태를 반환하기 위한 메소드
     func changeDustGrade(grade: String?) -> String {
         guard let grade = grade else { return "" }
         switch grade {
@@ -86,7 +87,7 @@ class WeatherDataModel {
         }
     }
     
-    ////날씨의 이이콘에 대한 값을 반환하기 위한 메소드 (SKWeather API)
+    //날씨의 이이콘에 대한 값을 반환하기 위한 메소드 (SKWeather API)
     func changeWeatherCondition(condition: String) -> String {
         var condition = condition.replace(target: "SKY_A", withString: "")
         condition = condition.replace(target: "SKY_S", withString: "")

@@ -9,7 +9,6 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
         aboutTxtView.font = UIFont(name: "Yanolja Yache OTF", size: 17)
         gradeTxtView.font = UIFont(name: "Yanolja Yache OTF", size: 17)
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func backBtnAction(_ sender: UIButton) {

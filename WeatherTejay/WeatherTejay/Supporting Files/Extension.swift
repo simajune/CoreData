@@ -1,6 +1,7 @@
 
 import UIKit
 
+//MARK: - DateFormatter
 extension DateFormatter {
     func date(fromSwapiString dateString: String) -> Date? {
         // SWAPI dates look like: "2014-12-10T16:44:31.486000Z"
@@ -11,8 +12,7 @@ extension DateFormatter {
     }
 }
 
-
-// as UISearchBar extension
+//MARK: - UISearchBar extension
 extension UISearchBar {
     func changeSearchBarColor(color : UIColor) {
         for subView in self.subviews {
@@ -23,16 +23,15 @@ extension UISearchBar {
                     textField.backgroundColor = color
                     break
                 }
-                
             }
         }
     }
 }
 
-// MARK: UIAlertCotroller
+//MARK: - UIAlertCotroller
 extension UIAlertController {
     
-    // MARK: 알림창
+    //알림창
     static func presentAlertController(target: UIViewController,
                                        title: String?,
                                        massage: String?,
@@ -49,7 +48,7 @@ extension UIAlertController {
         target.present(alert, animated: true, completion: nil)
     }
 }
-
+//MARK: - String
 extension String {
     func replace(target: String, withString: String) -> String {
         return self.replacingOccurrences(of: target, with: withString, options: NSString.CompareOptions.literal, range: nil) }

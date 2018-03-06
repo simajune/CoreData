@@ -23,9 +23,9 @@ extension CellB: UITableViewDataSource {
     //테이블 뷰 섹션의 셀 갯수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1 {
-            return WeatherDataModel.main.currentDustData.count
+            return DataModel.main.currentDustData.count
         }
-        return WeatherDataModel.main.forecastDustDate.count
+        return DataModel.main.forecastDustDate.count
     }
     //테이블 뷰 셀 설정
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -35,9 +35,9 @@ extension CellB: UITableViewDataSource {
             cell.gradeLabel.isHidden = false
             cell.dustValueLabel.isHidden = false
             cell.forecastDustTxtView.isHidden = true
-            cell.label.text = WeatherDataModel.main.dustName[indexPath.row]
-            cell.dustValueLabel.text = WeatherDataModel.main.currentDustData[indexPath.row]
-            cell.gradeLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.currentDustGrade[indexPath.row])
+            cell.label.text = DataModel.main.dustName[indexPath.row]
+            cell.dustValueLabel.text = DataModel.main.currentDustData[indexPath.row]
+            cell.gradeLabel.text = DataModel.main.changeDustGrade(grade: DataModel.main.currentDustGrade[indexPath.row])
             
             if indexPath.row == 0 || indexPath.row == 1 {
                 cell.unitLabel.text = "㎍/㎥"
@@ -51,9 +51,9 @@ extension CellB: UITableViewDataSource {
             cell.gradeLabel.isHidden = true
             cell.dustValueLabel.isHidden = true
             cell.forecastDustTxtView.isHidden = false
-            cell.label.text = WeatherDataModel.main.forecastDustDate[indexPath.row]
+            cell.label.text = DataModel.main.forecastDustDate[indexPath.row]
             cell.forecastDustTxtView.font = UIFont(name: "Yanolja Yache OTF", size: 12)
-            cell.forecastDustTxtView.text = WeatherDataModel.main.forecastDustInformOverall[indexPath.row]
+            cell.forecastDustTxtView.text = DataModel.main.forecastDustInformOverall[indexPath.row]
             cell.forecastDustTxtView.text = cell.forecastDustTxtView.text.replace(target: "○ [미세먼지]", withString: "")
             return cell
         }

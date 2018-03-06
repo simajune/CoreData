@@ -34,16 +34,16 @@ class CellA: UICollectionViewCell {
 //UICollectionViewDataSource\
 extension CellA: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return WeatherDataModel.main.weatherData.count
+        return DataModel.main.weatherData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let itemCellA = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCellA", for: indexPath) as! ItemCellA
 //        formatter.dateFormat = "d일 HH시"
         
-        itemCellA.forecastDate.text = WeatherDataModel.main.weatherData[indexPath.row]["date"]
-        itemCellA.forecastImgView.image = UIImage(named: WeatherDataModel.main.changeWeatherCondition(condition: WeatherDataModel.main.weatherData[indexPath.row]["condition"]!))
-        let tempString = WeatherDataModel.main.weatherData[indexPath.row]["temperature"]?.replace(target: ".00", withString: "")
+        itemCellA.forecastDate.text = DataModel.main.weatherData[indexPath.row]["date"]
+        itemCellA.forecastImgView.image = UIImage(named: DataModel.main.changeWeatherCondition(condition: DataModel.main.weatherData[indexPath.row]["condition"]!))
+        let tempString = DataModel.main.weatherData[indexPath.row]["temperature"]?.replace(target: ".00", withString: "")
         itemCellA.forecastTempLabel.text = tempString! + " ˚"
         
         return itemCellA

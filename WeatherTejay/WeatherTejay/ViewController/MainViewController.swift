@@ -86,10 +86,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         let currentDay = formatter.string(from: Date())
         dayLabel.text = changeKRDay(str: currentDay)
         //이건 주소 검색에서 주소를 클릭했을 때 불려지게 하기 위함. 왜냐하면 검색한 주소에 대한 정보를 보내기 위해선 'viewWillAppear' 메소드에 설정함
-        locationLabel.text = WeatherDataModel.main.address
-        if WeatherDataModel.main.weatherLocationX != "" && WeatherDataModel.main.weatherLocationX != "" {
-            let params: [String: String] = ["lat": WeatherDataModel.main.weatherLocationY, "lon": WeatherDataModel.main.weatherLocationX, "version": "2"]
-            let tmParams: [String: String] = ["y": WeatherDataModel.main.weatherLocationY, "x": WeatherDataModel.main.weatherLocationX, "input_coord": "WGS84", "output_coord": "WTM"]
+        locationLabel.text = DataModel.main.address
+        if DataModel.main.weatherLocationX != "" && DataModel.main.weatherLocationX != "" {
+            let params: [String: String] = ["lat": DataModel.main.weatherLocationY, "lon": DataModel.main.weatherLocationX, "version": "2"]
+            let tmParams: [String: String] = ["y": DataModel.main.weatherLocationY, "x": DataModel.main.weatherLocationX, "input_coord": "WGS84", "output_coord": "WTM"]
             getPrevWeatherData(url: historySKWeatherURL, parameters: params)
             getTMData(url: kakaoCoordinateURL, parameters: tmParams)
         }
@@ -228,7 +228,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                     self.tryWeatherData(url: url, parameters: parameters, type: "prev")
                 } else {
                     self.changeAppKeyNum = 0
-                    WeatherDataModel.main.prevTemp = Int(round(Double(data["weather"]["yesterday"][0]["day"]["hourly"][0]["temperature"].stringValue)!))
+                    DataModel.main.prevTemp = Int(round(Double(data["weather"]["yesterday"][0]["day"]["hourly"][0]["temperature"].stringValue)!))
                     self.getCurrentWeatherData(url: currentSKWeatherURL, parameters: parameters)
                 }
             } else {
@@ -240,7 +240,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     //현재의 날씨 데이터 가져오기
     func getCurrentWeatherData(url: String, parameters: [String: String]) {
-        WeatherDataModel.main.weatherData.removeAll()
+        DataModel.main.weatherData.removeAll()
         Alamofire.request(url, method: .get, parameters: parameters, headers: SKWeatherHeader).responseJSON { [weak self] response in
             guard let `self` = self else { return }
             if response.result.isSuccess {
@@ -262,7 +262,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     //일기 예보 정보 가져오기
     func getforecastWeatherData(url: String, parameters: [String: String]) {
-        WeatherDataModel.main.weatherData.removeAll()
+        DataModel.main.weatherData.removeAll()
         Alamofire.request(url, method: .get, parameters: parameters, headers: SKWeatherHeader).responseJSON { [weak self] response in
             guard let `self` = self else { return }
             if response.result.isSuccess {
@@ -273,12 +273,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                     self.changeAppKeyNum = 0
                     for index in 0...11 {
                         self.formatter.dateFormat = "d일 HH시"
-                        WeatherDataModel.main.weathercontents["date"] = self.formatter.string(from: Date(timeIntervalSinceNow: TimeInterval(3600 * ((3 * index) + 4))))
-                        WeatherDataModel.main.weathercontents["temperature"] = JSON(response.result.value!)["weather"]["forecast3days"][0]["fcst3hour"]["temperature"][self.forecastTemp[index]].stringValue
-                        WeatherDataModel.main.weathercontents["condition"] = JSON(response.result.value!)["weather"]["forecast3days"][0]["fcst3hour"]["sky"][self.forecastCode[index]].stringValue
-                        WeatherDataModel.main.weatherData.append(WeatherDataModel.main.weathercontents)
+                        DataModel.main.weathercontents["date"] = self.formatter.string(from: Date(timeIntervalSinceNow: TimeInterval(3600 * ((3 * index) + 4))))
+                        DataModel.main.weathercontents["temperature"] = JSON(response.result.value!)["weather"]["forecast3days"][0]["fcst3hour"]["temperature"][self.forecastTemp[index]].stringValue
+                        DataModel.main.weathercontents["condition"] = JSON(response.result.value!)["weather"]["forecast3days"][0]["fcst3hour"]["sky"][self.forecastCode[index]].stringValue
+                        DataModel.main.weatherData.append(DataModel.main.weathercontents)
                     }
-                    WeatherDataModel.main.forecastCount = WeatherDataModel.main.weatherData.count - 1
+                    DataModel.main.forecastCount = DataModel.main.weatherData.count - 1
                     self.weatherCollectionView.reloadData()
                     self.updateUIWithWeatherDate()
                 }
@@ -333,9 +333,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     //미세먼지 데이터 가져오기
     func getDustData(url: String, parameters: [String: String]) {
-        WeatherDataModel.main.dustData.removeAll()
-        WeatherDataModel.main.currentDustData.removeAll()
-        WeatherDataModel.main.currentDustGrade.removeAll()
+        DataModel.main.dustData.removeAll()
+        DataModel.main.currentDustData.removeAll()
+        DataModel.main.currentDustGrade.removeAll()
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
             guard let `self` = self else { return }
             if response.result.isSuccess {
@@ -352,32 +352,32 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                         HUD.flash(HUDContentType.label("미세먼지 정보를 받아올 수 없습니다\n잠시후 다시 시도해주세요"), delay: 1.0)
                     }
                 }else {
-                    for title in WeatherDataModel.main.dustContent {
-                        WeatherDataModel.main.currentDustData.append(datas["list"][0][title].stringValue)
+                    for title in DataModel.main.dustContent {
+                        DataModel.main.currentDustData.append(datas["list"][0][title].stringValue)
                     }
-                    WeatherDataModel.main.currentDustGrade.append(self.changeWHOPM10Grade(value: datas["list"][0]["pm10Value"].stringValue))
-                    WeatherDataModel.main.currentDustGrade.append(self.changeWHOPM25Grade(value: datas["list"][0]["pm25Value"].stringValue))
-                    for title in WeatherDataModel.main.dustGrade {
-                        WeatherDataModel.main.currentDustGrade.append(datas["list"][0][title].stringValue)
+                    DataModel.main.currentDustGrade.append(self.changeWHOPM10Grade(value: datas["list"][0]["pm10Value"].stringValue))
+                    DataModel.main.currentDustGrade.append(self.changeWHOPM25Grade(value: datas["list"][0]["pm25Value"].stringValue))
+                    for title in DataModel.main.dustGrade {
+                        DataModel.main.currentDustGrade.append(datas["list"][0][title].stringValue)
                     }
-                    WeatherDataModel.main.currentDustDataCount = WeatherDataModel.main.currentDustData.count
+                    DataModel.main.currentDustDataCount = DataModel.main.currentDustData.count
                     for data in datas["list"] {
                         guard let dustData = DustModel(json: data) else { return }
-                        WeatherDataModel.main.dustData.append(dustData)
+                        DataModel.main.dustData.append(dustData)
                     }
                     
                     //만약 미세먼지나 초미세먼지의 등급이 하나라도 '나쁨'이나 '매우나쁨'일 경우 등급은 미세먼지, 초미세먼지의 등급으로 표시
                     if datas["list"][0]["khaiValue"].stringValue == "-" {
-                        self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.currentDustGrade[0])
-                        self.dustIcon.image = UIImage(named: WeatherDataModel.main.changedustIcon(grade: WeatherDataModel.main.currentDustGrade[0]))
+                        self.dustLabel.text = DataModel.main.changeDustGrade(grade: DataModel.main.currentDustGrade[0])
+                        self.dustIcon.image = UIImage(named: DataModel.main.changedustIcon(grade: DataModel.main.currentDustGrade[0]))
                     }else {
                         for index in 0...1 {
-                            if WeatherDataModel.main.currentDustGrade[index] == "3" || WeatherDataModel.main.currentDustGrade[index] == "4" {
-                                self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.currentDustGrade[index])
-                                self.dustIcon.image = UIImage(named: WeatherDataModel.main.changedustIcon(grade: WeatherDataModel.main.currentDustGrade[index]))
+                            if DataModel.main.currentDustGrade[index] == "3" || DataModel.main.currentDustGrade[index] == "4" {
+                                self.dustLabel.text = DataModel.main.changeDustGrade(grade: DataModel.main.currentDustGrade[index])
+                                self.dustIcon.image = UIImage(named: DataModel.main.changedustIcon(grade: DataModel.main.currentDustGrade[index]))
                             }else{
-                                self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.dustData[0].khaiGrade)
-                                self.dustIcon.image = UIImage(named: WeatherDataModel.main.changedustIcon(grade: WeatherDataModel.main.dustData[0].khaiGrade))
+                                self.dustLabel.text = DataModel.main.changeDustGrade(grade: DataModel.main.dustData[0].khaiGrade)
+                                self.dustIcon.image = UIImage(named: DataModel.main.changedustIcon(grade: DataModel.main.dustData[0].khaiGrade))
                             }
                         }
                     }
@@ -392,15 +392,15 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
     //미세먼지 예보 정보를 받음. 세부 정보는 아니고 대한민국의 전국적인 예보를 받아옴
     func getforecastDustData(url: String, parameters: [String: String]) {
-        WeatherDataModel.main.forecastDustDate.removeAll()
-        WeatherDataModel.main.forecastDustInformCause.removeAll()
+        DataModel.main.forecastDustDate.removeAll()
+        DataModel.main.forecastDustInformCause.removeAll()
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
             if response.result.isSuccess {
                 let datas = JSON(response.result.value!)
                 for data in 0...1 {
-                    WeatherDataModel.main.forecastDustDate.append(datas["list"][data]["informData"].stringValue)
-                    WeatherDataModel.main.forecastDustInformCause.append(datas["list"][data]["informCause"].stringValue)
-                    WeatherDataModel.main.forecastDustInformOverall.append(datas["list"][data]["informOverall"].stringValue)
+                    DataModel.main.forecastDustDate.append(datas["list"][data]["informData"].stringValue)
+                    DataModel.main.forecastDustInformCause.append(datas["list"][data]["informCause"].stringValue)
+                    DataModel.main.forecastDustInformOverall.append(datas["list"][data]["informOverall"].stringValue)
                 }
                 self.weatherCollectionView.reloadData()
             }else {
@@ -415,11 +415,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     func updateCurrentWeatherData(json: JSON) {
         changeAppKeyNum = 0
         if let tempResult = json["weather"]["minutely"][0]["temperature"]["tc"].string {
-            WeatherDataModel.main.temperature = Int(round(Double(tempResult)!))
-            WeatherDataModel.main.maxTemperature = Int(round(Double(json["weather"]["minutely"][0]["temperature"]["tmax"].stringValue)!))
-            WeatherDataModel.main.minTemperature = Int(round(Double(json["weather"]["minutely"][0]["temperature"]["tmin"].stringValue)!))
-            WeatherDataModel.main.SKcondition = json["weather"]["minutely"][0]["sky"]["code"].stringValue
-            WeatherDataModel.main.weatherIconName = WeatherDataModel.main.changeWeatherCondition(condition: WeatherDataModel.main.SKcondition)
+            DataModel.main.temperature = Int(round(Double(tempResult)!))
+            DataModel.main.maxTemperature = Int(round(Double(json["weather"]["minutely"][0]["temperature"]["tmax"].stringValue)!))
+            DataModel.main.minTemperature = Int(round(Double(json["weather"]["minutely"][0]["temperature"]["tmin"].stringValue)!))
+            DataModel.main.SKcondition = json["weather"]["minutely"][0]["sky"]["code"].stringValue
+            DataModel.main.weatherIconName = DataModel.main.changeWeatherCondition(condition: DataModel.main.SKcondition)
             updateUIWithWeatherDate()
         }else {
             if changeAppKeyNum == 0 {
@@ -439,10 +439,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
 
     //MARK: - UI Updates
     func updateUIWithWeatherDate() {
-        tempLabel.text = String(WeatherDataModel.main.temperature) + "˚"
-        maxTempLabel.text = String(WeatherDataModel.main.maxTemperature) + "˚"
-        minTempLabel.text = String(WeatherDataModel.main.minTemperature) + "˚"
-        let compareTemp = WeatherDataModel.main.temperature - WeatherDataModel.main.prevTemp
+        tempLabel.text = String(DataModel.main.temperature) + "˚"
+        maxTempLabel.text = String(DataModel.main.maxTemperature) + "˚"
+        minTempLabel.text = String(DataModel.main.minTemperature) + "˚"
+        let compareTemp = DataModel.main.temperature - DataModel.main.prevTemp
         if compareTemp == 0 {
             compareLabel.text = "어제와 동일합니다"
         }else if compareTemp > 0 {
@@ -450,8 +450,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         }else {
             compareLabel.text = "어제보다 " + String(compareTemp * (-1)) + "˚ " + "낮습니다"
         }
-        weatherInfo.text = WeatherDataModel.main.changeKRWeatherCondition(condition: WeatherDataModel.main.weatherIconName)
-        var weatherIconName = WeatherDataModel.main.weatherIconName
+        weatherInfo.text = DataModel.main.changeKRWeatherCondition(condition: DataModel.main.weatherIconName)
+        var weatherIconName = DataModel.main.weatherIconName
         formatter.dateFormat = "HH"
         let meridian = Int(formatter.string(from: Date()))
         
@@ -528,15 +528,15 @@ extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.item == 1 {
             let cellB = collectionView.dequeueReusableCell(withReuseIdentifier: "cellB", for: indexPath) as! CellB
-            cellB.cellCount = WeatherDataModel.main.currentDustDataCount
-            if WeatherDataModel.main.currentDustDataCount == WeatherDataModel.main.oldCurrentDustDataCount {
+            cellB.cellCount = DataModel.main.currentDustDataCount
+            if DataModel.main.currentDustDataCount == DataModel.main.oldCurrentDustDataCount {
                 cellB.dustTableView.reloadData()
             }
             return cellB
         } else {
             let cellA = collectionView.dequeueReusableCell(withReuseIdentifier: "cellA", for: indexPath) as! CellA
-            cellA.cellCount = WeatherDataModel.main.forecastCount
-            if WeatherDataModel.main.forecastCount == WeatherDataModel.main.preforecastCount {
+            cellA.cellCount = DataModel.main.forecastCount
+            if DataModel.main.forecastCount == DataModel.main.preforecastCount {
                 cellA.forecastCollectionView.reloadData()
             }
             return cellA

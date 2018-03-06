@@ -28,9 +28,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        WeatherDataModel.main.dustData.removeAll()
-        WeatherDataModel.main.currentDustData.removeAll()
-        WeatherDataModel.main.currentDustGrade.removeAll()
+        DataModel.main.dustData.removeAll()
+        DataModel.main.currentDustData.removeAll()
+        DataModel.main.currentDustGrade.removeAll()
         formatter.dateFormat = "MM월 dd일"
         let currentDate = formatter.string(from: Date())
         dateLabel.text = currentDate
@@ -45,9 +45,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
-        WeatherDataModel.main.dustData.removeAll()
-        WeatherDataModel.main.currentDustData.removeAll()
-        WeatherDataModel.main.currentDustGrade.removeAll()
+        DataModel.main.dustData.removeAll()
+        DataModel.main.currentDustData.removeAll()
+        DataModel.main.currentDustGrade.removeAll()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
@@ -177,7 +177,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
                     }
                 }else {
                     self.changeAppKeyNum = 0
-                    WeatherDataModel.main.prevTemp = Int(round(Double(JSON(response.result.value!)["weather"]["yesterday"][0]["day"]["hourly"][0]["temperature"].stringValue)!))
+                    DataModel.main.prevTemp = Int(round(Double(JSON(response.result.value!)["weather"]["yesterday"][0]["day"]["hourly"][0]["temperature"].stringValue)!))
                     self.getCurrentWeatherData(url: currentSKWeatherURL, parameters: parameters)
                 }
             }else {
@@ -189,7 +189,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     
     //현재의 날씨 데이터 가져오기
     func getCurrentWeatherData(url: String, parameters: [String: String]) {
-        WeatherDataModel.main.weatherData.removeAll()
+        DataModel.main.weatherData.removeAll()
         Alamofire.request(url, method: .get, parameters: parameters, headers: SKWeatherHeader).responseJSON { [weak self] response in
             guard let `self` = self else { return }
             if response.result.isSuccess {
@@ -257,8 +257,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     
     //미세먼지 데이터 가져오기
     func getDustData(url: String, parameters: [String: String]) {
-        WeatherDataModel.main.dustData.removeAll()
-        WeatherDataModel.main.currentDustGrade.removeAll()
+        DataModel.main.dustData.removeAll()
+        DataModel.main.currentDustGrade.removeAll()
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
             if response.result.isSuccess {
                 let datas = JSON(response.result.value!)
@@ -275,23 +275,23 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
                 }else {
                     for data in datas["list"] {
                         guard let dustData = DustModel(json: data) else { return }
-                        WeatherDataModel.main.dustData.append(dustData)
+                        DataModel.main.dustData.append(dustData)
                     }
                     
-                    WeatherDataModel.main.currentDustGrade.append(self.changeWHOPM10Grade(value: datas["list"][0]["pm10Value"].stringValue))
-                    WeatherDataModel.main.currentDustGrade.append(self.changeWHOPM25Grade(value: datas["list"][0]["pm25Value"].stringValue))
+                    DataModel.main.currentDustGrade.append(self.changeWHOPM10Grade(value: datas["list"][0]["pm10Value"].stringValue))
+                    DataModel.main.currentDustGrade.append(self.changeWHOPM25Grade(value: datas["list"][0]["pm25Value"].stringValue))
                     if datas["list"][0]["khaiValue"].stringValue == "-" {
-                        self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.currentDustGrade[0])
-                        self.dustIcon.image = UIImage(named: WeatherDataModel.main.changedustIcon(grade: WeatherDataModel.main.currentDustGrade[0]))
+                        self.dustLabel.text = DataModel.main.changeDustGrade(grade: DataModel.main.currentDustGrade[0])
+                        self.dustIcon.image = UIImage(named: DataModel.main.changedustIcon(grade: DataModel.main.currentDustGrade[0]))
                     }else {
                         //만약 미세먼지나 초미세먼지의 등급이 하나라도 '나쁨'이나 '매우나쁨'일 경우 등급은 미세먼지, 초미세먼지의 등급으로 표시
-                        for list in WeatherDataModel.main.currentDustGrade {
+                        for list in DataModel.main.currentDustGrade {
                             if list == "3" || list == "4" {
-                                self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: list)
-                                self.dustIcon.image = UIImage(named: WeatherDataModel.main.changedustIcon(grade: list))
+                                self.dustLabel.text = DataModel.main.changeDustGrade(grade: list)
+                                self.dustIcon.image = UIImage(named: DataModel.main.changedustIcon(grade: list))
                             }else{
-                                self.dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.dustData[0].khaiGrade)
-                                self.dustIcon.image = UIImage(named: WeatherDataModel.main.changedustIcon(grade: WeatherDataModel.main.dustData[0].khaiGrade))
+                                self.dustLabel.text = DataModel.main.changeDustGrade(grade: DataModel.main.dustData[0].khaiGrade)
+                                self.dustIcon.image = UIImage(named: DataModel.main.changedustIcon(grade: DataModel.main.dustData[0].khaiGrade))
                             }
                         }
                     }
@@ -306,11 +306,11 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     //현재 날씨 정보 JSON Parsing
     func updateCurrentWeatherData(json: JSON) {
         if let tempResult = json["weather"]["minutely"][0]["temperature"]["tc"].string {
-            WeatherDataModel.main.temperature = Int(round(Double(tempResult)!))
-            WeatherDataModel.main.maxTemperature = Int(round(Double(json["weather"]["minutely"][0]["temperature"]["tmax"].stringValue)!))
-            WeatherDataModel.main.minTemperature = Int(round(Double(json["weather"]["minutely"][0]["temperature"]["tmin"].stringValue)!))
-            WeatherDataModel.main.SKcondition = json["weather"]["minutely"][0]["sky"]["code"].stringValue
-            WeatherDataModel.main.weatherIconName = WeatherDataModel.main.changeWeatherCondition(condition: WeatherDataModel.main.SKcondition)
+            DataModel.main.temperature = Int(round(Double(tempResult)!))
+            DataModel.main.maxTemperature = Int(round(Double(json["weather"]["minutely"][0]["temperature"]["tmax"].stringValue)!))
+            DataModel.main.minTemperature = Int(round(Double(json["weather"]["minutely"][0]["temperature"]["tmin"].stringValue)!))
+            DataModel.main.SKcondition = json["weather"]["minutely"][0]["sky"]["code"].stringValue
+            DataModel.main.weatherIconName = DataModel.main.changeWeatherCondition(condition: DataModel.main.SKcondition)
             updateUIWithWeatherDate()
         }else {
             locationLabel.text = "Weather Unavailable"
@@ -319,10 +319,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     
     //MARK: - UI Updates
     func updateUIWithWeatherDate() {
-        tempLabel.text = String(WeatherDataModel.main.temperature) + "˚"
-        maxTempLabel.text = String(WeatherDataModel.main.maxTemperature) + "˚"
-        minTempLabel.text = String(WeatherDataModel.main.minTemperature) + "˚"
-        let compareTemp = WeatherDataModel.main.temperature - WeatherDataModel.main.prevTemp
+        tempLabel.text = String(DataModel.main.temperature) + "˚"
+        maxTempLabel.text = String(DataModel.main.maxTemperature) + "˚"
+        minTempLabel.text = String(DataModel.main.minTemperature) + "˚"
+        let compareTemp = DataModel.main.temperature - DataModel.main.prevTemp
         if compareTemp == 0 {
             compareLabel.text = "어제와 동일합니다"
         }else if compareTemp > 0 {
@@ -330,8 +330,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
         }else {
             compareLabel.text = "어제보다 " + String(compareTemp * (-1)) + "˚ " + "낮습니다"
         }
-        weatherInfo.text = WeatherDataModel.main.changeKRWeatherCondition(condition: WeatherDataModel.main.weatherIconName)
-        var weatherIconName = WeatherDataModel.main.weatherIconName
+        weatherInfo.text = DataModel.main.changeKRWeatherCondition(condition: DataModel.main.weatherIconName)
+        var weatherIconName = DataModel.main.weatherIconName
         formatter.dateFormat = "HH"
         let meridian = Int(formatter.string(from: Date()))
 
@@ -342,8 +342,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     }
     
     func updateUIWithDustData() {
-        dustLabel.text = WeatherDataModel.main.changeDustGrade(grade: WeatherDataModel.main.dustData[0].khaiGrade)
-        dustIcon.image = UIImage(named: WeatherDataModel.main.changedustIcon(grade: WeatherDataModel.main.dustData[0].khaiGrade))
+        dustLabel.text = DataModel.main.changeDustGrade(grade: DataModel.main.dustData[0].khaiGrade)
+        dustIcon.image = UIImage(named: DataModel.main.changedustIcon(grade: DataModel.main.dustData[0].khaiGrade))
     }
     
     func getLocationData(url: String, parameters: [String: String]) {

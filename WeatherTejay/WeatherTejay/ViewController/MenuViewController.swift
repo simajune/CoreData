@@ -14,7 +14,7 @@ class MenuViewController: UIViewController, MFMailComposeViewControllerDelegate 
         self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - 60
     }
     
-    // MARK: app version
+    //MARK: - App version
     private func showAppVersion() {
         let versionText = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
         versionLabel.text = versionText ?? "정보를 읽어 올 수 없습니다."
@@ -34,6 +34,7 @@ extension MenuViewController: UITableViewDelegate {
             sendEmail()
         }
     }
+    
     //메일 보내는 메소드
     func sendEmail() {
         if MFMailComposeViewController.canSendMail() {
@@ -42,10 +43,9 @@ extension MenuViewController: UITableViewDelegate {
             mail.setToRecipients(["tejayjung@gmail.com"])
             mail.setSubject("날씨먼지 문의")
             mail.setMessageBody("<p>개발자에게 불편사항이나 문의사항을 적어주세요</p>", isHTML: true)
-            
             present(mail, animated: true)
         } else {
-            // show failure alert
+            UIAlertController.presentAlertController(target: self, title: "메일 계정 오류", massage: "메일 앱에 계정이 등록되지 않았습니다.\n계정을 등록해주세요.", cancelBtn: false, completion: nil)
         }
     }
     
@@ -54,6 +54,7 @@ extension MenuViewController: UITableViewDelegate {
         controller.dismiss(animated: true)
     }
 }
+
 //UITableViewDataSource
 extension MenuViewController: UITableViewDataSource {
     //메뉴의 수 = 배열의 카운트
