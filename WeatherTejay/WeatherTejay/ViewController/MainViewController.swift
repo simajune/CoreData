@@ -16,12 +16,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
     
     //Variable
     let locationManager = CLLocationManager()
-    let formatter = DateFormatter()
     var dataModel: DataModel!
     var sectionIsExpanded = false
     var changeAppKeyNum: Int = 0
     var paramSK: [String: String] = [:]
     var stationList: [String] = []
+    var tmParams: [String: String] = [:]
     var dustParams: [String: String] = [:]
     var changeDustNum: Int = 0
     var currentdate: String = ""
@@ -76,7 +76,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
     override func viewDidLoad() {
         super.viewDidLoad()
         dataModel = DataModel()
-        //위치 정보를 받기 위함 설정들
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
@@ -99,12 +98,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
         let currentDay = formatter.string(from: Date())
         dayLabel.text = changeKRDay(str: currentDay)
         dataModel.currentDustDataCount = 0
+        dataModel.forecastCount = 0
         //이건 주소 검색에서 주소를 클릭했을 때 불려지게 하기 위함. 왜냐하면 검색한 주소에 대한 정보를 보내기 위해선 'viewWillAppear' 메소드에 설정함
         locationLabel.text = dataModel.address
         if dataModel.weatherLocationX != "" && dataModel.weatherLocationX != "" {
-            let params: [String: String] = ["lat": dataModel.weatherLocationY, "lon": dataModel.weatherLocationX, "version": "2"]
+            paramSK = ["lat": dataModel.weatherLocationY, "lon": dataModel.weatherLocationX, "version": "2"]
             let tmParams: [String: String] = ["y": dataModel.weatherLocationY, "x": dataModel.weatherLocationX, "input_coord": "WGS84", "output_coord": "WTM"]
-            getPrevWeatherData(url: historySKWeatherURL, parameters: params)
+            getPrevWeatherData(url: historySKWeatherURL, parameters: paramSK)
             getTMData(url: kakaoCoordinateURL, parameters: tmParams)
         }
     }
@@ -175,6 +175,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        dataModel.currentDustDataCount = 0
+        dataModel.forecastCount = 0
         UIView.animate(withDuration: 0.5) {
             if self.sectionIsExpanded {
                 self.refreshBtn.transform = CGAffineTransform.identity
@@ -293,14 +295,14 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 }else {
                     self.changeAppKeyNum = 0
                     for index in 0...11 {
-                        self.formatter.dateFormat = "d일 HH시"
-                        self.dataModel.weathercontents["date"] = self.formatter.string(from: Date(timeIntervalSinceNow: TimeInterval(3600 * ((3 * index) + 4))))
+                        formatter.dateFormat = "d일 HH시"
+                        self.dataModel.weathercontents["date"] = formatter.string(from: Date(timeIntervalSinceNow: TimeInterval(3600 * ((3 * index) + 4))))
                         self.dataModel.weathercontents["temperature"] = JSON(response.result.value!)["weather"]["forecast3days"][0]["fcst3hour"]["temperature"][self.forecastTemp[index]].stringValue
                         self.dataModel.weathercontents["condition"] = JSON(response.result.value!)["weather"]["forecast3days"][0]["fcst3hour"]["sky"][self.forecastCode[index]].stringValue
                         self.dataModel.weatherData.append(self.dataModel.weathercontents)
                     }
-                    self.dataModel.forecastCount = self.dataModel.weatherData.count - 1
                     self.weatherCollectionView.reloadData()
+                    self.dataModel.forecastCount = self.dataModel.weatherData.count - 1
                     self.updateUIWithWeatherDate()
                 }
             }else {
@@ -376,31 +378,19 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                     for title in self.dataModel.dustContent {
                         self.dataModel.currentDustData.append(datas["list"][0][title].stringValue)
                     }
+                    
                     self.dataModel.currentDustGrade.append(self.changeWHOPM10Grade(value: datas["list"][0]["pm10Value"].stringValue))
                     self.dataModel.currentDustGrade.append(self.changeWHOPM25Grade(value: datas["list"][0]["pm25Value"].stringValue))
                     for title in self.dataModel.dustGrade {
                         self.dataModel.currentDustGrade.append(datas["list"][0][title].stringValue)
                     }
+                    
                     for data in datas["list"] {
                         guard let dustData = DustModel(json: data) else { return }
                         self.dataModel.dustData.append(dustData)
                     }
                     
-                    //만약 미세먼지나 초미세먼지의 등급이 하나라도 '나쁨'이나 '매우나쁨'일 경우 등급은 미세먼지, 초미세먼지의 등급으로 표시
-                    if datas["list"][0]["khaiValue"].stringValue == "-" {
-                        self.dustLabel.text = self.dataModel.changeDustGrade(grade: self.dataModel.currentDustGrade[0])
-                        self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: self.dataModel.currentDustGrade[0]))
-                    }else {
-                        for index in 0...1 {
-                            if self.dataModel.currentDustGrade[index] == "3" || self.dataModel.currentDustGrade[index] == "4" {
-                                self.dustLabel.text = self.dataModel.changeDustGrade(grade: self.dataModel.currentDustGrade[index])
-                                self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: self.dataModel.currentDustGrade[index]))
-                            }else{
-                                self.dustLabel.text = self.dataModel.changeDustGrade(grade: self.dataModel.dustData[0].khaiGrade)
-                                self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: self.dataModel.dustData[0].khaiGrade))
-                            }
-                        }
-                    }
+                    self.updateUIWithDustData()
                     let forecastDust: [String: String] = ["searchDate": self.currentdate, "ServiceKey": dustAPIKey, "_returnType": "json"]
                     self.getforecastDustData(url: forecastDustURL, parameters: forecastDust)
                 }
@@ -435,7 +425,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
     //MARK: - JSON Parsing
     //현재 날씨 정보 JSON Parsing
     func updateCurrentWeatherData(json: JSON) {
-        changeAppKeyNum = 0
         if let tempResult = json["weather"]["minutely"][0]["temperature"]["tc"].string {
             dataModel.temperature = Int(round(Double(tempResult)!))
             dataModel.maxTemperature = Int(round(Double(json["weather"]["minutely"][0]["temperature"]["tmax"].stringValue)!))
@@ -482,6 +471,26 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
         weatherIcon.image = UIImage(named: weatherIconName)
     }
     
+    //Dust Update
+    func updateUIWithDustData() {
+        //만약 미세먼지나 초미세먼지의 등급이 하나라도 '나쁨'이나 '매우나쁨'일 경우 등급은 미세먼지, 초미세먼지의 등급으로 표시
+        if dataModel.dustData[0].khaiValue == "-" || dataModel.dustData[0].khaiGrade == "-" {
+            self.dustLabel.text = self.dataModel.changeDustGrade(grade: self.dataModel.currentDustGrade[0])
+            self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: self.dataModel.currentDustGrade[0]))
+        }else {
+            //만약 미세먼지나 초미세먼지의 등급이 하나라도 '나쁨'이나 '매우나쁨'일 경우 등급은 미세먼지, 초미세먼지의 등급으로 표시
+            for list in self.dataModel.currentDustGrade {
+                if list == "3" || list == "4" {
+                    self.dustLabel.text = self.dataModel.changeDustGrade(grade: list)
+                    self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: list))
+                }else{
+                    self.dustLabel.text = self.dataModel.changeDustGrade(grade: self.dataModel.dustData[0].khaiGrade)
+                    self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: self.dataModel.dustData[0].khaiGrade))
+                }
+            }
+        }
+    }
+    
     //한국 주소를 받는 메소드 (..구 ..동)
     func getLocationData(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters, headers: kakaoHeaders).responseJSON { response in
@@ -507,7 +516,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
             
             self.paramSK = ["lat": latitude, "lon": longitude, "version": "2"]
             let locationParams: [String: String] = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "WCONGNAMUL"]
-            let tmParams: [String: String] = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "WTM"]
+            self.tmParams = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "WTM"]
             
             formatter.dateFormat = "HH"
             let hour: Int = Int(formatter.string(from: Date()))!

@@ -20,7 +20,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     @IBOutlet weak var dustIcon: UIImageView!
     @IBOutlet weak var dustLabel: UILabel!
     
-    let formatter = DateFormatter()
+//    private let formatter = DateFormatter()
     let locationManager = CLLocationManager()
     var dataModel: DataModel!
     var changeAppKeyNum: Int = 0
@@ -140,6 +140,37 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
         }
     }
     
+    //트래픽이 초과되거나 받아온 데이터의 값이 없을 때 Key값을 바꿔서 다시 시도하게끔 함
+    func tryWeatherData(url: String, parameters: [String: String], type: String) {
+        if type == "prev" {
+            if self.changeAppKeyNum == 0 {
+                SKWeatherHeader = temp1SKWeatherHeader
+                self.changeAppKeyNum += 1
+                self.getPrevWeatherData(url: url, parameters: parameters)
+            }else if self.changeAppKeyNum == 1 {
+                SKWeatherHeader = temp2SKWeatherHeader
+                self.changeAppKeyNum += 1
+                self.getPrevWeatherData(url: url, parameters: parameters)
+            }else {
+                self.locationLabel.text = "트래픽이 초과되어 날씨정보를 받을 수 없습니다."
+                self.changeAppKeyNum = 0
+            }
+        }else {
+            if self.changeAppKeyNum == 0 {
+                SKWeatherHeader = temp1SKWeatherHeader
+                self.changeAppKeyNum += 1
+                self.getCurrentWeatherData(url: url, parameters: parameters)
+            }else if self.changeAppKeyNum == 1 {
+                SKWeatherHeader = temp2SKWeatherHeader
+                self.changeAppKeyNum += 1
+                self.getCurrentWeatherData(url: url, parameters: parameters)
+            }else {
+                self.locationLabel.text = "트래픽이 초과되어 날씨정보를 받을 수 없습니다."
+                self.changeAppKeyNum = 0
+            }
+        }
+    }
+    
     //MARK: - Networking
     //날씨 API JSON 가져오기
     //어제 날씨데이터 가져오기
@@ -147,33 +178,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
         Alamofire.request(url, method: .get, parameters: parameters, headers: SKWeatherHeader).responseJSON { [weak self] response in
             guard let `self` = self else { return }
             if response.result.isSuccess {
-                if (JSON(response.result.value!)["weather"]["yesterday"].null != nil) {
-                    if self.changeAppKeyNum == 0 {
-                        SKWeatherHeader = temp1SKWeatherHeader
-                        self.changeAppKeyNum += 1
-                        self.getPrevWeatherData(url: url, parameters: parameters)
-                    }else if self.changeAppKeyNum == 1 {
-                        SKWeatherHeader = temp2SKWeatherHeader
-                        self.changeAppKeyNum += 1
-                        self.getPrevWeatherData(url: url, parameters: parameters)
-                    }else {
-                        self.locationLabel.text = "트래픽이 초과되어 날씨정보를 받을 수 없습니다."
-                        self.changeAppKeyNum = 0
-                    }
-                }
-                else if JSON(response.result.value!)["weather"]["yesterday"] == [] {
-                    if self.changeAppKeyNum == 0 {
-                        self.changeAppKeyNum += 1
-                        SKWeatherHeader = temp1SKWeatherHeader
-                        self.getPrevWeatherData(url: url, parameters: parameters)
-                    }else if self.changeAppKeyNum == 1 {
-                        self.changeAppKeyNum += 1
-                        SKWeatherHeader = temp2SKWeatherHeader
-                        self.getPrevWeatherData(url: url, parameters: parameters)
-                    }else {
-                        self.locationLabel.text = "트래픽이 초과되어 날씨정보를 받을 수 없습니다."
-                        self.changeAppKeyNum = 0
-                    }
+                let data = JSON(response.result.value!)
+                if (data["weather"]["yesterday"].null != nil) || data["weather"]["yesterday"] == [] {
+                    self.tryWeatherData(url: url, parameters: parameters, type: "prev")
                 }else {
                     self.changeAppKeyNum = 0
                     self.dataModel.prevTemp = Int(round(Double(JSON(response.result.value!)["weather"]["yesterday"][0]["day"]["hourly"][0]["temperature"].stringValue)!))
@@ -194,18 +201,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
             if response.result.isSuccess {
                 let data: JSON = JSON(response.result.value!)
                 if data["weather"]["minutely"] == [] || data["weather"]["minutely"].null != nil {
-                    if self.changeAppKeyNum == 0 {
-                        SKWeatherHeader = temp1SKWeatherHeader
-                        self.changeAppKeyNum += 1
-                        self.getPrevWeatherData(url: url, parameters: parameters)
-                    }else if self.changeAppKeyNum == 1 {
-                        SKWeatherHeader = temp2SKWeatherHeader
-                        self.changeAppKeyNum += 1
-                        self.getPrevWeatherData(url: url, parameters: parameters)
-                    }else {
-                        self.locationLabel.text = "트래픽이 초과되어 날씨정보를 받을 수 없습니다."
-                        self.changeAppKeyNum = 0
-                    }
+                    self.tryWeatherData(url: url, parameters: parameters, type: "current")
                 }else {
                     self.changeAppKeyNum = 0
                     self.updateCurrentWeatherData(json: data)
@@ -231,6 +227,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
             }
         }
     }
+    
     //tmX, tmY로 측정소 이름 가져오기
     func getMeasuringStation(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
@@ -272,6 +269,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
                         //메세지 띄우기
                     }
                 }else {
+                    
                     for data in datas["list"] {
                         guard let dustData = DustModel(json: data) else { return }
                         self.dataModel.dustData.append(dustData)
@@ -279,21 +277,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
                     
                     self.dataModel.currentDustGrade.append(self.changeWHOPM10Grade(value: datas["list"][0]["pm10Value"].stringValue))
                     self.dataModel.currentDustGrade.append(self.changeWHOPM25Grade(value: datas["list"][0]["pm25Value"].stringValue))
-                    if datas["list"][0]["khaiValue"].stringValue == "-" {
-                        self.dustLabel.text = self.dataModel.changeDustGrade(grade: self.dataModel.currentDustGrade[0])
-                        self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: self.dataModel.currentDustGrade[0]))
-                    }else {
-                        //만약 미세먼지나 초미세먼지의 등급이 하나라도 '나쁨'이나 '매우나쁨'일 경우 등급은 미세먼지, 초미세먼지의 등급으로 표시
-                        for list in self.dataModel.currentDustGrade {
-                            if list == "3" || list == "4" {
-                                self.dustLabel.text = self.dataModel.changeDustGrade(grade: list)
-                                self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: list))
-                            }else{
-                                self.dustLabel.text = self.dataModel.changeDustGrade(grade: self.dataModel.dustData[0].khaiGrade)
-                                self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: self.dataModel.dustData[0].khaiGrade))
-                            }
-                        }
-                    }
+                    
+                    self.updateUIWithDustData()
                 }
             }else {
                 print("Error \(response.result.error!)")
@@ -317,6 +302,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     }
     
     //MARK: - UI Updates
+    //Weather Update
     func updateUIWithWeatherDate() {
         tempLabel.text = String(dataModel.temperature) + "˚"
         maxTempLabel.text = String(dataModel.maxTemperature) + "˚"
@@ -340,9 +326,23 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
         weatherIcon.image = UIImage(named: weatherIconName)
     }
     
+    //Dust Update
     func updateUIWithDustData() {
-        dustLabel.text = dataModel.changeDustGrade(grade: dataModel.dustData[0].khaiGrade)
-        dustIcon.image = UIImage(named: dataModel.changedustIcon(grade: dataModel.dustData[0].khaiGrade))
+        if dataModel.dustData[0].khaiValue == "-" || dataModel.dustData[0].khaiGrade == "-" {
+            self.dustLabel.text = self.dataModel.changeDustGrade(grade: self.dataModel.currentDustGrade[0])
+            self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: self.dataModel.currentDustGrade[0]))
+        }else {
+            //만약 미세먼지나 초미세먼지의 등급이 하나라도 '나쁨'이나 '매우나쁨'일 경우 등급은 미세먼지, 초미세먼지의 등급으로 표시
+            for list in self.dataModel.currentDustGrade {
+                if list == "3" || list == "4" {
+                    self.dustLabel.text = self.dataModel.changeDustGrade(grade: list)
+                    self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: list))
+                }else{
+                    self.dustLabel.text = self.dataModel.changeDustGrade(grade: self.dataModel.dustData[0].khaiGrade)
+                    self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: self.dataModel.dustData[0].khaiGrade))
+                }
+            }
+        }
     }
     
     func getLocationData(url: String, parameters: [String: String]) {
@@ -355,7 +355,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
             }
         }
     }
-    
     
     //MARK: - Location Manager Delegate
     //didUpdateLocations

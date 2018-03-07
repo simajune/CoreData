@@ -2,4 +2,54 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherTejay/Supporting Files/Constant.swift"
+            timestampString = "542117044.589595"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "globalinit_33_9BF91879723BB3D3C2B4A4E85522A923_func13"
+                  moduleName = "WeatherTejay"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pro/Desktop/DevTejay/CoreData/WeatherTejay/WeatherTejay/Supporting%20Files/Constant.swift"
+                  timestampString = "542117044.727892"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "8">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherTejay.SKAppKey1.unsafeMutableAddressor : Swift.String"
+                  moduleName = "WeatherTejay"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pro/Desktop/DevTejay/CoreData/WeatherTejay/WeatherTejay/Supporting%20Files/Constant.swift"
+                  timestampString = "542117044.730159"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
