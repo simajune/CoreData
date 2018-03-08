@@ -390,7 +390,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                         self.dataModel.dustData.append(dustData)
                     }
                     
-                    self.updateUIWithDustData()
                     let forecastDust: [String: String] = ["searchDate": self.currentdate, "ServiceKey": dustAPIKey, "_returnType": "json"]
                     self.getforecastDustData(url: forecastDustURL, parameters: forecastDust)
                 }
@@ -415,6 +414,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 }
                 self.weatherCollectionView.reloadData()
                 self.dataModel.currentDustDataCount = self.dataModel.currentDustData.count
+                self.updateUIWithDustData()
             }else {
                 print(response.result.error!)
                 HUD.flash(HUDContentType.label("잠시후\n다시 시도해주세요"), delay: 1.0)
