@@ -19,6 +19,7 @@ class DataModel {
     var preforecastCount: Int = 0
     var city: String = ""
     var weatherIconName: String = ""
+    var weatherInfo: String = ""
     var weatherDate: [Date] = []
     var weatherLocationX: String = ""
     var weatherLocationY: String = ""

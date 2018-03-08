@@ -294,6 +294,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
             dataModel.maxTemperature = Int(round(Double(json["weather"]["minutely"][0]["temperature"]["tmax"].stringValue)!))
             dataModel.minTemperature = Int(round(Double(json["weather"]["minutely"][0]["temperature"]["tmin"].stringValue)!))
             dataModel.SKcondition = json["weather"]["minutely"][0]["sky"]["code"].stringValue
+            dataModel.weatherInfo = json["weather"]["minutely"][0]["sky"]["name"].stringValue
             dataModel.weatherIconName = dataModel.changeWeatherCondition(condition: dataModel.SKcondition)
             updateUIWithWeatherDate()
         }else {
@@ -315,7 +316,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
         }else {
             compareLabel.text = "어제보다 " + String(compareTemp * (-1)) + "˚ " + "낮습니다"
         }
-        weatherInfo.text = dataModel.changeKRWeatherCondition(condition: dataModel.weatherIconName)
+        weatherInfo.text = dataModel.weatherInfo
         var weatherIconName = dataModel.weatherIconName
         formatter.dateFormat = "HH"
         let meridian = Int(formatter.string(from: Date()))

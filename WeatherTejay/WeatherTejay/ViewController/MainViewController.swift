@@ -266,6 +266,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
         dataModel.weatherData.removeAll()
         Alamofire.request(url, method: .get, parameters: parameters, headers: SKWeatherHeader).responseJSON { [weak self] response in
             guard let `self` = self else { return }
+            print(response.request)
             if response.result.isSuccess {
                 let data: JSON = JSON(response.result.value!)
                 if data["weather"]["minutely"] == [] || data["weather"]["minutely"].null != nil {
@@ -318,7 +319,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
         Alamofire.request(url, method: .get, parameters: parameters, headers: kakaoHeaders).responseJSON { [weak self] response in
             guard let `self` = self else { return }
             if response.result.isSuccess {
-                print(response.request!)
                 let data: JSON = JSON(response.result.value!)
                 let locationTMx = data["documents"][0]["x"].stringValue
                 let locationTMy = data["documents"][0]["y"].stringValue
@@ -430,6 +430,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
             dataModel.maxTemperature = Int(round(Double(json["weather"]["minutely"][0]["temperature"]["tmax"].stringValue)!))
             dataModel.minTemperature = Int(round(Double(json["weather"]["minutely"][0]["temperature"]["tmin"].stringValue)!))
             dataModel.SKcondition = json["weather"]["minutely"][0]["sky"]["code"].stringValue
+            dataModel.weatherInfo = json["weather"]["minutely"][0]["sky"]["name"].stringValue
             dataModel.weatherIconName = dataModel.changeWeatherCondition(condition: dataModel.SKcondition)
         }else {
             if changeAppKeyNum == 0 {
@@ -460,7 +461,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
         }else {
             compareLabel.text = "어제보다 " + String(compareTemp * (-1)) + "˚ " + "낮습니다"
         }
-        weatherInfo.text = dataModel.changeKRWeatherCondition(condition: dataModel.weatherIconName)
+        weatherInfo.text = dataModel.weatherInfo
         var weatherIconName = dataModel.weatherIconName
         formatter.dateFormat = "HH"
         let meridian = Int(formatter.string(from: Date()))
