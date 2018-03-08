@@ -333,14 +333,13 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
             self.dustLabel.text = self.dataModel.changeDustGrade(grade: self.dataModel.currentDustGrade[0])
             self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: self.dataModel.currentDustGrade[0]))
         }else {
+            self.dustLabel.text = self.dataModel.changeDustGrade(grade: self.dataModel.dustData[0].khaiGrade)
+            self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: self.dataModel.dustData[0].khaiGrade))
             //만약 미세먼지나 초미세먼지의 등급이 하나라도 '나쁨'이나 '매우나쁨'일 경우 등급은 미세먼지, 초미세먼지의 등급으로 표시
             for list in self.dataModel.currentDustGrade {
                 if list == "3" || list == "4" {
                     self.dustLabel.text = self.dataModel.changeDustGrade(grade: list)
                     self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: list))
-                }else{
-                    self.dustLabel.text = self.dataModel.changeDustGrade(grade: self.dataModel.dustData[0].khaiGrade)
-                    self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: self.dataModel.dustData[0].khaiGrade))
                 }
             }
         }
