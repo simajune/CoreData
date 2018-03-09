@@ -44,6 +44,8 @@
 		232CE9502022275900B5E0B1 /* DustModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CE94F2022275900B5E0B1 /* DustModel.swift */; };
 		232CE9522024669200B5E0B1 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CE9512024669200B5E0B1 /* MenuViewController.swift */; };
 		232CE954202473A300B5E0B1 /* yanoljaTFBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 232CE953202473A200B5E0B1 /* yanoljaTFBold.otf */; };
+		2334A4E02052FD5400D5C3C6 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2334A4DF2052FD5400D5C3C6 /* WebViewController.swift */; };
+		2334A4E22052FEAE00D5C3C6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2334A4E12052FEAE00D5C3C6 /* GoogleService-Info.plist */; };
 		23EBDF68203802C400D99519 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EBDF67203802C400D99519 /* MenuCell.swift */; };
 		23EBDF6A2038073A00D99519 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EBDF692038073A00D99519 /* AboutViewController.swift */; };
 		23FB189A2035550900C21597 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F90F2201867D400C0DA34 /* DataModel.swift */; };
@@ -52,6 +54,8 @@
 		23FB189F20355AFF00C21597 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 232B2EAB20162AE7001F260E /* Assets.xcassets */; };
 		23FB18A020355AFF00C21597 /* yanoljaTFBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 232CE953202473A200B5E0B1 /* yanoljaTFBold.otf */; };
 		2FEDE924A5908054BBF37CC8 /* Pods_WeatherTejayExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7008E835FDCA4661BADE185 /* Pods_WeatherTejayExtension.framework */; };
+		5ACA4D0CE032CA67DC86B349 /* Pods_WeatherTejayExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E46F4201EDD0100C5850F /* Pods_WeatherTejayExtension.framework */; };
+		A0DC78EAC28212893A6350DC /* Pods_WeatherTejay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E46FB201EE2B100C5850F /* Pods_WeatherTejay.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +128,8 @@
 		232CE94F2022275900B5E0B1 /* DustModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DustModel.swift; sourceTree = "<group>"; };
 		232CE9512024669200B5E0B1 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		232CE953202473A200B5E0B1 /* yanoljaTFBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = yanoljaTFBold.otf; sourceTree = "<group>"; };
+		2334A4DF2052FD5400D5C3C6 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		2334A4E12052FEAE00D5C3C6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		23EBDF67203802C400D99519 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		23EBDF692038073A00D99519 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		3586AFF9490ABE383441F619 /* Pods-WeatherTejayExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTejayExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTejayExtension/Pods-WeatherTejayExtension.release.xcconfig"; sourceTree = "<group>"; };
@@ -142,6 +148,7 @@
 				231E46F0201EDD0100C5850F /* Pods_WeatherTejayExtension.framework in Frameworks */,
 				231E46F2201EDD0100C5850F /* SwiftyJSON.framework in Frameworks */,
 				1B1EF8AECB42A48BEF9605C1 /* Pods_WeatherTejay.framework in Frameworks */,
+				A0DC78EAC28212893A6350DC /* Pods_WeatherTejay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +161,7 @@
 				231E46F9201EE2B100C5850F /* SwiftyJSON.framework in Frameworks */,
 				232B2EBD2016C6E0001F260E /* NotificationCenter.framework in Frameworks */,
 				2FEDE924A5908054BBF37CC8 /* Pods_WeatherTejayExtension.framework in Frameworks */,
+				5ACA4D0CE032CA67DC86B349 /* Pods_WeatherTejayExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +224,7 @@
 				231E46E9201EC0DE00C5850F /* Addresses.json */,
 				232B2EA820162AE7001F260E /* WeatherTejay.xcdatamodeld */,
 				232CE953202473A200B5E0B1 /* yanoljaTFBold.otf */,
+				2334A4E12052FEAE00D5C3C6 /* GoogleService-Info.plist */,
 			);
 			path = WeatherTejay;
 			sourceTree = "<group>";
@@ -258,6 +267,7 @@
 				23263DC5203B031700142A2E /* LicenseViewController.swift */,
 				232B2ED1201705D1001F260E /* MainViewController.swift */,
 				231E46EC201EC11100C5850F /* SearchViewController.swift */,
+				2334A4DF2052FD5400D5C3C6 /* WebViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -386,6 +396,7 @@
 				232B2EAC20162AE7001F260E /* Assets.xcassets in Resources */,
 				232CE954202473A300B5E0B1 /* yanoljaTFBold.otf in Resources */,
 				232B2EA720162AE7001F260E /* Main.storyboard in Resources */,
+				2334A4E22052FEAE00D5C3C6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,14 +437,20 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WeatherTejay/Pods-WeatherTejay-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -502,6 +519,7 @@
 				231E46ED201EC11100C5850F /* SearchViewController.swift in Sources */,
 				23EBDF68203802C400D99519 /* MenuCell.swift in Sources */,
 				232B2EA220162AE6001F260E /* AppDelegate.swift in Sources */,
+				2334A4E02052FD5400D5C3C6 /* WebViewController.swift in Sources */,
 				232B2EE320172573001F260E /* ItemCellB.swift in Sources */,
 				232CE94E2022274E00B5E0B1 /* WeatherModel.swift in Sources */,
 				232B2EE120172567001F260E /* ItemCellA.swift in Sources */,

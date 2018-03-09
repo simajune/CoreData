@@ -266,7 +266,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
         dataModel.weatherData.removeAll()
         Alamofire.request(url, method: .get, parameters: parameters, headers: SKWeatherHeader).responseJSON { [weak self] response in
             guard let `self` = self else { return }
-            print(response.request)
             if response.result.isSuccess {
                 let data: JSON = JSON(response.result.value!)
                 if data["weather"]["minutely"] == [] || data["weather"]["minutely"].null != nil {

@@ -26,12 +26,12 @@
                   moduleName = "WeatherTejay"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/pro/Desktop/DevTejay/CoreData/WeatherTejay/WeatherTejay/Supporting%20Files/Constant.swift"
-                  timestampString = "542201837.741591"
+                  timestampString = "542313808.187247"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "48"
                   endingLineNumber = "48"
-                  offsetFromSymbolStart = "8">
+                  offsetFromSymbolStart = "4">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -41,12 +41,12 @@
                   moduleName = "WeatherTejay"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/pro/Desktop/DevTejay/CoreData/WeatherTejay/WeatherTejay/Supporting%20Files/Constant.swift"
-                  timestampString = "542201837.744083"
+                  timestampString = "542313808.193858"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "48"
                   endingLineNumber = "48"
-                  offsetFromSymbolStart = "20">
+                  offsetFromSymbolStart = "4">
                </Location>
             </Locations>
          </BreakpointContent>
