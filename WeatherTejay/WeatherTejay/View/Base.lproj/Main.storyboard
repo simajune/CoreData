@@ -895,7 +895,7 @@ Airkorea에사 제공하는 정보를
             </objects>
             <point key="canvasLocation" x="359" y="931"/>
         </scene>
-        <!--Web View Controller-->
+        <!--Item-->
         <scene sceneID="iNA-cl-LJ0">
             <objects>
                 <viewController id="09Z-Xr-igS" customClass="WebViewController" customModule="WeatherTejay" customModuleProvider="target" sceneMemberID="viewController">
@@ -906,14 +906,6 @@ Airkorea에사 제공하는 정보를
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I4w-As-37O" userLabel="Navi Bar">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qeq-bJ-Gha">
-                                        <rect key="frame" x="335" y="32" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="eZv-Oz-Bgu"/>
-                                            <constraint firstAttribute="width" secondItem="Qeq-bJ-Gha" secondAttribute="height" multiplier="1:1" id="tAq-md-cuH"/>
-                                        </constraints>
-                                        <state key="normal" image="Location"/>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKQ-Ho-ONe">
                                         <rect key="frame" x="10" y="29.5" width="35" height="35"/>
                                         <constraints>
@@ -931,16 +923,14 @@ Airkorea에사 제공하는 정보를
                                 </subviews>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Qeq-bJ-Gha" firstAttribute="trailing" secondItem="I4w-As-37O" secondAttribute="trailing" constant="-10" id="AHd-kx-cpn"/>
                                     <constraint firstItem="sH8-P3-ehb" firstAttribute="centerY" secondItem="bKQ-Ho-ONe" secondAttribute="centerY" id="LyF-7l-ugF"/>
-                                    <constraint firstItem="Qeq-bJ-Gha" firstAttribute="centerY" secondItem="bKQ-Ho-ONe" secondAttribute="centerY" id="MhG-G2-B9V"/>
                                     <constraint firstItem="bKQ-Ho-ONe" firstAttribute="centerY" secondItem="I4w-As-37O" secondAttribute="centerY" multiplier="1.4" id="XPC-gT-5GQ"/>
                                     <constraint firstItem="sH8-P3-ehb" firstAttribute="centerX" secondItem="I4w-As-37O" secondAttribute="centerX" id="f13-dI-juQ"/>
                                     <constraint firstItem="bKQ-Ho-ONe" firstAttribute="leading" secondItem="I4w-As-37O" secondAttribute="leading" constant="10" id="uD5-qp-51V"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h4l-rv-BBW">
-                                <rect key="frame" x="0.0" y="67" width="375" height="600"/>
+                                <rect key="frame" x="0.0" y="67" width="375" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -957,8 +947,10 @@ Airkorea에사 제공하는 정보를
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fav-OK-CrC"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="Si0-fL-veu"/>
                     <connections>
                         <outlet property="containerView" destination="h4l-rv-BBW" id="0G6-Kl-dqY"/>
+                        <outlet property="menuBtn" destination="bKQ-Ho-ONe" id="h4z-mM-Md9"/>
                         <outlet property="navibarView" destination="I4w-As-37O" id="yEK-Gh-Cz6"/>
                     </connections>
                 </viewController>
@@ -1161,10 +1153,13 @@ Airkorea에사 제공하는 정보를
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tjc-D4-ZcZ">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="ENl-Sg-YcQ"/>
+                        <segue destination="09Z-Xr-igS" kind="relationship" relationship="viewControllers" id="kZ6-kZ-Yvn"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ga0-7Y-cKR" userLabel="First Responder" sceneMemberID="firstResponder"/>
