@@ -473,7 +473,7 @@ Airkorea에사 제공하는 정보를
             </objects>
             <point key="canvasLocation" x="1860" y="-1272"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="MainViewController" customModule="WeatherTejay" customModuleProvider="target" sceneMemberID="viewController">
@@ -872,7 +872,7 @@ Airkorea에사 제공하는 정보를
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="dHG-0Y-sh2"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="BlackHome" id="dHG-0Y-sh2"/>
                     <navigationItem key="navigationItem" id="XzH-Fp-Qx1"/>
                     <connections>
                         <outlet property="compareLabel" destination="Z0V-d8-Yqc" id="bda-Q6-Tlx"/>
@@ -895,7 +895,7 @@ Airkorea에사 제공하는 정보를
             </objects>
             <point key="canvasLocation" x="359" y="931"/>
         </scene>
-        <!--Item-->
+        <!--Map-->
         <scene sceneID="iNA-cl-LJ0">
             <objects>
                 <viewController id="09Z-Xr-igS" customClass="WebViewController" customModule="WeatherTejay" customModuleProvider="target" sceneMemberID="viewController">
@@ -947,7 +947,7 @@ Airkorea에사 제공하는 정보를
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fav-OK-CrC"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Si0-fL-veu"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="Map_Black" id="Si0-fL-veu"/>
                     <connections>
                         <outlet property="containerView" destination="h4l-rv-BBW" id="0G6-Kl-dqY"/>
                         <outlet property="menuBtn" destination="bKQ-Ho-ONe" id="h4z-mM-Md9"/>
@@ -1152,8 +1152,10 @@ Airkorea에사 제공하는 정보를
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Bwh-7Z-plA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tjc-D4-ZcZ">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -1170,10 +1172,12 @@ Airkorea에사 제공하는 정보를
     <resources>
         <image name="Back" width="100" height="100"/>
         <image name="Bad" width="154" height="154"/>
+        <image name="BlackHome" width="23" height="23"/>
         <image name="Clear" width="200" height="200"/>
         <image name="Exit" width="24" height="24"/>
         <image name="Good" width="154" height="154"/>
         <image name="Location" width="550" height="550"/>
+        <image name="Map_Black" width="23" height="23"/>
         <image name="Menu" width="40" height="40"/>
         <image name="Refresh" width="50" height="50"/>
         <image name="SoBad" width="154" height="160"/>

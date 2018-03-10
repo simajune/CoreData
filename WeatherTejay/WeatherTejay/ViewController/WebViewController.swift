@@ -16,6 +16,8 @@ class WebViewController: UIViewController, WKUIDelegate {
         super.viewDidLoad()
         let webConfiduration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiduration)
+        webView.uiDelegate = self
+        webView.isUserInteractionEnabled = false
         self.view.addSubview(webView)
         webView.snp.makeConstraints {
             $0.top.bottom.left.right.equalTo(containerView)
@@ -26,14 +28,18 @@ class WebViewController: UIViewController, WKUIDelegate {
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         
-        setupWebView()
     }
     
-    func setupWebView() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadURL()
+    }
+    
+    func loadURL() {
         
-        let myURL = URL(string: "https://earth.nullschool.net/")
+//        let myURL = URL(string: "https://earth.nullschool.net/")
 
-//        let myURL = URL(string: "https://earth.nullschool.net/#current/particulates/surface/level/overlay=pm2.5/orthographic=-233.74,38.18,2000/loc=125.820,38.707")
+        let myURL = URL(string: "https://earth.nullschool.net/#current/particulates/surface/level/overlay=pm10/orthographic=-232.65,38.48,1500")
         let myRequest = URLRequest(url: myURL!)
         webView.load(myRequest)
     }
