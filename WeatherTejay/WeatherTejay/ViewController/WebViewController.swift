@@ -6,6 +6,7 @@ import WebKit
 class WebViewController: UIViewController, WKUIDelegate {
 
     var webView: WKWebView!
+    var testView: UIView!
     var pm10Btn: UIButton = {
         let btn = UIButton()
         btn.backgroundColor = .black
@@ -67,13 +68,21 @@ class WebViewController: UIViewController, WKUIDelegate {
         webView.snp.makeConstraints {
             $0.top.bottom.left.right.equalTo(containerView)
         }
-        //Button Setting
-        webView.addSubview(pm10Btn)
-        pm10Btn.snp.makeConstraints {
-            $0.centerX.centerY.equalTo(webView)
-            $0.height.equalTo(webView).multipliedBy(0.1)
-            $0.width.equalTo(webView).multipliedBy(0.1)
+        testView = UIView(frame: .zero)
+        webView.addSubview(testView)
+        testView.snp.makeConstraints {
+            $0.top.bottom.left.right.equalTo(webView)
         }
+        
+        //Button Setting
+//        containerView.addSubview(pm10Btn)
+//        pm10Btn.isUserInteractionEnabled = true
+//        pm10Btn.snp.makeConstraints {
+//            $0.centerX.equalTo(containerView).multipliedBy(1.8)
+//            $0.centerY.equalTo(containerView).multipliedBy(1.8)
+//            $0.height.equalTo(containerView).multipliedBy(0.1)
+//            $0.width.equalTo(containerView).multipliedBy(0.2)
+//        }
     }
     
     func loadURL() {
