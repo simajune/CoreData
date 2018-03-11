@@ -956,7 +956,7 @@ Airkorea에사 제공하는 정보를
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p28-KD-dl6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1546" y="931"/>
+            <point key="canvasLocation" x="1544.8" y="930.58470764617698"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="mXD-Ii-wOd">

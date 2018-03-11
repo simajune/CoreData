@@ -63,26 +63,34 @@ class WebViewController: UIViewController, WKUIDelegate {
         let webConfiduration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiduration)
         webView.uiDelegate = self
+        
         webView.isUserInteractionEnabled = false
+        
+        
+//        webView.scrollView.size
         self.view.addSubview(webView)
+        
         webView.snp.makeConstraints {
-            $0.top.bottom.left.right.equalTo(containerView)
-        }
-        testView = UIView(frame: .zero)
-        webView.addSubview(testView)
-        testView.snp.makeConstraints {
-            $0.top.bottom.left.right.equalTo(webView)
+            $0.top.left.right.equalTo(containerView)
+            $0.bottom.equalTo(containerView).multipliedBy(1.07)
         }
         
-        //Button Setting
-//        containerView.addSubview(pm10Btn)
-//        pm10Btn.isUserInteractionEnabled = true
-//        pm10Btn.snp.makeConstraints {
-//            $0.centerX.equalTo(containerView).multipliedBy(1.8)
-//            $0.centerY.equalTo(containerView).multipliedBy(1.8)
-//            $0.height.equalTo(containerView).multipliedBy(0.1)
-//            $0.width.equalTo(containerView).multipliedBy(0.2)
+        
+//        testView = UIView(frame: .zero)
+//        webView.addSubview(testView)
+//        testView.snp.makeConstraints {
+//            $0.top.bottom.left.right.equalTo(webView)
 //        }
+        
+        //Button Setting
+        webView.scrollView.addSubview(pm10Btn)
+        pm10Btn.isUserInteractionEnabled = true
+        pm10Btn.snp.makeConstraints {
+            $0.centerX.equalTo(containerView).multipliedBy(1.8)
+            $0.centerY.equalTo(containerView).multipliedBy(1.8)
+            $0.height.equalTo(containerView).multipliedBy(0.1)
+            $0.width.equalTo(containerView).multipliedBy(0.2)
+        }
     }
     
     func loadURL() {
