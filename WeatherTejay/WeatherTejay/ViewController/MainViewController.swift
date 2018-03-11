@@ -99,13 +99,20 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
         dayLabel.text = changeKRDay(str: currentDay)
         dataModel.currentDustDataCount = 0
         dataModel.forecastCount = 0
-        //이건 주소 검색에서 주소를 클릭했을 때 불려지게 하기 위함. 왜냐하면 검색한 주소에 대한 정보를 보내기 위해선 'viewWillAppear' 메소드에 설정함
-        locationLabel.text = dataModel.address
-        if dataModel.weatherLocationX != "" && dataModel.weatherLocationX != "" {
-            paramSK = ["lat": dataModel.weatherLocationY, "lon": dataModel.weatherLocationX, "version": "2"]
-            let tmParams: [String: String] = ["y": dataModel.weatherLocationY, "x": dataModel.weatherLocationX, "input_coord": "WGS84", "output_coord": "WTM"]
-            getPrevWeatherData(url: historySKWeatherURL, parameters: paramSK)
-            getTMData(url: kakaoCoordinateURL, parameters: tmParams)
+        if dataModel.address == "" {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+        }else {
+            //이건 주소 검색에서 주소를 클릭했을 때 불려지게 하기 위함. 왜냐하면 검색한 주소에 대한 정보를 보내기 위해선 'viewWillAppear' 메소드에 설정함
+            locationLabel.text = dataModel.address
+            if dataModel.weatherLocationX != "" && dataModel.weatherLocationX != "" {
+                paramSK = ["lat": dataModel.weatherLocationY, "lon": dataModel.weatherLocationX, "version": "2"]
+                let tmParams: [String: String] = ["y": dataModel.weatherLocationY, "x": dataModel.weatherLocationX, "input_coord": "WGS84", "output_coord": "WTM"]
+                getPrevWeatherData(url: historySKWeatherURL, parameters: paramSK)
+                getTMData(url: kakaoCoordinateURL, parameters: tmParams)
+            }
         }
     }
     
@@ -177,6 +184,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
         locationManager.startUpdatingLocation()
         dataModel.currentDustDataCount = 0
         dataModel.forecastCount = 0
+        sender.isUserInteractionEnabled = false
+        print("clicked")
         UIView.animate(withDuration: 0.5) {
             if self.sectionIsExpanded {
                 self.refreshBtn.transform = CGAffineTransform.identity
@@ -488,6 +497,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 }
             }
         }
+        refreshBtn.isUserInteractionEnabled = true
     }
     
     //한국 주소를 받는 메소드 (..구 ..동)
