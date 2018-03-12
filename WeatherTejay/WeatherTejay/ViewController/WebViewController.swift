@@ -14,8 +14,9 @@ class WebViewController: UIViewController, WKUIDelegate {
     }()
     var pm10Btn: UIButton = {
         let btn = UIButton()
-        btn.backgroundColor = .black
+        btn.backgroundColor = UIColor(red: 140.0/255.0, green: 175.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         btn.layer.borderWidth = 1
+        btn.isSelected = true
         btn.setTitle("미세먼지", for: .normal)
         btn.setTitleColor(.white, for: .normal)
         btn.titleLabel?.font = UIFont(name: "Yanolja Yache OTF", size: 17)
@@ -66,6 +67,7 @@ class WebViewController: UIViewController, WKUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupUI()
         //메뉴 버튼에 대한 메소드 설정
         menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
@@ -75,6 +77,9 @@ class WebViewController: UIViewController, WKUIDelegate {
         
         pm10Btn.addTarget(self, action: #selector(pm10BtnAction(sender:)), for: .touchUpInside)
         pm25Btn.addTarget(self, action: #selector(pm25BtnAction(sender:)), for: .touchUpInside)
+        coBtn.addTarget(self, action: #selector(coBtnAction(sender:)), for: .touchUpInside)
+        co2Btn.addTarget(self, action: #selector(co2BtnAction(sender:)), for: .touchUpInside)
+        so2Btn.addTarget(self, action: #selector(so2BtnAction(sender:)), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,11 +92,113 @@ class WebViewController: UIViewController, WKUIDelegate {
     }
     
     @objc func pm10BtnAction(sender: UIButton) {
+        if sender.isSelected {
+            
+        }else {
+            sender.isSelected = true
+            pm25Btn.isSelected = false
+            coBtn.isSelected = false
+            co2Btn.isSelected = false
+            so2Btn.isSelected = false
+            sender.backgroundColor = UIColor(red: 140.0/255.0, green: 175.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+            pm25Btn.backgroundColor = .black
+            coBtn.backgroundColor = .black
+            co2Btn.backgroundColor = .black
+            so2Btn.backgroundColor = .black
+            scaleImgView.image = UIImage(named: "PMScale")
+            let myURL = URL(string: "https://earth.nullschool.net/#current/particulates/surface/level/overlay=pm10/orthographic=-232.65,37.48,1500")
+            let myRequest = URLRequest(url: myURL!)
+            webView.load(myRequest)
+        }
         print("pm10")
     }
     
     @objc func pm25BtnAction(sender: UIButton) {
+        if sender.isSelected {
+            
+        }else {
+            sender.isSelected = true
+            pm10Btn.isSelected = false
+            coBtn.isSelected = false
+            co2Btn.isSelected = false
+            so2Btn.isSelected = false
+            sender.backgroundColor = UIColor(red: 140.0/255.0, green: 175.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+            pm10Btn.backgroundColor = .black
+            coBtn.backgroundColor = .black
+            co2Btn.backgroundColor = .black
+            so2Btn.backgroundColor = .black
+            scaleImgView.image = UIImage(named: "PMScale")
+            let myURL = URL(string: "https://earth.nullschool.net/#current/particulates/surface/level/overlay=pm2.5/orthographic=-232.65,37.48,1500")
+            let myRequest = URLRequest(url: myURL!)
+            webView.load(myRequest)
+        }
         print("pm2.5")
+    }
+    
+    @objc func coBtnAction(sender: UIButton) {
+        if sender.isSelected {
+            
+        }else {
+            sender.isSelected = true
+            pm10Btn.isSelected = false
+            pm25Btn.isSelected = false
+            co2Btn.isSelected = false
+            so2Btn.isSelected = false
+            sender.backgroundColor = UIColor(red: 140.0/255.0, green: 175.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+            pm10Btn.backgroundColor = .black
+            pm25Btn.backgroundColor = .black
+            co2Btn.backgroundColor = .black
+            so2Btn.backgroundColor = .black
+            scaleImgView.image = UIImage(named: "COScale")
+            let myURL = URL(string: "https://earth.nullschool.net/#current/chem/surface/level/overlay=cosc/orthographic=-232.65,37.48,1500")
+            let myRequest = URLRequest(url: myURL!)
+            webView.load(myRequest)
+        }
+        print("co")
+    }
+    
+    @objc func co2BtnAction(sender: UIButton) {
+        if sender.isSelected {
+            
+        }else {
+            sender.isSelected = true
+            pm10Btn.isSelected = false
+            pm25Btn.isSelected = false
+            coBtn.isSelected = false
+            so2Btn.isSelected = false
+            sender.backgroundColor = UIColor(red: 140.0/255.0, green: 175.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+            pm10Btn.backgroundColor = .black
+            pm25Btn.backgroundColor = .black
+            coBtn.backgroundColor = .black
+            so2Btn.backgroundColor = .black
+            scaleImgView.image = UIImage(named: "CO2Scale")
+            let myURL = URL(string: "https://earth.nullschool.net/#current/chem/surface/level/overlay=co2sc/orthographic=-232.65,37.48,1500")
+            let myRequest = URLRequest(url: myURL!)
+            webView.load(myRequest)
+        }
+        print("co2")
+    }
+    
+    @objc func so2BtnAction(sender: UIButton) {
+        if sender.isSelected {
+            
+        }else {
+            sender.isSelected = true
+            pm10Btn.isSelected = false
+            pm25Btn.isSelected = false
+            coBtn.isSelected = false
+            co2Btn.isSelected = false
+            sender.backgroundColor = UIColor(red: 140.0/255.0, green: 175.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+            pm10Btn.backgroundColor = .black
+            pm25Btn.backgroundColor = .black
+            coBtn.backgroundColor = .black
+            co2Btn.backgroundColor = .black
+            scaleImgView.image = UIImage(named: "SO2Scale")
+            let myURL = URL(string: "https://earth.nullschool.net/#current/chem/surface/level/overlay=so2smass/orthographic=-232.65,37.48,1500")
+            let myRequest = URLRequest(url: myURL!)
+            webView.load(myRequest)
+        }
+        print("so2")
     }
     
     func setupUI() {

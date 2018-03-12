@@ -947,7 +947,7 @@ Airkorea에사 제공하는 정보를
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fav-OK-CrC"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" image="Map_Black" id="Si0-fL-veu"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="Earth" id="Si0-fL-veu"/>
                     <connections>
                         <outlet property="containerView" destination="h4l-rv-BBW" id="0G6-Kl-dqY"/>
                         <outlet property="menuBtn" destination="bKQ-Ho-ONe" id="h4z-mM-Md9"/>
@@ -1174,10 +1174,10 @@ Airkorea에사 제공하는 정보를
         <image name="Bad" width="154" height="154"/>
         <image name="BlackHome" width="23" height="23"/>
         <image name="Clear" width="200" height="200"/>
+        <image name="Earth" width="23" height="23"/>
         <image name="Exit" width="24" height="24"/>
         <image name="Good" width="154" height="154"/>
         <image name="Location" width="550" height="550"/>
-        <image name="Map_Black" width="23" height="23"/>
         <image name="Menu" width="40" height="40"/>
         <image name="Refresh" width="50" height="50"/>
         <image name="SoBad" width="154" height="160"/>
