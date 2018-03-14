@@ -88,7 +88,25 @@ class WebViewController: UIViewController, WKUIDelegate {
         print(containerView.frame.height)
         print(webView.frame.height)
         print(webView.scrollView.frame.height)
+        pm10BtnClick()
         loadURL()
+    }
+    
+    func pm10BtnClick() {
+        pm10Btn.isSelected = true
+        pm25Btn.isSelected = false
+        coBtn.isSelected = false
+        co2Btn.isSelected = false
+        so2Btn.isSelected = false
+        pm10Btn.backgroundColor = UIColor(red: 140.0/255.0, green: 175.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        pm25Btn.backgroundColor = .black
+        coBtn.backgroundColor = .black
+        co2Btn.backgroundColor = .black
+        so2Btn.backgroundColor = .black
+        scaleImgView.image = UIImage(named: "PMScale")
+        let myURL = URL(string: "https://earth.nullschool.net/#current/particulates/surface/level/overlay=pm10/orthographic=-232.65,37.48,1500")
+        let myRequest = URLRequest(url: myURL!)
+        webView.load(myRequest)
     }
     
     @objc func pm10BtnAction(sender: UIButton) {
