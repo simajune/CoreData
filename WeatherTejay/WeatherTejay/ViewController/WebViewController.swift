@@ -85,9 +85,6 @@ class WebViewController: UIViewController, WKUIDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        print(containerView.frame.height)
-        print(webView.frame.height)
-        print(webView.scrollView.frame.height)
         pm10BtnClick()
         loadURL()
     }
@@ -128,7 +125,6 @@ class WebViewController: UIViewController, WKUIDelegate {
             let myRequest = URLRequest(url: myURL!)
             webView.load(myRequest)
         }
-        print("pm10")
     }
     
     @objc func pm25BtnAction(sender: UIButton) {
@@ -150,7 +146,6 @@ class WebViewController: UIViewController, WKUIDelegate {
             let myRequest = URLRequest(url: myURL!)
             webView.load(myRequest)
         }
-        print("pm2.5")
     }
     
     @objc func coBtnAction(sender: UIButton) {
@@ -172,7 +167,6 @@ class WebViewController: UIViewController, WKUIDelegate {
             let myRequest = URLRequest(url: myURL!)
             webView.load(myRequest)
         }
-        print("co")
     }
     
     @objc func co2BtnAction(sender: UIButton) {
@@ -194,7 +188,6 @@ class WebViewController: UIViewController, WKUIDelegate {
             let myRequest = URLRequest(url: myURL!)
             webView.load(myRequest)
         }
-        print("co2")
     }
     
     @objc func so2BtnAction(sender: UIButton) {
@@ -216,7 +209,6 @@ class WebViewController: UIViewController, WKUIDelegate {
             let myRequest = URLRequest(url: myURL!)
             webView.load(myRequest)
         }
-        print("so2")
     }
     
     func setupUI() {

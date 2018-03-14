@@ -40,7 +40,6 @@ extension CellB: UITableViewDataSource {
             cell.dustValueLabel.isHidden = false
             cell.forecastDustTxtView.isHidden = true
             cell.label.text = dataModel.dustName[indexPath.row]
-            print(dataModel.currentDustData)
             cell.dustValueLabel.text = dataModel.currentDustData[indexPath.row]
             cell.gradeLabel.text = dataModel.changeDustGrade(grade: dataModel.currentDustGrade[indexPath.row])
             
@@ -56,7 +55,6 @@ extension CellB: UITableViewDataSource {
             cell.gradeLabel.isHidden = true
             cell.dustValueLabel.isHidden = true
             cell.forecastDustTxtView.isHidden = false
-            print(dataModel.forecastDustDate)
             cell.label.text = dataModel.forecastDustDate[indexPath.row]
             cell.forecastDustTxtView.font = UIFont(name: "Yanolja Yache OTF", size: 12)
             cell.forecastDustTxtView.text = dataModel.forecastDustInformOverall[indexPath.row]

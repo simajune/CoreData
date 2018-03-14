@@ -185,7 +185,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
         dataModel.currentDustDataCount = 0
         dataModel.forecastCount = 0
         sender.isUserInteractionEnabled = false
-        print("clicked")
         UIView.animate(withDuration: 0.5) {
             if self.sectionIsExpanded {
                 self.refreshBtn.transform = CGAffineTransform.identity
