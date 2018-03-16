@@ -25,8 +25,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
     var tmParams: [String: String] = [:]
     var dustParams: [String: String] = [:]
     var changeDustNum: Int = 0
-    var isBulletin: Bool = false
     var currentdate: String = ""
+    let reference = Database.database().reference()
     
     let forecastCode: [String] = ["code4hour",
                                   "code7hour",
@@ -78,12 +78,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewDidLoad")
-        let reference = Database.database().reference()
         reference.child("isBulletin").child("isTrue").observeSingleEvent(of: .value, with: { (snapshot) in
             let bool = snapshot.value as! Int
             if bool == 1 {
-                self.isBulletin = true
-                print("true")
+                let bulletinView: BulletinViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BulletinViewController") as! BulletinViewController
+                bulletinView.modalPresentationStyle = .overCurrentContext
+                self.present(bulletinView, animated: false, completion: nil)
             }
         })
         dataModel = DataModel()
