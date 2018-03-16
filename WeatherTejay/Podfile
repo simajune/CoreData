@@ -8,6 +8,9 @@ target 'WeatherTejay' do
   pod 'SwiftyJSON'
   pod 'Alamofire'
   pod 'PKHUD'
+  pod 'Firebase'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
   pod 'Firebase/Core'
   pod 'SnapKit'
   # Pods for WeatherTejay

@@ -24,6 +24,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
     var tmParams: [String: String] = [:]
     var dustParams: [String: String] = [:]
     var changeDustNum: Int = 0
+    var isBulletin: Bool!
     var currentdate: String = ""
     
     let forecastCode: [String] = ["code4hour",
@@ -369,7 +370,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
             guard let `self` = self else { return }
             if response.result.isSuccess {
-                print(response.request!)
                 let datas = JSON(response.result.value!)
                 //만약 측정소의 문제로 인해 미세먼지의 값이 나오지 않을 경우 근처의 다른 측정소의 정보를 가져옴
                 if datas["list"][0]["pm10Value"].stringValue == "-" || datas["list"][0]["pm25Value"].stringValue == "-" {
