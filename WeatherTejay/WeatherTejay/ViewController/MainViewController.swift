@@ -4,6 +4,7 @@ import CoreLocation
 import Alamofire
 import SwiftyJSON
 import PKHUD
+import Firebase
 
 class MainViewController: UIViewController, CLLocationManagerDelegate, SearchViewDelegate {
     
@@ -24,7 +25,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
     var tmParams: [String: String] = [:]
     var dustParams: [String: String] = [:]
     var changeDustNum: Int = 0
-    var isBulletin: Bool!
+    var isBulletin: Bool = false
     var currentdate: String = ""
     
     let forecastCode: [String] = ["code4hour",
@@ -76,6 +77,15 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad")
+        let reference = Database.database().reference()
+        reference.child("isBulletin").child("isTrue").observeSingleEvent(of: .value, with: { (snapshot) in
+            let bool = snapshot.value as! Int
+            if bool == 1 {
+                self.isBulletin = true
+                print("true")
+            }
+        })
         dataModel = DataModel()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
@@ -101,6 +111,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
         dataModel.currentDustDataCount = 0
         dataModel.forecastCount = 0
         if dataModel.address == "" {
+            
+            //굳이 필요한지 확인후 필요 없다면 삭제 예정
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
             locationManager.requestWhenInUseAuthorization()
