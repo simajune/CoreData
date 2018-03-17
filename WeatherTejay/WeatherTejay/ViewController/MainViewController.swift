@@ -77,10 +77,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
         reference.child("isBulletin").child("isTrue").observeSingleEvent(of: .value, with: { (snapshot) in
             let bool = snapshot.value as! Int
-            if bool == 1 {
+            let isNeverBulletin = UserDefaults.standard.bool(forKey: "isNeverBulletin")
+            if bool == 1 && isNeverBulletin == false {
                 let bulletinView: BulletinViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BulletinViewController") as! BulletinViewController
                 bulletinView.modalPresentationStyle = .overCurrentContext
                 self.present(bulletinView, animated: false, completion: nil)

@@ -487,7 +487,7 @@ Airkorea에사 제공하는 정보를
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7OV-6r-Tbf">
-                                <rect key="frame" x="56.5" y="167" width="262.5" height="333.5"/>
+                                <rect key="frame" x="56.5" y="133.5" width="262.5" height="400.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFH-Pm-0VL">
                                         <rect key="frame" x="92.5" y="-39.5" width="79" height="79"/>
@@ -519,12 +519,80 @@ Airkorea에사 제공하는 정보를
                                             <constraint firstItem="KMB-Z3-bBe" firstAttribute="centerY" secondItem="lFH-Pm-0VL" secondAttribute="centerY" id="x1Z-Gq-jQM"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nwt-A0-7Ff">
+                                        <rect key="frame" x="26.5" y="275.5" width="210" height="30"/>
+                                        <color key="backgroundColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="19C-qR-0Hb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
+                                        <state key="normal" title="리뷰 쓰러가기">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lX5-WM-W3S">
+                                        <rect key="frame" x="26" y="315.5" width="210" height="30"/>
+                                        <color key="backgroundColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Kft-w5-Ed7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
+                                        <state key="normal" title="다음에 다시보기">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syw-qc-Q3o">
+                                        <rect key="frame" x="25.5" y="355.5" width="210" height="30"/>
+                                        <color key="backgroundColor" red="0.54901960780000003" green="0.68627450980000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Kv3-CH-4f3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
+                                        <state key="normal" title="다음에 보지않기">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="'날씨먼지'" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Unx-os-YWB">
+                                        <rect key="frame" x="25.5" y="40" width="210" height="20"/>
+                                        <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3Y-cc-VCV">
+                                        <rect key="frame" x="27" y="70" width="210" height="200.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">Label
+asda
+asda
+zsdasd</string>
+                                        <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="lX5-WM-W3S" firstAttribute="width" secondItem="nwt-A0-7Ff" secondAttribute="width" id="602-ao-mza"/>
+                                    <constraint firstItem="Unx-os-YWB" firstAttribute="width" secondItem="syw-qc-Q3o" secondAttribute="width" id="7Qe-WI-6wx"/>
+                                    <constraint firstItem="Unx-os-YWB" firstAttribute="centerY" secondItem="7OV-6r-Tbf" secondAttribute="centerY" multiplier="0.25" id="89D-Cs-HvD"/>
+                                    <constraint firstItem="lX5-WM-W3S" firstAttribute="centerX" secondItem="7OV-6r-Tbf" secondAttribute="centerX" id="8YB-k4-RtD"/>
+                                    <constraint firstItem="t3Y-cc-VCV" firstAttribute="centerY" secondItem="7OV-6r-Tbf" secondAttribute="centerY" multiplier="0.85" id="96L-6A-gcG"/>
+                                    <constraint firstItem="t3Y-cc-VCV" firstAttribute="height" secondItem="7OV-6r-Tbf" secondAttribute="height" multiplier="0.5" id="Awt-N8-jM8"/>
+                                    <constraint firstItem="syw-qc-Q3o" firstAttribute="height" secondItem="lX5-WM-W3S" secondAttribute="height" id="Djj-JF-h67"/>
+                                    <constraint firstItem="t3Y-cc-VCV" firstAttribute="centerX" secondItem="7OV-6r-Tbf" secondAttribute="centerX" id="GrG-yc-Pnp"/>
+                                    <constraint firstItem="nwt-A0-7Ff" firstAttribute="width" secondItem="7OV-6r-Tbf" secondAttribute="width" multiplier="0.8" id="KQR-gr-rDb"/>
+                                    <constraint firstItem="Unx-os-YWB" firstAttribute="centerX" secondItem="7OV-6r-Tbf" secondAttribute="centerX" id="Mvi-mM-AgG"/>
+                                    <constraint firstItem="t3Y-cc-VCV" firstAttribute="width" secondItem="Unx-os-YWB" secondAttribute="width" id="O9i-ah-TiE"/>
+                                    <constraint firstItem="lX5-WM-W3S" firstAttribute="centerY" secondItem="7OV-6r-Tbf" secondAttribute="centerY" multiplier="1.65" id="OQ5-9X-Tc2"/>
+                                    <constraint firstItem="nwt-A0-7Ff" firstAttribute="centerX" secondItem="7OV-6r-Tbf" secondAttribute="centerX" id="QwZ-4q-AXV"/>
+                                    <constraint firstItem="nwt-A0-7Ff" firstAttribute="centerY" secondItem="7OV-6r-Tbf" secondAttribute="centerY" multiplier="1.45" id="RqA-py-O1K"/>
                                     <constraint firstItem="lFH-Pm-0VL" firstAttribute="width" secondItem="7OV-6r-Tbf" secondAttribute="width" multiplier="0.3" id="YEE-77-547"/>
+                                    <constraint firstItem="syw-qc-Q3o" firstAttribute="centerX" secondItem="7OV-6r-Tbf" secondAttribute="centerX" id="cdh-9w-BgM"/>
                                     <constraint firstItem="lFH-Pm-0VL" firstAttribute="centerY" secondItem="7OV-6r-Tbf" secondAttribute="top" id="fRV-G2-mVl"/>
+                                    <constraint firstItem="syw-qc-Q3o" firstAttribute="centerY" secondItem="7OV-6r-Tbf" secondAttribute="centerY" multiplier="1.85" id="gOX-XH-HcE"/>
+                                    <constraint firstItem="lX5-WM-W3S" firstAttribute="height" secondItem="nwt-A0-7Ff" secondAttribute="height" id="nky-Ly-NKn"/>
                                     <constraint firstItem="lFH-Pm-0VL" firstAttribute="centerX" secondItem="7OV-6r-Tbf" secondAttribute="centerX" id="pPh-D4-zmd"/>
+                                    <constraint firstItem="syw-qc-Q3o" firstAttribute="width" secondItem="lX5-WM-W3S" secondAttribute="width" id="vBv-Yu-MlR"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -534,7 +602,7 @@ Airkorea에사 제공하는 정보를
                             <constraint firstItem="piC-B6-Wnc" firstAttribute="top" secondItem="KvU-uW-yE6" secondAttribute="top" id="AI6-TF-907"/>
                             <constraint firstItem="7OV-6r-Tbf" firstAttribute="centerX" secondItem="KvU-uW-yE6" secondAttribute="centerX" id="AkM-Pa-kdM"/>
                             <constraint firstItem="piC-B6-Wnc" firstAttribute="leading" secondItem="6kg-ON-sfb" secondAttribute="leading" id="OZg-gX-533"/>
-                            <constraint firstItem="7OV-6r-Tbf" firstAttribute="height" secondItem="KvU-uW-yE6" secondAttribute="height" multiplier="0.5" id="SzG-mM-je1"/>
+                            <constraint firstItem="7OV-6r-Tbf" firstAttribute="height" secondItem="KvU-uW-yE6" secondAttribute="height" multiplier="0.6" id="SzG-mM-je1"/>
                             <constraint firstItem="piC-B6-Wnc" firstAttribute="bottom" secondItem="6kg-ON-sfb" secondAttribute="bottom" id="UxN-9Y-TVr"/>
                             <constraint firstItem="piC-B6-Wnc" firstAttribute="trailing" secondItem="6kg-ON-sfb" secondAttribute="trailing" id="dol-2g-of8"/>
                             <constraint firstItem="7OV-6r-Tbf" firstAttribute="width" secondItem="KvU-uW-yE6" secondAttribute="width" multiplier="0.7" id="zR5-Pl-prT"/>
@@ -542,9 +610,15 @@ Airkorea에사 제공하는 정보를
                         <viewLayoutGuide key="safeArea" id="6kg-ON-sfb"/>
                     </view>
                     <connections>
+                        <outlet property="bulletinTitle" destination="Unx-os-YWB" id="dxO-bd-Gq5"/>
+                        <outlet property="neverBtn" destination="syw-qc-Q3o" id="S9C-FL-G98"/>
+                        <outlet property="nextBtn" destination="lX5-WM-W3S" id="G5D-bb-abd"/>
                         <outlet property="popHeaderInnerView" destination="KMB-Z3-bBe" id="W3u-yy-tTr"/>
                         <outlet property="popHeaderView" destination="lFH-Pm-0VL" id="kGh-lh-Okq"/>
                         <outlet property="popView" destination="7OV-6r-Tbf" id="gLX-3v-5pQ"/>
+                        <outlet property="popViewCenterY" destination="67r-IL-8Pr" id="t1j-eM-ca0"/>
+                        <outlet property="popviewContent" destination="t3Y-cc-VCV" id="cBr-IS-Ak0"/>
+                        <outlet property="reviewBtn" destination="nwt-A0-7Ff" id="f1P-0S-cyf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tAg-bB-5ra" userLabel="First Responder" sceneMemberID="firstResponder"/>
