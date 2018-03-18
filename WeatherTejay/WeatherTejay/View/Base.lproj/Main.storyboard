@@ -610,7 +610,8 @@ zsdasd</string>
                         <viewLayoutGuide key="safeArea" id="6kg-ON-sfb"/>
                     </view>
                     <connections>
-                        <outlet property="bulletinTitle" destination="Unx-os-YWB" id="dxO-bd-Gq5"/>
+                        <outlet property="bulletinContentLabel" destination="t3Y-cc-VCV" id="VtK-jQ-Ms4"/>
+                        <outlet property="bulletinTitleLabel" destination="Unx-os-YWB" id="LgI-tN-jEO"/>
                         <outlet property="neverBtn" destination="syw-qc-Q3o" id="S9C-FL-G98"/>
                         <outlet property="nextBtn" destination="lX5-WM-W3S" id="G5D-bb-abd"/>
                         <outlet property="popHeaderInnerView" destination="KMB-Z3-bBe" id="W3u-yy-tTr"/>
