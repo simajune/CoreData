@@ -918,12 +918,6 @@ zsdasd</string>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="○ 대기확산이 원활하여 대부분 ‘보통’ 수준을 나타내겠으나, 국외 미세먼지 유입의 영향으로 중서부지역은 밤에 농도가 높을 것으로 예상됨." textAlignment="center" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXH-r4-ru9">
-                                                                        <rect key="frame" x="150" y="0.0" width="225" height="70"/>
-                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
-                                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                                    </textView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Lyy-dT-9lP">
                                                                         <rect key="frame" x="232" y="26.5" width="61" height="17"/>
                                                                         <subviews>
@@ -947,26 +941,32 @@ zsdasd</string>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="○ 대기확산이 원활하여 대부분 ‘보통’ 수준을 나타내겠으나, 국외 미세먼지 유입의 영향으로 중서부지역은 밤에 농도가 높을 것으로 예상됨." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKu-4s-eMl">
+                                                                        <rect key="frame" x="150" y="0.5" width="225" height="70"/>
+                                                                        <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
                                                                 </subviews>
                                                                 <constraints>
+                                                                    <constraint firstItem="jKu-4s-eMl" firstAttribute="trailing" secondItem="GOl-Oo-3Zk" secondAttribute="trailing" id="1qo-Yq-3OU"/>
                                                                     <constraint firstItem="8Wb-b2-6Op" firstAttribute="trailing" secondItem="GOl-Oo-3Zk" secondAttribute="centerX" multiplier="1.95" id="6Jf-Wg-hfN"/>
                                                                     <constraint firstItem="Lyy-dT-9lP" firstAttribute="centerX" secondItem="GOl-Oo-3Zk" secondAttribute="centerX" multiplier="1.4" id="6cv-JH-Zae"/>
-                                                                    <constraint firstItem="jXH-r4-ru9" firstAttribute="width" secondItem="GOl-Oo-3Zk" secondAttribute="width" multiplier="0.6" id="Dgg-6S-WyN"/>
                                                                     <constraint firstItem="RUd-C5-poS" firstAttribute="centerY" secondItem="GOl-Oo-3Zk" secondAttribute="centerY" id="HSG-ni-4pc"/>
                                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RUd-C5-poS" secondAttribute="trailing" constant="20" symbolic="YES" id="HSR-D8-QfT"/>
+                                                                    <constraint firstItem="jKu-4s-eMl" firstAttribute="centerY" secondItem="GOl-Oo-3Zk" secondAttribute="centerY" id="SXn-P2-rDn"/>
+                                                                    <constraint firstItem="jKu-4s-eMl" firstAttribute="height" secondItem="GOl-Oo-3Zk" secondAttribute="height" id="Xoi-Mc-7Br"/>
                                                                     <constraint firstItem="Lyy-dT-9lP" firstAttribute="centerY" secondItem="GOl-Oo-3Zk" secondAttribute="centerY" id="ZQH-gM-Pfd"/>
                                                                     <constraint firstItem="8Wb-b2-6Op" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GOl-Oo-3Zk" secondAttribute="leading" constant="20" symbolic="YES" id="crd-pe-Rsv"/>
                                                                     <constraint firstItem="RUd-C5-poS" firstAttribute="leading" secondItem="GOl-Oo-3Zk" secondAttribute="centerX" multiplier="0.1" id="f5Q-eF-Z2c"/>
-                                                                    <constraint firstItem="jXH-r4-ru9" firstAttribute="centerY" secondItem="GOl-Oo-3Zk" secondAttribute="centerY" id="gh3-pj-opJ"/>
-                                                                    <constraint firstItem="jXH-r4-ru9" firstAttribute="trailing" secondItem="GOl-Oo-3Zk" secondAttribute="trailing" id="jpK-nZ-91S"/>
+                                                                    <constraint firstItem="jKu-4s-eMl" firstAttribute="width" secondItem="GOl-Oo-3Zk" secondAttribute="width" multiplier="0.6" id="vux-SL-aqw"/>
                                                                     <constraint firstItem="8Wb-b2-6Op" firstAttribute="centerY" secondItem="GOl-Oo-3Zk" secondAttribute="centerY" id="x0A-2f-yI8"/>
-                                                                    <constraint firstItem="jXH-r4-ru9" firstAttribute="height" secondItem="GOl-Oo-3Zk" secondAttribute="height" id="zbk-3r-lkA"/>
                                                                 </constraints>
                                                             </tableViewCellContentView>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <connections>
                                                                 <outlet property="dustValueLabel" destination="3mH-gM-j2g" id="DrI-6Y-ro6"/>
-                                                                <outlet property="forecastDustTxtView" destination="jXH-r4-ru9" id="59J-Yp-yuJ"/>
+                                                                <outlet property="forecastDustLabel" destination="jKu-4s-eMl" id="GGN-l2-FkX"/>
                                                                 <outlet property="gradeLabel" destination="8Wb-b2-6Op" id="4pe-K5-JTj"/>
                                                                 <outlet property="label" destination="RUd-C5-poS" id="ipL-uS-JT4"/>
                                                                 <outlet property="unitLabel" destination="qIc-b3-J1d" id="kNt-LY-POX"/>
@@ -1051,7 +1051,7 @@ zsdasd</string>
         <!--Map-->
         <scene sceneID="iNA-cl-LJ0">
             <objects>
-                <viewController id="09Z-Xr-igS" customClass="WebViewController" customModule="WeatherTejay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="09Z-Xr-igS" customClass="WebViewController" customModule="WeatherTejay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9n2-Lr-CEQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

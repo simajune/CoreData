@@ -38,7 +38,7 @@ extension CellB: UITableViewDataSource {
             cell.unitLabel.isHidden = false
             cell.gradeLabel.isHidden = false
             cell.dustValueLabel.isHidden = false
-            cell.forecastDustTxtView.isHidden = true
+            cell.forecastDustLabel.isHidden = true
             cell.label.text = dataModel.dustName[indexPath.row]
             cell.dustValueLabel.text = dataModel.currentDustData[indexPath.row]
             cell.gradeLabel.text = dataModel.changeDustGrade(grade: dataModel.currentDustGrade[indexPath.row])
@@ -54,11 +54,11 @@ extension CellB: UITableViewDataSource {
             cell.unitLabel.isHidden = true
             cell.gradeLabel.isHidden = true
             cell.dustValueLabel.isHidden = true
-            cell.forecastDustTxtView.isHidden = false
+            cell.forecastDustLabel.isHidden = false
             cell.label.text = dataModel.forecastDustDate[indexPath.row]
-            cell.forecastDustTxtView.font = UIFont(name: "Yanolja Yache OTF", size: 12)
-            cell.forecastDustTxtView.text = dataModel.forecastDustInformOverall[indexPath.row]
-            cell.forecastDustTxtView.text = cell.forecastDustTxtView.text.replace(target: "○ [미세먼지]", withString: "")
+            cell.forecastDustLabel.font = UIFont(name: "Yanolja Yache OTF", size: 12)
+            cell.forecastDustLabel.text = dataModel.forecastDustInformOverall[indexPath.row]
+            cell.forecastDustLabel.text = cell.forecastDustLabel.text?.replace(target: "○ [미세먼지]", withString: "")
             return cell
         }
     }

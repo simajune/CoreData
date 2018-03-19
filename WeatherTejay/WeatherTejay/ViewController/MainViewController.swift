@@ -87,15 +87,17 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
             }
         })
         dataModel = DataModel()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
         //메뉴 버튼에 대한 메소드 설정
         menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         //매뉴를 보기 위한 조건들 추가 - 오른쪽으로 슬라이드
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -110,9 +112,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
         dayLabel.text = changeKRDay(str: currentDay)
         dataModel.currentDustDataCount = 0
         dataModel.forecastCount = 0
-        if dataModel.address == "" {
-            
-            //굳이 필요한지 확인후 필요 없다면 삭제 예정
+        if dataModel.address == "" {         
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
             locationManager.requestWhenInUseAuthorization()
@@ -191,12 +191,14 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
     
     //MARK: - Button Action
     @IBAction func refreshAction(_ sender: UIButton) {
+        dataModel.currentDustDataCount = 0
+        dataModel.forecastCount = 0
+
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        dataModel.currentDustDataCount = 0
-        dataModel.forecastCount = 0
+
         sender.isUserInteractionEnabled = false
         UIView.animate(withDuration: 0.5) {
             if self.sectionIsExpanded {
