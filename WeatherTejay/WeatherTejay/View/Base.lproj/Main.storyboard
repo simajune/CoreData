@@ -553,7 +553,7 @@ Airkorea에사 제공하는 정보를
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="'날씨먼지'" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Unx-os-YWB">
-                                        <rect key="frame" x="25.5" y="40" width="210" height="20"/>
+                                        <rect key="frame" x="25.5" y="40.5" width="210" height="20"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -669,7 +669,7 @@ zsdasd</string>
                                 <rect key="frame" x="0.0" y="66.5" width="375" height="151.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지역" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lF-Uv-YvY">
-                                        <rect key="frame" x="-1" y="2.5" width="375.5" height="26"/>
+                                        <rect key="frame" x="-1" y="0.5" width="375.5" height="30.5"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="26"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -681,7 +681,7 @@ zsdasd</string>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨온도" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzH-ZY-CIr">
-                                        <rect key="frame" x="35" y="82.5" width="43" height="17"/>
+                                        <rect key="frame" x="27" y="81" width="59" height="20"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -693,34 +693,34 @@ zsdasd</string>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHo-Ri-cDm">
-                                        <rect key="frame" x="45" y="44.5" width="22.5" height="17"/>
+                                        <rect key="frame" x="41.5" y="43" width="29.5" height="20"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJl-6d-4WQ">
-                                        <rect key="frame" x="45.5" y="63.5" width="21.5" height="17"/>
+                                        <rect key="frame" x="41.5" y="62" width="29.5" height="20"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EjD-HX-JmJ">
-                                        <rect key="frame" x="32" y="101.5" width="50" height="17"/>
+                                        <rect key="frame" x="24.5" y="100" width="65" height="20"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최저" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afZ-lV-EJU">
-                                                <rect key="frame" x="0.0" y="0.0" width="21.5" height="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="29.5" height="20"/>
                                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfF-HJ-XJ7">
-                                                <rect key="frame" x="21.5" y="0.0" width="7" height="17"/>
+                                                <rect key="frame" x="29.5" y="0.0" width="6" height="20"/>
                                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최고" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0q-rm-jdU">
-                                                <rect key="frame" x="28.5" y="0.0" width="21.5" height="17"/>
+                                                <rect key="frame" x="35.5" y="0.0" width="29.5" height="20"/>
                                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -728,13 +728,13 @@ zsdasd</string>
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨정보" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYz-JA-oOZ">
-                                        <rect key="frame" x="279" y="128" width="60" height="17"/>
+                                        <rect key="frame" x="279" y="126.5" width="60" height="20"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="미세먼지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5c-La-ITc">
-                                        <rect key="frame" x="166.5" y="127.5" width="43" height="17"/>
+                                        <rect key="frame" x="158.5" y="126" width="59" height="20"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -751,19 +751,19 @@ zsdasd</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="통합대기지수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zua-fH-mlZ">
-                                        <rect key="frame" x="156" y="37.5" width="64.5" height="17"/>
+                                        <rect key="frame" x="144" y="36" width="88.5" height="20"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 날씨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWW-Nz-6lh">
-                                        <rect key="frame" x="286" y="37" width="47" height="17"/>
+                                        <rect key="frame" x="277.5" y="35.5" width="64" height="20"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비교온도" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0V-d8-Yqc">
-                                        <rect key="frame" x="35" y="120.5" width="42.5" height="17"/>
+                                        <rect key="frame" x="27" y="119" width="59" height="20"/>
                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -838,7 +838,7 @@ zsdasd</string>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31일 12시" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhE-JB-5qk">
-                                                                        <rect key="frame" x="23.5" y="10" width="39.5" height="14.5"/>
+                                                                        <rect key="frame" x="13.5" y="10" width="59.5" height="16.5"/>
                                                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="14"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
@@ -851,7 +851,7 @@ zsdasd</string>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gi8-pF-5aE">
-                                                                        <rect key="frame" x="33.5" y="55.5" width="19.5" height="14.5"/>
+                                                                        <rect key="frame" x="32.5" y="53.5" width="21.5" height="16.5"/>
                                                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="14"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
@@ -913,22 +913,22 @@ zsdasd</string>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUd-C5-poS">
-                                                                        <rect key="frame" x="18.5" y="26.5" width="36" height="17"/>
+                                                                        <rect key="frame" x="18.5" y="25" width="42" height="20"/>
                                                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Lyy-dT-9lP">
-                                                                        <rect key="frame" x="232" y="26.5" width="61" height="17"/>
+                                                                        <rect key="frame" x="226" y="25" width="73" height="20"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mH-gM-j2g">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="29" height="17"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="35" height="20"/>
                                                                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ppm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIc-b3-J1d">
-                                                                                <rect key="frame" x="32" y="0.0" width="29" height="17"/>
+                                                                                <rect key="frame" x="38" y="0.0" width="35" height="20"/>
                                                                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -936,7 +936,7 @@ zsdasd</string>
                                                                         </subviews>
                                                                     </stackView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매우나쁨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Wb-b2-6Op">
-                                                                        <rect key="frame" x="322" y="26.5" width="43.5" height="17"/>
+                                                                        <rect key="frame" x="306.5" y="25" width="59" height="20"/>
                                                                         <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -961,6 +961,7 @@ zsdasd</string>
                                                                     <constraint firstItem="RUd-C5-poS" firstAttribute="leading" secondItem="GOl-Oo-3Zk" secondAttribute="centerX" multiplier="0.1" id="f5Q-eF-Z2c"/>
                                                                     <constraint firstItem="jKu-4s-eMl" firstAttribute="width" secondItem="GOl-Oo-3Zk" secondAttribute="width" multiplier="0.6" id="vux-SL-aqw"/>
                                                                     <constraint firstItem="8Wb-b2-6Op" firstAttribute="centerY" secondItem="GOl-Oo-3Zk" secondAttribute="centerY" id="x0A-2f-yI8"/>
+                                                                    <constraint firstItem="jKu-4s-eMl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GOl-Oo-3Zk" secondAttribute="leading" constant="20" symbolic="YES" id="zGy-T2-kXK"/>
                                                                 </constraints>
                                                             </tableViewCellContentView>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -999,7 +1000,7 @@ zsdasd</string>
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨먼지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBd-2S-bvY">
-                                <rect key="frame" x="150" y="31.5" width="75.5" height="30"/>
+                                <rect key="frame" x="136" y="29" width="104" height="35"/>
                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1219,7 +1220,7 @@ zsdasd</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zDG-dr-ep4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="358" y="1639"/>
+            <point key="canvasLocation" x="359" y="1736"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="YVe-Le-XVk">
@@ -1236,7 +1237,7 @@ zsdasd</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날씨먼지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9G-yM-aPa">
-                                <rect key="frame" x="107" y="368" width="161" height="64"/>
+                                <rect key="frame" x="77" y="362.5" width="221.5" height="75"/>
                                 <fontDescription key="fontDescription" name="YanoljaYacheOTFB" family="Yanolja Yache OTF" pointSize="64"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

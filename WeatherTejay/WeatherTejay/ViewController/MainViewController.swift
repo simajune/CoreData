@@ -112,7 +112,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
         dayLabel.text = changeKRDay(str: currentDay)
         dataModel.currentDustDataCount = 0
         dataModel.forecastCount = 0
-        if dataModel.address == "" {         
+        if dataModel.address == "" {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
             locationManager.requestWhenInUseAuthorization()
