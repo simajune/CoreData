@@ -504,12 +504,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 getCurrentWeatherData (url: forecastSKWeatherURL, parameters: paramSK)
             }else if self.changeAppKeyNum == 3 {
                 SKWeatherHeader = temp4SKWeatherHeader
-                self.changeAppKeyNum += 1
-                self.getPrevWeatherData(url: url, parameters: parameters)
+                changeAppKeyNum += 1
+                getCurrentWeatherData (url: forecastSKWeatherURL, parameters: paramSK)
             }else if self.changeAppKeyNum == 4 {
                 SKWeatherHeader = temp5SKWeatherHeader
-                self.changeAppKeyNum += 1
-                self.getPrevWeatherData(url: url, parameters: parameters)
+                changeAppKeyNum += 1
+                getCurrentWeatherData (url: forecastSKWeatherURL, parameters: paramSK)
             }else {
                 HUD.flash(HUDContentType.label("트래픽이 초과되어\n날씨정보를 받을 수 없습니다."), delay: 1.0)
                 locationLabel.text = "Weather Unavailable"
