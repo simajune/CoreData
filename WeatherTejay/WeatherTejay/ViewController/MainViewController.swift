@@ -229,6 +229,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 SKWeatherHeader = temp2SKWeatherHeader
                 self.changeAppKeyNum += 1
                 self.getPrevWeatherData(url: url, parameters: parameters)
+            }else if self.changeAppKeyNum == 2 {
+                SKWeatherHeader = temp3SKWeatherHeader
+                self.changeAppKeyNum += 1
+                self.getPrevWeatherData(url: url, parameters: parameters)
             }else {
                 HUD.flash(HUDContentType.label("트래픽이 초과되어\n날씨정보를 받을 수 없습니다."), delay: 1.0)
                 self.changeAppKeyNum = 0
@@ -242,6 +246,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 SKWeatherHeader = temp2SKWeatherHeader
                 self.changeAppKeyNum += 1
                 self.getCurrentWeatherData(url: url, parameters: parameters)
+            }else if self.changeAppKeyNum == 2 {
+                SKWeatherHeader = temp3SKWeatherHeader
+                self.changeAppKeyNum += 1
+                self.getCurrentWeatherData(url: url, parameters: parameters)
             }else {
                 self.locationLabel.text = "트래픽이 초과되어 날씨정보를 받을 수 없습니다."
                 self.changeAppKeyNum = 0
@@ -253,6 +261,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 self.getforecastWeatherData(url: url, parameters: parameters)
             }else if self.changeAppKeyNum == 1 {
                 SKWeatherHeader = temp2SKWeatherHeader
+                self.changeAppKeyNum += 1
+                self.getforecastWeatherData(url: url, parameters: parameters)
+            }else if self.changeAppKeyNum == 2 {
+                SKWeatherHeader = temp3SKWeatherHeader
                 self.changeAppKeyNum += 1
                 self.getforecastWeatherData(url: url, parameters: parameters)
             }else {
@@ -460,6 +472,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 getCurrentWeatherData (url: forecastSKWeatherURL, parameters: paramSK)
             }else if changeAppKeyNum == 1{
                 SKWeatherHeader = temp2SKWeatherHeader
+                changeAppKeyNum += 1
+                getCurrentWeatherData (url: forecastSKWeatherURL, parameters: paramSK)
+            }else if changeAppKeyNum == 2{
+                SKWeatherHeader = temp3SKWeatherHeader
                 changeAppKeyNum += 1
                 getCurrentWeatherData (url: forecastSKWeatherURL, parameters: paramSK)
             }else {

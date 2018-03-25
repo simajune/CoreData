@@ -151,6 +151,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
                 SKWeatherHeader = temp2SKWeatherHeader
                 self.changeAppKeyNum += 1
                 self.getPrevWeatherData(url: url, parameters: parameters)
+            }else if self.changeAppKeyNum == 2 {
+                SKWeatherHeader = temp3SKWeatherHeader
+                self.changeAppKeyNum += 1
+                self.getPrevWeatherData(url: url, parameters: parameters)
             }else {
                 self.locationLabel.text = "트래픽이 초과되어 날씨정보를 받을 수 없습니다."
                 self.changeAppKeyNum = 0
@@ -164,6 +168,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
                 SKWeatherHeader = temp2SKWeatherHeader
                 self.changeAppKeyNum += 1
                 self.getCurrentWeatherData(url: url, parameters: parameters)
+            }else if self.changeAppKeyNum == 2 {
+                SKWeatherHeader = temp3SKWeatherHeader
+                self.changeAppKeyNum += 1
+                self.getPrevWeatherData(url: url, parameters: parameters)
             }else {
                 self.locationLabel.text = "트래픽이 초과되어 날씨정보를 받을 수 없습니다."
                 self.changeAppKeyNum = 0
