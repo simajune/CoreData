@@ -20,7 +20,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     @IBOutlet weak var dustIcon: UIImageView!
     @IBOutlet weak var dustLabel: UILabel!
     
-//    private let formatter = DateFormatter()
     let locationManager = CLLocationManager()
     var dataModel: DataModel!
     var changeAppKeyNum: Int = 0
@@ -30,13 +29,16 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         dataModel = DataModel()
         dataModel.dustData.removeAll()
         dataModel.currentDustData.removeAll()
         dataModel.currentDustGrade.removeAll()
+        //현재 날짜 설정
         formatter.dateFormat = "MM월 dd일"
         let currentDate = formatter.string(from: Date())
         dateLabel.text = currentDate
+        //현재 요일 설정
         formatter.dateFormat = "E"
         let currentDay = formatter.string(from: Date())
         dayLabel.text = changeKRDay(str: currentDay)
@@ -44,18 +46,12 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+    
     }
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
-//        dataModel.dustData.removeAll()
-//        dataModel.currentDustData.removeAll()
-//        dataModel.currentDustGrade.removeAll()
-//        locationManager.delegate = self
-//        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-//        locationManager.requestWhenInUseAuthorization()
-//        locationManager.startUpdatingLocation()
-//        
-//        completionHandler(NCUpdateResult.newData)
+        
+        completionHandler(NCUpdateResult.newData)
     }
     
     //PM10데이터 값에 따른 등급을 WHO기준으로 변환

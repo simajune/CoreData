@@ -408,6 +408,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 print("Error \(response.result.error!)")
                 dustAPIKey = originalAPIKey
                 HUD.flash(HUDContentType.label("측정소 정보를 받아올 수 없습니다.\n잠시후 다시 시도해주세요"), delay: 1.0)
+                self.refreshBtn.isUserInteractionEnabled = true
             }
         }
     }
@@ -454,6 +455,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 print("Error \(response.result.error!)")
                 dustAPIKey = originalAPIKey
                 HUD.flash(HUDContentType.label("미세먼지 정보를 받아올 수 없습니다\n잠시후 다시 시도해주세요"), delay: 1.0)
+                self.refreshBtn.isUserInteractionEnabled = true
             }
         }
     }
@@ -475,6 +477,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
             }else {
                 print(response.result.error!)
                 HUD.flash(HUDContentType.label("잠시후\n다시 시도해주세요"), delay: 1.0)
+                self.refreshBtn.isUserInteractionEnabled = true
             }
         }
     }
