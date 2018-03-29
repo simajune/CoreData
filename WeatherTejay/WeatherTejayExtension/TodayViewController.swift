@@ -47,15 +47,15 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     }
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
-        dataModel.dustData.removeAll()
-        dataModel.currentDustData.removeAll()
-        dataModel.currentDustGrade.removeAll()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        
-        completionHandler(NCUpdateResult.newData)
+//        dataModel.dustData.removeAll()
+//        dataModel.currentDustData.removeAll()
+//        dataModel.currentDustGrade.removeAll()
+//        locationManager.delegate = self
+//        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+//        locationManager.requestWhenInUseAuthorization()
+//        locationManager.startUpdatingLocation()
+//        
+//        completionHandler(NCUpdateResult.newData)
     }
     
     //PM10데이터 값에 따른 등급을 WHO기준으로 변환
