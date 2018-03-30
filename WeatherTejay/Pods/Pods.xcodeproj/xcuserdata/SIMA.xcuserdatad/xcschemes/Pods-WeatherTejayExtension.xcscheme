@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0920"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F10FB9EEA46E8BB1B9F1F1623A903370"
+               BlueprintIdentifier = "78B61784561DACE056BBB4E95A318326"
                BuildableName = "Pods_WeatherTejayExtension.framework"
                BlueprintName = "Pods-WeatherTejayExtension"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F10FB9EEA46E8BB1B9F1F1623A903370"
+            BlueprintIdentifier = "78B61784561DACE056BBB4E95A318326"
             BuildableName = "Pods_WeatherTejayExtension.framework"
             BlueprintName = "Pods-WeatherTejayExtension"
             ReferencedContainer = "container:Pods.xcodeproj">

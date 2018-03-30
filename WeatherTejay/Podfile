@@ -23,6 +23,10 @@ target 'WeatherTejayExtension' do
   
   pod 'SwiftyJSON'
   pod 'Alamofire'
+  pod 'Firebase'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Core'
   # Pods for WeatherTejayExtension
 
 end
