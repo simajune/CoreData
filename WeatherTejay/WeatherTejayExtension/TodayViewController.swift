@@ -22,7 +22,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     @IBOutlet weak var dustLabel: UILabel!
     
 //    private let formatter = DateFormatter()
-    let reference: Database = Database.database().reference()
+    let reference = Database.database().reference()
     let locationManager = CLLocationManager()
     var dataModel: DataModel!
     var changeAppKeyNum: Int = 0

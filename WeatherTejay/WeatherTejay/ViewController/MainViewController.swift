@@ -597,6 +597,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 formatter.dateFormat = "yyyy-MM-dd"
                 currentdate = formatter.string(from: Date(timeIntervalSinceNow: -86400))
             }
+            reference.child("Address").child("name").observe(.value, with: { (snapshot) in
+                guard let value = snapshot.value as? String else { return }
+            })
             getLocationData(url: kakaoGetAddressURL, parameters: locationParams)
             getPrevWeatherData(url: historySKWeatherURL, parameters: paramSK)
             getTMData(url: kakaoCoordinateURL, parameters: tmParams)
