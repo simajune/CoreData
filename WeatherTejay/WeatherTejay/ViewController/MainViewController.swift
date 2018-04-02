@@ -86,6 +86,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 self.present(bulletinView, animated: false, completion: nil)
             }
         })
+        firebaseFormatter.dateFormat = "yyyy MM dd HH"
         dataModel = DataModel()
         //메뉴 버튼에 대한 메소드 설정
         menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
@@ -597,9 +598,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 formatter.dateFormat = "yyyy-MM-dd"
                 currentdate = formatter.string(from: Date(timeIntervalSinceNow: -86400))
             }
-            reference.child("Address").child("name").observe(.value, with: { (snapshot) in
-                guard let value = snapshot.value as? String else { return }
-            })
+            reference.child("Address").child("name").observe(.value) { [weak self] (snapshot) in
+                guard let value = snapshot.value as? [String: String] else { return }
+                let firebaseDate = firebaseFormatter.string(from: Date())
+                if value["date"] == firebaseDate {
+                    self?.locationLabel.text = "이미 있음"
+                }
+            }
             getLocationData(url: kakaoGetAddressURL, parameters: locationParams)
             getPrevWeatherData(url: historySKWeatherURL, parameters: paramSK)
             getTMData(url: kakaoCoordinateURL, parameters: tmParams)

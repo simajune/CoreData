@@ -4,6 +4,7 @@ import Alamofire
 
 
 let formatter = DateFormatter()
+let firebaseFormatter = DateFormatter()
 //세팅화면에 접근하기 위한 URL
 let url:URL = URL(string: "App-Prefs:root=")!
 
