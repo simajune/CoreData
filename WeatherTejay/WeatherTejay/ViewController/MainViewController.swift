@@ -568,6 +568,15 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
             if response.result.isSuccess {
                 let data: JSON = JSON(response.result.value!)
                 self.locationLabel.text = data["documents"][0]["region_2depth_name"].stringValue + " " + data["documents"][0]["region_3depth_name"].stringValue
+                //파이어 베이스 확인
+                self.reference.child("Address").child("name").observe(.value) { [weak self] (snapshot) in
+                    guard let value = snapshot.value as? [String: String] else { return }
+                    let firebaseDate = firebaseFormatter.string(from: Date())
+                    if value["date"] == firebaseDate {
+                        self?.locationLabel.text = "이미 있음"
+                    }
+                }
+                
             }else {
                 print("error")
                 HUD.flash(HUDContentType.label("잠시후\n다시 시도해주세요"), delay: 1.0)
@@ -598,13 +607,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 formatter.dateFormat = "yyyy-MM-dd"
                 currentdate = formatter.string(from: Date(timeIntervalSinceNow: -86400))
             }
-            reference.child("Address").child("name").observe(.value) { [weak self] (snapshot) in
-                guard let value = snapshot.value as? [String: String] else { return }
-                let firebaseDate = firebaseFormatter.string(from: Date())
-                if value["date"] == firebaseDate {
-                    self?.locationLabel.text = "이미 있음"
-                }
-            }
+            
+            
             getLocationData(url: kakaoGetAddressURL, parameters: locationParams)
             getPrevWeatherData(url: historySKWeatherURL, parameters: paramSK)
             getTMData(url: kakaoCoordinateURL, parameters: tmParams)
