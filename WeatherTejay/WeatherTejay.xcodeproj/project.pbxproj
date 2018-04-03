@@ -47,6 +47,8 @@
 		233360BD205C3281002555B5 /* BulletinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233360BC205C3281002555B5 /* BulletinViewController.swift */; };
 		233360BF205C4F32002555B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 233360BE205C4F31002555B5 /* GoogleService-Info.plist */; };
 		2334A4E02052FD5400D5C3C6 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2334A4DF2052FD5400D5C3C6 /* WebViewController.swift */; };
+		239A49E120736CA900FE72B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 239A49E020736CA900FE72B8 /* GoogleService-Info.plist */; };
+		239A49E220736CF300FE72B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B2EA120162AE6001F260E /* AppDelegate.swift */; };
 		23EBDF68203802C400D99519 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EBDF67203802C400D99519 /* MenuCell.swift */; };
 		23EBDF6A2038073A00D99519 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EBDF692038073A00D99519 /* AboutViewController.swift */; };
 		23FB189A2035550900C21597 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F90F2201867D400C0DA34 /* DataModel.swift */; };
@@ -132,6 +134,7 @@
 		233360BC205C3281002555B5 /* BulletinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinViewController.swift; sourceTree = "<group>"; };
 		233360BE205C4F31002555B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2334A4DF2052FD5400D5C3C6 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		239A49E020736CA900FE72B8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		23EBDF67203802C400D99519 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		23EBDF692038073A00D99519 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		3586AFF9490ABE383441F619 /* Pods-WeatherTejayExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTejayExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTejayExtension/Pods-WeatherTejayExtension.release.xcconfig"; sourceTree = "<group>"; };
@@ -256,6 +259,7 @@
 				232B2EBF2016C6E0001F260E /* TodayViewController.swift */,
 				232B2EC12016C6E0001F260E /* MainInterface.storyboard */,
 				232B2EC42016C6E0001F260E /* Info.plist */,
+				239A49E020736CA900FE72B8 /* GoogleService-Info.plist */,
 			);
 			path = WeatherTejayExtension;
 			sourceTree = "<group>";
@@ -409,6 +413,7 @@
 			files = (
 				23FB189F20355AFF00C21597 /* Assets.xcassets in Resources */,
 				23FB18A020355AFF00C21597 /* yanoljaTFBold.otf in Resources */,
+				239A49E120736CA900FE72B8 /* GoogleService-Info.plist in Resources */,
 				231E46EB201EC0DF00C5850F /* Addresses.json in Resources */,
 				232B2EC32016C6E0001F260E /* MainInterface.storyboard in Resources */,
 			);
@@ -555,6 +560,7 @@
 				23FB189B2035550900C21597 /* WeatherModel.swift in Sources */,
 				23FB189C2035550900C21597 /* DustModel.swift in Sources */,
 				231E4704201F9AB700C5850F /* Extension.swift in Sources */,
+				239A49E220736CF300FE72B8 /* AppDelegate.swift in Sources */,
 				232B2ED0201705AC001F260E /* Constant.swift in Sources */,
 				232B2EC02016C6E0001F260E /* TodayViewController.swift in Sources */,
 			);

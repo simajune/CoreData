@@ -1,10 +1,12 @@
 
 import Foundation
 import Alamofire
+import Firebase
 
 
 let formatter = DateFormatter()
 let firebaseFormatter = DateFormatter()
+var reference = Database.database().reference()
 //세팅화면에 접근하기 위한 URL
 let url:URL = URL(string: "App-Prefs:root=")!
 

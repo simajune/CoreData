@@ -22,7 +22,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     @IBOutlet weak var dustLabel: UILabel!
     
 //    private let formatter = DateFormatter()
-//    let reference = Database.database().reference()
     let locationManager = CLLocationManager()
     var dataModel: DataModel!
     var changeAppKeyNum: Int = 0
@@ -377,12 +376,12 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
                 let data: JSON = JSON(response.result.value!)
                 self.dataModel.address = data["documents"][0]["region_2depth_name"].stringValue + " " + data["documents"][0]["region_3depth_name"].stringValue
                 self.locationLabel.text = data["documents"][0]["region_2depth_name"].stringValue + " " + data["documents"][0]["region_3depth_name"].stringValue
-//                let param: [String: String] = ["lat": self.dataModel.weatherLocationY, "lon": self.dataModel.weatherLocationX, "version": "2"]
-//                let tmParams: [String: String] = ["y": self.dataModel.weatherLocationY, "x": self.dataModel.weatherLocationX, "input_coord": "WGS84", "output_coord": "WTM"]
-//                self.getPrevWeatherData(url: historySKWeatherURL, parameters: param)
-//                self.getTMData(url: kakaoCoordinateURL, parameters: tmParams)
-//                //파이어베이스 주소 유뮤 확인
-//                self.reference.child("addresses").child(self.dataModel.address).observe(DataEventType.value, with: { [weak self] (snapshot) in
+                let param: [String: String] = ["lat": self.dataModel.weatherLocationY, "lon": self.dataModel.weatherLocationX, "version": "2"]
+                let tmParams: [String: String] = ["y": self.dataModel.weatherLocationY, "x": self.dataModel.weatherLocationX, "input_coord": "WGS84", "output_coord": "WTM"]
+                self.getPrevWeatherData(url: historySKWeatherURL, parameters: param)
+                self.getTMData(url: kakaoCoordinateURL, parameters: tmParams)
+                //파이어베이스 주소 유뮤 확인
+//                reference.child("addresses").child(self.dataModel.address).observe(DataEventType.value, with: { [weak self] (snapshot) in
 //                    guard let `self` = self else { return }
 //                    if let value = snapshot.value as? [String: Any] {
 //                        if value["date"] as! String == firebaseFormatter.string(from: Date()) {

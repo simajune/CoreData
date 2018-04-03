@@ -26,7 +26,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
     var dustParams: [String: String] = [:]
     var changeDustNum: Int = 0
     var currentdate: String = ""
-    let reference = Database.database().reference()
+//    let reference = Database.database().reference()
     
     let forecastCode: [String] = ["code4hour",
                                   "code7hour",
@@ -567,16 +567,35 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
         Alamofire.request(url, method: .get, parameters: parameters, headers: kakaoHeaders).responseJSON { response in
             if response.result.isSuccess {
                 let data: JSON = JSON(response.result.value!)
-                self.locationLabel.text = data["documents"][0]["region_2depth_name"].stringValue + " " + data["documents"][0]["region_3depth_name"].stringValue
+                self.paramSK = ["lat": self.dataModel.weatherLocationY, "lon": self.dataModel.weatherLocationX, "version": "2"]
+                self.tmParams = ["y": self.dataModel.weatherLocationY, "x": self.dataModel.weatherLocationX, "input_coord": "WGS84", "output_coord": "WTM"]
+                self.dataModel.address = data["documents"][0]["region_2depth_name"].stringValue + " " + data["documents"][0]["region_3depth_name"].stringValue
+                self.locationLabel.text = self.dataModel.address
                 //파이어 베이스 확인
-                self.reference.child("Address").child("name").observe(.value) { [weak self] (snapshot) in
-                    guard let value = snapshot.value as? [String: String] else { return }
-                    let firebaseDate = firebaseFormatter.string(from: Date())
-                    if value["date"] == firebaseDate {
-                        self?.locationLabel.text = "이미 있음"
+                reference.child("Addresses").observe(.value) { [weak self] (snapshot) in
+                    guard let `self` = self else { return }
+                    if let value = snapshot.value as? [String: Any] {
+                        let firebaseDate = firebaseFormatter.string(from: Date())
+                        
+                        if value["date"] as! String == firebaseDate {
+                            //데이터 가져와서 데이터 뿌림
+                            self.locationLabel.text = "이미 있음"
+                            print("이미 있음")
+                        
+                        }else {
+                            //다시 데이터 가져오기
+                            self.getPrevWeatherData(url: historySKWeatherURL, parameters: self.paramSK)
+                            self.getTMData(url: kakaoCoordinateURL, parameters: self.self.tmParams)
+                            print("데이터 없음")
+                        }
+                        
+                    }else {
+                        //데이터 없는 경우
+                        self.getPrevWeatherData(url: historySKWeatherURL, parameters: self.paramSK)
+                        self.getTMData(url: kakaoCoordinateURL, parameters: self.tmParams)
+                        print("데이터 없음")
                     }
                 }
-                
             }else {
                 print("error")
                 HUD.flash(HUDContentType.label("잠시후\n다시 시도해주세요"), delay: 1.0)
@@ -591,12 +610,14 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
         if location.horizontalAccuracy > 0 {
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
+            dataModel.weatherLocationX = String(location.coordinate.longitude)
             let longitude = String(location.coordinate.longitude)
+            dataModel.weatherLocationY = String(location.coordinate.latitude)
             let latitude = String(location.coordinate.latitude)
             
-            self.paramSK = ["lat": latitude, "lon": longitude, "version": "2"]
             let locationParams: [String: String] = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "WCONGNAMUL"]
-            self.tmParams = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "WTM"]
+//            self.paramSK = ["lat": latitude, "lon": longitude, "version": "2"]
+//            self.tmParams = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "WTM"]
             
             formatter.dateFormat = "HH"
             let hour: Int = Int(formatter.string(from: Date()))!
@@ -610,8 +631,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
             
             
             getLocationData(url: kakaoGetAddressURL, parameters: locationParams)
-            getPrevWeatherData(url: historySKWeatherURL, parameters: paramSK)
-            getTMData(url: kakaoCoordinateURL, parameters: tmParams)
+//            getPrevWeatherData(url: historySKWeatherURL, parameters: paramSK)
+//            getTMData(url: kakaoCoordinateURL, parameters: tmParams)
         }
     }
     
