@@ -86,7 +86,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 self.present(bulletinView, animated: false, completion: nil)
             }
         })
-        firebaseFormatter.dateFormat = "yyyy MM dd HH"
+        firebaseFormatter.dateFormat = "yyyy년 MM월 dd일 HH시"
         dataModel = DataModel()
         //메뉴 버튼에 대한 메소드 설정
         menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
@@ -361,6 +361,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                         self.dataModel.weathercontents["condition"] = JSON(response.result.value!)["weather"]["forecast3days"][0]["fcst3hour"]["sky"][self.forecastCode[index]].stringValue
                         self.dataModel.weatherData.append(self.dataModel.weathercontents)
                     }
+                    print(self.dataModel.weatherData)
                     self.weatherCollectionView.reloadData()
                     self.dataModel.forecastCount = self.dataModel.weatherData.count - 1
                     self.updateUIWithWeatherDate()
@@ -540,6 +541,14 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
             weatherIconName = "Night" + weatherIconName
         }
         weatherIcon.image = UIImage(named: weatherIconName)
+        //파이어베이스 업데이트
+        
+        reference.child("addresses").child(dataModel.address).child("date").setValue(firebaseFormatter.string(from: Date()))
+        reference.child("addresses").child(dataModel.address).child("temp").setValue(dataModel.temperature)
+        reference.child("addresses").child(dataModel.address).child("prevTemp").setValue(dataModel.prevTemp)
+        reference.child("addresses").child(dataModel.address).child("weatherIconName").setValue(dataModel.weatherIconName)
+        reference.child("addresses").child(dataModel.address).child("weatherInfo").setValue(dataModel.weatherInfo)
+        reference.child("addresses").child(dataModel.address).child("weatherData").setValue(dataModel.weatherData)
     }
     
     //Dust Update
@@ -572,11 +581,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 self.dataModel.address = data["documents"][0]["region_2depth_name"].stringValue + " " + data["documents"][0]["region_3depth_name"].stringValue
                 self.locationLabel.text = self.dataModel.address
                 //파이어 베이스 확인
-                reference.child("Addresses").observe(.value) { [weak self] (snapshot) in
+                reference.child("addresses").child(self.dataModel.address).observe(.value) { [weak self] (snapshot) in
                     guard let `self` = self else { return }
+                    print(snapshot.value)
                     if let value = snapshot.value as? [String: Any] {
                         let firebaseDate = firebaseFormatter.string(from: Date())
-                        
+                        print(value["date"])
+                        print(firebaseDate)
                         if value["date"] as! String == firebaseDate {
                             //데이터 가져와서 데이터 뿌림
                             self.locationLabel.text = "이미 있음"
