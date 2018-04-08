@@ -545,6 +545,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
         
         reference.child("addresses").child(dataModel.address).child("date").setValue(firebaseFormatter.string(from: Date()))
         reference.child("addresses").child(dataModel.address).child("temp").setValue(dataModel.temperature)
+        reference.child("addresses").child(dataModel.address).child("maxTemp").setValue(dataModel.maxTemperature)
+        reference.child("addresses").child(dataModel.address).child("minTemp").setValue(dataModel.minTemperature)
         reference.child("addresses").child(dataModel.address).child("prevTemp").setValue(dataModel.prevTemp)
         reference.child("addresses").child(dataModel.address).child("weatherIconName").setValue(dataModel.weatherIconName)
         reference.child("addresses").child(dataModel.address).child("weatherInfo").setValue(dataModel.weatherInfo)
@@ -568,6 +570,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 }
             }
         }
+        //미세먼지 파이어 베이스 업데이트
+        reference.child("addresses").child(dataModel.address).child("currentDustData").setValue(dataModel.currentDustData)
+        reference.child("addresses").child(dataModel.address).child("forecastDustInformOverall").setValue(dataModel.forecastDustInformOverall)
+        
         refreshBtn.isUserInteractionEnabled = true
     }
     
@@ -583,16 +589,22 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 //파이어 베이스 확인
                 reference.child("addresses").child(self.dataModel.address).observe(.value) { [weak self] (snapshot) in
                     guard let `self` = self else { return }
-                    print(snapshot.value)
                     if let value = snapshot.value as? [String: Any] {
                         let firebaseDate = firebaseFormatter.string(from: Date())
-                        print(value["date"])
-                        print(firebaseDate)
                         if value["date"] as! String == firebaseDate {
                             //데이터 가져와서 데이터 뿌림
                             self.locationLabel.text = "이미 있음"
                             print("이미 있음")
-                        
+                            self.dataModel.temperature = value["temp"] as! Int
+                            self.dataModel.maxTemperature = value["maxTemp"] as! Int
+                            self.dataModel.minTemperature = value["minTemp"] as! Int
+                            self.dataModel.prevTemp = value["prevTemp"] as! Int
+                            self.dataModel.weatherIconName = value["weatherIconName"] as! String
+                            self.dataModel.weatherInfo = value["weatherInfo"] as! String
+                            self.dataModel.weatherData  = value["weatherData"] as! [[String : String]]
+//                            self.dataModel.dustData = value["dustData"] as! DustModel
+                            self.dataModel.forecastDustInformOverall = value as! [String]
+                            
                         }else {
                             //다시 데이터 가져오기
                             self.getPrevWeatherData(url: historySKWeatherURL, parameters: self.paramSK)
