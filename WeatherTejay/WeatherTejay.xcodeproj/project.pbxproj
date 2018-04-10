@@ -57,8 +57,6 @@
 		23FB189F20355AFF00C21597 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 232B2EAB20162AE7001F260E /* Assets.xcassets */; };
 		23FB18A020355AFF00C21597 /* yanoljaTFBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 232CE953202473A200B5E0B1 /* yanoljaTFBold.otf */; };
 		2FEDE924A5908054BBF37CC8 /* Pods_WeatherTejayExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7008E835FDCA4661BADE185 /* Pods_WeatherTejayExtension.framework */; };
-		5ACA4D0CE032CA67DC86B349 /* Pods_WeatherTejayExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E46F4201EDD0100C5850F /* Pods_WeatherTejayExtension.framework */; };
-		A0DC78EAC28212893A6350DC /* Pods_WeatherTejay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E46FB201EE2B100C5850F /* Pods_WeatherTejay.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,7 +151,6 @@
 				231E46F0201EDD0100C5850F /* Pods_WeatherTejayExtension.framework in Frameworks */,
 				231E46F2201EDD0100C5850F /* SwiftyJSON.framework in Frameworks */,
 				1B1EF8AECB42A48BEF9605C1 /* Pods_WeatherTejay.framework in Frameworks */,
-				A0DC78EAC28212893A6350DC /* Pods_WeatherTejay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,7 +163,6 @@
 				231E46F9201EE2B100C5850F /* SwiftyJSON.framework in Frameworks */,
 				232B2EBD2016C6E0001F260E /* NotificationCenter.framework in Frameworks */,
 				2FEDE924A5908054BBF37CC8 /* Pods_WeatherTejayExtension.framework in Frameworks */,
-				5ACA4D0CE032CA67DC86B349 /* Pods_WeatherTejayExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,7 +351,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = devtejay;
 				TargetAttributes = {
 					232B2E9D20162AE6001F260E = {
@@ -622,6 +618,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -629,6 +626,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -680,6 +678,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -687,6 +686,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

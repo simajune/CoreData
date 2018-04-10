@@ -417,6 +417,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
     //미세먼지 데이터 가져오기
     func getDustData(url: String, parameters: [String: String]) {
         dataModel.dustData.removeAll()
+        dataModel.forecastDustInformOverall.removeAll()
         dataModel.currentDustData.removeAll()
         dataModel.currentDustGrade.removeAll()
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { [weak self] response in
@@ -588,8 +589,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 self.tmParams = ["y": self.dataModel.weatherLocationY, "x": self.dataModel.weatherLocationX, "input_coord": "WGS84", "output_coord": "WTM"]
                 self.dataModel.address = data["documents"][0]["region_2depth_name"].stringValue + " " + data["documents"][0]["region_3depth_name"].stringValue
                 self.locationLabel.text = self.dataModel.address
-                //파이어 베이스 확인
-                reference.child("addresses").child(self.dataModel.address).observe(.value) { [weak self] (snapshot) in
+                //파이어 베이스 확인                
+                reference.child("addresses").child(self.dataModel.address).observeSingleEvent(of: .value) { [weak self] (snapshot) in
                     guard let `self` = self else { return }
                     if let value = snapshot.value as? [String: Any] {
                         let firebaseDate = firebaseFormatter.string(from: Date())
@@ -608,6 +609,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                             self.dataModel.forecastDustInformOverall = value["forecastDustInformOverall"] as! [String]
                             self.weatherCollectionView.reloadData()
                             self.locationLabel.text = self.dataModel.address
+                            self.updateUIWithWeatherDate()
                         }else {
                             //다시 데이터 가져오기
                             self.getPrevWeatherData(url: historySKWeatherURL, parameters: self.paramSK)
