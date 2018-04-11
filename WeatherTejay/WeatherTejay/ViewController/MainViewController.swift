@@ -576,6 +576,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
         //미세먼지 파이어 베이스 업데이트
         reference.child("addresses").child(dataModel.address).child("currentDustData").setValue(dataModel.currentDustData)
         reference.child("addresses").child(dataModel.address).child("forecastDustInformOverall").setValue(dataModel.forecastDustInformOverall)
+//        reference.child("addresses").child(dataModel.address).child("dustData").setValue(dataModel.dustData)
         
         refreshBtn.isUserInteractionEnabled = true
     }
@@ -605,11 +606,15 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                             self.dataModel.weatherIconName = value["weatherIconName"] as! String
                             self.dataModel.weatherInfo = value["weatherInfo"] as! String
                             self.dataModel.weatherData  = value["weatherData"] as! [[String : String]]
-//                            self.dataModel.dustData = value["dustData"] as! DustModel
+                            
+//                            let tempDisc = value["dustData"] as! [[String: String]]
+//                            let dustJson = JSON(tempDisc)
+//                            print(dustJson)
                             self.dataModel.forecastDustInformOverall = value["forecastDustInformOverall"] as! [String]
                             self.weatherCollectionView.reloadData()
                             self.locationLabel.text = self.dataModel.address
                             self.updateUIWithWeatherDate()
+                            self.updateUIWithDustData()
                         }else {
                             //다시 데이터 가져오기
                             self.getPrevWeatherData(url: historySKWeatherURL, parameters: self.paramSK)

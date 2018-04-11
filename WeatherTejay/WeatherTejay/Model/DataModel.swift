@@ -28,6 +28,7 @@ class DataModel {
     
     //미세먼지 데이터
     var dustData: [DustModel] = []
+    var sampleDustData: [[String: String]] = []
     var currentDustData: [String] = []
     var currentDustGrade: [String] = []
     var currentDustDataCount: Int = 0 {
