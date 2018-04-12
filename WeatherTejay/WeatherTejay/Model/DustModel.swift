@@ -52,44 +52,44 @@ struct DustModel {
 //    나쁨       3
 //    매우나쁨    4
     
-    init?(data: [String: String]) {
+    init?(data: JSON) {
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "yyyy-MM-dd kk:mm"
-        guard let mangName = data["mangName"] else { return nil }
+        guard let mangName = data["mangName"].string else { return nil }
         self.mangName = mangName
-        guard let so2Value = data["so2Value"] else { return nil }
+        guard let so2Value = data["so2Value"].string else { return nil }
         self.so2Value = so2Value
-        guard let coValue = data["coValue"] else { return nil }
+        guard let coValue = data["coValue"].string else { return nil }
         self.coValue = coValue
-        guard let o3Value = data["o3Value"] else { return nil }
+        guard let o3Value = data["o3Value"].string else { return nil }
         self.o3Value = o3Value
-        guard let no2Value = data["no2Value"] else { return nil }
+        guard let no2Value = data["no2Value"].string else { return nil }
         self.no2Value = no2Value
-        guard let pm10Value = data["pm10Value"] else { return nil }
+        guard let pm10Value = data["pm10Value"].string else { return nil }
         self.pm10Value = pm10Value
-        guard let pm10Value24 = data["pm10Value24"] else { return nil }
+        guard let pm10Value24 = data["pm10Value24"].string else { return nil }
         self.pm10Value24 = pm10Value24
-        guard let pm25Value = data["pm25Value"] else { return nil }
+        guard let pm25Value = data["pm25Value"].string else { return nil }
         self.pm25Value = pm25Value
-        guard let pm25Value24 = data["pm25Value24"] else { return nil }
+        guard let pm25Value24 = data["pm25Value24"].string else { return nil }
         self.pm25Value24 = pm25Value24
-        guard let khaiValue = data["khaiValue"] else { return nil }
+        guard let khaiValue = data["khaiValue"].string else { return nil }
         self.khaiValue = khaiValue
-        guard let khaiGrade = data["khaiGrade"] else { return nil }
+        guard let khaiGrade = data["khaiGrade"].string else { return nil }
         self.khaiGrade = khaiGrade
-        guard let so2Grade = data["so2Grade"] else { return nil }
+        guard let so2Grade = data["so2Grade"].string else { return nil }
         self.so2Grade = so2Grade
-        guard let coGrade = data["coGrade"] else { return nil }
+        guard let coGrade = data["coGrade"].string else { return nil }
         self.coGrade = coGrade
-        guard let no2Grade = data["no2Grade"] else { return nil }
+        guard let no2Grade = data["no2Grade"].string else { return nil }
         self.no2Grade = no2Grade
-        guard let pm10Grade = data["pm10Grade"] else { return nil }
+        guard let pm10Grade = data["pm10Grade"].string else { return nil }
         self.pm10Grade = pm10Grade
-        guard let pm25Grade = data["pm25Grade"] else { return nil }
+        guard let pm25Grade = data["pm25Grade"].string else { return nil }
         self.pm25Grade = pm25Grade
-        guard let pm10Grade1h = data["pm10Grade1h"] else { return nil }
+        guard let pm10Grade1h = data["pm10Grade1h"].string else { return nil }
         self.pm10Grade1h = pm10Grade1h
-        guard let pm25Grade1h = data["pm25Grade1h"] else { return nil }
+        guard let pm25Grade1h = data["pm25Grade1h"].string else { return nil }
         self.pm25Grade1h = pm25Grade1h
         
     }

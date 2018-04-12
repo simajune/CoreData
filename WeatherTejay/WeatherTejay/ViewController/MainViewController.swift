@@ -445,10 +445,14 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                         self.dataModel.currentDustGrade.append(datas["list"][0][title].stringValue)
                     }
                     
+                    
+                    
                     for data in datas["list"] {
                         guard let dustData = DustModel(json: data) else { return }
                         self.dataModel.dustData.append(dustData)
                     }
+                    //테스트 필요
+//                    self.dataModel.dustData.append(DustModel(data: datas["list"][0])!)
                     
                     let forecastDust: [String: String] = ["searchDate": self.currentdate, "ServiceKey": dustAPIKey, "_returnType": "json"]
                     self.getforecastDustData(url: forecastDustURL, parameters: forecastDust)
