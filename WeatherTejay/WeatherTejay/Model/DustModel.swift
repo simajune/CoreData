@@ -94,7 +94,6 @@ struct DustModel {
         
     }
     
-    
     init?(json: (String, JSON)) {
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "yyyy-MM-dd kk:mm"
@@ -135,6 +134,45 @@ struct DustModel {
         guard let pm10Grade1h = json.1["pm10Grade1h"].string else { return nil }
         self.pm10Grade1h = pm10Grade1h
         guard let pm25Grade1h = json.1["pm25Grade1h"].string else { return nil }
+        self.pm25Grade1h = pm25Grade1h
+    }
+    
+    init?(dic: [String: String]) {
+        guard let mangName = dic["mangName"] else { return nil }
+        self.mangName = mangName
+        guard let so2Value = dic["so2Value"] else { return nil }
+        self.so2Value = so2Value
+        guard let coValue = dic["coValue"] else { return nil }
+        self.coValue = coValue
+        guard let o3Value = dic["o3Value"] else { return nil }
+        self.o3Value = o3Value
+        guard let no2Value = dic["no2Value"] else { return nil }
+        self.no2Value = no2Value
+        guard let pm10Value = dic["pm10Value"] else { return nil }
+        self.pm10Value = pm10Value
+        guard let pm10Value24 = dic["pm10Value24"] else { return nil }
+        self.pm10Value24 = pm10Value24
+        guard let pm25Value = dic["pm25Value"] else { return nil }
+        self.pm25Value = pm25Value
+        guard let pm25Value24 = dic["pm25Value24"] else { return nil }
+        self.pm25Value24 = pm25Value24
+        guard let khaiValue = dic["khaiValue"] else { return nil }
+        self.khaiValue = khaiValue
+        guard let khaiGrade = dic["khaiGrade"] else { return nil }
+        self.khaiGrade = khaiGrade
+        guard let so2Grade = dic["so2Grade"] else { return nil }
+        self.so2Grade = so2Grade
+        guard let coGrade = dic["coGrade"] else { return nil }
+        self.coGrade = coGrade
+        guard let no2Grade = dic["no2Grade"] else { return nil }
+        self.no2Grade = no2Grade
+        guard let pm10Grade = dic["pm10Grade"] else { return nil }
+        self.pm10Grade = pm10Grade
+        guard let pm25Grade = dic["pm25Grade"] else { return nil }
+        self.pm25Grade = pm25Grade
+        guard let pm10Grade1h = dic["pm10Grade1h"] else { return nil }
+        self.pm10Grade1h = pm10Grade1h
+        guard let pm25Grade1h = dic["pm25Grade1h"] else { return nil }
         self.pm25Grade1h = pm25Grade1h
     }
 }

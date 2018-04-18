@@ -37,6 +37,12 @@ class DataModel {
             oldCurrentDustDataCount = oldValue
         }
     }
+    var forecastDustDateCount: Int = 0 {
+        didSet {
+            oldforecastDustDateCount = oldValue
+        }
+    }
+    var oldforecastDustDateCount: Int = 0
     var oldCurrentDustDataCount: Int = 0
     var dustContent: [String] = ["pm10Value", "pm25Value", "so2Value", "coValue", "o3Value", "no2Value"]
     var dustGrade: [String] = ["so2Grade", "coGrade", "o3Grade", "no2Grade"]
@@ -62,7 +68,8 @@ class DataModel {
         }
     }
     
-    func toDicDustData(dustData: [DustModel]) {
+    func toDicDustData(dustData: [DustModel]) -> [String: String]{
+        var sampleDustDataElement: [String: String] = [:]
         sampleDustDataElement["mangName"] = dustData[0].mangName
         //아황산가스 농도 (단위 : ppm)
         sampleDustDataElement["so2Value"] = dustData[0].so2Value
@@ -100,6 +107,7 @@ class DataModel {
         sampleDustDataElement["pm10Grade1h"] = dustData[0].pm10Grade1h
         //미세먼지(PM2.5) 1시간 등급
         sampleDustDataElement["pm25Grade1h"] = dustData[0].pm25Grade1h
+        return sampleDustDataElement
     }
     
     //날씨의 이이콘에 대한 값을 반환하기 위한 메소드 (Openweathermap)
