@@ -193,6 +193,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
     //MARK: - Button Action
     @IBAction func refreshAction(_ sender: UIButton) {
         dataModel.currentDustDataCount = 0
+        dataModel.forecastDustDateCount = 0
         dataModel.forecastCount = 0
 
         locationManager.delegate = self
@@ -361,7 +362,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                         self.dataModel.weathercontents["condition"] = JSON(response.result.value!)["weather"]["forecast3days"][0]["fcst3hour"]["sky"][self.forecastCode[index]].stringValue
                         self.dataModel.weatherData.append(self.dataModel.weathercontents)
                     }
-                    print(self.dataModel.weatherData)
                     self.weatherCollectionView.reloadData()
                     self.dataModel.forecastCount = self.dataModel.weatherData.count - 1
                     self.updateUIWithWeatherDate()
@@ -427,11 +427,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 //만약 측정소의 문제로 인해 미세먼지의 값이 나오지 않을 경우 근처의 다른 측정소의 정보를 가져옴
                 if datas["list"][0]["pm10Value"].stringValue == "-" || datas["list"][0]["pm25Value"].stringValue == "-" {
                     if self.changeDustNum < 2 {
-                    self.changeDustNum += 1
-                    self.dustParams = ["stationName": self.stationList[self.changeDustNum], "dataTerm": "MONTH", "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "ver": "1.3", "_returnType": "json"]
-                    self.getDustData(url: dustDataURL, parameters: self.dustParams)
-                    }
-                    else {
+                        self.changeDustNum += 1
+                        self.dustParams = ["stationName": self.stationList[self.changeDustNum], "dataTerm": "MONTH", "pageNo": "1", "numOfRows": "10", "ServiceKey": dustAPIKey, "ver": "1.3", "_returnType": "json"]
+                        self.getDustData(url: dustDataURL, parameters: self.dustParams)
+                    }else {
                         HUD.flash(HUDContentType.label("미세먼지 정보를 받아올 수 없습니다\n잠시후 다시 시도해주세요"), delay: 1.0)
                     }
                 }else {
@@ -453,10 +452,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                     //테스트 필요
                     self.dataModel.dustData.append(DustModel(data: datas["list"][0])!)
                     
-                    
-                    
-                    
-                    print(self.dataModel.dustData)
                     let forecastDust: [String: String] = ["searchDate": self.currentdate, "ServiceKey": dustAPIKey, "_returnType": "json"]
                     self.getforecastDustData(url: forecastDustURL, parameters: forecastDust)
                 }
@@ -480,8 +475,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                     self.dataModel.forecastDustInformOverall.append(datas["list"][data]["informOverall"].stringValue)
                 }
                 self.weatherCollectionView.reloadData()
-                self.dataModel.currentDustDataCount = self.dataModel.currentDustData.count
-                self.updateUIWithDustData()
             }else {
                 print(response.result.error!)
                 HUD.flash(HUDContentType.label("잠시후\n다시 시도해주세요"), delay: 1.0)
@@ -549,8 +542,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
             weatherIconName = "Night" + weatherIconName
         }
         weatherIcon.image = UIImage(named: weatherIconName)
-        //파이어베이스 업데이트
         
+        self.dataModel.forecastCount = self.dataModel.weatherData.count - 1
+        //파이어베이스 업데이트
         reference.child("addresses").child(dataModel.address).child("date").setValue(firebaseFormatter.string(from: Date()))
         reference.child("addresses").child(dataModel.address).child("temp").setValue(dataModel.temperature)
         reference.child("addresses").child(dataModel.address).child("maxTemp").setValue(dataModel.maxTemperature)
@@ -580,10 +574,17 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 }
             }
         }
+        self.dataModel.sampleDustDataElement = self.dataModel.toDicDustData(dustData: dataModel.dustData)
+        self.dataModel.currentDustDataCount = self.dataModel.currentDustData.count
+        self.dataModel.forecastDustDateCount = self.dataModel.forecastDustDate.count
+        
         //미세먼지 파이어 베이스 업데이트
+        reference.child("addresses").child(dataModel.address).child("dustData").setValue(dataModel.sampleDustDataElement)
         reference.child("addresses").child(dataModel.address).child("currentDustData").setValue(dataModel.currentDustData)
         reference.child("addresses").child(dataModel.address).child("forecastDustInformOverall").setValue(dataModel.forecastDustInformOverall)
-//        reference.child("addresses").child(dataModel.address).child("dustData").setValue(dataModel.dustData)
+        reference.child("addresses").child(dataModel.address).child("dustGrade").setValue(dataModel.dustGrade)
+        reference.child("addresses").child(dataModel.address).child("currentDustGrade").setValue(dataModel.currentDustGrade)
+        reference.child("addresses").child(dataModel.address).child("forecastDustDate").setValue(dataModel.forecastDustDate)
         
         refreshBtn.isUserInteractionEnabled = true
     }
@@ -613,15 +614,21 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                             self.dataModel.weatherIconName = value["weatherIconName"] as! String
                             self.dataModel.weatherInfo = value["weatherInfo"] as! String
                             self.dataModel.weatherData  = value["weatherData"] as! [[String : String]]
-                            
-//                            let tempDisc = value["dustData"] as! [[String: String]]
-//                            let dustJson = JSON(tempDisc)
-//                            print(dustJson)
                             self.dataModel.forecastDustInformOverall = value["forecastDustInformOverall"] as! [String]
                             self.weatherCollectionView.reloadData()
                             self.locationLabel.text = self.dataModel.address
+                            //미세먼제 데이터
+                            let tempDic = value["dustData"] as! [String: String]
+                            let sampleElement = DustModel(dic: tempDic)
+                            self.dataModel.dustData.append(sampleElement!)
+                            self.dataModel.dustGrade = value["dustGrade"] as! [String]
+                            self.dataModel.currentDustGrade = value["currentDustGrade"] as! [String]
+                            self.dataModel.currentDustData = value["currentDustData"] as! [String]
+                            self.dataModel.forecastDustDate = value["forecastDustDate"] as! [String]
+                            //리로드
                             self.updateUIWithWeatherDate()
                             self.updateUIWithDustData()
+                            self.weatherCollectionView.reloadData()
                         }else {
                             //다시 데이터 가져오기
                             self.getPrevWeatherData(url: historySKWeatherURL, parameters: self.paramSK)
@@ -697,11 +704,12 @@ extension MainViewController: UICollectionViewDataSource {
         if indexPath.item == 1 {
             let cellB = collectionView.dequeueReusableCell(withReuseIdentifier: "cellB", for: indexPath) as! CellB
             cellB.cellCount = dataModel.currentDustDataCount
+            cellB.forecastCellCount = dataModel.forecastDustDateCount
             cellB.dataModel.currentDustData = dataModel.currentDustData
             cellB.dataModel.currentDustGrade = dataModel.currentDustGrade
             cellB.dataModel.forecastDustDate = dataModel.forecastDustDate
             cellB.dataModel.forecastDustInformOverall = dataModel.forecastDustInformOverall
-            if dataModel.currentDustDataCount != dataModel.oldCurrentDustDataCount {
+            if dataModel.currentDustDataCount != dataModel.oldCurrentDustDataCount || dataModel.forecastDustDateCount != dataModel.oldforecastDustDateCount {
                 cellB.dustTableView.reloadData()
             }
             return cellB

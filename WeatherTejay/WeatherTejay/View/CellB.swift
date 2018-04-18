@@ -12,6 +12,14 @@ class CellB: UICollectionViewCell {
         }
     }
     
+    var forecastCellCount: Int = 0 {
+        didSet {
+            if oldValue != forecastCellCount {
+                dustTableView.reloadData()
+            }
+        }
+    }
+    
     var dataModel: DataModel!
     
     @IBOutlet weak var dustTableView: UITableView!
@@ -28,6 +36,7 @@ extension CellB: UITableViewDataSource {
         if section == 1 {
             return dataModel.currentDustData.count
         }else {
+            print(dataModel.forecastDustDate.count)
             return dataModel.forecastDustDate.count
         }
     }
@@ -55,6 +64,7 @@ extension CellB: UITableViewDataSource {
             cell.gradeLabel.isHidden = true
             cell.dustValueLabel.isHidden = true
             cell.forecastDustLabel.isHidden = false
+            print(dataModel.forecastDustDate[indexPath.row])
             cell.label.text = dataModel.forecastDustDate[indexPath.row]
             cell.forecastDustLabel.font = UIFont(name: "Yanolja Yache OTF", size: 12)
             cell.forecastDustLabel.text = dataModel.forecastDustInformOverall[indexPath.row]
