@@ -29,6 +29,7 @@ class DataModel {
     //미세먼지 데이터
     var dustData: [DustModel] = []
     var sampleDustData: [[String: String]] = []
+    var sampleDustDataElement: [String: String] = [:]
     var currentDustData: [String] = []
     var currentDustGrade: [String] = []
     var currentDustDataCount: Int = 0 {
@@ -59,6 +60,46 @@ class DataModel {
         default:
             return "측정불가"
         }
+    }
+    
+    func toDicDustData(dustData: [DustModel]) {
+        sampleDustDataElement["mangName"] = dustData[0].mangName
+        //아황산가스 농도 (단위 : ppm)
+        sampleDustDataElement["so2Value"] = dustData[0].so2Value
+        //일산화탄소 농도 (단위 : ppm)
+        sampleDustDataElement["coValue"] = dustData[0].coValue
+        //오존 농도 (단위 : ppm)
+        sampleDustDataElement["o3Value"] = dustData[0].o3Value
+        //이산화질소 농도 (단위 : ppm)
+        sampleDustDataElement["no2Value"] = dustData[0].no2Value
+        //미세먼지(PM10) 농도 (단위 : ㎍/㎥)
+        sampleDustDataElement["pm10Value"] = dustData[0].pm10Value
+        //미세먼지(PM10) 24시간예측이동농도 (단위 : ㎍/㎥)
+        sampleDustDataElement["pm10Value24"] = dustData[0].pm10Value24
+        //미세먼지(PM2.5)  농도 (단위 : ㎍/㎥)
+        sampleDustDataElement["pm25Value"] = dustData[0].pm25Value
+        //미세먼지(PM2.5) 24시간예측이동농도 (단위 : ㎍/㎥)
+        sampleDustDataElement["pm25Value24"] = dustData[0].pm25Value24
+        //통합대기환경수치
+        sampleDustDataElement["khaiValue"] = dustData[0].khaiValue
+        //통합대기환경지수
+        sampleDustDataElement["khaiGrade"] = dustData[0].khaiGrade
+        //아황산가스 지수
+        sampleDustDataElement["so2Grade"] = dustData[0].so2Grade
+        //일산화탄소 지수
+        sampleDustDataElement["coGrade"] = dustData[0].coGrade
+        //오존 지수
+        sampleDustDataElement["o3Grade"] = dustData[0].o3Grade
+        //이산화질소 지수
+        sampleDustDataElement["no2Grade"] = dustData[0].no2Grade
+        //미세먼지(PM10) 24시간 등급자료
+        sampleDustDataElement["pm10Grade"] = dustData[0].pm10Grade
+        //미세먼지(PM2.5) 24시간 등급자료
+        sampleDustDataElement["pm25Grade"] = dustData[0].pm25Grade
+        //미세먼지(PM10) 1시간 등급
+        sampleDustDataElement["pm10Grade1h"] = dustData[0].pm10Grade1h
+        //미세먼지(PM2.5) 1시간 등급
+        sampleDustDataElement["pm25Grade1h"] = dustData[0].pm25Grade1h
     }
     
     //날씨의 이이콘에 대한 값을 반환하기 위한 메소드 (Openweathermap)
