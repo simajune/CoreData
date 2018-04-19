@@ -112,6 +112,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
         let currentDay = formatter.string(from: Date())
         dayLabel.text = changeKRDay(str: currentDay)
         dataModel.currentDustDataCount = 0
+        dataModel.forecastDustDateCount = 0
         dataModel.forecastCount = 0
         if dataModel.address == "" {
             locationManager.delegate = self
@@ -475,6 +476,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                     self.dataModel.forecastDustInformOverall.append(datas["list"][data]["informOverall"].stringValue)
                 }
                 self.weatherCollectionView.reloadData()
+                self.updateUIWithDustData()
             }else {
                 print(response.result.error!)
                 HUD.flash(HUDContentType.label("잠시후\n다시 시도해주세요"), delay: 1.0)
@@ -560,6 +562,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
     //Dust Update
     func updateUIWithDustData() {
         //만약 미세먼지나 초미세먼지의 등급이 하나라도 '나쁨'이나 '매우나쁨'일 경우 등급은 미세먼지, 초미세먼지의 등급으로 표시
+        print(dataModel.dustData)
         if dataModel.dustData[0].khaiValue == "-" || dataModel.dustData[0].khaiGrade == "-" {
             self.dustLabel.text = self.dataModel.changeDustGrade(grade: self.dataModel.currentDustGrade[0])
             self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: self.dataModel.currentDustGrade[0]))
