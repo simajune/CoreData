@@ -294,7 +294,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
                         //메세지 띄우기
                     }
                 }else {
-                    print(datas["list"])
+//                    print(datas["list"])
                     for data in datas["list"] {
                         guard let dustData = DustModel(json: data) else { return }
                         self.dataModel.dustData = dustData

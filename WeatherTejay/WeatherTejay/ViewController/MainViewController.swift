@@ -247,6 +247,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
             }else {
                 HUD.flash(HUDContentType.label("트래픽이 초과되어\n날씨정보를 받을 수 없습니다."), delay: 1.0)
                 self.changeAppKeyNum = 0
+                //데이터가 하나라도 정상적인 데이터가 없을 경우 다시 데이터를 받을 수 있게 날짜를 공란으로 바꿈
+                reference.child("addresses").child(dataModel.address).child("date").setValue("")
             }
         }else if type == "current"{
             if self.changeAppKeyNum == 0 {
@@ -272,6 +274,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
             }else {
                 self.locationLabel.text = "트래픽이 초과되어 날씨정보를 받을 수 없습니다."
                 self.changeAppKeyNum = 0
+                //데이터가 하나라도 정상적인 데이터가 없을 경우 다시 데이터를 받을 수 있게 날짜를 공란으로 바꿈
+                reference.child("addresses").child(dataModel.address).child("date").setValue("")
             }
         }else {
             if self.changeAppKeyNum == 0 {
@@ -297,6 +301,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
             }else {
                 HUD.flash(HUDContentType.label("트래픽이 초과되어\n날씨정보를 받을 수 없습니다."), delay: 1.0)
                 self.changeAppKeyNum = 0
+                //데이터가 하나라도 정상적인 데이터가 없을 경우 다시 데이터를 받을 수 있게 날짜를 공란으로 바꿈
+                reference.child("addresses").child(dataModel.address).child("date").setValue("")
             }
         }
     }
@@ -319,6 +325,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
             } else {
                 print("Error \(response.result.error!)")
                 self.locationLabel.text = "Connection Issues"
+                //데이터가 하나라도 정상적인 데이터가 없을 경우 다시 데이터를 받을 수 있게 날짜를 공란으로 바꿈
+                reference.child("addresses").child(self.dataModel.address).child("date").setValue("")
             }
         }
     }
@@ -341,6 +349,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 print("Error \(response.result.error!)")
                 self.locationLabel.text = "Connection Issues"
                 HUD.flash(HUDContentType.label("잠시후\n다시 시도해주세요"), delay: 1.0)
+                //데이터가 하나라도 정상적인 데이터가 없을 경우 다시 데이터를 받을 수 있게 날짜를 공란으로 바꿈
+                reference.child("addresses").child(self.dataModel.address).child("date").setValue("")
             }
         }
     }
@@ -371,6 +381,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 print("Error \(response.result.error!)")
                 self.locationLabel.text = "Connection Issues"
                 HUD.flash(HUDContentType.label("잠시후\n다시 시도해주세요"), delay: 1.0)
+                //데이터가 하나라도 정상적인 데이터가 없을 경우 다시 데이터를 받을 수 있게 날짜를 공란으로 바꿈
+                reference.child("addresses").child(self.dataModel.address).child("date").setValue("")
             }
         }
     }
@@ -388,6 +400,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
             }else {
                 print("Error \(response.result.error!)")
                 HUD.flash(HUDContentType.label("잠시후\n다시 시도해주세요"), delay: 1.0)
+                //데이터가 하나라도 정상적인 데이터가 없을 경우 다시 데이터를 받을 수 있게 날짜를 공란으로 바꿈
+                reference.child("addresses").child(self.dataModel.address).child("date").setValue("")
             }
         }
     }
@@ -411,6 +425,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 print("Error \(response.result.error!)")
                 dustAPIKey = originalAPIKey
                 HUD.flash(HUDContentType.label("측정소 정보를 받아올 수 없습니다.\n잠시후 다시 시도해주세요"), delay: 1.0)
+                //데이터가 하나라도 정상적인 데이터가 없을 경우 다시 데이터를 받을 수 있게 날짜를 공란으로 바꿈
+                reference.child("addresses").child(self.dataModel.address).child("date").setValue("")
             }
         }
     }
@@ -433,6 +449,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                         self.getDustData(url: dustDataURL, parameters: self.dustParams)
                     }else {
                         HUD.flash(HUDContentType.label("미세먼지 정보를 받아올 수 없습니다\n잠시후 다시 시도해주세요"), delay: 1.0)
+                        //데이터가 하나라도 정상적인 데이터가 없을 경우 다시 데이터를 받을 수 있게 날짜를 공란으로 바꿈
+                        reference.child("addresses").child(self.dataModel.address).child("date").setValue("")
                     }
                 }else {
                     for title in self.dataModel.dustContent {
@@ -445,11 +463,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                         self.dataModel.currentDustGrade.append(datas["list"][0][title].stringValue)
                     }
                     
-//                    for data in datas["list"] {
-//                        guard let dustData = DustModel(json: data) else { return }
-//                        self.dataModel.dustData.append(dustData)
-//                    }
-                    
                     //테스트 필요
                     self.dataModel.dustData = DustModel(data: datas["list"][0])!
                     
@@ -460,6 +473,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 print("Error \(response.result.error!)")
                 dustAPIKey = originalAPIKey
                 HUD.flash(HUDContentType.label("미세먼지 정보를 받아올 수 없습니다\n잠시후 다시 시도해주세요"), delay: 1.0)
+                //데이터가 하나라도 정상적인 데이터가 없을 경우 다시 데이터를 받을 수 있게 날짜를 공란으로 바꿈
+                reference.child("addresses").child(self.dataModel.address).child("date").setValue("")
             }
         }
     }
@@ -473,6 +488,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 for data in 0...1 {
                     self.dataModel.forecastDustDate.append(datas["list"][data]["informData"].stringValue)
                     self.dataModel.forecastDustInformCause.append(datas["list"][data]["informCause"].stringValue)
+                    print(datas["list"][data]["informOverall"].stringValue)
                     self.dataModel.forecastDustInformOverall.append(datas["list"][data]["informOverall"].stringValue)
                 }
                 self.weatherCollectionView.reloadData()
@@ -480,6 +496,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
             }else {
                 print(response.result.error!)
                 HUD.flash(HUDContentType.label("잠시후\n다시 시도해주세요"), delay: 1.0)
+                //데이터가 하나라도 정상적인 데이터가 없을 경우 다시 데이터를 받을 수 있게 날짜를 공란으로 바꿈
+                reference.child("addresses").child(self.dataModel.address).child("date").setValue("")
             }
         }
     }
@@ -517,6 +535,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 getCurrentWeatherData (url: forecastSKWeatherURL, parameters: paramSK)
             }else {
                 HUD.flash(HUDContentType.label("트래픽이 초과되어\n날씨정보를 받을 수 없습니다."), delay: 1.0)
+                //데이터가 하나라도 정상적인 데이터가 없을 경우 다시 데이터를 받을 수 있게 날짜를 공란으로 바꿈
+                reference.child("addresses").child(dataModel.address).child("date").setValue("")
                 locationLabel.text = "Weather Unavailable"
             }
         }
@@ -562,7 +582,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
     //Dust Update
     func updateUIWithDustData() {
         //만약 미세먼지나 초미세먼지의 등급이 하나라도 '나쁨'이나 '매우나쁨'일 경우 등급은 미세먼지, 초미세먼지의 등급으로 표시
-        print(dataModel.dustData)
         if dataModel.dustData.khaiValue == "-" || dataModel.dustData.khaiGrade == "-" {
             self.dustLabel.text = self.dataModel.changeDustGrade(grade: self.dataModel.currentDustGrade[0])
             self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: self.dataModel.currentDustGrade[0]))
@@ -577,12 +596,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 }
             }
         }
-        self.dataModel.sampleDustDataElement = self.dataModel.toDicDustData(dustData: dataModel.dustData)
+        self.dataModel.firebaseDustDataElement = self.dataModel.toDicDustData(dustData: dataModel.dustData)
         self.dataModel.currentDustDataCount = self.dataModel.currentDustData.count
         self.dataModel.forecastDustDateCount = self.dataModel.forecastDustDate.count
         
         //미세먼지 파이어 베이스 업데이트
-        reference.child("addresses").child(dataModel.address).child("dustData").setValue(dataModel.sampleDustDataElement)
+        reference.child("addresses").child(dataModel.address).child("dustData").setValue(dataModel.firebaseDustDataElement)
         reference.child("addresses").child(dataModel.address).child("currentDustData").setValue(dataModel.currentDustData)
         reference.child("addresses").child(dataModel.address).child("forecastDustInformOverall").setValue(dataModel.forecastDustInformOverall)
         reference.child("addresses").child(dataModel.address).child("dustGrade").setValue(dataModel.dustGrade)
@@ -622,8 +641,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                             self.locationLabel.text = self.dataModel.address
                             //미세먼제 데이터
                             let tempDic = value["dustData"] as! [String: String]
-                            let sampleElement = DustModel(dic: tempDic)
-                            self.dataModel.dustData = sampleElement!
+                            let firebaseElement = DustModel(dic: tempDic)
+                            self.dataModel.dustData = firebaseElement!
                             self.dataModel.dustGrade = value["dustGrade"] as! [String]
                             self.dataModel.currentDustGrade = value["currentDustGrade"] as! [String]
                             self.dataModel.currentDustData = value["currentDustData"] as! [String]
@@ -634,21 +653,23 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                             self.weatherCollectionView.reloadData()
                         }else {
                             //다시 데이터 가져오기
+                            print("데이터 없음")
                             self.getPrevWeatherData(url: historySKWeatherURL, parameters: self.paramSK)
                             self.getTMData(url: kakaoCoordinateURL, parameters: self.self.tmParams)
-                            print("데이터 없음")
                         }
                         
                     }else {
                         //데이터 없는 경우
+                        print("데이터 없음")
                         self.getPrevWeatherData(url: historySKWeatherURL, parameters: self.paramSK)
                         self.getTMData(url: kakaoCoordinateURL, parameters: self.tmParams)
-                        print("데이터 없음")
                     }
                 }
             }else {
                 print("error")
                 HUD.flash(HUDContentType.label("잠시후\n다시 시도해주세요"), delay: 1.0)
+                //데이터가 하나라도 정상적인 데이터가 없을 경우 다시 데이터를 받을 수 있게 날짜를 공란으로 바꿈
+                reference.child("addresses").child(self.dataModel.address).child("date").setValue("")
             }
         }
     }
@@ -679,10 +700,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                 currentdate = formatter.string(from: Date(timeIntervalSinceNow: -86400))
             }
             
-            
             getLocationData(url: kakaoGetAddressURL, parameters: locationParams)
-//            getPrevWeatherData(url: historySKWeatherURL, parameters: paramSK)
-//            getTMData(url: kakaoCoordinateURL, parameters: tmParams)
         }
     }
     

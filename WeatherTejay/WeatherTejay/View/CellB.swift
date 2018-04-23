@@ -36,8 +36,8 @@ extension CellB: UITableViewDataSource {
         if section == 1 {
             return dataModel.currentDustData.count
         }else {
-            print(dataModel.forecastDustDate.count)
-            return dataModel.forecastDustDate.count
+            print(dataModel.forecastDustInformOverall.count)
+            return dataModel.forecastDustInformOverall.count
         }
     }
     //테이블 뷰 셀 설정
@@ -64,9 +64,10 @@ extension CellB: UITableViewDataSource {
             cell.gradeLabel.isHidden = true
             cell.dustValueLabel.isHidden = true
             cell.forecastDustLabel.isHidden = false
-            print(dataModel.forecastDustDate[indexPath.row])
+            print("forecastDustDate", dataModel.forecastDustDate)
             cell.label.text = dataModel.forecastDustDate[indexPath.row]
             cell.forecastDustLabel.font = UIFont(name: "Yanolja Yache OTF", size: 12)
+            print("forecastDustInformOverall", dataModel.forecastDustInformOverall)
             cell.forecastDustLabel.text = dataModel.forecastDustInformOverall[indexPath.row]
             cell.forecastDustLabel.text = cell.forecastDustLabel.text?.replace(target: "○ [미세먼지]", withString: "")
             return cell

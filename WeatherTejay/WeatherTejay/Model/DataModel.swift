@@ -28,8 +28,8 @@ class DataModel {
     
     //미세먼지 데이터
     var dustData: DustModel!
-    var sampleDustData: [String: String] = [:]
-    var sampleDustDataElement: [String: String] = [:]
+    var firebaseDustData: [String: String] = [:]
+    var firebaseDustDataElement: [String: String] = [:]
     var currentDustData: [String] = []
     var currentDustGrade: [String] = []
     var currentDustDataCount: Int = 0 {
@@ -69,45 +69,45 @@ class DataModel {
     }
     
     func toDicDustData(dustData: DustModel) -> [String: String]{
-        var sampleDustDataElement: [String: String] = [:]
-        sampleDustDataElement["mangName"] = dustData.mangName
+        var firebaseDustDataElement: [String: String] = [:]
+        firebaseDustDataElement["mangName"] = dustData.mangName
         //아황산가스 농도 (단위 : ppm)
-        sampleDustDataElement["so2Value"] = dustData.so2Value
+        firebaseDustDataElement["so2Value"] = dustData.so2Value
         //일산화탄소 농도 (단위 : ppm)
-        sampleDustDataElement["coValue"] = dustData.coValue
+        firebaseDustDataElement["coValue"] = dustData.coValue
         //오존 농도 (단위 : ppm)
-        sampleDustDataElement["o3Value"] = dustData.o3Value
+        firebaseDustDataElement["o3Value"] = dustData.o3Value
         //이산화질소 농도 (단위 : ppm)
-        sampleDustDataElement["no2Value"] = dustData.no2Value
+        firebaseDustDataElement["no2Value"] = dustData.no2Value
         //미세먼지(PM10) 농도 (단위 : ㎍/㎥)
-        sampleDustDataElement["pm10Value"] = dustData.pm10Value
+        firebaseDustDataElement["pm10Value"] = dustData.pm10Value
         //미세먼지(PM10) 24시간예측이동농도 (단위 : ㎍/㎥)
-        sampleDustDataElement["pm10Value24"] = dustData.pm10Value24
+        firebaseDustDataElement["pm10Value24"] = dustData.pm10Value24
         //미세먼지(PM2.5)  농도 (단위 : ㎍/㎥)
-        sampleDustDataElement["pm25Value"] = dustData.pm25Value
+        firebaseDustDataElement["pm25Value"] = dustData.pm25Value
         //미세먼지(PM2.5) 24시간예측이동농도 (단위 : ㎍/㎥)
-        sampleDustDataElement["pm25Value24"] = dustData.pm25Value24
+        firebaseDustDataElement["pm25Value24"] = dustData.pm25Value24
         //통합대기환경수치
-        sampleDustDataElement["khaiValue"] = dustData.khaiValue
+        firebaseDustDataElement["khaiValue"] = dustData.khaiValue
         //통합대기환경지수
-        sampleDustDataElement["khaiGrade"] = dustData.khaiGrade
+        firebaseDustDataElement["khaiGrade"] = dustData.khaiGrade
         //아황산가스 지수
-        sampleDustDataElement["so2Grade"] = dustData.so2Grade
+        firebaseDustDataElement["so2Grade"] = dustData.so2Grade
         //일산화탄소 지수
-        sampleDustDataElement["coGrade"] = dustData.coGrade
+        firebaseDustDataElement["coGrade"] = dustData.coGrade
         //오존 지수
-        sampleDustDataElement["o3Grade"] = dustData.o3Grade
+        firebaseDustDataElement["o3Grade"] = dustData.o3Grade
         //이산화질소 지수
-        sampleDustDataElement["no2Grade"] = dustData.no2Grade
+        firebaseDustDataElement["no2Grade"] = dustData.no2Grade
         //미세먼지(PM10) 24시간 등급자료
-        sampleDustDataElement["pm10Grade"] = dustData.pm10Grade
+        firebaseDustDataElement["pm10Grade"] = dustData.pm10Grade
         //미세먼지(PM2.5) 24시간 등급자료
-        sampleDustDataElement["pm25Grade"] = dustData.pm25Grade
+        firebaseDustDataElement["pm25Grade"] = dustData.pm25Grade
         //미세먼지(PM10) 1시간 등급
-        sampleDustDataElement["pm10Grade1h"] = dustData.pm10Grade1h
+        firebaseDustDataElement["pm10Grade1h"] = dustData.pm10Grade1h
         //미세먼지(PM2.5) 1시간 등급
-        sampleDustDataElement["pm25Grade1h"] = dustData.pm25Grade1h
-        return sampleDustDataElement
+        firebaseDustDataElement["pm25Grade1h"] = dustData.pm25Grade1h
+        return firebaseDustDataElement
     }
     
     //날씨의 이이콘에 대한 값을 반환하기 위한 메소드 (Openweathermap)
