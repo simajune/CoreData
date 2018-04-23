@@ -32,7 +32,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     override func viewDidLoad() {
         super.viewDidLoad()
         dataModel = DataModel()
-        dataModel.dustData.removeAll()
+//        dataModel.dustData.removeAll()
         dataModel.currentDustData.removeAll()
         dataModel.currentDustGrade.removeAll()
         formatter.dateFormat = "MM월 dd일"
@@ -278,7 +278,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     
     //미세먼지 데이터 가져오기
     func getDustData(url: String, parameters: [String: String]) {
-        dataModel.dustData.removeAll()
+//        dataModel.dustData.removeAll()
         dataModel.currentDustGrade.removeAll()
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
             if response.result.isSuccess {
@@ -294,12 +294,15 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
                         //메세지 띄우기
                     }
                 }else {
-                    
+                    print(datas["list"])
                     for data in datas["list"] {
                         guard let dustData = DustModel(json: data) else { return }
-                        self.dataModel.dustData.append(dustData)
+                        self.dataModel.dustData = dustData
                     }
                     
+                    
+//                    guard let dustData = DustModel(json: datas["list"]) else { return }
+//                    self.dataModel.dustData = dustData
                     self.dataModel.currentDustGrade.append(self.changeWHOPM10Grade(value: datas["list"][0]["pm10Value"].stringValue))
                     self.dataModel.currentDustGrade.append(self.changeWHOPM25Grade(value: datas["list"][0]["pm25Value"].stringValue))
                     
@@ -354,12 +357,12 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     
     //Dust Update
     func updateUIWithDustData() {
-        if dataModel.dustData[0].khaiValue == "-" || dataModel.dustData[0].khaiGrade == "-" {
+        if dataModel.dustData.khaiValue == "-" || dataModel.dustData.khaiGrade == "-" {
             self.dustLabel.text = self.dataModel.changeDustGrade(grade: self.dataModel.currentDustGrade[0])
             self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: self.dataModel.currentDustGrade[0]))
         }else {
-            self.dustLabel.text = self.dataModel.changeDustGrade(grade: self.dataModel.dustData[0].khaiGrade)
-            self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: self.dataModel.dustData[0].khaiGrade))
+            self.dustLabel.text = self.dataModel.changeDustGrade(grade: self.dataModel.dustData.khaiGrade)
+            self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: self.dataModel.dustData.khaiGrade))
             //만약 미세먼지나 초미세먼지의 등급이 하나라도 '나쁨'이나 '매우나쁨'일 경우 등급은 미세먼지, 초미세먼지의 등급으로 표시
             for list in self.dataModel.currentDustGrade {
                 if list == "3" || list == "4" {

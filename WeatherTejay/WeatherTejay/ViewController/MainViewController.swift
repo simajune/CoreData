@@ -417,7 +417,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
     
     //미세먼지 데이터 가져오기
     func getDustData(url: String, parameters: [String: String]) {
-        dataModel.dustData.removeAll()
+//        dataModel.dustData.
         dataModel.forecastDustInformOverall.removeAll()
         dataModel.currentDustData.removeAll()
         dataModel.currentDustGrade.removeAll()
@@ -451,7 +451,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
 //                    }
                     
                     //테스트 필요
-                    self.dataModel.dustData.append(DustModel(data: datas["list"][0])!)
+                    self.dataModel.dustData = DustModel(data: datas["list"][0])!
                     
                     let forecastDust: [String: String] = ["searchDate": self.currentdate, "ServiceKey": dustAPIKey, "_returnType": "json"]
                     self.getforecastDustData(url: forecastDustURL, parameters: forecastDust)
@@ -563,12 +563,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
     func updateUIWithDustData() {
         //만약 미세먼지나 초미세먼지의 등급이 하나라도 '나쁨'이나 '매우나쁨'일 경우 등급은 미세먼지, 초미세먼지의 등급으로 표시
         print(dataModel.dustData)
-        if dataModel.dustData[0].khaiValue == "-" || dataModel.dustData[0].khaiGrade == "-" {
+        if dataModel.dustData.khaiValue == "-" || dataModel.dustData.khaiGrade == "-" {
             self.dustLabel.text = self.dataModel.changeDustGrade(grade: self.dataModel.currentDustGrade[0])
             self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: self.dataModel.currentDustGrade[0]))
         }else {
-            self.dustLabel.text = self.dataModel.changeDustGrade(grade: self.dataModel.dustData[0].khaiGrade)
-            self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: self.dataModel.dustData[0].khaiGrade))
+            self.dustLabel.text = self.dataModel.changeDustGrade(grade: self.dataModel.dustData.khaiGrade)
+            self.dustIcon.image = UIImage(named: self.dataModel.changedustIcon(grade: self.dataModel.dustData.khaiGrade))
             //만약 미세먼지나 초미세먼지의 등급이 하나라도 '나쁨'이나 '매우나쁨'일 경우 등급은 미세먼지, 초미세먼지의 등급으로 표시
             for index in 0...1 {
                 if dataModel.currentDustGrade[index] == "3" || dataModel.currentDustGrade[index] == "4" {
@@ -623,7 +623,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
                             //미세먼제 데이터
                             let tempDic = value["dustData"] as! [String: String]
                             let sampleElement = DustModel(dic: tempDic)
-                            self.dataModel.dustData.append(sampleElement!)
+                            self.dataModel.dustData = sampleElement!
                             self.dataModel.dustGrade = value["dustGrade"] as! [String]
                             self.dataModel.currentDustGrade = value["currentDustGrade"] as! [String]
                             self.dataModel.currentDustData = value["currentDustData"] as! [String]
