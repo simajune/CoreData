@@ -5,8 +5,11 @@ import Alamofire
 import SwiftyJSON
 import NotificationCenter
 import Firebase
+//import FirebaseDatabase
 
 class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManagerDelegate {
+    
+//    let reference = Database.database().reference()
     
     //MARK: - IBOutlet
     @IBOutlet weak var locationLabel: UILabel!

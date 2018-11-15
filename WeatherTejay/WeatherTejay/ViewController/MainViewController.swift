@@ -14,7 +14,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
         dataModel.address = address
     }
     
-    
     //Variable
     let locationManager = CLLocationManager()
     var dataModel: DataModel!
@@ -690,8 +689,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, SearchVie
 //            self.paramSK = ["lat": latitude, "lon": longitude, "version": "2"]
 //            self.tmParams = ["y": latitude, "x": longitude, "input_coord": "WGS84", "output_coord": "WTM"]
             
+            
+            
             formatter.dateFormat = "HH"
             let hour: Int = Int(formatter.string(from: Date()))!
+            print(hour)
             if hour >= 5 {
                 formatter.dateFormat = "yyyy-MM-dd"
                 currentdate = formatter.string(from: Date())
